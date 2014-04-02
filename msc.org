@@ -1,0 +1,2367 @@
+#+TITLE: MSc Notes
+#META: 2011-02-06 16:28 notes
+
+* writelatex
+- artigo: https://www.writelatex.com/184497nqnqcv
+- dissertação: https://www.writelatex.com/184469qpbblf
+- survey: https://www.writelatex.com/184488btqwvp (vou acabar fazendo tudo na dissertacao)
+* topicos para revisão
+- computer art ~/docs/notes/computer-art
+- computational creativity ~/docs/notes/computational-creativity
+* perguntas a responder
+- qual o objetivo principal e secundário da pesquisa?
+- a criatividade humana
+- como são os trabalhos correlatos? já existe essa abordagem?
+- qual é a abordagem?
+- quais os resultados?
+- quais os extras/bônus?
+- no que contribuí para a comunidade?
+- o que fiz durante esses 2.5 anos?
+* A pesquisa
+objetivo final: explorar espaço criativo
+
+geram-se pinturas para cada pintor, esses são os protótipos. usa-se esses
+protótipos como fitness de novos elementos. seria interessante também
+explorar os espaços em branco (que ficam a uma dada distância dos pintores).
+
+o mesmo pode ser feito para a música. esse é meu objetivo, mas terei de validar
+antes para formas visuais e depois partir para a música.
+
+o método:
+
+1. analisamos obras de alguns compositores, extraindo características como
+intervalos, ritmos, direções de alturas e durações, tom, ...
+2. representamos essas características discretamente, em um espaço algébrico
+3. com isso, teremos uma representação de cada compositor em função de
+protótipos. protótipos são valores específicos para essas características
+4. usando o algoritmo de PG geramos novas frases e calculamos seu fitness
+como a distância da frase gerada ào(s) protótipo(s)
+5. dessa forma, a frase gerada terá características semelhantes aos
+protótipos, ou seja, o material criado será semelhante ao criado pelos
+respectivos compositores
+
+o interessante é que esse método pode ser generalizado para outros
+materiais e áreas de aplicação.
+* To do
+- representar frases de beethoven no plano (amarrar), seus intervalos e
+  ritmos
+
+x gerar com comparação sugerido por luciano/gonzalo e mostrar ambas
+- tentar método sugerido por renato
+- implementar if e case
+- estudar formas de gerar música através de dualidades, diferenças, ... e
+outras características presentes em formas geométricas
+* Changelog
+** 29/03/2012
+philosopmetrics + musimetrics
+
+- adicionar tabela de filósofos (filósofos e escolas/movimentos, a exemplo da tabela compositores/movimentos)
+- manter simetria no artigo
+- escrever motivação no primeiro parágrafo da introdução
+  "a filosofia iniciou na grécia como uma só ciência, unificadora, entre as artes e a ciência. depois foram abordados aspectos quantitativos e se criaram ciências especialistas, como a matemática. as
+   artes também se separaram da filosofia. a música, dentre elas, é ainda a mais fácil de quantificar. porém, a filosofia, continua sendo pouco abordada quantitativamente, assim como o cinema, a poesia,
+   ou a pintura. o que queremos agora é voltar à quantificação perdida, à aplicação de um método quantitativo nessas áreas. falta mais quantificação na filosofia do que na música"
+   modelagem matemática de conceitos implícitos nas humanas... deixar isso claro
+- nas conclusões, preparar texto discutindo os filósofos (também nos resultados, acho) a exemplo do que foi feito com os músicos
+- manter "composer and philosophers"
+
+GA
+
+primeiro gráfico: FEITO
+1. clusteriza indivíduos
+2. descobre qual dos grupos é a elite (como???)
+3. anota neles quais são seus respectivos grupos (clusters)
+4. analiza qual eram os grupos passados e conta quantos indivíduos mudaram da geração anterior para essa
+segundo gráfico: FEITO
+1. para cada indivíduo, pega um raio = 1 de vizinhos e calcula DP / média (COEFICIENTE DE VARIAÇÃO cv http://pt.wikipedia.org/wiki/Coeficiente_de_varia%C3%A7%C3%A3o )
+dará um gráfico de x=tempo, y=cv
+medindo densidade
+- luciano falou que existem duas abordagens agora: (1) analisar a fundo as variações dos parâmetros do GA e o que elas têm por reflexo no PCA/clusterização ou (2) abordar alguns casos de exemplo usando essa técnica
+- vamos preferir ir por (2)
+- mas antes de tudo é preciso:
+1. revisão bibliográfica detalhada para ver se já fizeram (análise do desenvolvimento do GA através de PCA + clusterização), e se não fizeram...
+2. revisão bibliográfica detalhada das classes de problemas que existem para serem abordados por GA (no pyevolve, existem representações/operadores específicos, o que indica que já existem trabalhos que delinearam quais as classes de problemas possíveis que aparecem quando lidando com GA (e quem sabe outros algoritmos de otimização))
+- ver Kozman, livro sobre GA
+** 15/04/2012
+- estou gerando os resultados para gráficos de CV e "pobreza"/"riqueza". estão todos na pasta resultados_15042012:
+   pasta 1/ : atentar para o primeiro e último gráfico, onde percebemos que o algoritmo de clusterização está dividindo o PCA em dois grupos, como esperado
+   
+   agora irei implementar o rótulo conforme os dois clusters e gerar os gráficos...
+** 16/04/2012   
+estou rotulando os clusters corretamente. há apenas um problema: me baseio na soma das distâncias do centróide até os demais para identificar qual o cluster é elite (que teria a soma de distâncias sendo a menor), e as vezes essa razão não se mantém. preciso de uma forma mais eficiente de saber qual dos clusters é o da elite.
+preciso também rotular os pais de cada indivíduo E sua "classe social" anterior, para sabermos quem mudou de E->P e P->E. sabendo os pais dos indivíduos podemos tentar construir um grafo de parentesco.
+acabo de enviar email para gonzalo e luciano. sugeri criar uma interface web. vou começar a manter um todo aqui
+** 17/04/2012
+reunião com gonzalo:
+x adicionar dp e média ao gráfico de cv (aparentemente os membros da elite não estão apresentando baixa variação como o esperado, muito misturado)
+x usar o fitness para identificar qual cluster é E e P
+x fazer gráfico de mudanças considerando crossover e mutação (talvez considerar gráfico de parentesco/rede também)
+** 20/04/2012
+pesquisando algumas referências, parece que "analysis evolutionary algorithms" é um bom termo de pesquisa:
+Graph-Based Analysis of Evolutionary Algorithm
+https://exact.ipipan.waw.pl/pdf/kaeiog/KAEiOG2004.187-192.pdf
+- consertei clusterização, agora sei quem é E e P baseado no fitness
+- melhorei o gráfico de cv
+** 24/04/2012
+Added a todo example web app to vendors/. Flash + Backbone.js.
+** 25/04/2012
+Starting migrating the pyevolve based GA to pure Python. I need that
+because of specific mods in the core GA routine.
+** 26/04/2012
+Created the test_tsp.py. Lots of tests.    
+** 02/05/2012
+added a db interface (for now pickle serialization) to maintain a history of generations. started the analysis.py script for analysis of db.
+reading about philosophers and writing notes.
+** 03/05/2012
+continuo lendo e fazendo anotações. comecei por ler focando em cada característica. estou lendo Russel (History of Western Philosophy) e complementando com Deleuze (What is Philosophy?). 
+pensei em discorrer sobre o porquê de cada nota. Gonzalo e Luciano acharam melhor não, e concordo, o foco é no método agora. mas vejo que a grande contribuição é para as humanas.
+** 04/05/2012
+estou comparando agora os filósofos, analisando o gráfico de PCA. existem características interessantes que estou anotando abaixo.
+** 10/05/2012
+fazendo simulações com pyevolve. para 10, 20, 30 cidades, não aparecem clusters. para 50, 60, 100 cidades, os clusters ficam *muito* evidentes.
+acabo de fazer um encontro com luciano e gonzalo:
+- fazer AG se comportar como pyevolve
+- implementar o AGI (com cluster/sampling)
+- escrever uma versão do metrics
+** 11/05/2012
+writting metrics.
+** 16/05/2012
+ainda escrevendo. comprei o livro de deleuze. estou lendo.
+** 17/05/2012
+terminada nova versão do phi+mus. enviado para luciano, gonzalo e renato.
+temos reunião a tarde mas pretendo voltar ao AGI agora.
+feita a reunião. corrigimos. enviamos a última versão para chu. esperando agora as correções.
+agora, voltando para AGI
+li sobre conceitos em deleuze. tomei notas. parece ser compatível com visão de wiggins/boden.
+** 23/05/2012
+terminei primeira versão do agi.py e agiweb.py (ver no final do arquivo como usar, por enquanto direto no ipython, besteira fazer app web, deixar código mais experimental)
+gerei primeiras pinturas: http://imgur.com/a/XAJ7q
+luciano gostou bastante das pinturas :-)
+tive reunião com luciano e gonzalo a pouco:
+- gerar gráfico para validar GA x IGA (ver todo)
+- definir dna: acharam muitos passos, dna de 5000 posições é muita coisa, pensar em como inserir a cor
+quero ainda ver com luciano como colaborar com TT: http://dl.dropbox.com/u/1297821/canvas.html
+veja o arquivo rw.py e http://people.seas.harvard.edu/~jones/cscie129/nu_lectures/lecture3%20/ho_simple/phasors.html para mais detalhes...
+e falar com luciano sobre publicar no computer music journal (issue de livecoding!)
+** 24/05/2012 a 31/05/2012
+tive trabalho para desenvolver, monografia para escrever e apresentar, na disciplina de redes complexas. estou escrevendo também um survey sobre criatividade para a disciplina de escrita de artigos. passei esses dias trabalhando nisso.
+** 01/06/2012
+apresentei ontem o trabalho/monografia de redes complexas. prof. Alneu sugeriu que eu e Lucas publicássemos. nos interessamos e pretendemos trabalhar nisso nas próximas semanas.
+voltei a trabalhar no que havia combinado com Luciano e Gonzalo.
+há um congresso (internacional agora) dedicado a algoritmos evolucionários aplicado nas artes musicais e visuais. evomusart: http://evostar.dei.uc.pt/2012/call-for-contributions/evomusart/
+acabo de terminar um catálogo de bibliografias relacionadas a criatividade, principalmente em torno dos proceedings das 3 edições da ICCC (International Congress on Computational Creativity). estão no arquivo computational-creativity.org e computational-creativity.bib. pretendo extender para os proceedings da ACM C&C e demais papers que encontrar. pretendo escrever um pouco sobre cada artigo, para gerar um survey sobre criatividade computacional (também é parte do artigo final que deverá ser entregue na disciplina de escrita de artigos).
+** 03/06/2012
+conversei com Renato. tomando nota da conversa aqui. ele sugeriu, para o IGA:
+- todo modo tem um cantus firmus. fazer o GA gerar linhas contrapontísticas para esses cantus firmus.
+- disse que existe muito também a se fazer uso de GA para harmonia (ver Hindermith)
+para considerar linhas nos desenhos. simplesmente funcionam. linhas são base, segunda forma mais complexa depois do ponto. recomendou Fayga Ostrowel. Criatividade e Processos de Criação?
+vetorizar conceitos. poder compará-los e combiná-los em sua pura excência, sem estarem aprizionados por uma linguagem.
+algo criativo artisticamente possui uma ideia base (Renato citou o uso de intervalos de quarta em uma de suas composições, que a princípio não seriam interessantes, mas foram) ou várias ideias, e não importa como essas ideias/conceitos são postos em xeque, por serem robustos, por pertencerem a uma estruturam, mesmo que esses conceitos estejam postos em locais que poderia se duvidar (usar quartas? pra que?), a COERENCIA faz com que desafiem o que se conhece hoje por padrão, por belo, e reformulam o belo. o papel das artes, entre tantos, talvez seja principalmente extender o que conhecemos hoje por plano conceitual, para novos limites.
+o que Deleuze chama de plano conceitual... renato?
+Wiggins, boden, Ritchie, novos pesquisadores da criatividade computacional, estão de certa forma em acordo com Deleuze e pensadores da semiótica, na definição de conceitos. na sua quantificação. nas meta-linguagens.
+procurar musictheory.synaesthesia.js sobre resumo de relação cor/notas (ver comentários). midi.js.
+** 13/06/2012
+conversei com Luciano. estava errando na validação, o que é para validar é o Interactive Genetic Algorithm, e não o Clustered Genetic Algorithm.
+interessante: "validar o IGA não é só importante para criatividade, mas como um todo, para entendermos o processo"
+scripts de hoje: 
+test_tsp_iga.py
+com o test_tsp_iga.py gero dbs/test_tsp_iga.db (na verdade, gero vários dbs... test_tsp_iga_10.db para 10% ... até 50%)
+com o test_tsp_ga.py gero dbs/test_tsp_ga.db 
+com o anal1.py pego ambos dbs e analizo, gerando um gráfico comparando fitness de todos os dbs
+desta forma, iremos acompanhar o quão relevante é o IGA (o quanto conseguimos ser melhores que o GA canônico)
+** 14/06/2012
+preciso ler ao menos uns 3 artigos hoje para o compêndio...
+** 15/06/2012
+voltando ao iga. terminei o test_tsp_iga.py, para rodar:
+ipython
+run test_tsp_iga.py
+start()
+next([0., 0., 0.9, 0., 0., 0.])
+...
+a cada next, damos notas às caminhadas anteriores...
+bem, ele irá gerar os dbs. porém, não está convergindo. algumas coisas para avaliar:
+- verificar o método de cluster
+- verificar o cutoff do método
+- verificar mutação (duas vezes? taxa muito alta?)
+- verificar scale (está funcionando ok?)
+- as notas, os valores de 0 a 1 estão certos?
+- está propagando direito do representative para os vizinhos?
+agora é questão de ajustes finos. tenho o algoritmo rabiscado, todo ele. acho que seria melhor começar com o ga normal, com um número menor de cidades, e depois partir para o iga.
+** 18/06/2012
+tentando entender o porquê o IGA não está convergindo. uma coisa sei, não está MESMO :-)
+começando pela seleção.
+** 29/06/2012
+depois de duas semanas terminando projetos e provas, agora com foco total no IGA e em criatividade.
+** 01/07/2012 a 05/07/2012
+trabalhei encima do IGA para validá-lo quando comparado ao AG. detalhes sobre o que fiz para consertar estão abaixo. Renato deu ótimas sugestões!
+** 06/07/2012
+reunião com luciano e gonzalo.
+algumas notas sobre AG:
+analisei até o momento algumas estratégias para a seleção em AGs. a seleção é sem dúvida um dos fatores mais críticios!!!
+a estratégia que eu estava usando até então é interessante para o problema TSP (apresenta convergência rápida), porém seu pior indivíduo ao longo das gerações deram valores de score/fitness que acompanhavam a curva média, e isso revela que o espaço de busca estava sendo afunilado. o ideal é ter o pior indivíuo variando acima de toda a população (algo como isso: http://automata.cc/msc/ga01/score.png) ! segue a estratégia:
+ antiga                                                                                                            nova
+______                                                                                                           _____
+| elite |   ---> seleciona 2 melhores e faz crossover/mutação neles, N/2 vezes --> |       |
+|--------|                                                                                                            |       |
+|        |                                                                                                            |       |
+|_____|                                                                                                           | ____|
+a nova estratégia que estou usando apresenta boa diversidade (o pior valor de score/fitness no gráfico está lá encima, oscilando, percorrendo o espaço de busca aleatoriamente tentando encontrar alguma novidade, algo melhor) e os clusters ficam bem definidos.
+antiga                                              nova
+_____                                             _____
+| elite | ---------------> cópia ------------>  |       |
+|--------|   |                                        |-------|
+|        |   `--> crossover/mutação -->  |       |
+|        |                                            |____|
+|  lixo |        gera novos aleat. ------>  |       |
+|_____|                                           |____|
+essa estratégia acima foi sugestão do luciano. e está funcionando de forma bastante interessante.
+bem, definido o cerne do AG, o PCA e a clusterização do PCA (projetados) foi arrumada também. utilizei mutação por inversão de sublistas. E O MAIS IMPORTANTE: é preciso manter o primeiro elemento do DNA do indivíduo fixo!!! senão, na hora de calcular o PCA, a matriz de covariância irá dizer que 0 1 2 3 e 3 2 1 0 possuem covariância negativa! são diferentes! dessa forma, forçando o primeiro a ser sempre 0, teremos uma ordem pré-definida, esperaremos certos valores específicos em cada coluna da matriz de DNAs!!! e isso deve ser feito para TODAS AS GERACOES!
+agora o problema está em propagar as notas para os vizinhos nos clusters. o luciano sugeriu usar o seguinte:
+janela de parzing / interpolação gaussiana / ... que é um método onde:
+1. temos os clusters e os K centroides
+2. calculamos uma funcao gaussiana centrada em cada x,y de cada K centroide (gaussiana(x,y)) com largura a determinar (a largura é crítica, e é parâmetro)
+3. multiplicamos cada gaussiana (sua altura portanto será alterada) pelo score/fitness de cada representante (portando, não é bem o centróide, é o indivíduo mais perto dele)
+4. dessa forma, teremos uma gaussiana de tamanho equivalente ao score do representante e centrada nas coordenadas x,y (projetadas pelo PCA dos DNAs) dele
+5. para cada vizinho do cluster, cada ponto x,y, somamos a aplicação da função gaussiana1(x,y) + gaussiana2(x,y) + gaussiana3(x,y) / K
+com isso é para termos um relevo:
+x é o x mesmo, y é o y mesmo e z é a altura das gaussianas e seus vizinhos.
+preciso ver como trabalhar com malhas para gerar isso...
+para a próxima reunião (terça): ter um gráfico mostrando de um lado o pca clusterizado e do outro o relevo (3D) formado pelas gaussianas
+importante: no diretório important_results/comparacao existe uma comparacao entre a execução do IGA para 10% e 90% (X% é o quanto dos vizinhos dos representantes eu tomei para propagar para eles a nota do representante).
+gerei também uma simulação para AG sem amostragem. importante notar que o padrão de cluster (aquela espécie de cauda) que aparece a partir da geração 1000 com mais relevânvia, está se mostrando presente em todas as simulações que estou fazendo usando essa estratégia de seleção.
+** 12/07/2012
+implementei o especificado acima.
+na verdade, o que fiz foi misturar K distribuições normais, o que chamam de
+"gaussian distribution mixture". veja o arquivo iga/anal1.py.
+e também o arquivo iga/mixture_normals.py
+
+http://mathworld.wolfram.com/BivariateNormalDistribution.html
+http://www.cs.colostate.edu/~anderson/cs545/index.html/doku.php?id=notes:notes8a
+usei a função bivariate_normal mas não é tão necessário. dá para fazer 
+na mão, pois a dist normal é fácil.
+
+então, no gráfico, Z ficou sendo o valor da soma das K gaussianas. X e Y
+são um grid.
+
+tive reunião a pouco com luciano e gonzalo.
+mostrei o que havia feito (ver email, procure por "janela parzen").
+luciano pediu para adicionar no cluster do pca o histograma de valores
+em cada ponto, para vermos se há mesmo concentração onde o algoritmo kmeans
+está acusando.
+
+estou apenas terminando de melhorar o grafico.
+
+vou tentar também fazer já o cálculo para atualizar o fitness/score dos
+indivíduos.
+** 17/07/2012
+implementei histograma 3d. o objetivo era, para cada região do gráfico, dividir em regiões x,y de tamanho dx,dy e contar quantos pontos haviam nesse mesh
+(já que é um gráfico 3d). procurei algumas funções no pylab, como hexbin: http://stackoverflow.com/questions/2369492/generate-a-heatmap-in-matplotlib-using-a-scatter-data-set
+mas não era bem o que eu queria. então tive que usar histogram2d do pylab em conjunto com bar3d:
+http://www.jkwchui.com/2010/04/3d-histogram-in-python-2/
+alguns gráficos resultantes estão em interesting_results/hist3d_X.png e o arquivo anal1.py é que o gera.
+enviei para luciano e estou esperando a resposta.
+preciso agora usar a mistura de gaussianas para calcular o fitness/score dos vizinhos do representante.
+é interessante também checar se estou pegando o representante mais próximo realmente.
+
+** 02/08/2012
+Fiz várias modificações no anal1.py (principalmente).
+Implementei o que o prof. Gonzalo havia me esclarecido na última semana para
+o cálculo das distribuições gaussianas:
+
+ESCREVER PROCESSO AQUI
+
+Terminei gerando vários resultados, vale destacar aqueles em
+principal_results/saida23*.png com gráficos de fitness e score no mesmo
+diretório.
+
+Comecei a considerar para isso o fitness como sendo 1. - (score/score_maximo),
+e assim obtive aqueles valores que estão nos pontos.
+
+Enviei então esses gráficos para os professores.
+** 03/08/2012
+Novas modificações em anal1.py. E ao invés de usar o cálculo do fitness
+(como complemento do score, ou seja, custo) modifiquei o iga.py adicionando
+um método chamado update_fitness() para fazer isso lá. Agora, estou
+também salvando o fitness no bd.
+
+Fiz testes controlando a evolução do AG me baseando no fitness e ele
+converge da mesma forma. Muito bom!
+
+Existem gráficos em principal_results/[fitness/score]*.png que mostram
+como o fitness e score evoluem, de maneira complementar.
+
+Tentei modificar o iga.py (método alloc_fitness) para começar a calcular
+o valor do fitness de todos os indivíduos baseando-se na gaussiana (matriz Z)
+mas não está OK. Os valores ficam oscilando aleatoriamente.
+
+Então fui conversar com Gonzalo.
+
+Ele solicitou que fizesse um scatter plot para ver se os valores de fitness
+e de Z de cada indivíduo estavam correlacionando-se. Gerei o gráfico
+principal_results/scatter30.png e parece que está OK. Interessante eles
+formarem dois grupos distintos. Estou esperando resposta por email do
+Gonzalo/Luciano sobre esse resultado. Se ele estiver OK, vou poder
+trabalhar no seguinte... (sugestão de Gonzalo):
+
+Isso é para, dada uma distribuição gaussiana calculada a partir de alguns
+pontos aleatórios tomados, calcular o fitness dos outros pontos que não
+foram amostrados. Ou seja, o objetivo principal até aqui.
+
+Como fazer:
+
+1. Selecionar alguns indivíduos aleatoriamente (ou os mais próximos do
+   centroide de cada cluster) em cada cluster
+
+2. Calcular a somatória de gaussianas centradas nesses caras (ou será
+   na caixa deles? pelo que entendi, é centrada neles!) ou seja,
+   quase da mesma forma que fizemos para calcular Z anteriormente
+
+3. Para o restante dos indivíduos que não foram selecionados, calculamos
+   seus fitness nos baseando no valor da distribuição calculada em 2
+
+4. Isso nos dará os novos valores de fitness (veja que para os indivíduos
+   amostrados/selecionados, seus valores de fitness continuará sendo o mesmo)
+
+Vou tentar implementar isso, talvez ainda hoje e enviar para Gonzallo/Luciano.
+
+Tentei encontrar o prof. Luciano mas não consegui hoje.
+
+** 06/09/2012
+após várias semanas compenetrado no AG, ele finalmente convergiu!
+
+ver arquivo iga/novo4.py.
+
+tive reuniao com luciano e gonzalo, agora iremos começar a criar estruturas
+visuais a partir da representação do tsp.
+** 10/09/2012
+conversa boa com renato hoje sobre possibilidades de usar os ags.
+
+** 06/10/2012
+retomando.
+** 08/10/2012
+fazendo o grid em iga5.py. depois de feito, gerar caminhos aleatórios nesse
+grid e comparar com a dialética entre ele e os dois protótipos.
+
+pesquisar mais sobre formas de arte generativa e algoritmos genéticos
+usados para gerar imagens.
+
+o que apresentar no sifisc?
+
+desenhos/d1.png   10k geracoes. distância euclidiana ao padrão zigue-zague.
+desenhos/d2.png   10k geracoes. distância euclidiana ao padrão espiral.
+desenhos/d3.png   10k geracoes. distância euclidiana ao padrão espiral.
+demais desenhos/dX.png são nessa mesma abordagem: tentando gerar desenhos
+próximos ao zigue-zague ou espiral com fitness == dist euclidiana.
+
+iga5.py     primeiros testes com ag e dialetica como fitness
+
+** 16/10/2012
+conversa com renato sobre ag para gerar estruturas musicais:
+
+4 compassos 4/4 (5 a 6 segundos)
+3 compassos 3/4 
+
+- modos e escalas (pentatonica, diatonica e as exóticas)
+- número de notas na frase
+- análise intervalar 
+- marcar número de ascendentes e descendentes
+- sequência de durações
+- marcar número de ascendentes e descendentes de durações (será que isso já existe??? renato só viu para)
+- âmbito de oitavas entre as notas (tessitura = âmbi)
+
+
+
+- usar mais de um gene para cada característica (por exemplo, começou a encucar com ritmo, coloca mais genes para ele!)
+- não ficar na monofonia: ter uma pop. pra cada voz
+
+abrir partitura do octavio e fazer análise de intervalos do viaro.
+sacar motivos (aquele grave e o mais agudo, por exemplo) e entender como usou variações de intervalos.
+pegar essa variação de intervalo como um protótipo.
+usar isso para guiar o ag.
+
+nós podemos usar o trabalho do metrics direto! ao invés de notas, temos protótipos que
+caracterizam cada compositor (ou cada percepção que queremos alcançar => do-in sonoro!! ideia do renato)
+e tiramos métricas de inovação, oposição e dialética desses protótipos (chegando ao metrics).
+com o music21 podemos sacar os "protótipos" (ou assinaturas, por exemplo, quais intervalos mais usados, quais durações, ... todas 
+características que são passíveis de serem modeladas pelo ag) dos compositores (beethoven, ...)
+e explorar os espaços criativos ainda não explorados.
+
+renato: tentar coisas pós-secXX... com blocos sonoros, cadencias longas, ...
+
+pegar livro texto no gutemberg sobre changing ringing
+
+http://www.gutenberg.org/files/18567/18567-h/18567-h.htm
+
+comecei um teste de análise da peça 'viaro' de Octavio Camargo em
+evo-music/test1.py
+
+** 17/10/2012
+conversa com renato. falamos sobre tentar modelar "resumos/sacadas"
+sobre temas como contraponto.
+
+fazer uma interface gráfica para o figgus. renato acha que podemos
+começar a discutir mais a sério sobre o figgus.  interface: em um eixo
+x,y, as alturas em y e o temop em x, que pode ser subdividido em uma
+caixa de +- valor.
+
+criar uma voz (uma população) para definir o pulso (o
+metronome). marcar alguns tempos para acentuar (esses acentos podem
+ser características também, usadas para evoluir novos).
+
+faremos hoje (talvez) apresentação na ufscar, festival contato.
+** 18/10/2012 a 23/10/2012
+estivemos na semana nacional da ciencia e tecnologia em ubatuba
+fazendo livecoding e oficina.
+** 24/10/2012
+- quais características podemos extrair
+- programação genética
+
+nas últimas semanas conversei com o prof. gonzalo sobre talvez partirmos para a música,
+analisando e gerando frases musicais ao invés das formas visuais.
+
+analisei algumas ferramentas para extração de características e alguns corpus.
+conversei com renato sobre quais características considerar para um ag que, dado um protótipo, evoluisse novas frases.
+terminei com esse modelo simples.
+
+tive reunião com gonzalo e luciano. para variar, voltamos mais uma vez ao que luciano queria: formas visuais,
+segundo ele, é mais fácil de discutirmos, a música é a última coisa.
+** 29/10/2012
+implementei em src/iga/gp.py uma primeira versão do GP para contornos.
+
+agora preciso fazer:
+- implementar if e case
+- fazer comparação entre imagens usando fourier (soma dos módulos dos
+  coeficientes)
+
+em paralelo:
+- fazer ag para musica
+- resgatar ideia de survey em cc
+
+** 05/11/2012
+estou em joinville. arrumei estou de memória (era a criação de Figures
+o tempo todo, resolvi deixando apenas um fig global).
+
+estou gerando alguns resultados. o método por fft não está muito legal.
+transladar o protótipo pela imagens funciona melhor, porém é muito
+custoso em tempo.
+** 06/11/2012
+almocei com renato e discutimos sobre a pesquisa e outras coisas muito
+interessantes (lazzarini, glerm e mineração de listas, 
+breno e mapas, presto e game, ...)
+
+renato chegou a essa proposta para calcular similaridade entre imagens:
+
+1. calcula fft de ambas imagens
+2. subtrai pixel a pixel os coeficientes das fft
+3. eleva ao quadrado ou tira o módulo dos coeficientes das fft subtraídos
+4. faz o somatório, terá dois valores, pega essa diferença e usa como
+   medida de similaridade entre as imagens
+
+quero ainda discutir com renato como representar o beethoven (as
+frases dele) em um plano... pelas características (intervalos, eg)
+parece ser mais interessante
+
+pedi também se renato achava que luciano estaria interessado nisso,
+em explorar espaços de criatividade... ele disse que luciano tem dessas
+de querer por um tempo e depois largar mão (se demoramos 1 ou 2 meses ele
+já está em outra)... então o lance é ir fazendo o que estou fazendo...
+pesquiso com ele parte visual e faço com renato parte musical,
+um dia desses mostro para ele e vamos ver o que o bixo diz... quem
+sabe entrará na dissertação, quem sabe não...
+
+** 07/11/2012
+tive reunião com luciano e gonzalo.
+luciano reclamou de que AG está com características estranhas:
+um indivíduo sumiu e depois apareceu.
+também não gostaram da classificação por fourier. porém, sugeriram
+o uso do operador de correlação-cruzada (cross-correlation).
+estou implementando.
+também discuti com renato e carlos, e chegamos ao "doro method" :-)
+reproduzo ele aqui para referências futuras:
+
+    # coloca uma borda em ambas
+    x = n.zeros((padrao_data.shape[0] * 2, padrao_data.shape[1]*2))
+    y = n.zeros((busca_data.shape[0] * 2, busca_data.shape[1]*2))
+    x[0:padrao_data.shape[0], 0:padrao_data.shape[1]] = padrao_data
+    y[0:busca_data.shape[0], 0:busca_data.shape[1]] = busca_data
+    # calculamos a transformada de ambas imagens
+    X = fftpack.fft2(x)
+    Y = fftpack.fft2(y)
+    # multiplicamos ponto a ponto
+    Z = X * n.conj(Y)
+    # calculamos a inversa
+    z = fftpack.ifft2(Z)
+    # encontramos o maior valor de z
+    val = n.max(z)
+    # quantidade de pixels pretos (== 1) em busca_data
+    #qtd = len(busca_data[busca_data == 1])
+    
+    return val
+
+
+em gp3.py ele está implementado em compare_fft4()
+
+também discuti com renato sobre o AG e terminamos com um modelo bastante
+interessante. ele está reproduzido em gp4.py.
+
+tenho que agora:
+- fazer umas imagens na mão e testar operador de correlação-cruzada
+x fazer nova versão do AG em gp4.py
+x unir ambos e testar
+** 08/11/2012
+implementei o novo AG discutido com renato em gp4.py
+
+os zigzags estão revoluindo muito bem!!!!!
+essa nova versão do AG para PG parece estar na medida!#
+** 09/11/2012
+hybrid> automata, n eh isso, vou descrever em uma frase :::
+<hybrid> com a transformada da figura referencia e da figura a ser julgada, 
+multiplica 1 pela conjugada da outra. 
+Faz a inversa. Pega as x amostras em modulo com maior valor
+
+<hybrid> soma elas
+<hybrid> primeira questao: provavelmente nao eh as x maiores, 
+mas os valores dos X picos maiores
+** 12/11/2012
+tenho que validaro método ainda.
+comparar doro method com o que o luciano pediu.
+
+comparei e o doro method está ok. mandei email para eles com a comparação.
+** 13/11/2012
+tentei reunir com gonzalo, mas ele não estava. marquei para amanhã.
+trabalhei então no reversi. achei o bug do tamanho do tabuleiro.
+gonzalo sugeriu usar valgrind para encontrar o vazamento de memória.
+enviei para gonzalo 0.3 do reversi.
+preciso agora fazer a versão mpi.
+** 14/11/2012
+terei reunião com gonzalo.
+vou pedir o que ele achou da classificação. e do novo ag.
+pedir o que posso fazer nesse feriado, já que estarei por são carlos.
+quais os próximos passos.
+
+tive reunião com gonzalo. fazer:
+- verificar a evolução mostrando a fitness/média/...
+- testar para vários padrões também
+
+gonzalo não sabe ainda como iremos gerar formas que tenham
+características de vários protótipos ao mesmo tempo.  e como
+geraríamos (escolheríamos?) esses protótipos para que eles
+representassem com máxima exatidão possível os respectivos artistas.
+
+para a disciplina de pp:
+- 23/11 : prova
+- 30/11 : seminários
+- 07/12 : trabalhos mpi / openmp / pthreads
+
+** 18/11/2012
+fiz o que gonzalo pediu: testes analisando fitness.
+
+gerei os resultados em results2012-11-18 e enviei para luciano e gonzalo.
+
+pretendo hoje ainda estudar mais música e recomeçar o AG para frases.
+
+o estudo da música está me auxiliando a entender quais operações usar e
+melhorar o modelo para gerar frases mais interessantes.
+
+por exemplo, considerando progressões de acordes é mais interessante do
+que gerar frases sem essa característica.
+
+pretendo ir pensando essas características para ir melhorando o "compositor
+artificial".
+
+porém o grande mistério ainda é como analisar uma frase (cromossomo) em
+um plano algébrico, podendo assim retirar métricas dele (relembrando o metrics)
+e assim tentar "misturas de estilos", ou melhor, buscas no plano de
+criatividade. => ver "espaço de fitness" abaixo, pode ser uma solução
+
+tenho que ainda fazer os trabalhos da disciplina do gonzalo e enviar
+mais um email para a profa nelma sobre as faltas :-/
+** 19/11/2012
+recebi email de gonzalo hoje levantando dois pontos: o AG está correto mas
+as comparações não levam em conta estética e (2) não sabe como continuar
+a pesquisa.
+
+falei com renato e acabamos com alguns pontos interessantes:
+
+- fixar um ou mais pontos na figura do indivíduo e calcular as distâncias
+  (um ponto ao centro, um ponto na extremidade), isso dará uma fitness
+- calcular as derivadas entre dois pontos (a inclinação), isso dará outra
+- continuar calculando o cross-correlation, dará outra
+
+assim teremos 3 fitness. pegamos essas fitness e jogamos em um plano!
+e a partir disso podemos aplicar PCA (pois irá revelar a real correlação
+entre as fitness) e tirar métricas (dialética, ...).
+
+isso é interessante porquê vê a fitness como uma caixa preta.
+é expansível para a música e qualquer problema de AG.
+
+podemos inclusive gerar uma fitness aleatoriamente e fazer pca dela também
+e provar (validar) que ela não faz diferença (com ou sem ela).
+
+talvez isso não tenha sido feito ainda.
+** 20/11/2012
+lendo "Em busca do som digital" de Gustavo Assis, vi que Stockhausen
+buscou representar a música como um ser vivo, como um autômato digital.
+isso é interessante para a tese.
+Stockhausen foi muito influenciado pela estatística, chegou a fazer
+2 anos de uma graduação em teoria matemática da informação (Shannon).
+
+falei com gonzalo, ótima reunião!
+
+o que preciso fazer:
+
+bem, precisamos de métricas que nos permitam identificar melhor as
+diferenças e perpetuar as semelhanças entre imagens (o mesmo válido para
+música, embora eu ache que para a música seja mais fácil).
+
+então primeiro levantamos as métricas para extração de características:
+
+- fixamos um ponto na imagem, calculamos as distâncias até esse ponto
+- número de cruzamentos
+- cross-correlation (já feito)
+- momento, ou seja, o quanto os pontos estão espalhados: calculamos o
+  centro de massa e as distâncias dos pontos ao centro
+- simetria: rotacionamos a imagem em todas as 4 possíveis direções e
+  calculamos a diferença entre os pontos, quanto menor a diferença, mais
+  simétrico
+
+bem, dado isso, teremos múltiplos valores de fitness. gonzalo gostou
+da ideia de ter um "espaço de fitness" para extrairmos métricas a la metrics.
+
+meus afazeres então agora são:
+
+- implementar essas medidas de características
+- testar elas manualmente
+- usar essas medidas para gerar formas que sejam parecidas com apenas
+  um dos protótipos,  pegar os melhores resultados e calcular essas
+  mesmas medidas, assim poderemos identificar quais delas são melhores que
+  as outras para caracterização das formas, e tentar identificar grupos
+  (clusters) de melhores medidas
+- tirar medidas de dialética, oposição e inovação, para ver se também
+  estão fazendo sentido
+- fazer uma revisão bibliográfica identificando quais métodos de validação
+  são utilizados
+
+uma outra ideia que gonzalo teve:
+
+- implementar um novo AG que calcule fitness para um protótipo e para o outro,
+  e a fitness considerada será o do protótipo com maior similaridade. assim,
+  o ag irá convergindo para uma forma, vezes para outra, e vezes para uma
+  possível similaridade entre elas.
+
+ou seja, eu tenho que agora criar medidas de características melhores!
+
+outra medida sugerida pelo renato:
+ter uma matriz que se pareça com um degradê. multiplicar essa matriz pelo
+elemento gerado, e somar. como os elementos do gerado são iguais a 1 onde
+há contorno, o que temos é que apenas os valores do degradê que coincidem
+com a linha de contorno é que serão considerados.
+
+--
+tenho dois focos de pesquisa aqui: arte generativa (evolucionária) e 
+criatividade computacional.
+--
+
+estou fazendo uma revisão rápida sobre os trabalhos correlatos com o meu...
+para ver como eles estão validando as imagens geradas...
+
+1.
+Title: An artist's experience in using an evolutionary algorithm to produce an animated artwork
+Author: Karen Trist, Vic Ciesielski, Perry Barile
+http://www.inderscience.com/info/inarticle.php?artid=39842
+
+nesse é usado um algoritmo interativo. interessante notar que eles
+salientaram a experiência do artista ao usar o algoritmo como uma forma
+de conhecer e lidar com sua própria criatividade.
+
+** 23/11/2012
+desde a última reunião, eu melhorei o algoritmo genético para evitar
+repetições de indivíduos e acabei com um modelo que achei mais interessante.
+e fiz simulações usando correlação cruzada.
+o AG parece estar correto, a fitness está evoluindo mantendo o melhor,
+porém os indivíduos não preservam muitas características estéticas,
+o traço não é contínuo, apenas algumas características como espaçamento das
+linhas são preservadas.
+pensamos então em tentar implementar outras medidas de similaridade para
+serem usadas como fitness e talvez utilizar todas essas medidas juntas.
+por exemplo, talvez tendo várias fitness, podemos ter algo como um
+"espaço de fitness" e tirar métricas desse espaço.
+reunião com luciano.
+
+** 03/12/2012
+tive reuniões e trabalhei todos os dias.
+
+estamos tentando analisar com PCA as medidas.
+
+no momento, trabalhando em gp_final.py
+** 06/12/2012
+reunião com luciano e gonzalo.
+resultados não parecem bons.
+fazer para 100, 200 e 1000 gerações, protótipos isolados e ambos.
+** 07/12/2012
+estou fazendo as simulações:
+
+gp_final_1p.py   >>> para 1 protótipo somente, veja comentários para
+                     saber como selecionar entre um protótipo e outro
+
+gp_final.py      >>> para ambos protótipos
+
+resultados sempre em DIR.
+
+
+gp_final2.py     >>> teste para gerar dois gráficos de pca, um para 10 e
+                     outro para todos
+
+gp_final3.py     >>> iniciando uma versão para gerar figuras mais complexas,
+                     resultados em maior*
+
+gp_final4.py     >>> tentando proposta do luciano (uso de probabilidades
+                     para a cada passo selecionar uma instrução de um dos
+                     protótipos na geração de um novo indivíduo. ver new_guy())
+** 10/12/2012
+reunião com luciano e gonzalo.
+
+sugestão de usar probabilidades para gerar novos indivíduos. (ver acima)
+
+implementei em gp_final4.py e estou gerando mais casos.
+
+pretendo gerar para imagens maiores também.
+
+o interessante é que podemos já de saída delimitar o 'domínio' de traços
+que o 'pintor' terá: ele só fará traços em um determinado estilo!
+
+os resultados estão ficando bastante interessantes! veja prob10.png e
+prob100.png
+
+gp_final5.py  >>> gera protótipos aleatórios e tenta criar formas para elesO
+
+
+fw dist vezes
+bw dist vezes
+lt ang vezes
+rt ang vezes
+
+** 12/12/2012
+criei o gp_final6.py para gerar imagens com diagonais. extendi a linguagem
+me baseando um pouco mais em logo.
+
+fd distancia vezes
+bd distancia vezes
+rt angulo vezes
+lt angulo vezes
+
+pensei que poderia haver condicionais e repetições explícitas e formas
+de crossover/mutação.
+
+mostrei para luciano a evolução gerada com gp_final6.py e ele gostou.
+
+falei com renato e também gostou. ele voltou a pedir para aproveitarmos
+artisticamente os resultados. formas:
+
+- pegar algumas formas e pintar na mão mesmo
+  http://imgur.com/a/2uxxM#0
+- engrossar a linha
+- fixar a primeira e última instruções, e variar aleatoriamente as do meio,
+  mudando a cor das do meio em uma interpolação linear da primeira e última
+
+pensei em outras formas também:
+
+- mandar as coordenadas para harmony para gerar formas com traçados
+  parecendo lápis borrado
+- fazer uma lib ga.js e embedar dentro do meemoo, ou talvez seja melhor iga.js
+  para poder selecionar
+- usar essa lib para gerar para harmony, threejs, supershape, webaudio, ...
+
+arte generativa / criatividade
+
+é um algoritmo que basicamente gera novas estruturas.
+o que chamamos de algoritmo generativo.
+nesse caso a gente tem um algoritmo genético, que é um algoritmo do que se
+conhece por aprendizado de máquina.
+explicando melhor o que é um algoritmo genético.
+nós trabalhamos sempre com uma população e com a evolução dessa população.
+essa é a ideia básica.
+a cada geração, nós escolhemos os indivíduos, que nesse caso são formas,
+que mais se pareçam com esses dois protótipos.
+para termos uma evolução, são aplicados operadores como mutação e
+troca de pares para ir modificando esses indivíduos.
+essas formas geradas têm várias usos, nesse caso estamos usando elas
+como um modelo para compreender o processo criativo,
+e também pode ser usado para 
+
+salvar mundo: entender a forma como se dá o processo criativo,
+como uma máquina inspiradora, uma musa automática.
+** 18/12/2012
+reunião somente com luciano, onde apontamos algumas coisas a serem feitas,
+veja abaixo.
+** 28/01/2013
+estou retomando a pesquisa hoje. recuperei as notas do último encontro
+que tive apenas com o prof. luciano:
+
+- mais de 2 padrões
+- métricas (inovação/oposição/dialética) no pca
+- necessidade de fitness de apreciação: fazer o fitness por amostragem e
+  combinar com pesos (evoluir ambos os fitness)
+
+revisando aqui como está o ag:
+
+- criamos um novo indivíduo escolhendo uma parte do DNA dos protótipos
+  segundo uma dada probabilidade.
+- calculamos métricas para cada indivíduo, são elas:
+  1. correlação cruzada
+  2. número de pontos pretos
+  3a. dp / media das projeções em x
+  3b. dp / media das projeções em y
+  4. quantidade de curvas (angulos, quebras)
+  5a. media dos trechos de retas
+  5b. dp dos trechos de retas
+- como protótipos usamos p1.png e p2.png (gerados por instruções)
+- faço PCA das medidas
+
+fazer:
+
+- tirar métricas do PCA das medidas e plotar gráficos
+
+** 29/01/2013
+falei a pouco com lmat no #music, está usando minimax e seguindo regras
+do Fux:
+http://sourceforge.net/p/partwriter/code-0/3/tree/trunk/firstspecies/
+http://www.opus28.co.uk/Fux_Gradus.pdf
+
+falei com renato sobre o que analisar usando as métricas, chegamos a:
+
+--- dialética, oposição e inovação direto do gráfico PCA, considerando a média
+    sendo (P1 + P2)/2
+
+    gp_final6.py
+
+--- matriz sendo protótipos + 5 melhores, ou seja, fazemos uma análise
+    'metrics-like' a cada geração, considerando como matriz de 'notas'
+    os protótipos + 5 melhores == 7 linhas
+
+    gp_final7.py
+
+--- 
+
+evoluindo o ag tendo como fitness a dialética das medidas sem pca, leva
+a fitness instável durante as gerações. observável em gp_final6.py.
+
+evoluindo o ag tendo como fitness a dialética das medidas com pca, leva...
+
+enviar o gráfico com os indivíduos com .5, mostrando que combinam...
+** 01/02/2013
+estruturando o relatorio:
+** 04/02/2013
+escrevendo relatório. RESULTADOS/r1.pdf está ele.
+nele, descrição do AG inteira, resumida.
+vários testes com as métricas para cada caso de fitness.
+também adicionei gráficos mostrando que talvez a distância ao ponto médio
+possa ser uma métrica melhor para aproximação do fitness.
+
+no r1.pdf, no final, estão descritos os arquivos e diretórios
+com os resultados, mas basicamente é:
+
+teste1a.py, teste2a.py, teste3a.py, teste4a.py
+
+o gp_final11.py tem isso sobre o ponto médio versus dialética versus fitness
+por correlação cruzada.
+- falar a ordem que escolhi [p1, p2, melhor -> pior]
+** 05/02/2013
+questao1.py responde a pergunta do prof. gonzalo.
+
+estou reunindo imagens interessantes em PICKED/
+
+** 06/02/2013
+iniciando simulacoes (que porre...)...
+todo:
+- fazer simulações sacais
+- mpbmetrics
+- reunião drama
+- script tosco luis
+- ler artigos de criatividade hoje e carnaval, delícia
+** 08/02/2013
+algumas ideias do que fazer com o AG, para melhora-lo:
+- adicionar IGA
+- figuras maiores
+- mais comandos de logo (if, for, ...)
+- mais protótipos
+** 18/02/2013
+tentando reunião com profs hoje. pretendo entender o que fazer em seguida.
+
+pretendo trabalhar agora em:
+- mais protótipos
+- adicionar IGA
+- figuras maiores e mais complexas (mais comandos)
+- continuar a ler sobre The Creative Use of Complex Computational Systems e Creative Systems, focando no uso de AG
+- criar automata.cc/shapes001 a partir de PICKED
+
+ver sugestão de métrica do ricardo.
+procurar sobre evolução diferencial.
+
+planejar semana, estudos e tals...
+
+começar com os protótipos. mais protótipos.
+** 19/02/2013
+fiz vários protótipos, como validar?
+comecei diretório hib (algoritmo genético híbrido)
+** 20/02/2013
+falei com prof. gonzalo.
+gostou da dialética da página 11 de r1.pdf e gostou de usar multiplicação
+das correlações cruzadas como fitness.
+estou jogando meu todo do msc agora em todo.org
+começando a validar o hib para vários protótipos.
+** 21/02/2013
+mandei email informando prof. luciano, bom fazer isso sempre após reuniões
+com gonzalo.
+
+para validar, primeiro temos a situação onde a forma é criada, ou seja,
+primeira geração. testes: hib2.py
+file:///home/vilson/src/iga/hib/testes/hib2_02/index.html P1
+file:///home/vilson/src/iga/hib/testes/hib2_03/index.html P2
+file:///home/vilson/src/iga/hib/testes/hib2_04/index.html P3
+segundo, temos a situação onde o valor da correlação do protótipo 
+que estamos tendenciando é elevado a alpha, forçando a escolha do indivíduo.
+esse é o hib3.py
+além de criar para um elemento, também aumenta o peso dele no fitness:
+file:///home/vilson/src/iga/hib/testes/hib3_01/index.html P1
+file:///home/vilson/src/iga/hib/testes/hib3_02/index.html P2
+file:///home/vilson/src/iga/hib/testes/hib3_03/index.html P3
+comecei a estruturar a dissertação em ~/src/disserta
+
+pedi para rogério me colocar em contato com penousal.
+
+pronto, agora ir para desenhos com mais linhas, comandos logo e maiores
+** 22/02/2013
+em hib4.py indo para exploração de desenhos mais complexos. 
+
+conversei com renato, acho que não há vantagem em desenhos mais complexos,
+pelo menos agora. talvez figuras maiores. ok, poderíamos modelar
+estilos de alguns artistas, mas isso envolveria toda uma análise e
+mapeamento do estilo em simples formas. como fazer isso?
+
+portanto, vou tentar focar na parte interativa agora.
+
+duas abordagens: usando metaevolução (1) e usando notas (2).
+
+apenas para tomar nota, o arquivo com o iga mais recente está em novo4.py.
+** 26/02/2013
+luciano decidiu que iremos publicar!!!
+
+e que já é bom eu ir escrevendo a dissertação. :-D
+
+verificando em hib5 o AG comparando com escolha aleatória.
+
+** 28/02/2013
+reunião com luciano, gonzalo e renato.
+
+ver notas.
+** 04/03/2013
+reunindo informações sobre análise de pinturas em http://pontaopad.me/belas
+
+feita análise de página wiki simples em iga/belas/neo.py
+
+testando o ipython notebook em ~/src/msc
+Média: 126.400307113
+Entropia: 1.91112270028
+Covar.: 97.1706707229
+
+Média: 128.508709273
+Entropia: 1.64624686717
+Covar.: 127.524078947
+** 05/03/2013
+script ~/src/msc/analise.py para extrair características das pinturas em
+pinturas/
+
+pollock
+[0.0014348370927318296, 0.0023794466403162053, 0.0030197627422851939, 0.0015662756194363412, 0.0047474552587421582] [126.90762531328321, 126.94489328063241, 127.15939237919311, 126.86489714664897, 126.94382684650868] [5.1637512339062948, 5.3746636168665125, 5.2059139322852106, 5.2798756405866607, 5.3792603355823712]
+picasso
+** 06/03/2013
+passei o dia com renato.
+belas discussões sobre criatividade computacional.
+li a discussão editada no Computers and Creativity e chegamos a conclusões
+interessantes sobre os limites da criatividade computacional, sobre
+a dança entre objetividade e subjetividade, sobre o computador como máquina
+inspiradora.
+
+o computador é capaz de criar, só depende do quanto ensinamos a ele, só
+depende do tamanho da máquina, das informações.
+
+o limite da criatividade computacional está ligada com o próprio limite
+da computação. se for possível computar a criatividade, ela será incompleta e,
+portanto, limitada, finita.
+
+uma pessoa é todo um universo. a subjetividade é característica humana.
+é impossível reduzir uma pessoa a números.
+
+porém, DEPENDE DO DOMÍNIO. para determinadas classes de problemas,
+para determinado domínio de interesse, uma máquina de computar pode sim
+ser criativa. agora, é diferente dela inferir sobre o que criou. tal
+interpretação é subjetiva, humana.
+
+a arte não é subjetiva, ao contrário, ela busca objetividade, com
+características e sucetível a interpretações subjetivas (emoção). na
+música, o interesse é limitar as regras (a técnica) para se ter coerência.
+(werner)
+
+** 07/03/2013
+reunião com luciano, gonzalo e renato. luciano gostou, quer que continue.
+
+o que fazer:
+- correlação considerando cada janela (não entendi, procurar melhor)
+- usar um software para fazer gráfico com elipsoides (os raios sendo media e dp) de mahalanobis
+- é bom usar várias medidas e o interessante é procurar qual a melhor combinação entre elas!
+x usar 10 quadros no mínimo
+x apenas usar barroco
+- fazer medidas em cada canal de cores
+- recuperar o iga com amostragem
+- ver o porque estava dando errado (a subida do fitness) com o renato
+** 14/03/2013
+gerei os arquivos msc_2/analise*
+analise2c.py gera PCA considerando 20 pinturas para cada um dos 12 artistas
+métricas descritas em r2.pdf.
+PCA em pca_artistas.png e pca_grupos.png
+** 15/03/2013
+enviei email para lu, gonza e renato com os resultados de ontem, apontei
+o wikipaintings e os trabalhos que andei revisando sobre análise de pinturas
+(principalmente van gogh).
+
+estou agora trabalhando em metricas.py. a estratégia que estou seguindo é
+fixar uma métrica (por exemplo, entropia) e ver como pré-processar/regular
+parametros/melhor métrica até conseguir clusterizar legal a pintura
+baseando-se só nessa métrica, depois passo para uma outra métrica e assim
+vai, até termos todas as métricas reguladas. depois podemos combinar todas
+elas no PCA e tentar combinações das melhores métricas.
+
+preciso hoje ainda começar a escrever mais um pouco da dissertação...
+e mostrar ao menos a estrutura para o renato. colocar no git.
+
+e fazer o que anotei no papel amarelo.
+
+analise dos canais de cores:
+analise_cores.py => gera dados_cores.pkl
+analise2c_cores.py => abre dados_cores.pkl e gera gráficos de PCA
+resultados PCA em pca_cores_grupos.png e pca_cores_artistas.png
+
+>>> interessante! os modernos ficaram mais à direita! :-D
+
+
+também testei para apenas os canais de cores (sem contar níveis de cinza):
+analise_socores.py => gera dados_socores.pkl
+analise2c_socores.py => abre dados_socores.pkl e gera gráficos de PCA
+resultados PCA em pca_socores_grupos.png e pca_socores_artistas.png
+
+>>> separaram melhor ainda... significa que os canais de cores fazem total
+diferença!!
+
+enviei esses resultaldos para luciano.
+
+>>>> luciano respondeu (amanhã :-D) sobre o porque disso... é fácil entender,
+nós só temos informações locais (em janelas de pixels) e não globais...
+como formas... então é interessante realmente que os barrocos sejão mais
+complexos que os modernos (um rosto, uma flor, têm bem mais pixels diferentes
+em tons do que uma forma moderna... um quadrado, por exemplo). então está
+correto!
+o que precisamos agora (irei trabalhar agora com isso) é analisar formas
+mais "complexas semanticamente"... precisamos identificar formas, linhas,
+contornos, ... e para isso precisamos usar SEGMENTACAO...
+
+afazer:
+- mais métricas: lsb (debs), pca da imagem flatten, entropia local,
+                 entropia ponderada (penalva)
+- galeria com todas as imagens e respectivas métricas
+- fazer gráfico de mahalanobis
+- recuperar iga
+- comparar ga com algoritmo aleatório
+
+** 17/03/2013
+assisti palestra (por indicação de Tatiana Prado na lista metarec)
+de Lev Manovich. muito bom!!! (procurar no email que mandei para luciano)
+inspirador... ele está no mesmo caminho que nós!
+
+ver o imageplot deles... e ver mais sobre as pesquisas deles...
+
+http://www.slideshare.net/formalist/how-and-why-study-big-cultural-data-v2-15552598
+** 18/03/2013
+estou vendo agora métodos de segmentação para podermos identificar
+detalhes mais complexos (formas) nas pinturas...
+
+ver como o pessoal do manovich usou entropia X std para gerar aqueles gráficos
+(ver código imageplot).
+
+depois de ter todas as métricas, posso analisar os autovalores para ver
+quais das componentes devo tomar e quais devo descartar: basta olhar
+as que mais concentram informação.
+
+http://www.cs.princeton.edu/~fiebrink/drop/finalthesis/RebeccaFiebrinkThesisPQ.pdf
+sugestão de renato... para usarmos IGA como um instrumento musical!
+** 19/03/2013
+ontem não consegui iniciar os testes de segmentação, começando agora.
+
+instalada skimage
+
+assisti palestra com prof. João Candido Portinari, e o portal portinari
+oferece todo o acervo, pode ser usado para pesquisa acadêmica.
+enviar email para ver se conseguimos imagens com maior resolução.
+pp@portinari.org.br
+
+penalva sugeriu fazer um gráfico com: entropia de uma pintura, variando
+sua escala.
+
+trabalhei em segmentacao.py e segmentacao_html.py
+resultado em segmentacao.html e tambem aqui:
+barrocos: http://i.imgur.com/KkgU246.jpg (RESULTADOS/segmentacao_barrocos.png)
+modernos: httrocp://i.imgur.com/lgHRhKF.jpg (RESULTADOS/segmentacao_modernos.png)
+** 20/03/2013 a 22/03/2013
+com a vinda do luis, trabalhei no ~/src/scar/ana4.py falta validar somente
+ e gerar um relatório com o algoritmo.
+
+segmentar, tomar cada região segmentada, encontrar contorno e calcular
+área e perímetro, a razão disso é um indicador de quanto a região é
+homogênea ou não, em suas bordas/forma.
+
+rezado Vilson: sim, este vídeo é motivado no que Feynman disse sobre
+as flores e a ciência para o seu amigo artista Jirayr Zorthian. No
+mesmo livro que recomendo, tem um relato muito interessante deste
+amigo do Feynman. Uma vez, impressionado com o quadro Primavera, de
+Botticellli, Richard perguntou a Jirayr como os pintores conseguiam
+tantos efeitos numa pintura, ao que Jirayr respondeu: "rather than
+from us, it may come through us." Feynman então arrematou: "Science
+will someday find out how this kind of thing is done." O enigma
+permanece...
+** 25/03/2013
+comecei a analisar cada segmento, em segmentos.py.
+
+trabalhei em 3 medidas hoje:
+1. usei transformada de hough na imagem toda (cinza equalizada) para
+   encontrar a quantidade de linhas. me baseei no que estou lendo
+   sobre estética... as linhas curvas, por serem mais afeminadas,
+   harmoniozas, estão mais presentes nos trabalhos dos
+   barrocos. portanto, procurei por linhas retas com a transformada (e
+   compridas), e parece realmente que os modernos as utilizam mais do
+   que os barrocos
+2. segmentei com slic, peguei cada segmento e calculei a area (facil, soh
+   pegar a quantidade de pixels brancos, depois de selecionar o segmento)
+   e em seguida o perimetro (apliquei filtro sobel para encontrar as bordas
+   e depois calculei a quantidade de pixels diferentes de zero, pronto, temos
+   o comprimento em pixels da borda, ou seja, o perimetro). calculei entao
+   a razao do perimetro pela area, para cada pintura. fiz uma media dessas
+   razoes
+3. calculei a entropia local (gerei um mapa de calor conforme a entropia)
+   com janela de disco 5x5 e tomei a media das entropias locais
+
+tudo isso estah em segmentos.py
+
+vou agora usar essas medidas em um novo PCA.
+
+analise_novas.py => gera dados_novas.pkl (considerando essas novas 3 medidas)
+analise2c_novas.py => gera gráficos PCA a partir de dados_novas.pkl
+
+comecei a rascunhar o artigo em ~/src/msc/paper-cria/paper.tex
+
+meu plano é escrever a dissertação somente depois desse artigo, pois a
+dissertação virá automaticamente depois dele... :-)
+
+tenho que voltar a ler os trabalhos de criatividade...
+** 26/03/2013
+reunião com luciano e gonzalo. gostaram muito do PCA em r3.pdf !!! :-D
+falaram que será difícil clusterizar mais do que isso :-D
+portanto as métricas que fiz ontem ajudaram! principalmente perimeto/area.
+
+comecei a colaborar com o david. enviei imagens de segmentos para ele analisar.
+talvez seja bom analisar os componentes conexos para analisar a curvatura
+apenas de alguns segmentos de interesse.
+
+fiz o calculo de convex hull (Aor / Ac) em convexhull.py, agora é só usar
+essa métrica para fazer um novo PCA amanhã...
+** 03/04/2013
+fiz a validação do convex hull, está em RESULTADO
+** 05/04/2013
+enquanto aguardo encontro com luciano, vou revisando bibliografia sobre
+criatividade computacional em ~/docs/notes/computational-creativity.org
+
+isso será base para intro e revisão de minha dissertação, e também para
+intro do artigo que estou começando a escrever.
+
+um ideia que surgiu: dada a curva do calculo de curvaturas, a caneta do
+LOGO poderia seguir a curva (angulos positivos/negativos) de um determinado
+artista, reconstruindo seu segmento de pintura.
+
+minha revisão bibliográfica deve incluir:
+- computational creativity
+- algorithmic art
+- computer art
+- generative systems
+** 06/04/2013
+reunião com luciano.
+** 07/04/2013
+reunião com renato e penalva.
+renato jogou a ideia de tirar entropia local com uma janela maior, algo como 50
+** 08/04/2013
+comecei a portar a curvatura para python com david.
+** 09/04/2013
+gabi chegou :-)
+** 10/04/2013
+terminamos de portar a curvatura.
+luis veio.
+tivemos reunião com luciano, todos.
+ver notas.
+** 11/04/2013
+** 12/04/2013
+falei com gonzalo.
+pediu para tratar cada bin do histograma como feature e fazer pca.
+o segmento 3, quadro 2, kandinsky está dando pau:
+
+Traceback (most recent call last):
+  File "pinturas.py", line 257, in <module>
+    C = contorno(filt, i, 0)
+  File "pinturas.py", line 92, in contorno
+    E.append(complex(x0, y0))
+UnboundLocalError: local variable 'x0' referenced before assignment
+
+preciso verificar...
+** 15/04/2013
+verificando esse erro em pinturas.py com david.
+
+vou começar a ler todos os trabalhos do iccc do ano passado.
+** 16/04/2013
+preciso focar na dissertação e pesquisa, na leitura dos papers e 
+escrita do artigo. pouco tempo.
+
+decidi esquema diário: pesquisa + 2h para outra coisa
+
+pesquisa = escrita / leitura / código
+
+outra coisa = meemoo / li7e / vivace / ideas soltas
+
+arrumei com david pinturas.py (curvatura) e está no git agora.
+
+preciso recuperar o iga e criar repos de tudo.
+** 17/04/2013
+visita do luis. trabalhei no ana4.py e comecei ana5.py
+** 18/04/2013
+vendo analise_picos.py para sugestão do gonzalo.
+não funcionou muito, vou tentar fazer cálculo de curvaturas para todas as
+pinturas e rodar essa análise novamente.
+** 19/04/2013
+falei com gonzalo, ele gostou do RESULTADOS/pca_hist_4pintores.png:
+
+Realmente, os modernos parecem mais "espalhados" do que os antigos, o que
+corresponde à intuição de que existe mais variação na arte moderna. Também
+parece que Caravaggio é um pouco mais "consistente" que Rembrandt. Interessante.
+
+o que entendi:
+
+Realmente interessante professor.
+
+O que imaginei como uma possível explicação para esse 'espalhamento' dos
+modernos: como estamos tomando os histogramas das quantidades de picos, imagino
+que os barrocos tenham um número próximo de quantidade de picos (e elevado), ao
+contrário dos modernos, que têm variações maiores nessas quantidades
+máximas. Por isso uma clusterização maior dos barrocos, por essa semelhança de
+quantidade de picos. Faz sentido professor?
+
+Conversei com David, e estou tentando calcular agora a distância entre picos
+(euclidiana e baseada em pixels do contorno) para realizar um novo PCA. O
+problema é que irá demorar *muito* para todos os pintores. Se temos 240 imagens
+e 4 segmentações por imagem, temos 960 segmentações para analisar, e dessas,
+temos dezenas de curvaturas. Algumas milhares de curvaturas portanto...
+
+estou trabalhando em ana-pintores/analise_picos.py colhendo dados de
+dados/picos e dados/picos2.pkl (gerados por ana-pintores/pinturas.py).
+
+a ideia é ainda encontrar boas medidas para caracterizar os pintores e
+disso retirar propriedades (preciso pensar nessas propriedades melhor...
+tentar algo por clusterização e também puramente geométrico).
+agora, estou tentando também a distância entre picos. tudo está em 
+dados/picos2.pkl (essa é uma boa abordagem... salvar tudo em bancos de
+dados para ir analisando depois)
+
+ah, voltei ontem a usar AA. Quirino Bahr é quem está fazendo o msc ;-)
+
+gerei o
+** 22/04/2013
+relatório do que fiz no AA
+** 23/04/2013
+o que tenho por enquanto:
+
+o AG permite gerar formas baseadas em uma sequência de instruções.  para isso
+precisamos de uma função de fitness interessante.  essa função de fitness mede o
+quão a pintura obedece a certas características de protótipos.  esses protótipos
+podem ter características de pintores reais.  analisamos então os pintores reais
+para ter uma ideia dessas características e modelá-las.  se esses modelos forem
+suficientes para caracterizar bem um pintor, podemos gerar pinturas que se
+aproximem ou se afastem desse pintor, quantitativamente.
+
+analise_pinturas.py => gera a base dados/pinturas.pkl
+analise_segs.py     => gera a base dados/segs.pkl
+
+pinturas.pkl => para cada pintura: (39 medidas)
+            # CINZA
+            1. entropia da imagem
+            2. media das energias das linhas da imagem
+            3. std das energias das linhas da imagem
+            4. media das energias das colunas da imagem
+            5. std das energias das colunas da imagem
+            6. centroide das energias das linhas
+            7. centroide das energias das colunas
+            8. media das energias das linhas e colunas (total)
+            9. std das energias das linhas e colunas (total)
+
+            # VERMELHO
+            idem
+
+            # VERDE
+            idem
+
+            # AZUL
+            idem
+
+            # MEDIDAS GLOBAIS
+            - media das entropias locais (disco 5x5)
+            - media das entropias locais (disco 50x50)
+            - quantidade de linhas (segundo transf. de Hough) da imagem
+
+segs.pkl     => para cada segmento:
+                    - quantidade de picos
+                    - contorno (em imaginários)
+                    - perímetro (em pixels)
+                    - índices de C (coordenadas dos picos)
+                    - valor do pico (valor do pixel na matriz)
+                    - área do segmento (em pixels)
+                    x área do convex hull do segmento (em pixels)
+                    x área convex hull / área do segment
+                    - sqrt(perimetro ** 2 / área do segmento)
+         
+reportado bug no convex hull: https://gist.github.com/automata/5447635
+
+** 29/04/2013
+voltei a ler livro de fayga.
+pessoal do convex hull (qhull) respondeu email, mas terão que estudar o bug
+antes.
+gerando banco de features para pinturas, para poder trabalhar melhor com
+as informações (PCA).
+analise_segs.py e analise_pinturas.py
+pqp!!! inverti modernos e barrocos!!!
+** 30/04/2013
+
+** 15/05/2013
+meu sabbath vai se concentrar no ~/src/disserta/introducao.tex
+agregando nele o que vou observando de 
+~/docs/notes/computational-creativity.org...
+
+vou também trabalhar no ~/src/paper-cria/paper.tex que é o paper descrevendo
+essas análises que estou fazendo... e o AG... 
+** 16/05/2013
+comecei a escrever minha dissertação e o artigo sobre criatividade computacional 
+no writeLaTeX.
+
+estou pensando em fazer o survey virar a dissertação, estar dentro dela.
+estou portanto editando mais a dissertação e deixando o survey parado,
+apenas com notas do que vou lendo de papers em criatividade comp..
+** 17/06/2013
+tentando interligar todos os códigos que já fiz em um só, até segunda, para
+apresentar para os tios.
+
+dei uma pausa nos trabalhos correlatos para ver isso.
+
+tendo isso, posso voltar, e também já descrever tudo isso no artigo e
+dissertação.
+** 23/06/2013
+vi com renato esqueleto da dissertação.
+vou começar a traduzir também o artigo dele.
+talvez, ajudar a compor para memorial saramago.
+** 24/06/2013
+analise_pinturas.py => gera dados/pinturas.pkl
+analise_segs.py => gera dados/segs.pkl
+feature_matrix_gen.py => gera dados/feature_matrix1.pkl baseando em pinturas.pkl
+e dados/feature_matrix2.pkl baseando em dados/segs.pkl
+scatter_matrix.py => analisa dados/feature_matrix1.pkl com scatter e LDA
+** 28/06/2013
+medidas que estou considerando até o momento:
+# features:
+# cinza:
+# 0.   entropia da imagem
+# 1.   média das energias das linhas da imagem
+# 2.   desvio padrão das energias das linhas da imagem
+# 3.   média das energias das colunas da imagem
+# 4.   desvio padrão das energias das colunas da imagem
+# 5.   centroide das energias das linhas
+# 6.   centroide das energias das colunas
+# 7.   média das energias das linhas e colunas (total)
+# 8.   desvio padrão das energias das linhas e colunas (total)
+# vermelho:
+# 9.   entropia da imagem
+# 10.  média das energias das linhas da imagem
+# 11.  desvio padrão das energias das linhas da imagem
+# 12.  média das energias das colunas da imagem
+# 13.  desvio padrão das energias das colunas da imagem
+# 14.  centroide das energias das linhas
+# 15.  centroide das energias das colunas
+# 16.  média das energias das linhas e colunas (total)
+# 17.  desvio padrão das energias das linhas e colunas (total)
+# verde:
+# 18.  entropia da imagem
+# 19.  média das energias das linhas da imagem
+# 20.  desvio padrão das energias das linhas da imagem
+# 21.  média das energias das colunas da imagem
+# 22.  desvio padrão das energias das colunas da imagem
+# 23.  centroide das energias das linhas
+# 24.  centroide das energias das colunas
+# 25.  média das energias das linhas e colunas (total)
+# 26.  desvio padrão das energias das linhas e colunas (total)
+# azul:
+# 27.  entropia da imagem
+# 28.  média das energias das linhas da imagem
+# 29.  desvio padrão das energias das linhas da imagem
+# 30.  média das energias das colunas da imagem
+# 31.  desvio padrão das energias das colunas da imagem
+# 32.  centroide das energias das linhas
+# 33.  centroide das energias das colunas
+# 34.  média das energias das linhas e colunas (total)
+# 35.  desvio padrão das energias das linhas e colunas (total)
+# cinza:
+# 36.  média das entropias locais (disco 5x5)
+# 37.  média das entropias locais (disco 50x50)
+# 38.  quantidade de linhas (segundo transformada de Hough) da imagem
+# haralick da cinza (im cinza => equalizada => filtro media)
+# http://murphylab.web.cmu.edu/publications/boland/boland_node26.html
+# haralick para direção de adjacência 1 --
+# 39.  angular second moment
+# 40.  contrast
+# 41.  correlation
+# 42.  sum of squares: variance
+# 43.  inverse difference moment
+# 44.  sum average
+# 45.  sum variance
+# 46.  sum entropy
+# 47.  entropy
+# 48.  difference average
+# 49.  difference entropy
+# 50.  info. measure of correlation 1
+# 51.  info. measure of correlation 2
+# haralick para direção de adjacência 2 |
+# 52.  angular second moment
+# 53.  contrast
+# 54.  correlation
+# 55.  sum of squares: variance
+# 56.  inverse difference moment
+# 57.  sum average
+# 58.  sum variance
+# 59.  sum entropy
+# 60.  entropy
+# 61.  difference average
+# 62.  difference entropy
+# 63.  info. measure of correlation 1
+# 64.  info. measure of correlation 2
+# haralick para direção de adjacência 2 \
+# 65.  angular second moment
+# 66.  contrast
+# 67.  correlation
+# 68.  sum of squares: variance
+# 69.  inverse difference moment
+# 70.  sum average
+# 71.  sum variance
+# 72.  sum entropy
+# 73.  entropy
+# 74.  difference average
+# 75.  difference entropy
+# 76.  info. measure of correlation 1
+# 77.  info. measure of correlation 2
+# haralick para direção de adjacência 2 /
+# 78.  angular second moment
+# 79.  contrast
+# 80.  correlation
+# 81.  sum of squares: variance
+# 82.  inverse difference moment
+# 83.  sum average
+# 84.  sum variance
+# 85.  sum entropy
+# 86.  entropy
+# 87.  difference average
+# 88.  difference entropy
+# 89.  info. measure of correlation 1
+# 90.  info. measure of correlation 2
+# para cada região conexa obtida a partir da segmentação SLIC (imagem binária):
+# 91.  média das médias das distâncias (euclidiana) entre os picos
+# 92.  média dos desvios padrão das distâncias (euclidiana) entre os picos
+# 93.  média das médias das distâncias (em pixels do contorno) entre os picos
+# 94.  média dos desvios padrão das distâncias (em pixels do contorno) entre os picos
+# 95.  média das quantidades de picos da curvatura
+# 96.  média dos perímetros das curvaturas
+# 97.  média das médias dos valores (na matriz) dos picos
+# 98.  média das áreas dos segmentos
+# 99.  média das razões perímetro**2 / área dos segmentos
+# 100. média das quantidades de segmentos por pintura
+# 101. média das áreas das regiões convexas (convex hull)
+# 102. média das razões área convexa / área original (convex hull)
+** 29/05/2013
+tive reunião com luciano, reforçada escrita do artigo e análise das features.
+disse que o número de features está suficiente, agora é preciso compreender
+quais utilizar para termos indicadores estéticos.
+
+renato sugeriu dois modelos para síntese de imagens. anotei no writelatex da
+dissertação.
+
+posso usar features (spief) em melodias (com glerm) para gerar melodias.
+
+meus próximos passos estão no email.
+** 03/06/2013
+trabalhando nos próximos passos. enviei email para gonzalo falando
+de atividades paralelas que tenho desenvolvido.
+** 04/06/2013
+enviamos artigo corrigido para WSL 2013. prof. gonzalo não pode revisar,
+sem problemas.
+** 05/06/2013
+vi sobre ubimus, atualizei meu todo para incluir peças e talvez revisão
+de artigo sobre vivace para ubimus (ou esperar um journal). 
+preciso desenvolver o vivace para isso.
+
+trabalhei no que havia combinado com luciano:
+
+- mostrar cada scatter plot com as classes separadas
+- rever o LDA, está errado (devo fazer um LDA para todas as features, e ir reduzindo a quantidade, como feito para o PCA)
+- considerar como classes os pintores, e não só barrocos e modernos
+- validar as medidas de textura de Haralick usando figuras/resultados de papers que já a validaram
+- escrever em forma de artigo os resultados que estamos tendo
+
+scatter_matrix.py > gera scatter plots para 2 classes (barrocos/modernos)
+scatter_matrix_pintores.py > idem, mas para 12 classes
+lda.py > gera gráficos de análise LDA e PCA para 2 classes (barrocos/modernos)
+lda_pintores.py > idem (menos PCA) mas para 12 classes (uma por pintor)
+
+em cols, eu selecionei algumas features que estavam iguais a zero.
+
+gerei o relatório r6.pdf.
+
+enviei email para luciano e gonzalo.
+
+talvez testar mais feature extractors do mahotas.
+como escolher as melhores features para LDA??? já que meu LDA com todas
+está degenerado e os que escolhi não são tão bons.
+
+começar a escrever artigo e mais a dissertação.
+
+prioridades: tradução renato / artigo e dissertação
+
+comecei um teste de asm.js (emscripten) para áudio (gibberish?) em
+~/src/test-asmjs/
+** 10/06/2013
+reunião com luciano e gonzalo. boa reunião.
+
+vamos publicar os resultados sobre análise das imagens. criei esse writelatex:
+https://www.writelatex.com/225472pkvlcv
+
+aplicaremos agora as medidas do metrics à análise.
+** 13/06/2013
+trabalhando agora no cálculo de dialética/oposição/inovação a partir das
+duas melhores features das pinturas em metrics.py
+
+resultados em g1.png, g2.png, oposEinov.png e dialetica.png
+
+agora vou para todas as medidas, usando PCA, em metricstodas.py
+
+resultados em g1_todos.png g2_todos.png, oposEinov_todos.png e dialetica_todos.png
+
+estou usando apenas 53 medidas: haralick + curvatura e tals...
+
+trabalhando no metrics_caso3.py
+metrics_caso3b.py
+metrics_caso1.py
+metrics_caso2.py (veja os comentários em cada arquivo, no cabeçalho)
+
+tenho que fazer o LDA e PCA serem aplicados a todos os dados e a partir
+disso que eu vou calcular os protótipos e em seguida tirar as medidas.
+
+posso até comparar os dois.
+** 17/06/2013
+escrevi parte de materiais e métodos do paper sobre análise.
+
+** 18/06/2013
+criei na wiki do LM uma página com últimos resultados da análise e
+galeria de desenhos gerados pelo AG..
+
+http://wiki.nosdigitais.teia.org.br/Nhanha
+Núcleo de Heresia Artística ??
+
+criado http://void.cc/freakcoding
+** 25/06/2013
+atualizei writelatex do paper sobre pintores. tive reunião com luciano e
+gonzalo.
+gostaram dos resultados. tenho que agora gerar uma versão mais completa do
+texto, dando ênfase a duas frentes: (1) as features usadas, embasá-las (porque
+usamos elas? quais foram mais relevantes? mostrar eixos x e y nos gráficos e
+argumentar que aquelas features foram as melhores e (2) as métricas do metrics.
+com isso, revisamos e teremos uma versão final para submeter.
+pesquisar revistas, nas artes, mas provavelmente iremos submeter para a mesma
+revista do metrics.
+
+comecei ~/src/ana-music para analisar mpb e classical. uma ideia inicial é
+analisar usando o próprio corpus que vem no music21, pois os arquivos MIDI
+demoram muito para serem lidos por ele. devemos buscar uma forma de ler os
+arquivos MIDI e convertê-los para krn ou xml.
+
+mandei o arquivo ~/src/labmacambira/metrics/mpb/tex/mpbmetrics_simples.{pdf,tex}
+para luciano, ele quer retomar o artigo de mpb. ainda não sei se deveremos usar
+análise dos MIDI nele.
+** 04/07/2013
+nos últimos dias, foquei na escrita do artigo. acabo de terminar uma
+primeira versão completa e enviei aos professores.
+
+até o final da semana quero me deter à tradução da MASSA e em recuperar o
+IGA e integrá-lo com esse workflow de análise de features. ou seja,
+até o final da semana devo ter um rascunho do workflow cerne da dissertação
+
+** 15/07/2013
+até então, fiquei traduzindo a dissertação do renato.
+
+agora vou retomar a implementação do workflow cerne da disserta.
+
+algoritmo:
+0. gera pop. inicial: um Ii para cada Pi
+1. calcula fitness de estilo inicial: para cada Ii com base em uma medida a
+   definir (e.g. distância de cada Ii para um determinado protótipo Pi, caso
+   queira evoluir pinturas para um pintor específico)
+2. ordenação e seleção: atribui classes elite/plebe
+3. aplica operadores genéticos aos Ii
+4. calcula fitness de estilo: idem 1 (FITNESS I)
+5. ordenação (intermediária, para poder mostrar ao usuário)
+6. calcula fitness interativo (gosto pessoal): dá pesos aos Ii com base em notas do
+   usuário e a um método que escolherá Ni de Ii e a partir destes Ni, espalhará
+   a nota para os Ii restantes (FITNESS II)
+7. vai para o passo 2
+
+questões/parâmetros:
+- qual procedimento usado para gerar as pinturas Ii a partir de Pi? quais os
+  operadores genéticos pertinentes para complementar esse procedimento
+  generativo?
+- qual critério usado para o fitness de estilo (e.g. distância a um centróide)?
+- como a nota do fitness interativo é "espalhado" para os vizinhos?
+  (e.g. gaussiana)
+- quais as saídas e visualizações no decorrer do processo (veja abaixo)?
+
+saídas e visualizações:
+0. projeção da pop inicial (Ii e Pi), sem cores, pois fitness não foi calculado
+   ainda
+1. projeção da pop inicial (Ii e Pi), com cores para fitness
+2. projeção da pop (Ii e Pi) com marcadores para elite/plebe e cores para
+   fitness
+3. projeção da pop (Ii e Pi) operada
+4. projeção da pop (Ii e Pi) operada e com cores para fitness e marcadores para
+   classes
+5. projeção destacando quais elementos Ni foram escolhidos para mostrar ao
+   usuário
+6. projeção com cores atualizadas conforme fitness II (pesos/notas)
+
+além disso, temos como acompanhar as curvas de fitness,
+dialética/oposição/inovação, ... de toda a evolução
+** 18/07/2013
+tenho enviado emails para gonzalo, e luciano, sobre continuar a pesquisa,
+mas acharam melhor defender o mestrado considerando apenas a parte
+de análise de pinturas.
+
+de qualquer maneira, estou tentando formas de integrar todo o desenvolvido em um
+único arquivo de código. (veja acima o AG que acabei chegando).
+
+ga.py / ga_refina.py: gera pop. inicial tomando como base pinturas originais em
+ana-pintores/pinturas e usando triangulação de Delaunay. as pinturas geradas
+ficam em novas/ e novas_refina/ (essa tem as últimas que gerei e subi no flickr)
+
+seg1.py: segmenta as imagens em novas/i* e grava os segmentos em novas/seg*
+
+feat1.py: calcula features (apenas as 2 melhores) baseadas em curvatura a
+partir das imagens com segmentos em novas/seg* e gera um pkl por pintor
+(por conta de limitacao de memória) em novas/segs*.pkl
+
+feat2.py: aglutina devidamente, em uma tabela só, as features gravadas acima,
+gerando o arquivo pkl novas/feature_matrix.pkl
+
+met1.py: calcula medidas (tenho que melhorar) e principalmente, projeta as 240
+pinturas originais e as 240 pinturas geradas a partir de
+novas/feature_matrix.pkl e das features em ana-pintores/
+gera os caso_g*.pdf que contém as projeções.
+
+com isso, eu estaria no passo 0-1 do AG, e poderia, nesse espaço projetado,
+calcular o fitness como inverso da distância de cada indivíduo projetado a um
+ponto qualquer escolhido (e.g. quero que todos evoluam para esse espaço de
+criatividade ainda não explorado).
+
+porém, a projeção (caso1_g1.pdf) não foi satisfatória. o ideal é que aproximemos
+ainda mais as pinturas geradas das originais. para isso, estou tentando melhorar
+o algoritmo generativo: usar as curvaturas para aproximar polígonos com vértices
+nos picos de curvatura. discuti ontem com carlos isso e concluímos que seria uma
+boa abordagem: carlos já fez testes com isso e foram satisfatórios, dependendo
+de um limiar, temos apenas os picos desejados (ou se o limiar for gigantesco,
+temos todos os pontos, ou seja, o próprio segmento).
+
+pensamos também em um DNA e em operações: DNA poderia incluir:
+
+[coordenadas dos picos de curvatura do segmento1, ..., N]
+
+além disso, deveria ter o valor da curvatura (ângulo?) de cada ponto, as
+coordenadas devem estar em ordem (para poder reconstruir o segmento como um
+polígono), a cor de cada segmento como média das cores do segmento original, e
+para isso, usar HSV ao invés de RGB, pois para variarmos uma cor (gerarmos) é
+melhor termos uma representação linear (e.g. podemos ir de uma cor à outras
+variando matiz, linearmente, o que não é possível com RGB).
+
+podemos usar um limiar para definirmos quais os valores de pico de curvatura
+queremos: esse limiar e o número de segmentos (portanto, o método de
+segmentação) defininem o tamanho do DNA: quanto mais segmentos e picos de
+curvatura tivermos, mais coordenadas de picos de curvatura (dados de um
+segmento) e N maior.
+
+carlos também disse que nos testes que ele fez (avião) a aproximação foi sempre
+boa!
+
+comecei então a fazer testes para gerar pinturas pelas curvaturas. fiz uma
+imagem de teste em ga-delaunay/teste_curvatura.png e script
+teste_curvatura.py... esse script gera os gráficos com perfil de curvatura e
+como a imagem foi tratada (removendo buracos e regiões menores que um limiar X
+dado (250)): eog teste_curvatura*png para ver todos.
+
+em teste_curvatura_reconstrucao.png tem a reconstrucao de teste_curvatura.png a
+partir de polígonos!
+
+teste_curvatura2.py: tentando segmentar e reconstruir uma pintura pela análise
+de curvatura
+
+
+apenas para tomar nota... test3.py mostra como eh feita a triangulacao por
+delaunay, passo a passo.
+
+comandos uteis nas imagens geradas:
+cd inipop/
+mogrify -crop 617x617+101+91 ind_*.png
+mogrify -resize 800 ind_*.png
+
+a reconstrução por curvatura está muito boa!
+
+estou usando ela para o AG
+
+passo1: gen_inipop.py => inipop/ind_pintor_pintura.png
+cd inipop/
+mogrify -crop 617x617+101+91 ind_*.png
+passo2: seg_inipop.py => inipop/seg_ind_pintor_pintura_segmento.png
+passo3: feat1_inipop.py => inipop/feat_seg_pintor.pkl
+passo4: feat2_inipop.py => inipop/feat_inipop.pkl
+passo5: met1_inipop.py => caso1_g{1,2,3}.png
+
+agora, em gen_inipop.py preciso guardar em um pkl as coordenadas dos
+pontos. também dados das cores (hsv?). que permitam criar um dna que
+possa reconstruir a imagem a partir dele somente.
+
+essa é a pop inicial. a partir dela, entro em um laço e uso:
+
+seg + feat1 + feat2 + met1 em um só script para segmentar e extrair as
+features, além de usar a met1 para calcular o fitness.
+atualizo o fitness de cada dna, e volto novamente no loop, até quando
+desejar. isso fecha o AG! nesse primeiro momento, a parte interativa é
+opcional.
+** 23/07/2013
+falei com gonzalo por email, estou escrevendo a dissertação conforme
+último rascunho.
+
+falei com glerm, criei http://github.com/automata/ana-music (ver README)
+comentei que podemos usar isso para analisar as peças geradas pelos algoritmos
+dele e alimentarmos um AG que faria convergir as peças para um determinado
+estilo (usar feature extractors e features respectivas como identificadores de
+estilos/assinaturas (como diz Cope) dos compositores)
+
+criei o arquivo ga-delaunay/tri.py (https://gist.github.com/automata/6066248)
+para glerm gerar música com triângulinhos.
+
+vendo agora de analisar todas as 20 pinturas e dar continuidade à análise e, em
+seguida, ao AG! agora com todas as pinturas.
+
+fiz alguma anotações acima, ver...
+
+preciso trabalhar em gen_inipop.py para gerar pkl e depois e um script
+que beba esse pkl e faça todo o laço do AG, com base nesse pkl da pop
+inicial... AG fechou dae!! :-)
+
+- isso
+- dissertação
+- artigo da dissertação
+
+christopher alexander, pattern language,  dica do paulo.
+
+prof. jung sung band news teologia.
+** 06/08/2013
+certo, vamos acabar com isso.
+
+três frentes: terminando o AG, terminando o artigo e escrevendo disserta.
+
+estou gerando pinturas a partir da curvatura, faltava miró e pollock.
+
+depois devo rodar o seg, feat1, feat2, met1 e mostrar resultados para tios.
+
+feito. resultados em resultados.3/
+** 07/08/2013
+ok, agora vou partir para o laço principal do AG.
+
+em ag_inipop.py
+
+possíveis journals para publicar o artigo sobre pintores:
+International Journal of Arts and Technology
+Computer Graphics and Applications, IEEE 
+MultiMedia, IEEE 
+Journal of Mathematics and the Arts
+Computers & Graphics
+http://journals.uoc.edu/ojs/index.php/artnodes/index
+Journal of Visual Culture
+IEEE Computer
+COMPUTERS & MATHEMATICS WITH APPLICATIONS  2.069
+Image Processing, IEEE Transactions on   3.199
+MATHEMATICS AND COMPUTERS IN SIMULATION  0.836
+IEEE T MULTIMEDIA   1.754
+IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE  4.795
+IEEE TRANSACTIONS ON VISUALIZATION AND COMPUTER GRAPHICS 1.898
+IEEE TECHNOLOGY AND SOCIETY MAGAZINE   0.542
+IEEE COMPUTER GRAPHICS AND APPLICATIONS  1.228
+IEEE MULTIMEDIA 0.984
+MIT Press: PAJ, A journal of Performance and Art
+Visual Arts Research
+
+para trabalho em arte generativa:
+ 	IEEE T EVOLUT COMPUT    4.810
+    EVOL COMPUT             2.109 	
+The Evolutionary Review: Art, Science, Culture
+ International Journal on Artificial Intelligence Tools
+ Interactive Evolutionary Computation
+Creative Systems
+The Interdisciplinary Journal of Artificial Intelligence and the Simulation of
+ 	Behaviour
+MIT PRESS: ARTIFICIAL LIFE  1.585
+** 12/08/2013
+dando um tempo em ag_inipop.py e voltando para a escrita.
+** 13/08/2013
+tive reunião com os ~s. foi ótima! discutimos sobre artigo pintores,
+dissertação (revimos a estrutura, falta preencher e deu!) e pinturas
+generativas. luciano pirou nas pinturas :-) quer fazer exposição.
+estou vendo para expor no sifisc.
+** 14/08/2013
+discuti coisas interessantes com david hoje.
+
+- usar distancia de mahalanobis para plotar regioes/contorno em volta de
+cada protótipo/classe. usei triangulação e mistura de gaussianas
+met1_initpop_triang.py mas não ficou tão bom, acho que mahalanobis ficará
+melhor
+
+- validar lda com: pega metade das pinturas (10 de cada pintor) e 
+manda para o lda.transform... aí fit nessas 10 pinturas... depois,
+mantendo os autovetores (lda.coeficients_), faz fit (multiplica os
+autovetores pelos dados.T) das 10 pinturas restantes... esse será
+o conjunto de treino!!! e ser classificação próxima, então estamos bem.
+posso fazer isso também para validar a análise que fiz dos músicos
+(das sonatas) pois lá há mais dados!!
+
+- e um método para ir melhorando o pca:
+1. tira o pca, calcula os autovalores, ordena eles (o que já faço)
+os autovalores dão qual a contribuição dos componentes... bem,
+para cada autovalor, temos um número N (N = features) de autovetores.
+pegamos então os autovetores dos autovalores mais altos (que irão somar
+cerca de 70% para serem bons)
+2. pega esses autovetores e calcula módulo deles e ordena
+3. pega e usa o argsort para descobrir os índices desses autovetores
+que tem maiores valores em módulo
+4. os índices indicarão quais são as melhores features!!
+5. então agora, seleciona apenas esses features da tabela de dados e
+descarta todos os outros (são ruído, contribuem pouco para o PCA)
+6. agora podemos fazer novamente o PCA para essa nova tabela, e vamos
+assim refinando :-)
+
+- ler mais sobre os pintores modernos e escrever artigo para depois
+renato e david revisarem
+
+lembrar de apontar que no barroco os pintores tinham a tradição, baseavam
+uns nos outros, havia herança de técnica (caravaggio...).
+por isso eles estão todos amontoados, sobrepostos, no gráfico.
+já no moderno, temos cada pintor levando um estilo, seu próprio estilo.
+e eles se espalham mais, cada um tentando uma "solução" sua, diferente,
+por isso há uma abrangência maior do "espaço de criatividade".
+
+ler mais para dar base a isso...
+
+- inscrever no sifisc e mandar obras
+
+- organizar os códigos em um pacote py
+
+- fazer tutorial sobre processamento de imagem e anexar na tese
+
+- fazer página web sobre a pesquisa automata.cc/ana-pintores?
+
+- publicar no creativeapplications
+
+- expor no sifisc e avav
+
+usar isso para mostrar as pinturas com aspecto orgânico:
+http://wagerfield.github.io/flat-surface-shader/
+** 22/08/2013
+entrei em modo caverna, desliguei email e tudo mais, vou ver isso apenas
+no tablet, uma vez por dia. de agora em diante, ao menos até o final de
+agosto, focar na escrita e terminar uma versão para mostrar para ~s.
+
+fazer:
+0- implementar LDA na mão comparando com o LDA do sklearn para ter autovals
+2- aplicar PCA novamente nas pinturas e ver autovalores/autovetores
+3- validar LDA com conjunto de treino + conjunto de teste
+4- colocar LDA e PCA no artigo (valores dos autovals/autovets)
+5- ler sobre pintores, artigos, e rechear a dissertação
+6- fazer página web com resultados (imagens com fundo de papel:
+http://geometrydaily.tumblr.com/about)
+7- organizar todo o código fonte em arquivos certinhos, em um único repos
+
+0-)))
+em valida0.py
+
+consegui os autovalores e autovetores do LDA do sklearn, para isso,
+guardei esses valores no objeto lda, em lda.S e lda.V
+já que, para 
+
+U, S, V = np.linalg.svd(X)
+
+temos:
+
+autoval, autovet = np.linalg.eig(X)
+
+abs(S) == autoval
+V.T == autovet
+
+agora é ver como mostrar isso no paper. acho que é o autovalores prop.
+ver no manuscrito do metrics.
+
+tres primeiros componentes 60%... dois primeiras 50%
+0.32082097499142287, 0.20130940380886606, 0.10504908039620217
+
+autovalores prop. [0.32082097499142287, 0.20130940380886606, 0.10504908039620217, 0.07766875445261502, 0.06500666836731438, 0.049417817174792454, 0.04891723976
+5428173, 0.03985189552578621, 0.0355427589882068, 0.03219712877104277, 0.02421827775832182, 1.5075724913925204e-15]
+
+ah, e editei o arquivo
+/usr/local/lib/python2.7/dist-packages/scikit_learn-0.13.1-py2.7-linux-x86_64.egg/sklearn/lda.py
+para isso...
+
+2-)))
+fiz o teste em valida2.py: após rodar uma vez com a linha 51
+comentada, eu rodei com ela sem comentário, pois pelos ind1 e ind2,
+foram esses os melhores autovetores (indices deles...)
+
+porém, selecionando apenas esses features/colunas/índices que
+apareceram em ind1 e ind2, o resultado não foi interessante...
+
+abandonando isso por enquanto... porém... há algo útil nesse script:
+
+use-o comentando as linhas a partir de 51 para ir mostrando
+que grupos de features (curvatura, haralick, entropia, ...) acabam
+gerando melhor PCA (agrupamento) que outros... isso serve como uma
+validação também.
+
+3-)))
+vendo esse agora em valida3_*.py
+
+o que fiz: tomei 10 pinturas de cada pintor como dado de treino e
+outro conjunto com as 10 restantes como dado de teste.
+
+scripts: valida3_conjuntoDeTreino.py e valida3_conjuntoDeTeste.py
+
+resultados: valida3_*.pdf
+
+conclusão: as observações notadas originalmente na projeção LDA se mantém
+em ambos conjuntos de treino e teste, tanto para a projeção em sí quanto
+dialética, oposição e inovação (ver arquivos pdf gerados)
+
+!!!!!!!!! COISAS PARA COLOCAR NA DISSERTACAO !!!!!!!!!!!!
+
+PORTANTO... TEMOS AS SEGUINTES VALIDAÇÕES:
+
+!!!!!!IMPORTANTE USAR ISSO NA DISSERTAÇÃO E TALVEZ NO ARTIGO!!!!!
+
+1) a partir de valida2.py, se formos alterando os features, o PCA
+que melhor se apresenta é quando estamos apenas com os dados de 
+curvatura, e principalmente as features 83 e 87. 
+
+isso valida a escolha
+das features 83 e 87!
+
+2) e valida3_*.py confrontando conjunto de treino e teste.
+
+isso valida a escolha
+das features e também
+o método LDA.
+
+3) temos em valida0.py os dados de autovalores, da contribuição
+dos dois primeiros componentes principais:
+
+correção! na verdade não é isso, isso é por classe... se ver
+a lda.Vdata.T, deu em torno de 25% nas duas primeiras :-(
+
+0.32082097499142287, 0.20130940380886606, 0.10504908039620217, 
+0.07766875445261502, 0.06500666836731438, 0.049417817174792454, 
+0.048917239765428173, 0.03985189552578621, 0.0355427589882068, 
+0.03219712877104277, 0.02421827775832182, 1.5075724913925204e-15
+
+OUTRA COISA PARA COLOCAR NA DISSERTAÇÃO:
+
+os gráficos scatter plot comparando as features par a par
+(isso deve estar em ana-pintores/scatter*.py)
+
+preciso ir de script em script daquela lista, descrevendo em
+detalhes cada passo nessa semana.
+
+refazer os gráficos e cálculos das medidas de oposição, inovação e
+dialética. dar um exemplo, ficará bom!
+
+rever também os RESULTADOS/r*.pdf !!!
+
+** 27/08/2013
+lista de atributos que REALMENTE estão sendo usados
+
+   0  entropia da imagem
+1  1  média das energias das linhas da imagem
+2  2  desvio padrão das energias das linhas da imagem
+3     média das energias das colunas da imagem
+4     desvio padrão das energias das colunas da imagem
+5  3  centroide das energias das linhas
+6  4  centroide das energias das colunas
+7  5  média das energias das linhas e colunas (total)
+8  6  desvio padrão das energias das linhas e colunas (total)
+
+vermelho:
+   7  entropia da imagem
+9  8  média das energias das linhas da imagem
+10 9  desvio padrão das energias das linhas da imagem
+11    média das energias das colunas da imagem
+12    desvio padrão das energias das colunas da imagem
+13 10 centroide das energias das linhas
+14 11 centroide das energias das colunas
+15 12 média das energias das linhas e colunas (total)
+16 13 desvio padrão das energias das linhas e colunas (total)
+
+verde:
+   14 entropia da imagem
+17 15 média das energias das linhas da imagem
+18 16 desvio padrão das energias das linhas da imagem
+19    média das energias das colunas da imagem
+20    desvio padrão das energias das colunas da imagem
+21 17 centroide das energias das linhas
+22 18 centroide das energias das colunas
+23 19 média das energias das linhas e colunas (total)
+24 20 desvio padrão das energias das linhas e colunas (total)
+
+azul:
+   21 entropia da imagem
+25 22 média das energias das linhas da imagem
+26 23 desvio padrão das energias das linhas da imagem
+27    média das energias das colunas da imagem
+28    desvio padrão das energias das colunas da imagem
+29 24 centroide das energias das linhas
+30 25 centroide das energias das colunas
+31 26 média das energias das linhas e colunas (total)
+32 27 desvio padrão das energias das linhas e colunas (total)
+  cinza:
+28 média das entropias locais (disco 5x5)
+29 média das entropias locais (disco 50x50)
+30 quantidade de linhas (segundo transformada de Hough) da imagem
+
+haralick da cinza (im cinza => equalizada => filtro media)
+http://murphylab.web.cmu.edu/publications/boland/boland_node26.html
+haralick para direção de adjacência 1 --
+33 31 angular second moment
+34 32 contrast
+35 33 correlation
+36 34 sum of squares: variance
+37 35 inverse difference moment
+38 36 sum average
+39 37 sum variance
+40 38 sum entropy
+41 39 entropy
+42 40 difference average
+43 41 difference entropy
+44 42 info. measure of correlation 1
+45   info. measure of correlation 2
+
+haralick para direção de adjacência 2 |
+46 43 angular second moment
+47 44 contrast
+48 45 correlation
+49 46 sum of squares: variance
+50 47 inverse difference moment
+51 48 sum average
+52 49 sum variance
+53 50 sum entropy
+54 51 entropy
+55 52 difference average
+56 53 difference entropy
+57 54 info. measure of correlation 1
+58    info. measure of correlation 2
+
+haralick para direção de adjacência 2 \
+59 55 angular second moment
+60 56 contrast
+61 57 correlation
+62 58 sum of squares: variance
+63 59 inverse difference moment
+64 60 sum average
+65 61 sum variance
+66 62 sum entropy
+67 63 entropy
+68 64 difference average
+69 65 difference entropy
+70 66 info. measure of correlation 1
+71   info. measure of correlation 2
+  
+haralick para direção de adjacência 2 /
+72 67 angular second moment
+73 68 contrast
+74 69 correlation
+75 70 sum of squares: variance
+76 71 inverse difference moment
+77 72 sum average
+78 73 sum variance
+79 74 sum entropy
+80 75 entropy
+81 76 difference average
+82 77 difference entropy
+83 78 info. measure of correlation 1
+88   info. measure of correlation 2
+  
+para cada região conexa obtida a partir da segmentação SLIC (imagem binária):
+79 média das médias das distâncias (euclidiana) entre os picos
+80 média dos desvios padrão das distâncias (euclidiana) entre os picos
+81 média das médias das distâncias (em pixels do contorno) entre os picos
+82 média dos desvios padrão das distâncias (em pixels do contorno) entre os picos
+83 média das quantidades de picos da curvatura
+84 média dos perímetros das curvaturas
+   média das médias dos valores (na matriz) dos picos
+85 média das áreas dos segmentos
+86 média das razões perímetro**2 / área dos segmentos
+87 média das quantidades de segmentos por pintura
+88 média das áreas das regiões convexas (convex hull)
+89 média das razões área convexa / área original (convex hull)
+
+fechei as validações que precisava (ver dia anterior).
+
+OT selecionei algumas pinturas (pensei em selecionar cerca de 6)
+com renato: https://etherpad.mozilla.org/genpaintings
+** 28/08/2013
+vendo matrix_confusao.py após conversa com david.
+
+notas sobre SVD/autovalores/autovetores...
+
+A = np.array([[1,2,3], [4,5,6], [7,8,9]])
+
+print A
+# array([[1, 2, 3],
+#        [4, 5, 6],
+#        [7, 8, 9]])
+
+U, s, Vt = np.linalg.svd(A)
+S = np.diag(s) # autovalores
+V = Vt.T       # autovetores
+
+print U
+# array([[-0.21483724,  0.88723069,  0.40824829],
+#        [-0.52058739,  0.24964395, -0.81649658],
+#        [-0.82633754, -0.38794278,  0.40824829]])
+print S
+# array([[  1.68481034e+01,   0.00000000e+00,   0.00000000e+00],
+#        [  0.00000000e+00,   1.06836951e+00,   0.00000000e+00],
+#        [  0.00000000e+00,   0.00000000e+00,   4.41842475e-16]])
+print V
+# array([[-0.47967118, -0.77669099, -0.40824829],
+#        [-0.57236779, -0.07568647,  0.81649658],
+#        [-0.66506441,  0.62531805, -0.40824829]])
+
+# reconstruindo a partir das matrizes U, S, V (todos os componentes princ.):
+B = np.dot(U, np.dot(S, V.T))
+
+print B
+# array([[ 1.,  2.,  3.],
+#        [ 4.,  5.,  6.],
+#        [ 7.,  8.,  9.]])
+
+# reconstruindo considerando dois componentes principais:
+C = np.dot(U[:,:2],np.dot(S[:2,:2],V[:,:2].T))
+
+print C
+# array([[ 1.,  2.,  3.],
+#        [ 4.,  5.,  6.],
+#        [ 7.,  8.,  9.]])
+
+# reconstruindo considerando apenas um componente principal:
+D = np.dot(U[:,:1],np.dot(S[:1,:1],V[:,:1].T))
+
+print D
+# array([[ 1.73621779,  2.07174246,  2.40726714],
+#        [ 4.2071528 ,  5.02018649,  5.83322018],
+#        [ 6.6780878 ,  7.96863051,  9.25917322]])
+
+### relação com autovalores/autovetores usando np.linalg.eig():
+
+autoval, autovet = np.linalg.eig(A)
+
+# autoval ~= s
+# autovet ~= V
+
+print autoval
+# array([  1.61168440e+01,  -1.11684397e+00,  -1.30367773e-15])
+
+print s
+# array([  1.68481034e+01,   1.06836951e+00,   4.41842475e-16])
+
+print autovet
+# array([[-0.23197069, -0.78583024,  0.40824829],
+#        [-0.52532209, -0.08675134, -0.81649658],
+#        [-0.8186735 ,  0.61232756,  0.40824829]])
+
+print V
+# array([[-0.47967118, -0.77669099, -0.40824829],
+#        [-0.57236779, -0.07568647,  0.81649658],
+#        [-0.66506441,  0.62531805, -0.40824829]])
+
+david adicionou detalhes sobre a curvatura. preciso entender melhor
+sobre derivada, fourier, e como é calculada em pythona curvatura...
+
+renato acha que com LDA não é possível classificar. será?
+
+
+** 30/09/2013
+tempo sem escrever aqui, porém, andei evoluindo a escrita da dissertação.
+está nos finalmentes.
+transferi esse arquivo para o repositório disserta.
+atualizei o repositório, agora está ok.
+
+estruturei todos os arquivos de código-fonte no dataflow, vou comentar cada
+aspecto deles na tese, fundamentar, e deu.
+
+criei o repositório tri-delaunay e estou imprimindo os posters para expor no
+sifisc, eles serão documentados no apêndice.
+* ideias
+- metaevolução
+- usar ag para teatro moderno (improviso)
+- fazer uma galeria do ag
+- cada batida de dubstep (projeto ludovico) uma geração do ag é gerada
+* planejando a dissertacao
+pontos fortes:
+- aplicação do PCA no AG para acompanhamento da evolução, e principalmente,
+  para cálculo de fitness: considerando os protótipos P1 e P2 (não sei se
+  também para Pn) temos que os indivíduos mais próximos geometricamente
+  destes pontos são 'geralmente' os com maior fitness.
+  recuperar tanto fa1 fa2...py quanto o trabalho com iga para provar.
+- aplicação do PCA para AG multi-objetivo
+- multiplicação de vários valores de fitness para sua combinação (morph)
+- métricas dialética, inovação, oposição aplicadas para acompanhamento da
+  evolução e validação
+- aplicação do ag de forma artística: gerador de formas, de melodias,
+  de estruturas para live coding (vivace sequences), 3d, desenhos, ...
+- revisão sobre criatividade computacional, survey
+- análise da realidade... pinturas, pequena revisão sobre medidas para
+  pinturas (feature extraction)
+estrutura:
+fazer da dissertacao uma introducao a criatividade computacional
+- introduzir criatividade computacional
+- descrever trabalhos correlatos
+** para apendice, implementar e mostrar:
+- pycca (notas sobre computação científica)
+- ag gerando melodias
+- gerando imagens
+- ag.js
+- ag.js + meemoo
+- gerando imagens com mrdoob's harmony
+- galeria com ensaio de imagens geradas e escolhidas por nós
+- gerando melodias no vivace para live coding
+* epígrafes possíveis
+Art is made to disturb. Science reassures. There is only one valuable thing in art: the thing you cannot explain.
+
+Georges Braque
+
+Computers are so boring, so boring that you get excited about.
+
+Frieder Nake
+
+Science is what we understand well enough to explain to a computer, art is
+everything else.
+
+Donald Knuth
+
+Prezado Vilson: sim, este vídeo é motivado no que Feynman disse sobre
+as flores e a ciência para o seu amigo artista Jirayr Zorthian. No
+mesmo livro que recomendo, tem um relato muito interessante deste
+amigo do Feynman. Uma vez, impressionado com o quadro Primavera, de
+Botticellli, Richard perguntou a Jirayr como os pintores conseguiam
+tantos efeitos numa pintura, ao que Jirayr respondeu: "rather than
+from us, it may come through us." Feynman então arrematou: "Science
+will someday find out how this kind of thing is done." O enigma
+permanece...
+
+* lista de arquivos
+!!! EM ~/src/msc ESTAO ATALHOS PARA TODOS OS TRABALHOS QUE FIZ DURANTE O MSC !!!
+
+EM ~/src/msc/material ESTAO ARQUIVOS DE TERCEIROS COLETADOS DURANTE O MSC
+
+questao1.py: responde a pergunta 1 do prof. gonzalo, em Questões, RESULTADOS/r1.pdf
+
+gp_final13.py: evolui com base em um fitness só e mostra as formas dos 
+melhores considerando cada fitness (dialética, corre-cruzada, ponto medio)
+
+gp_final13b.py: gera gráfico em best/foo.html
+
+RESULTADOS/r1.pdf: relatório que comecei em 01/02/13, tem desc do PG completo
+
+teste1a teste2a teste3a teste4a.py: usados para gerar caso 2 do relatório r1
+
+teste1a_b.py: teste 1a só que com metricas calculadas nos 8 componentes
+
+teste1a_c.py: mesmo que o acima, mas agora usando como fitness a media da
+              correlação cruzada entre P1 e P2
+
+teste1a_d.py: mesmo que acima, mas com media sendo sugestao do renato para
+              equilibrar as escolhas de notas... equacaozinha...
+              (Cm)^alpha * CM com alpha = 1 a princípio
+
+hib/: algoritmos híbridos de programação genética e interativa
+
+hib/hib1.py: mesmo teste1a_d mas com vários protótipos
+
+hib/hib2.py: validar protótipos forçando probabilidade maior para um protótipo específico
+
+teste1a_d_rand.py: evolui junto à pop original uma pop com seleção aleatória,
+                   para validar
+
+~/src/msc/paper-cria/paper.tex: artigo sobre criatividade computacional
+* notas usp
+
+Esteban, esse é trabalho bastante interessante que estamos
+desenvolvendo. Acabamos de atualizar e talvez te interesse:
+http://labmacambira.sourceforge.net/redes .
+
+Na página, aperte Ctrl+Shift+R para garantir que ela seja atualizada. Não deixe
+também de visitar a Wiki, está bem legal! :-) Sua visita e comentários são muito
+bem vindos.
+
+hey Esteban, new videos, image galleries, donations and an updated page on: http://labmacambira.sourceforge.net/redes . 
+
+While in the page, press Ctrl+Shift+R to reload the videos. Please, take a look at the Wiki page as well :-) Your visit and comments are welcome!
+
+
+
+hey Karan, new videos and updates on a project we are working on that could be of your interest: http://labmacambira.sourceforge.net/redes . 
+
+While in the page, press Ctrl+Shift+R to reload the videos. Please, take a look at the Wiki page as well :-) Your visit and comments are welcome!
+
+
+
+olá Ilan, quanto tempo! esse é trabalho bastante interessante que estamos desenvolvendo. acabamos de atualizar e acho que pode te interessar: http://labmacambira.sourceforge.net/redes . 
+
+na página, aperte Ctrl+Shift+R para
+garantir que ela seja atualizada. não deixe também de visitar a
+Wiki, está bem legal! :-) sua visita e comentários são muito bem vindos.
+
+
+grande XXX! estamos desenvolvendo um trabalho analisando nossas redes. acabamos de atualizar, com novos resultados, e acho que pode te interessar: http://labmacambira.sourceforge.net/redes . 
+
+suas dicas e comentários são muito bem vindos! abração meu grande!
+--
+hey Juan! new videos and updates on a project we are working on that could be of your interest: http://labmacambira.sourceforge.net/redes . 
+
+your visit and comments are very welcome! all the best!
+x

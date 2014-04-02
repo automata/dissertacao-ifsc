@@ -1,0 +1,2860 @@
+%% todo:
+
+%% - escrever melhor 2.3.1 e dar exemplos do gonzalez talvez
+%% - rever :
+
+%% x incluir tabela de atributos A_i
+%% x referenciar todo o texto, parte de fundamentos principalmente
+%% x revisar a notação (ver os livros costa e gonzales, se esta correto)
+%% x melhorar a conclusão
+
+%% x refazer figura 2.13 e 2.14, trocando v_i v_j v_k por p_...
+%% ? revisar e traduzir todas as imagens
+%% x terminar 2.4.3 Atributos de contorno e forma, ver o codigo fonte
+%% x rever na ref a tabela 2.17 (atributos de haralick) e arrumar log e outros
+%% termos
+%% x atualizar a descrição da curvatura
+%% x colocar medidas de media, ... jah no inicio (nocoes)
+%% x rever nos scripts como posicionei a janela/escala das imagens capitulo 3
+%% x figura 3.3, ver os parametros exatos de slic
+%% x incluir detalhes para imagem no apêndice
+%% x colocar os passos da geracao de pinturas e um ou dois exemplos no apendice
+
+\chapter{Introdução}
+\label{cap:intro} 
+
+%% \begin{wrapfigure}{r}{0.5\textwidth}
+%%   \begin{center}
+%%     \includegraphics[width=0.48\textwidth]{figs/brunelleschi.png}
+%%   \end{center}
+%%   \caption{Retratação do experimento de Brunelleschi que permitiu-lhe
+%%     desenvolver a técnica de representação de profundidade pela perspectiva,
+%%     onde todas as linhas de um objeto convergem a um só ponto, o ponto de fuga.~\cite{andersen}}
+%%   \label{fig:pespectiva}
+%% \end{wrapfigure}
+
+A Arte, assim como a Ciência ou Filosofia, cria modelos que
+representem a natureza. Seja essa natureza aquela do ambiente que a
+rodeia ou a natureza humana, com suas crenças e emoções. Para
+representar tais naturezas e a mensagem que querem transmitir,
+artistas vêm empregando técnicas e assim criando diferentes estilos,
+escolas e movimentos. Vale citar um exemplo de técnica, criada na
+Pintura, para solucionar o problema de se representar a profundidade
+visível. Brunelleschi e Alberti apresentam soluções
+geométricas~\cite{andersen,kemp} através do cálculo da perspectiva
+(Figura~\ref{fig:perspectiva}). Até então as pinturas, afrescos,
+mozaicos e desenhos não tinham noção alguma de profundidade -- os
+elementos que compunham a pintura eram distribuídos segundo sua
+importância espiritual ou temática~\cite{edgerton}.
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{figs/perspectiva1.png} \\
+    \vspace{1cm}
+    \includegraphics[width=0.6\textwidth]{figs/perspectiva2.png}
+      \caption{A imagem superior é a ilustração ``Reconstrução do
+        Templo de Jerusalém'' (1200-1300) para o livro
+        ``\textit{Histoire d'Outremer}'', de Guilherme de Tiro. Esta
+        pintura antecede o método de perspectiva de Brunelleschi e
+        portanto é possível notar a ausência de linhas que converjam
+        para um só ponto, embora haja a intenção da representação de
+        profundidade. Já a imagem inferior, um afresco de Pietro
+        Perugino (1481-1482), apresenta a técnica de perspectiva, com
+        todas as linhas convergindo para o centro da imagem, em seu
+        horizonte.}
+      \label{fig:perspectiva}
+\end{center}
+\end{figure}
+
+Essa solução não foi suficiente para Cézanne nem seus contemporâneos
+da Arte Moderna, que estavam descontentes com essa ``equação
+matemática'' e usaram gradações de cores para representar a
+profundidade.~\cite{sedlmayr} Outros meios como o \textit{sfumato}
+(onde as pinceladas que definem bordas e linhas são removidas com
+verniz de madeira, comum nas pinturas renascentistas, sendo a
+``Monalisa'' de Leonardo da Vinci~\cite{pegus, hall} seu principal
+exemplo), as cores da Escola de Viena~\cite{gardner}, o movimento e a
+expressão~\cite{gombrich, gordon}, foram criados por cada geração de
+artistas em uma tentativa de expressar o mundo ao seu redor e suas
+próprias visões de mundo. E a cada geração, estes mesmos artistas
+descobriram que continuavam existindo convenções que os obrigavam a
+aplicar o que haviam aprendido ao invés de pintarem o que realmente
+viam. Os ``rebeldes'' da Arte Moderna acabaram por negar essas
+convenções, criando novos meios. Os Impressionistas, por exemplo,
+tentaram apresentar um método com precisão científica para representar
+na tela o ato da visão. Não queriam mais a ``fidelidade à natureza''
+de Caravaggio ou a ``beleza ideal'' de Poussin, buscavam
+``expressividade intensa, clareza de estrutura e uma simplicidade
+linear na técnica''.~\cite{gombrich} O século XX presencia a passagem
+de uma geração de experimentadores, inventores, que davam maior
+preferência à originalidade do que à tradição. Como bem dito
+por~\citeauthor{gombrich}: ``Qualquer afastamento da tradição que
+interessasse à crítica e atraísse um seguidor era saudado como um novo
+\emph{ismo} ao qual o futuro pertenceria''. Essa inquietação moderna é
+avistada nas linhas retas e arquitetura funcional das casas e prédios
+do outro lado da rua, apenas para citar uma das influências que a Arte
+Moderna acabou por tornar presente no dia-a-dia.
+
+Na música, essa concepção de técnicas para resolver problemas
+encontrados ao se tentar representar as naturezas, é também
+percebida. ... o Modal acabou criando o ``problema'' do trítono, que
+desempenhou papel importante como tensão a ser resolvida na música
+Tonal. Segundo~\citeauthor{wisnik}: ``o balanceamento cadencial entre
+a dissonância tritônica e sua resolução desenhará a própria abóbada da
+música tonal. A \textit{resolução do trítono} no acorde equivale
+igualmente à formulação da perspectiva na pintura''; o contraponto
+tenta resolver o problema de arranjar várias vozes sem que se
+cruzem~\cite{fux}; o Atonalismo e o Serialismo Dodecafônico apresentam
+novas maneiras de se fugir de um tom fundamental e apresentar novas
+formas de se arranjar as notas~\cite{webern}; as músicas
+eletroacústica, eletrônica, concreta e espectralista tentam extrapolar
+os limites das sonoridades, tentando criar timbres que nunca foram
+ouvidos~\cite{stockhausen}. Há sempre a preocupação em expandir o que
+se entende por realidade, por natureza.~\cite{wisnik,webern} O que é
+entendido como som e até mesmo como música sofreu alterações durante o
+tempo. Na Renascença e Barroco, com a supremacia da Igreja como
+instituição que regulamentava o que era música, a presença do ruído
+era condenada. Porém, com as épocas modernas, o ruído começa a fazer
+parte dos elementos sonoros através de Berlioz e Scelsi; ou ainda pela
+emancipação da dissonância (Schoenberg) e do ritmo
+(Stravinsky).~\cite{wisnik,schoenberg} A percussão, desconsiderada e
+evitada na liturgia, é colocada à frente com Berlioz --- que era
+percussionista. Até então a percussão só servia para pontuar certos
+momentos (e.g.\ é possível ouvir o instrumento tímpano apenas em
+alguns momentos pontuais durante a execução de uma orquestra, o que
+não é verdade por exemplo na Sinfonia Fantástica de Berlioz, onde
+estão presentes ao longo de toda a peça).  Russolo Ferrari traz os
+sons da cidade como elemento musical: o discurso mimético através de
+sons gravados, que transmitem significado. Parmegiani inclui sons da
+música \textit{pop} como colagens. Mâche extrapola os instrumentos
+musicais querendo com eles imitar sons da natureza em uma forma de
+``onomatopéia musical''.~\cite{casteloes} Lachenmann usa apenas
+ruídos, e mais recentemente, Hendrix revoluciona a música com a
+guitarra elétrica. O uso de ruídos se desenvolve até tal ponto onde há
+apenas ruído como material musical, no que veio a ser conhecido como
+movimento ou estilo ``noise''.~\cite{russolo}
+Citando~\citeauthor{guigue} sobre Stockhausen, Berio, Crumb e
+Lachenmann: ``Cada um, a seu modo, buscou o desenvolvimento de um
+conceito integrado da totalidade do fenômeno musical por meio de
+estratégias composicionais capazes de resolver os problemas formais
+[...]''.
+
+A evolução das artes parece ser influenciada por essa solução de
+desafios e expanções na representação das naturezas. Buscar entender
+como essa evolução se dá de uma maneira quantitativa, através de
+medidas geométricas, é objetivo geral deste estudo. Estas medidas têm
+como base conceitos centrais no estudo da Filosofia:
+\textit{oposição}, \textit{inovação} e
+\textit{dialética}.~\cite{deleuze,pinto,van} A dialética por exemplo é
+definida como um método de argumentação onde busca-se a síntese entre
+dois argumentos contraditórios: a tese e a antítese. São conceitos
+originalmente qualitativos. O que se promove neste estudo é um ponto
+de vista alternativo. Tese, antítese e síntese são definidas como
+estados em uma série temporal pertencente a um espaço vetorial. E a
+dialética torna-se assim uma medida geométrica: o inverso da distância
+entre o estado de síntese e a bissetriz formada pelos estados de tese
+e antítese. Quanto menor a distância, maior a dialética, pois o estado
+de síntese se aproxima da bissetriz, que modela no espaço vetorial o
+que seria a síntese ideal entre as ideias de tese e antítese. Pode-se
+agora falar em \emph{quanto} um argumento apresenta dialética. Ou se
+um dado argumento possui dialética maior ou menor que outro,
+apresentando para isso, valores numéricos.
+
+Para ser possível tal análise, é necessária a representação dos
+agentes envolvidos --- nesse caso, pintores e suas obras --- em um
+espaço geométrico onde as medidas são então realizadas. Esse
+mapeamento começa com a seleção de imagens de pinturas. Um grupo de 12
+pintores é selecionado, sendo 6 pintores representantes reconhecidos
+do movimento Barroco e outros 6 pintores da era Moderna. Um total de
+20 pinturas de cada pintor é escolhido aleatoriamente, formando um
+conjunto de 240 pinturas a serem analisadas. Métodos de processamento
+e análise de imagens são aplicados para extrair atributos que
+caracterizam cada pintura. Através da análise de matriz de
+espalhamento e LDA (Linear Discriminant
+Analysis)~\cite{luciano,fisher}, os atributos que melhor classificam
+as pinturas em seus respectivos pintores são selecionados. Esses
+vetores de atributos, agora com dimensões reduzidas, formam então o
+espaço vetorial pretendido. Considerando tais vetores em ordem
+cronológica, tem-se uma série temporal e é nessa série que se dá o
+cálculo das medidas sugeridas para a oposição, inovação e dialética.
+
+Enquanto valores numéricos, tais medidas revelam padrões que encontram paralelo
+na história das artes. Um exemplo marcante é o contraste encontrado nos grupos
+de estados dos pintores barrocos e modernos. Enquanto todo o grupo Barroco
+apresenta sobreposição entre seus pintores, o grupo de pintores Moderno
+apresenta quase nenhuma sobreposição. Essa observação encontra base na história
+das artes, onde os pintores barrocos, reconhecidamente, compartilham técnicas uns
+com os outros --- e portanto, compartilham também características estéticas em
+suas pinturas --- enquanto os modernos são marcados pelo individualismo, cada
+qual definindo seu próprio estilo.
+
+As medidas, assim como o método sugerido, são independentes de
+domínio, o que possibilita sua aplicação para a análise de outras
+áreas humanas além da pintura. Até então, filosofia,
+música~\cite{vieira} e pintura têm sido avaliadas, porém aplicações em
+cinema, literatura ou arquitetura são possíveis. Tal flexibilidade
+permite também a comparação entre as medidas obtidas para cada área de
+conhecimento. Por exemplo, é possível notar que na música há
+predomínio de valores altos para a dialética, enquanto na filosofia, a
+oposição é o caráter predominante~\cite{vieira}. Já na pintura, há
+constante inovação, e ambas oposição e dialética possuem maior valor
+no momento de transição de um movimento artístico ao outro. Novamente,
+cada um desses resultados encontra fundamento na história e nas
+características de cada um de seus atores e obras.
+
+\section{Motivação}
+
+A subjetividade da análise da história das artes sugere métodos objetivos que
+complementem tal análise. É importante ressaltar que tal método não
+pretende esgotar ou suplantar a análise subjetiva, humana, mas sim
+complementá-la, somar ao ferramental metodológico já existente. Da mesma forma,
+conceitos como a dialética possuem grande importância nas ciências humanas, mas
+não são comumente tratados de maneira quantitativa.
+
+Ainda, a possibilidade de automatizar o cálculo dos atributos usados para
+análise também motivou esse estudo. No estudo anterior~\cite{vieira}, os
+atributos eram fornecidos por críticos (os próprios autores) através de notas
+dadas a uma determinada característica de uma obra (e.g.\ no caso da música, a
+presença ou não de complexidade rítmica em uma peça musical era uma
+característica considerada). Aqui buscou-se automatizar esse processo, com o uso
+de processamento e análise de imagens para extrair atributos das
+pinturas. Buscou-se ainda expandir o domínio de aplicação do método para mais
+uma área além da música e filosofia, no caso, a pintura. Procura-se assim
+investigar se nesta nova área de aplicação haveriam similaridades com as áreas
+já analisadas.
+
+\section{Objetivos}
+
+Em uma única sentença, modelar artefatos produzidos por artistas (no caso,
+pinturas, mas poderiam ser peças musicais ou poemas) como um conjunto de
+características passíveis de serem projetadas em um espaço geométrico onde
+conceitos subjetivos --- antes apenas de domínio das Ciências Humanas ---
+como dialética, oposição e inovação podem ser calculados como medidas
+quantitativas, oferecendo uma forma complementar à interpretaçào da evolução da
+história artística e, porque não, da evolução da criatividade humana.
+
+\section{Organização}
+
+No Captítulo~\ref{cap:fundamentos} são descritos os fundamentos, algoritmos,
+métodos canônicos e detalhes históricos sobre os quais se construiu este estudo,
+assim como trabalhos correlacionados e de interessante leitura. O
+Capítulo~\ref{chap:resultados} apresenta os desenvolvimentos realizados nesse
+estudo: como as pinturas foram processadas a ponto de fornecerem um conjunto de
+características que tornou possível a representação da evolução artística em um
+plano geométrico assim como o cálculo de medidas de dialética, oposição e
+inovação. Ainda, são apresentadas essas projeções e medidas geométricas, assim
+como sua interpretação em um contexto histórico e crítico. Os resultados são
+validados pelo cálculo dos componentes que mais separam os grupos de pintores,
+através do método LDA. Este, por sua vez, é validado por uma matriz de
+confusão. Por fim, o Capítulo~\ref{chap:conclusoes} faz uma revisão do que foi
+discutido e aponta as principais contribuições e conclusões desse estudo, além
+de refletir sobre desenvolvimentos futuros e que já estão em andamento. Os
+Apêndices apresentam um tutorial para \textit{download} e execução dos
+\textit{scripts Python} que implementam os algoritmos desenvolvidos para essa
+análise, assim como uma galeria com miniaturas de todas as imagens das 240
+pinturas usadas no estudo, além de visualizações alternativas da série temporal
+resultante e a descrição de uma exposição realizada no IFSC/USP com imagens
+geradas a partir de um algoritmo para pintura generativa desenvolvido nesse
+trabalho.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Fundamentos}
+\label{cap:fundamentos}
+
+Onde são descritos os fundamentos, algoritmos, métodos canônicos, sobre os quais
+se construiu os desenvolvimentos.
+
+\section{Uma breve exploração sobre o Barroco e Arte Moderna}
+\label{sec:breve}
+
+É interessante levantar aqui algumas características sobre a história e estética
+presente nos movimentos Barroco e Moderno. Tais pontos serão confrontados com
+observações obtidas pela análise das medidas quantitativas, discutidas no
+Capítulo~\ref{chap:resultados}. O resumo biográfico de cada artista considerado
+auxilia na avaliação de tais resultados.
+
+\subsection{Barroco}
+
+O Barroco é marcado pela tradição, pelo desejo de retratar a verdade (encontrado
+nas obras de Caravaggio, Frans Hals e Velázquez), a beleza (em Poussin,
+Vermeer), a natureza e o sagrado (Caravaggio, Rembrandt). Esteticamente, é
+notável o uso do contraste de luz (como na técnica do ``\textit{chiaroscuro}''
+de Caravaggio), a preferência por oposições complexas e desprezo pelo equilíbrio
+simplista na composição dos elementos em uma pintura. A transmissão dessas
+técnicas ou estéticas de um pintor para o outro é comum no Barroco. Espera-se,
+portanto, que pintores barrocos apresentem uma grande similaridade estética em
+suas obras.~\cite{gombrich,hills,gardner}
+
+Para o presente estudo, os seguintes pintores foram escolhidos por
+representarem, reconhecidamente, características da era Barroca:
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{figs/caravaggio_judite.png}
+  \end{center}
+  \caption{\emph{Judite e Holoferne}, c. 1599}
+  \label{fig:caravaggio:judite}
+\end{wrapfigure}
+
+\textbf{\emph{Miguel Ângelo da Caravaggio}}, Itália, 1573-1610.  Após a
+Renascença, foram Annibale Carracci e Miguel Ângelo da Caravaggio~\cite{bayer}
+que, mesmo tendo métodos completamente opostos, amplificaram as ideias já
+apresentadas em Tintoretto e El Greco durante o chamado
+Maneirismo~\cite{tatarkiewicz}: ênfase sobre luz e cor, desprezo pelo simples
+equilíbrio, preferência por oposições complexas. Tais ideias foram apresentadas
+de uma nova maneira e inauguraram o que viria a ser o movimento
+Barroco~\cite{hills}. Caravaggio, diferente de Carracci que se preocupava em
+retratar o belo, queria retratar a verdade, como a via, em detalhes. Essa busca
+pela verdade pode ser vista em \emph{Judite e Holoferne}
+(Figura~\ref{fig:caravaggio:judite}).~\cite{puglisi,caravaggio}
+
+O uso da luz, contrastando rigidamente com o negro fundo, colabora para
+ressaltar a joviedade de Judite, que demonstra ter convicção do que faz: cortar
+a cabeça de Holoferne. Sua serva por outro lado, demonstra nervosismo, esperando
+que o pedaço de carne morta encha o saco de pano que segura. É possível sentir o
+horror, a surpresa e impotência de Holoferne enquanto é arrancado de seu sono
+por sua própria espada. Caravaggio fornece assim uma interpretação de notável
+detalhismo da passagem bíblica: ``Então Judite se aproximou da coluna da cama,
+que ficava junto à cabeça de Holoferne, e pegou a espada dele. Depois chegou
+perto da cama, agarrou a cabeleira de Holoferne, e pediu: Dá-me força agora,
+Senhor Deus de Israel. E com toda a força, deu dois golpes no pescoço de
+Holoferne e lhe cortou a cabeça. Rolou o corpo do leito e tirou o mosquiteiro
+das colunas. Depois saiu, entregou a cabeça de Holoferne para a serva, que a
+colocou na sacola de alimentos.'' (Judite 13, 6)
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \includegraphics[width=0.4\textwidth]{figs/hals_massa.png}
+  \end{center}
+  \caption{\emph{Retrato de Isaak Abrahamsz Massa}, c. 1626}
+  \label{fig:hals:massa}
+\end{wrapfigure}
+
+\textbf{\emph{Frans Hals}}, Holanda, 1580?-1666. Ao mesmo tempo que o Barroco
+era iniciado na Itália, que compreendia a metade católica da Europa --- Roma foi
+neste período o que a França foi mais a frente: o centro de discussões e
+atenções artísticas --- em sua parte protestante não havia espaço para pintar o
+sagrado.~\cite{gombrich} Sobravam os retratos como fonte de renda e Frans
+Hals~\cite{grimm} soube bem como pintá-los -- embora recebendo pouco em
+retorno. Sua obra é constituída em grande parte por retratos de burgueses e
+mercadores Holandeses, como o \textit{Retrato de Isaak Abrahamsz Massa}
+(Figura~\ref{fig:hals:massa}), mercador e amigo próximo de Hals.  Embora na
+época a maioria dos pintores e estudantes estivessem influenciados pela técnica
+do ``chiaroscuro'' de Caravaggio, isso não se observa em Frans Hals: o fundo
+possui detalhes, complementa a composição e existem variações de sombra na face
+do modelo (o lado direito é iluminado por uma luz direta, enquanto o lado
+esquerdo apresenta uma sombra de luz natural). Em Caravaggio, a luz é outra, ela
+é direta, penetrante, artificial.~\cite{gombrich} Ao mesmo tempo, os retratos de
+Frans Hals diferiam dos retratos de até então. Sua pincelada rápida permitia
+capturar não o modelo, mas o momento, o instante.~\cite{peter} Outra diferença é
+a pose alternativa para a época. Diferente dos retratos com olhares perdidos,
+Frans Hals usa os olhos do modelo para expressar e compor o momento. Ao invés de
+um olhar perdido, Massa olha para algo que lhe chama atenção, a ponto de
+virar-se na cadeira.
+
+\textbf{\emph{Nicolas Poussin}}, França, 1594-1665. Carracci, Reni e seus
+seguidores retratavam uma versão ``embelezada'' da natureza, que imitava as
+estátuas clássicas. Este programa ficou conhecido como neoclássico ou
+``acadêmico''.~\cite{gombrich}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{figs/poussin_danca.png}
+  \end{center}
+  \caption{\emph{Uma Dança para a Música do Tempo}, c. 1634-1635}
+  \label{fig:poussin:danca}
+\end{wrapfigure}
+
+Poussin foi um dos grandes mestres ``acadêmicos'' e desta forma, foi
+influenciado pelo pintor que representa a oposição a Caravaggio: Carracci. Suas
+pinturas querem retratar a beleza, a inocência, a pureza de épocas antigas, seus
+mitos e histórias.~\cite{unglaub} É possível notar essa intenção na
+Figura~\ref{fig:poussin:danca} que retrata sua obra \textit{Uma Dança para a
+  Música do Tempo}. É interessante aqui apontar a diferença dessa composição
+enquanto comparada com as obras de Caravaggio e a proximidade com as pinturas de
+Carracci ou Reni. Ao invés do fundo escuro, da luz artificial, encontra-se uma
+paisagem iluminada, que se preocupa em retratar o belo. Não há espaço para o
+horror, para a rigidez da verdade, como acontece com Caravaggio.
+
+% TODO: talvez incluir algumas pinturas de Carracci e Reni para facilitar
+% a comparação
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{figs/velazquez_velha.png}
+  \end{center}
+  \caption{\emph{Velha Fritando Ovos}, c. 1618}
+  \label{fig:velazquez:velha}
+\end{wrapfigure}
+
+\textbf{\emph{Diego Velázquez}}, Espanha, 1599-1660. Mesmo ainda não tendo
+visitado Roma, havia conhecido e se impressionado pelos trabalhos de
+Caravaggio. Há grande semelhança entre suas obras e as pinturas do mestre
+italiano, como é possível observar na Figura~\ref{fig:velazquez:velha} da obra
+\textit{Velha Fritando Ovos}. Assim como Caravaggio, retrata a natureza como ela
+é, sua verdade é mais importante do que sua aparente beleza. Na pintura em
+destaque, há uma grande preocupação com os detalhes: os ovos, as mãos, as
+feições dos modelos, os utensílios de cozinha, o vidro que o menino segura,
+todos representados com precisão fotográfica. A técnica do ``chiaroscuro'' de
+Caravaggio foi aplicada, onde uma luz intensa à esquerda da pintura ilumina com
+grande contraste os detalhes que Velázquez queria propositalmente ressaltar, ao
+mesmo tempo, o fundo é tão negro que não se pode mais observar as paredes do
+ambiente.~\cite{gombrich}
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+  \begin{center}
+    \includegraphics[width=0.45\textwidth]{figs/rembrandt_tempestade.png}
+  \end{center}
+  \caption{\emph{A Tempestade no Mar da Galiléia}, c. 1633}
+  \label{fig:rembrandt:tempestade}
+\end{wrapfigure}
+
+\textbf{\emph{Rembrandt van Rijn}}, Holanda, 1606-69. É reconhecido como o maior
+pintor da Holanda, dono de uma série de autorretratos que contam de forma
+biográfica toda a sua vida.~\cite{van1999, gombrich} Rembrandt usava a técnica
+do ``chiaroscuro'' porém de maneira diferente, como é possível ver na \textit{A
+  Tempestade no Mar da Galiléia} (Figura~\ref{fig:rembrandt:tempestade}).  Há
+grande uso de contraste, mas o fundo não está mergulhado em negro, ao contrário,
+o céu ajuda a complementar a composição, o mesmo pode se dizer do mar. Essa
+mesma abordagem está presente nos retratos e outras cenas sagradas que
+pintou.~\cite{van1997} De todos os pintores do Barroco, Rembrandt parece usar as
+técnicas de seus antepassados, mas ao mesmo tempo, se contrapor a eles
+adicionando nuances de seu próprio estilo.
+
+\textbf{\emph{Johannes Vermeer}} Uma das grandes realizações dos pintores
+holandeses é a retratação da natureza-morta com incrível
+detalhismo.~\cite{wadum} Vermeer é considerado o grande mestre deste estilo, mas
+ao invés de objetos, incluía pessoas em sua natureza-morta.~\cite{gombrich}
+Vermeer parece procurar a melhor vestimenta, a melhor pose da modelo e a melhor
+posição para o ponto de luz. Parece experimentar com os objetos da cena até
+encontrar o que deseja. É interessante também perceber a diferença de sua
+pintura comparada a dos outros pintores aqui discutidos: todas são feitas
+praticamente no mesmo local --- sempre um cômodo doméstico --- e com um número
+limitado de modelos, geralmente com a luz vindo de uma janela.~\cite{wadum1998}
+Em suas pinturas há, a exemplo de Velázquez, uso extensivo do ``chiaroscuro'' de
+Caravaggio, como na \textit{A Garota com Brinco de Pérola}
+(Figura~\ref{fig:vermeer:perola}).
+
+\begin{figure}[ht!]
+  \begin{center}
+    \includegraphics[scale=1.3]{figs/vermeer_perola.png}
+  \caption{\emph{A Garota com Brinco de Pérola}, c. 1665}
+  \label{fig:vermeer:perola}
+  \end{center}
+\end{figure}
+
+\subsection{Arte Moderna}
+
+\setlength{\epigraphwidth}{0.8\textwidth}
+\epigraph{Cada época de uma civilização cria uma arte que lhe é própria e que
+  jamais se verá renascer. Tentar revivificar os princípios artísticos de
+  séculos passados só pode levar à produção de obras natimortas. Assim como é
+  impossível fazer reviver em nós o espírito e as maneiras de sentir dos antigos
+  gregos, também os esforços tentados para aplicar seus princípios [...] só
+  levarão à criação de formas semelhantes às formas gregas. A obra assim
+  produzida será sem alma para sempre.}{Wassily Kandinsky~\cite{kandinsky}}
+
+De Vermeer à van Gogh, passam-se por volta de 150 anos, toda a Renascença, o
+Impressionismo, chegando à Arte Moderna. Ao contrário do Barroco, o Moderno
+não compartilha estéticas ou técnicas. Cada pintor aplica ou cria novas formas
+de representar sua visão da natureza. Como dito por~\citeauthor{gombrich}:
+``[os pintores modernos] ansiavam por uma arte que não consistisse de truques
+que poderiam ser aprendidos, por um estilo que não é meramente um estilo, mas
+algo forte e poderoso como a paixão humana''. Van Gogh procurou por essa arte
+através do uso intenso de cores e aspecto caricato de suas
+pinturas.~\cite{hulsker} Paul Gauguin buscou no ``primitivismo''~\cite{lovejoy}
+encontrar as raízes da representação da natureza. Outros como Seurat~\cite{kemp}
+usaram da observação de propriedades físicas da visão cromática para pintar a
+natureza como uma coleção de pontos coloridos e dessa forma acabou criando o
+pontilhismo. Os pintores modernos criam seu próprio estilo de maneira
+individualista, sem a influência de seus contemporâneos ou
+predecessores.~\cite{gombrich}
+
+A Arte Moderna é representada nesse estudo pelos seguintes pintores:
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{figs/vangogh_quarto.png}
+  \end{center}
+  \caption{\emph{Quarto em Arles}, c. 1889}
+  \label{fig:vangogh:quarto}
+\end{wrapfigure}
+
+\textbf{\emph{Vincent van Gogh}}, Holanda, 1853-1890. Junto com Cezánne e
+Gaugin, van Gogh inaugura o que veio a ser conhecido como ``arte
+moderna''.~\cite{gombrich} Cada pincelada de van Gogh revela sua sensação ao
+estar pintando, sua emoção; e garantem movimento à composição. Não estava
+interessado em respeitar regras de perspectiva, de composição, ou
+sombra.~\cite{hulsker} É possível perceber esse menosprezo pelo clássico em sua
+obra \textit{Quarto em Arles} (Figura~\ref{fig:vangogh:quarto}). Os móveis não
+apresentam perspectiva, muito menos dimensões corretas. Não há sombra na
+pintura. Propunha usar as cores de maneira franca, sem se render às técnicas de
+sombreado. As pinceladas são todas aparentes, formam a própria textura. Nada tem
+de parecido com as obras Barrocas, ou mesmo do Impressionismo. Usava a distorção
+dos objetos para expressar o que sentia. Vale complementar tal figura com as
+palavras do próprio van Gogh em uma de suas inúmeras cartas: ``Lamentavelmente,
+meu caríssimo amigo, o público apenas verá nesse exagero uma caricatura --- mas
+o que nos importa isso?''.~\cite{van1958} Mesmo sem perceber, acabara por
+desempenhar um papel revolucionário para as artes, e se opõe assim a todos os
+pintores conhecidos até então.
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \begin{center}
+    \includegraphics[width=0.4\textwidth]{figs/kandinsky_white.png}
+  \end{center}
+  \caption{\emph{Em Branco}, c. 1923}
+  \label{fig:kandinsky:white}
+\end{wrapfigure}
+
+\textbf{\emph{Wassily Kandinsky}}, Rússia, 1866-1944. Possivelmente inaugurou o
+que veio a ser conhecido como ``arte abstrata'' onde nenhum objeto é
+reconhecível na pintura.~\cite{duchting} Suas pinturas encontram ressonância com
+a música cromática (encontrada já em Bach em seu ``Cravo Bem Temperado'',
+tornando-se elemento expressivo no fim do período romântico, com Lizt, Mahler e
+Wagner, e acabando por impulsionar o atonalismo da música serial dodecafônica,
+já no século XX) no sentido do uso de toda a escala cromática em uma
+composição.~\cite{gombrich} Kandinsky estava interessado no efeito perceptivo da
+cor pura, na interpretação psicológica das cores.~\cite{ione} Assim, formas que
+lembrassem objetos da natureza não eram necessários, como visível na
+Figura~\ref{fig:kandinsky:white}. Esse uso das cores de maneira direta e franca
+já tinha sido anunciado por van Gogh, que negava o uso de sombras para tornar as
+cores ainda mais aparentes e expressivas, algo visto também em Kandinsky e
+Matisse.
+
+
+\textbf{\emph{Henri Matisse}}, França, 1869-1954. Foi o mais famoso pintor do
+grupo parisiense conhecido como \textit{Lez Fauves}, ou ``os
+selvagens''.~\cite{elderfield,freeman} Tal grupo foi assim chamado pelo desprezo
+às formas encontradas na natureza e pelo uso de cores ``violentas'' em suas
+pinturas. 
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \begin{center}
+    \includegraphics[width=0.4\textwidth]{figs/matisse_red.png}
+  \end{center}
+  \caption{\emph{A mesa de jantar: harmonia em vermelho (quarto vermelho)}, c. 1908}
+  \label{fig:matisse:red}
+\end{wrapfigure}
+
+Dedicou-se à ``simplificação decorativa'' ao estudar os esquemas de cores de
+tapetes orientais e transpor tais esquemas para seus quadros.~\cite{gombrich}
+Como visto na Figura~\ref{fig:matisse:red} há harmonia entre todos os elementos
+da pintura, fazendo com que pareçam formar um único padrão, como em um
+tapete. Até mesmo a paisagem vista da janela parece integrar-se com a sala. Os
+desenhos do papel de parede são encontrados também na toalha da mesa. Os
+contornos simples desses desenhos são encontrados também na figura humana e em
+todos os utensílios da sala. Por esses motivos, o pintor a chamou de ``harmonia
+em vermelho'', ressaltando a importância da cor na obra.~\cite{matisse}.
+
+\begin{wrapfigure}{l}{0.4\textwidth}
+  \begin{center}
+    \includegraphics[width=0.4\textwidth]{figs/picasso_violino.png}
+  \end{center}
+  \caption{\emph{Violino}, c. 1911-12}
+  \label{fig:picasso:violino}
+\end{wrapfigure}
+
+\textbf{\emph{Pablo Picasso}}, Espanha, 1881-1973. Estava interessado no
+problema de representar uma imagem através de objetos simples, mas sem perder
+sua característica de solidez e profundidade.~\cite{daix,gombrich} Influenciado
+por Cézanne~\cite{rishel}, emprega de forma literal seu conselho de observar a
+natureza como um conjunto de esferas, cones e cilindros. Procura então
+representar o que vê como um complexo de peças uniformes, cada uma representando
+uma faceta do que está sendo retratado, fundando assim o movimento
+cubista.~\cite{barr,golding} Essa colagem geométrica é vista em \emph{Violino}
+(Figura~\ref{fig:picasso:violino}). De certa forma, relembra os desenhos
+``primitivos'' que retratam o objeto a partir do ponto de vista que mais lhe
+representa. Os traços dos símbolos encontrados no instrumento musical são
+repetidos: como as curvas da voluta, dos efes e do corpo. O mesmo grupo de 4
+cordas aparece diversas vezes, como que querendo representá-las de vários pontos
+de vista. Essa colagem de pontos de vista remete ao que se dá quando tenta-se
+resgatar um objeto na memória: quando imagina-se um violino, sua forma é
+exagerada; não se imagina um violino específico, mas um conjunto de detalhes de
+todos os violinos que já foram experimentados pela visão e armazenados na
+memória. Embora seja uma colagem de formas desconexas, a pintura aparenta
+organização, como que seu todo desse sentido ao objeto conhecido
+previamente.~\cite{gombrich}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{figs/miro_campo.png}
+  \end{center}
+  \caption{\emph{O Campo Cultivado}, c. 1923-24}
+  \label{fig:miro:campo}
+\end{wrapfigure}
+
+
+\textbf{\emph{Joan Miró}}, Espanha, 1893-1983. Inicialmente teve sua fase
+fauvista mas tornou-se reconhecidamente um surrealista. Miró foi um dos
+primeiros artistas a desenvolver a ``escrita automática'', uma técnica onde o
+artista deixa sua mão mover-se livremente pelo papel, transferindo-a em seguida
+para a tela.~\cite{montagu} Queria com isso se desfazer das técnicas de pintura
+já estabelecidas. Utilizou também um dicionário de símbolos abstratos para
+representar objetos reais (e.g.\ um triângulo para a cabeça, linhas curvas para
+um bigode) como é visto na Figura~\ref{fig:miro:campo}, onde sua obra acaba por
+se tornar uma colagem destes símbolos.~\cite{stich}
+
+\textbf{\emph{Jackson Pollock}}, Estados Unidos, 1912-1956. Abandonou as imagens
+fantásticas do Surrealismo e os métodos convencionais de pintura. Pintava com as
+telas jogadas no chão, gotejando ou arremessando suas tintas, em pé, sobre as
+telas. 
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics{figs/pollock_ritmo.png}
+  \end{center}
+  \caption{\emph{Ritmo de Outono}, c. 1950}
+  \label{fig:pollock:ritmo}
+\end{figure}
+
+O complexo de linhas (visto na Figura~\ref{fig:pollock:ritmo}) reflete o desejo
+de simplificação dos artistas modernos assim como sua busca por uma ``pintura
+pura''~\cite{gombrich}. Pollock trilhou essa busca através do que ficou
+conhecido como ``pintura de ação'': uma pintura não premeditada, criada por
+impulso expontâneo. Isso é afirmado pelo próprio pintor: ``Quando eu estou
+pintando, eu não tenho noção do que eu estou fazendo. Somente depois de um
+período eu vejo no que eu estava trabalhando. Eu não tenho medo de fazer
+mudanças, de destruir a imagem, etc., porque a pintura tem vida própria. Eu
+tento deixar isso acontecer.''~\cite{pollock}
+
+\section{Conceitos em Filosofia}
+\label{sec:fund:filosofia}
+
+Dialética, oposição e inovação são conceitos essenciais nas discussões
+filosóficas. A dialética é vista como método filosófico para argumentação,
+central na filosofia ocidental e oriental.~\cite{deleuze,pinto,van} O método envolve dois ou mais
+argumentos (ou ideias) contraditórios, a tese e a antítese. A solução dialética
+para esse conflito seria a síntese, uma nova ideia que busca pelo equilíbrio da
+tese e antítese. Como a tradução literal sugere, ``o caminho entre as ideias'' é
+o diálogo entre ideias que leva a outras ideias. Zenão de Eleia, Aristóteles,
+Platão e Sócrates foram pioneiros em seu uso, e também está presente no método
+dialético de Hegel e na dialética de Marx.~\cite{dialectics}
+
+A oposição de ideias está intimamente relacionada à dialética. Há grande
+oposição entre a tese e a antítese, sendo ideias essencialmente
+contraditórias. A inovação, por sua vez, relaciona-se com a oposição: uma ideia
+não necessariamente estará destinada a opor uma outra ideia, não participa
+apenas de um ``jogo de oposição'' pois pode também buscar um movimento novo,
+alternativo. Desta forma, está inovando.
+
+Uma proposta de quantificar tais conceitos foi iniciado em um estudo aplicado à
+Filosofia e Música~\cite{vieira}. A partir de uma matriz de atributos que
+descrevia pesos (ou notas) dadas em conjunto pelos autores à certas
+características de filosófos e músicos, descrevia-se um espaço vetorial onde os
+conceitos eram quantificados. Esse estudo está sendo aqui expandido, onde as
+mesmas medidas são aplicadas, mas não mais a atributos com notas que poderiam
+ser julgadas como subjetivas, mas a partir da extração de tais atributos por
+processamento digital de imagens (discuto na Seção~\ref{sec:fund:imagens}).
+
+Havendo $N_f$ atributos $\vec{f_i}$, define-se um espaço $N_f$-dimensional chamado de
+\textit{espaço criativo}, pois a exemplo do espaço criativo sugerido por
+Deleuze~\cite{deleuze}, tem como objetivo a representação de uma superfície onde artefatos
+(e.g.\ pinturas, peças musicais, poemas) criados por agentes (e.g.\ pintores,
+compositores, escritores) caracterizam uma região que foi explorada
+criativamente. É neste espaço criativo que as medidas de dialética, oposição e
+inovação são calculadas.
+
+Para simplificar o cálculo, um protótipo $\vec{p_i}$ é definido para cada classe
+$C_p$. Cada protótipo sumariza uma classe de pinturas (ou um pintor),
+correspondendo ao seu \textit{centróide}: $\vec{p_i} = \frac{1}{N_p}
+\sum_{i=1}^{N_p} \vec{f_i}$ calculado no espaço projetado. É importante notar
+que essa medida é independente de dimensão, porém métodos de redução de
+dimensionalidade são aplicados à matriz de atributos para possibilitar a
+visualização do \textit{espaço criativo} em duas dimensões.
+
+Uma sequência $S$ de $\vec{p_i}$ estados define uma série temporal. Um estado
+médio em um dado tempo $i$ abrangendo os estados $\vec{p_1}$ até $\vec{p_i}$ é
+definido como
+
+\begin{equation}
+\vec{a_i} = \frac{1}{i}\sum_{j=1}^i\vec{p}_j.
+\end{equation}
+
+O estado de oposição $\vec{r_i}$ define uma medida de oposição à $\vec{p_i}$ como
+
+\begin{equation}
+\vec{r}_i = \vec{p}_i + 2(\vec{a}_i - \vec{p}_i)
+\end{equation}
+
+\noindent e dessa forma, um vetor de oposição $\vec{D}_i$ pode ser definido como
+
+\begin{equation}
+\vec{D}_i=\vec{r}_i - \vec{p}_i
+\end{equation}
+
+\noindent que representa propriamente o deslocamente do estado $\vec{r}_i$ em
+função de $\vec{p}_i$.
+
+Sabendo que qualquer deslocamento a partir de um estado $\vec{p_i}$ até um outro
+estado $\vec{p_j}$ é definido como
+
+\begin{equation}
+\vec{M}_{i,j} = \vec{p}_j - \vec{p}_i
+\end{equation}
+
+\noindent é possível definir um \emph{índice de oposição} $W_{i,j}$ para
+quantificar quanto um protótipo $\vec{p_j}$ se opõe a outro protótipo $\vec{p_i}$ (ou seja,
+um deslocamento na direção de $\vec{r_i}$) ou concorda com outro protótipo $p_i$
+(um deslocamento na direção de $-\vec{r_i}$):
+
+\begin{equation}
+W_{i,j} = \frac{\left< \vec{M}_{i,j}, \vec{D}_i\right>}{||\vec{D}_i||^2}
+\end{equation}
+
+\noindent sendo portanto a projeção de $\vec{M}_{i,j}$ em $\vec{D}_i$, ou seja,
+não importa onde o deslocamento tenha se dado, ele é considerado em relação ao
+vetor de oposição (ou deslocamento) $\vec{D}_i$. A
+Figura~\ref{fig:desc_opos_inov} ilustra $\vec{D}_i$, dados dois estados
+consecutivos $\vec{p_i}$ e $\vec{p_j}$, o estado de oposição $\vec{r_i}$ e o
+estado médio $\vec{a_i}$.
+
+Porém, movimentos nesse \textit{espaço criativo} não estão restritos à
+confirmação ou contradição de ``ideias''. Ideias alternativas podem existir fora
+desse deslocamento dualístico. Isso é modelado como um \emph{índice de inovação}
+que quantifica quanto um protótipo $\vec{p_j}$ é inovador quando comparado com um
+outro protótipo $\vec{p_i}$:
+
+%% Explicar em detalhes baseando-se em http://mathworld.wolfram.com/Point-LineDistance3-Dimensional.html
+
+\begin{equation}
+s_{i,j} = \sqrt{\frac{|\vec{p}_i-\vec{p}_j|^2
+          |\vec{a}_i-\vec{p}_i|^2 - 
+          [(\vec{p}_i-\vec{p}_j) . 
+            (\vec{a}_i-\vec{p}_i)]^2}
+        {|\vec{a}_i-\vec{p}_i|^2}}
+\end{equation}
+
+\noindent ou seja, quanto $\vec{p_j}$ se afasta da linha $L_i$ formada por $\vec{p_i}$ e
+$\vec{r_i}$: a linha de ``oposição''.  A Figura~\ref{fig:desc_opos_inov} também
+ilustra os cálculos dos índices de oposição e inovação para dois estados
+consecutivos $\vec{p_i}$ e $\vec{p_j}$ da série temporal e uma linha $L_i$.
+
+\begin{figure}[ht!]
+\begin{center}
+        \includegraphics[scale=.6]{figs/desc_opos.pdf}
+      \caption{Cálculo dos índices de oposição $W_{i,j}$ e inovação $s_{i,j}$
+        dados dois estados consecutivos $\vec{p_i}$ e $\vec{p_j}$.}
+        \label{fig:desc_opos_inov}
+\end{center}
+\end{figure}
+
+Uma outra medida surge quando consideram-se três estados consecutivos nos tempos
+$i,j$ e $k$. Sendo $\vec{p_i}$ a tese, $\vec{p_j}$ a antítese e $\vec{p_k}$ a
+síntese, um \emph{índice de contra-dialética} pode ser definido como sendo
+
+%% TODO: deduzir como uma generalização de http://mathworld.wolfram.com/Point-PlaneDistance.html
+
+\begin{equation}
+d_{i \rightarrow k} = 
+      \frac{|\left< \vec{p}_j-\vec{p}_i,\vec{p}_k \right> + 
+        \frac{1}{2}\left<\vec{p}_i-\vec{p}_j, \vec{p}_i+\vec{p}_j\right>|}
+           {|\vec{p}_j-\vec{p}_i|}
+\end{equation}
+
+\noindent ou, a distância entre $\vec{p_k}$ e a bissetriz $B_{i,j}$ (ou um
+``hiperplano bissetriz'' quando considerando espaços $N_f$-dimensionais) entre
+$\vec{p_i}$ e $\vec{p_j}$. Em outras palavras, um estado $\vec{p_k}$ com grande distância $d_{i
+  \rightarrow k}$ está afastado da síntese (possui baixa dialética) e
+vice-versa. A medida de contra-dialética $d_{i \rightarrow k}$ é ilustrada na
+Figura~\ref{fig:desc_dialetica} para três estados consecutivos $\vec{p_i}$,
+$\vec{p_j}$ e $\vec{p_k}$ da série temporal, dada uma bissetriz $B_{i,j}$
+formada pelos dois primeiros estados da série.
+
+\begin{figure}[ht!]
+\begin{center}
+        \includegraphics[scale=.6]{figs/desc_dialetica.pdf}
+      \caption{Cálculo da contra-dialética $d_{i \rightarrow k}$ dados os
+        estados consecutivos de tese $\vec{p_i}$, antítese $\vec{p_j}$ e síntese
+        $\vec{p_k}$. Quanto maior o valor da distância $d_{i \rightarrow k}$ de
+        $\vec{p_k}$ à síntese ideal formada pela bissetriz $ML_{i,j}$ entre
+        $\vec{p_i}$ e $\vec{p_j}$, menor a dialética.  }
+        \label{fig:desc_dialetica}
+\end{center}
+\end{figure}
+
+\section{Processamento e análise de imagens}
+\label{sec:fund:imagens}
+
+Antes de analisar qualquer medida proveniente de atributos de artefatos do mundo
+físico, é preciso representá-los através de um modelo computacional. Como o
+domínio desse estudo é o das Artes Plásticas, mais precisamente, a Pintura, é
+necessário adquirir e processar imagens de obras de artistas.
+
+O processamento e análise de imagens envolve operações para adquirir, manipular
+e representar imagens digitalmente em um sistema computacional.~\cite{gonzalez} Envolve uma
+série de etapas canônicas, sumarizadas na Figura~\ref{fig:etapas-pdi}.~\cite{luciano} Na
+presente seção são discutidos cada uma dessas etapas que tornaram possível a
+realização desse estudo.
+
+\begin{figure}[ht!]
+\begin{center}
+        \includegraphics[scale=.6]{figs/etapas_pdi}
+      \caption{Etapas canônicas para processamento e análise de imagens.}
+        \label{fig:etapas-pdi}
+\end{center}
+\end{figure}
+
+Cada imagem, após ser digitalizada, é representada como uma matriz de valores
+onde cada elemento armazena a intensidade de cor de uma região amostrada da
+imagem original. Uma imagem $I$ representada no formato digital conhecido como
+RGB é definida como a matriz $I$ de valores discretos $I_{(i,j)}$ com dimensão
+$N_i \times N_j \times N_c$. $N_i$ e $N_j$ são, respectivamente, a quantidade de
+\textit{pixels} (ou \textit{picture elements}) da linha e coluna de $I$, e $N_c$
+determina a quantidade de canais de cores da imagem --- e.g.\ para uma imagem
+RGB de $800 x 800$ \textit{pixels}, sua ordem é $800 \times 800 \times 3$. Desta
+forma, cada elemento (ou pixel) $I_{(i,j)}$ da matriz corresponde a uma
+\emph{tripla} $(R, G, B)$ de valores inteiros compreendidos entre 0 e 255, onde
+0 é o limite mais escuro e 255 o mais claro, para cada um dos três canais de
+cores: vermelho, verde e azul.
+
+As imagens podem ainda ser representadas em escala de cinza, por uma matriz
+$G$ com dimensão $N_i \times N_j$, onde cada valor $G_{(i,j)}$ é um número inteiro
+que determina a intensidade de cinza de cada \textit{pixel} -- como existe
+apenas um canal de cor, cinza, não se tem uma tupla, mas um valor inteiro, para
+representar a cor do elemento. Alguns algoritmos de processamento, como os de
+segmentação, necessitam de imagens nesse formato.
+
+Outros algoritmos necessitam representar a imagem com apenas dois valores: preto
+e branco. Por exemplo, elementos conexos em uma imagem segmentada são
+representados por imagens em preto e branco com o objetivo de facilitar a
+marcação de cada região conexa. A matriz é definida como $B$ tendo dimensão $N_i
+\times N_j$ e cada um de seus elementos $B_{(i,j)}$ pode assumir apenas dois
+valores, 0 ou 255. Convenciona-se usar também os valores 0 ou 1, dado o aspecto
+binário da matriz e para facilitar a aplicação de operações lógicas sobre elas.
+
+Uma imagem $I$, $G$ ou $B$ pode também ser definida como uma função $f(i,j)$ que
+mapeia as coordenadas $(i,j)$ de um \textit{pixel} em seu valor $v$. Sendo $S_x
+= \{0, 1, ..., N_j - 1\}$ e $S_y = \{0, 1, ..., N_i - 1\}$ o domínio espacial da
+imagem e $S_v = \{0, 1, ..., 255\}$ o domínio de $v$, tem-se a função
+
+\begin{equation}
+  f : S_x \times S_y \to S_v
+\end{equation}
+
+\noindent onde para $B$ o domínio é $S_v = \{0, 255\}$ ou $S_v = \{0, 1\}$, e para
+$I$ e $G$ o domínio é $S_v = \{0, 1, ..., 255\}$, representando as gradações de
+cores em cinza e para cada canal de cor primária, respectivamente.
+
+\subsection{Conceitos úteis de Geometria Discreta, Morfologia Matemática e Estatística}
+
+Enquanto trabalhando com imagens digitais o conceito de \emph{vizinhança} é
+central.~\cite{luciano} Algoritmos para pré-processamento (e.g.\ como a
+equalização por histograma, ou filtro de medianas) e até mesmo para extração de
+características (e.g.\ algoritmo de curvatura ou cálculo de entropia local) são
+ambos baseados nesse conceito. Os vizinhos de um \textit{pixel} $I_{(i,j)}$ são
+os $N_V$ pixels $V_i$ que o circundam, e costuma-se chamar este conjunto de
+\emph{vizinhança}-$N_V$ com $0 \leq i \leq N_V$. Duas vizinhanças são comuns, a
+vizinhança-4 e vizinhança-8. Dado um pixel $I_{(i,j)}$, sua vizinhança-4
+corresponderia aos seguintes conjuntos:
+
+\begin{eqnarray}
+  V_0 & = & (i, j+1) \\
+  V_1 & = & (i-1, j) \\
+  V_2 & = & (i, j-1) \\
+  V_3 & = & (i+1, j)
+\end{eqnarray}
+
+\noindent e sua vizinhança-8 seria dada pelos seguintes:
+
+\begin{eqnarray}
+  V_0 & = & (i, j+1) \\
+  V_1 & = & (i-1, j+1) \\
+  V_2 & = & (i-1, j) \\
+  V_3 & = & (i-1, j-1) \\
+  V_4 & = & (i, j-1) \\
+  V_5 & = & (i+1, j-1) \\
+  V_6 & = & (i+1, j) \\
+  V_7 & = & (i+1, j+1)
+\end{eqnarray}
+
+\noindent onde é importante notar que as coordenadas $(i,j)$ são relacionadas
+com as linhas e colunas da matriz que representa os pixels da imagem e não com
+as coordenadas cartesianas $(x,y)$ de um ponto qualquer na imagem. A
+Figura~\ref{fig:vizinhanca} ajuda a compreender tais vizinhanças.
+
+\begin{figure}[ht!]
+\begin{center}
+
+\begin{tikzpicture}[thick]
+\draw (0,0) grid (3,3);
+\node at (1.5,1.5) {$p$};
+
+\node at (2.5,1.5) {$V_0$};
+\node at (1.5,2.5) {$V_1$};
+\node at (0.5,1.5) {$V_2$};
+\node at (1.5,0.5) {$V_3$};
+
+\draw (1.5,0) node[below] {vizinhança-$4$};
+\end{tikzpicture}
+\hspace{2pc}
+\begin{tikzpicture}[thick]
+\draw (0,0) grid (3,3);
+\node at (1.5,1.5) {$p$};
+
+\node at (2.5,1.5) {$V_0$};
+\node at (2.5,2.5) {$V_1$};
+\node at (1.5,2.5) {$V_2$};
+\node at (0.5,2.5) {$V_3$};
+\node at (0.5,1.5) {$V_4$};
+\node at (0.5,0.5) {$V_5$};
+\node at (1.5,0.5) {$V_6$};
+\node at (2.5,0.5) {$V_7$};
+
+\draw (1.5,0) node[below] {vizinhança-$8$};
+\end{tikzpicture}
+
+      \caption{Coordenadas das vizinhanças-$4$ e $8$ para um dado pixel
+        $I_{(i,j)}$ qualquer.}
+        \label{fig:vizinhanca}
+\end{center}
+\end{figure}
+
+Tendo uma vizinhança em torno de um pixel $I_{(i,j)}$ e uma função $f(x,y)$ que
+representa tal pixel (e por conseguinte, a própria imagem), pode-se definir uma
+função de processamento~\cite{gonzalez} da imagem como
+
+\begin{equation}
+  g(x,y) = T[f(x,y)]
+\end{equation}
+
+\noindent sendo $f(x,y)$ a imagem de entrada, $g(x,y)$ a imagem processada e $T$
+é um operador sobre $f$, definido sobre alguma vizinhança-$N_V$ de
+$(x,y)$. Dessa forma, o centro $(x,y)$ da sub-imagem que compreende os pixeis da
+vizinhança-$N_V$ é movido de pixel em pixel, o que corresponde a alterar os
+valores $f(x,y)$ do centro pelo valor obtido por $g(x,y)$. É possível usar
+várias formas de subimagens (e.g.\ círculos ou elipses) mas subimagens quadradas
+são mais comuns para vizinhanças pois são de fácil implementação.
+
+O operador $T$ é essencial nesse tipo de processamento, pois é ele quem mapeia
+os valores de $f$ em $g$. Uma operação de mapeamento muito comum para $T$ é
+mapear o nível de cinza $r$ em $f$ para o nível de cinza $s$ em $g$, ou:
+
+\begin{equation}
+  s = T(r)
+\end{equation} 
+
+\noindent assim os níveis de cinza da imagem processada dependerá de alguma
+operação definida em $T$. A equalização de uma imagem de entrada a partir de um
+operador $T$ baseado no histograma de tons de cinza da imagem é um exemplo de
+aplicação, discutido em detalhes na Subseção~\ref{sec:preproc}.
+
+%% Através dessa noção de vizinhança é possível definir um conjunto de funções que
+%% atuam como operadores morfológicos em uma dada imagem. Um conjunto ou função de
+%% vizinhança é então denominado \emph{elemento estruturante}. Podem ser aplicados
+%% tanto em imagens binárias quanto em escalas de cinza.
+
+%% Dado uma imagem em escala de cinza representada pela função $f(x,y)$ e um
+%% elemento estruturange $g(x,y)$
+
+%% TODO: talvez escrever sobre elementos estruturantes (disco, ...) se forem
+%% usados nos algoritmos a seguir... e também operações em Matemática
+%% Morfológica (dilatação)
+
+Durante todo este estudo, serão utilizados estes conceitos, e soma-se a eles
+alguns outros, emprestados da Estatística. Portanto, são revisados aqui os momentos
+estatísticos básicos:
+
+\begin{equation}
+\text{média}(X) = m_x=\mu_x=\overline{x}=\frac{\sum_{i=1}^{n}X_i}{n}
+\end{equation}
+
+\begin{equation}
+\text{variância}(X)=var_x=\sigma^2_x=s^2_x=\frac{\sum_{i=1}^{n}(X_i-\mu_x)^2}{n-1}
+\end{equation}
+
+\begin{equation}
+\text{desvio\;padrão}(X)=std(X)=\sigma_x=s_x=\sqrt{\frac{\sum_{i=1}^{n}(X_i-\mu_x)^2}{n}}
+\end{equation}
+
+\begin{equation}
+\text{mediana}(X) = \text{\~{x}} =\mu_{1/2}= \begin{cases}
+                               X_{(n+1)/2} & n \,\, \text{ímpar} \\
+                               \text{média}(X_{n/2}, X_{n/2+1}) & n \,\, \text{par}
+                               \end{cases} \,\,\,\,\, (\text{estando $X$ ordenado})
+\end{equation}
+
+
+\begin{equation}
+\text{covariância}(X,Y)=cov(X,Y)=c_{X,Y}=\frac{\sum_{i=1}^{n}(X_i-\mu_x)(Y_i-\mu_y) }{n}
+\end{equation}
+
+\subsection{Pré-processamento}
+\label{sec:preproc}
+
+A etapa de pré-processamento tem como objetivo melhorar certos aspectos de uma
+imagem digital. É possível então corrigir falhas ocorridas durante a aquisição
+da imagem ou realçar certos detalhes de interesse.
+
+Costuma-se dividir o pré-processamento em operações no domínio real e das
+frequências.~\cite{gonzalez} No domínio real, os próprios elementos da matriz $I$ são alterados
+diretamente. Já o domínio das frequências envolve a transformada de Fourier da
+matriz para manipular bandas de valores, necessitando da transformada inversa
+para levar a matriz ao espaço real novamente. 
+
+Uma operação recorrente de pré-processamento no domínio real, por ser
+computacionalmente barata e eficiente, é a \emph{equalização por histograma}. O
+objetivo é ajustar o nível de contraste da imagem baseando-se em seu histograma
+de valores. O histograma de uma imagem $G$ é dado pela função
+
+\begin{equation}
+\text{hist}(G) = p(R_k) = \frac{N_k}{N_G}
+\end{equation}
+
+\noindent onde $R_k$ é um nível de cinza $k$, $N_k$ é a quantidade de pixels da
+imagem $G$ que possuem nível de cinza $k \in \{0, 1, ..., 255\}$, $N_G$ é quantidade total de pixels da
+imagem $G$. Ou seja, $p(R_k)$ corresponde à
+probabilidade de ocorrência de um nível de cinza $R_k$ na imagem. O gráfico de
+$p(R_k)$ é denominado \emph{histograma}. Essa informação é interessante quando
+se deseja realçar o contraste da imagem, visto que pode-se mensurar a quantidade
+de pixels em regiões mais claras, mais escuras e com níveis de cinza
+medianos. Assim, pode-se definir uma operação $T$ que equalize os níveis de
+cinza $R_k$ de $f$, gerando uma imagem equalizada $g$:
+
+\begin{equation}
+s = T(R_k) = \sum_{j=0}^k \frac{N_j}{N_G} = \sum_{j=0}^k p(R_j)
+\end{equation}
+
+\noindent à essa operação $T$ se dá o nome de \emph{equalização de histograma}
+ou \emph{linearização de histograma}. Ao se mapear os níveis de cinza $R_k$ de $f$
+nos níveis $s$ de $g$, tem-se a imagem equalizada em contraste.
+
+%% TODO: talvez acrescentar uma figura exemplificando a equalização por histograma?
+
+Após equalizar os níveis de contraste da imagem, é comum suavisá-la e remover
+ruído através de filtros, como por exemplo, o de mediana. Esse efeito de suavização e
+remoção de ruídos ocorre pois cada pixel terá como seu valor a mediana de seus
+vizinhos. Assim, quanto maior o tamanho da vizinhança, maior a suavização em
+relação à imagem. O filtro de
+média também pode ser utilizado, porém o filtro de mediana preserva detalhes
+de bordas que são borrados pelo filtro de média, portanto seu uso é mais
+interessante no caso da análise de pinturas.~\cite{gonzalez} O que se quer é a eliminação de
+ruído sem borrar detalhes de borda.
+
+Para implementar o filtro por mediana, troca-se o valor do nível de cinza $R_k$
+em $f$ pela mediana dos níveis de cinza da vizinhança-$N_V$ desse pixel. Essa
+operação pode ser definida como
+
+\begin{equation}
+  T[f(x,y)] = \text{mediana}(V_N(f(x,y)))
+\end{equation}
+
+\noindent onde $V_N(f(x,y))$ é o conjunto de pixels na vizinhança-$N_V$ com
+centro em $(x,y)$ na imagem $f$.
+
+\subsection{Segmentação}
+\label{sec:slic}
+
+Embora a visão humana seja capaz de distinguir formas (e dar-lhes significado,
+classificando-as) com relativa precisão, é preciso aplicar um procedimento
+conhecido como \emph{segmentação} para identificar formas da imagem
+digitalizada. Assim, o processo de segmentação tem como objetivo particionar uma
+imagem em múltiplos segmentos que são na realidade grupos de pixels.
+
+Há um grande número de algoritmos de segmentação, sendo uma área de pesquisa
+rica e em constante desenvolvimento. Portanto, não há como esgotar todo o
+conjunto de algoritmos existentes em via de testá-los para a segmentação das
+pinturas selecionadas. Uma prática comum é selecionar um grupo de algoritmos e
+aplicá-los exaustivamente ao conjunto de imagens e, de maneira experimental,
+escolher o algoritmo que mais contribui para a segmentação pretendida. O
+algoritmo SLIC (\textit{Simple Linear Iterative Clustering})~\cite{slic} é baseado em
+superpixels e aplicado em matrizes coloridas de imagens. Portanto, para pinturas
+coloridas, seu uso é incentivado e demonstra segmentação esperada.
+
+Algoritmos baseados em superpixels como o SLIC agrupam pixels em regiões
+que tenham maior significado do que a simples malha de pixels. Essas regiões
+mais significativas são chamadas superpixels. O algoritmo SLIC agrupa os pixels
+em superpixels através de uma adaptação do algoritmo de clusterização
+\emph{k-means}. Apesar de ser uma ideia simples, se mostra comparável aos
+algoritmos de superpixel considerados ``estado da arte'' atualmente~\cite{slic},
+chegando a superá-los para a segmentação.
+
+O Algoritmo~\ref{algo:slic} lista os passos do procedimento SLIC. Primeiramente,
+uma imagem RGB $I$ precisa ter seus elementos convertidos para o padrão CIE 1976
+$L*$ $a*$ $b*$ (ou simplesmente CIELAB)~\cite{cielab1}, que representa uma
+determinada cor em função de um espaço definido pela base $(L*, a*, b*)$,
+ilustrado na Figura~\ref{fig:cielab}. $L*$ determina a quantidade de
+luminosidade da cor enquanto o eixo $a*$ determina a matiz entre verde e
+vermelho, e $b*$ a matiz entre azul e amarelo. A conversão do
+formato RGB para CIELAB é discutida em detalhes por~\citeauthor{cielab2}.
+
+\begin{figure}[ht!]
+\begin{center}
+  \begin{tikzpicture}
+    % b* shade
+    \path[draw, shade, left color=blue, right color=yellow, opacity=.6] 
+    (0,0,0) node[below] {$-b*$} -- (5,2.0,0) node[below] {$+b*$} -- (5, 2.5, 0)
+    -- (0, 0.5, 0) -- cycle;
+
+    % a* shade
+    \path[draw, shade, left color=green, right color=red, opacity=.6] 
+    (0, 2.0, 0) node[below] {$-a*$} -- (5, 0, 0) node[below] {$+a*$} 
+    -- (5, .5, 0) -- (0, 2.5, 0) -- cycle;
+    
+    % L* shade
+    \path[draw, shade, top color=white, bottom color=black, opacity=.6] 
+    (2.65, -1.85, 0) node[right] {$L* = 0$} -- (2.65, 4.45, 0) node[right] {$L*=100$}
+    -- (2.35, 4.3, 0)  -- (2.35, -2., 0) -- cycle;
+
+    % b*-axis
+    \draw[<->] (0,0.25,0) -- (5, 2.25, 0);
+    % a*-axis
+    \draw[<->] (0,2.25,0) -- (5, 0.25, 0);
+    % L*-axis
+    \draw[<->] (2.5,-1.90,0) -- (2.5,4.35,0);
+
+  \end{tikzpicture}
+  \caption{Espaço de cor CIELAB. Uma cor qualquer é representada como um ponto
+    no espaço $(L*, a*, b*)$.}
+  \label{fig:cielab}
+  \end{center}
+\end{figure}
+
+Desta forma, cada pixel $I_{(x,y)}$ passa a ser representado por uma quíntupla
+$(L_i, a_i, b_i, x_i, y_i)$, sendo $L_i$, $a_i$ e $b_i$ as componentes da cor em
+formato CIELAB e $x_i, y_i$ as coordenadas em linha e coluna do pixel. O único
+parâmetro do algoritmo é $k$, sendo o número máximo de clusters. Em um passo
+inicial, $k$ clusters são amostrados tendo seus centróides $C_k = (L_k, a_k,
+b_k, x_k, y_k)$ distribuídos em uma malha regular de espaçamento $S =
+\sqrt{N_I/k}$, sendo $N_I$ o número de pixels da imagem. No passo de atribuição,
+cada pixel $I_{(x,y)}$ é associado à uma região limitada em torno de $C_k$. Isso
+acaba por reduzir a complexidade desse algoritmo, pois essa atribuição de
+cada pixel ao seu cluster não é feita considerando-se todos os $N_I$ pixels da
+imagem, mas apenas aqueles pixels dentro dessa região. Como a região de um
+superpixel tem como tamanho aproximadamente $S \times S$, o tamanho da região de
+busca pelo novo centróide do cluster (i.e. $k-means$) é $2S \times 2S$ em torno
+do centróide $C_k$ atual --- tal tamanho é definido por convenção do método
+SLIC~\cite{slic}. Tendo todos os pixels $I_{(x,y)}$ da região em torno do
+centróide, calcula-se a distância $D_{I,C}$ de cada pixel $I_{(x,y)}$ ao seu
+centróide $C_k$:
+
+\begin{eqnarray}
+  d_c      & = & \sqrt{(L_k - l_i)^2 + (a_k - a_i)^2 + (b_k - b_i)^2} \\
+  d_s      & = & \sqrt{(x_k - x_i)^2 + (y_k - y_i)^2} \\
+  D'_{I,C}  & = & \sqrt{(\frac{d_c}{N_C})^2 + (\frac{d_s}{N_S})^2} \\
+  D_{I,C}   & = & \sqrt{d_c^2 + (\frac{d_s}{S})^2 m^2}
+\end{eqnarray}
+
+\noindent onde $d_c$ e $d_s$ são as distâncias do pixel $I_{(x,y)} = (L_i, a_i,
+b_i, x_i, y_i)$ até um centróide qualquer $C_k = (L_k, a_k, b_k, x_k, y_k)$,
+considerando o espaço de cor e o espaço geométrico, respectivamente. Em
+$D'_{I,C}$ essas duas medidas são combinadas e também normalizadas segundo as
+distâncias máximas em cor e espaço, dadas por $N_C$ e $N_S$. Como os centróides
+ficam espaçados a uma distância regular $S$, pode-se fazer $N_S = S$. E o máximo
+valor de cor é dado como parâmetro $m$ do algoritmo. Esse parâmetro acaba por
+permitir o controle do peso das medidas de cor e espacial: quanto maior o valor
+de $m$, maior o peso da proximidade espacial e os superpixels serão mais
+compactos pois sua razão área por perímetro será menor. Quando $m$ é menor, os
+superpixels irão aderir mais às bordas (i.e.\ mais espalhados) de cada região e
+ao mesmo tempo terão tamanho e forma irregular. Como o algoritmo usa nativamente
+o formato CIELAB para cores, $m \in [1, 40]$. Cada pixel $I_{(x,y)}$ tem sua
+distância e rótulo atualizados, caso sua distância atual seja menor que a
+distância antiga. Por fim, no passo de atualização do algoritmo, os novos
+centróides $C_k$ são calculados como a média de todos os pixels pertencentes ao
+cluster e uma nova iteração se inicia. O algoritmo pára dado um máximo
+especificado de iterações ou se o erro residual da distância dos centróides
+atuais e anteriormente calculados forem menores ou iguais a um
+dado limiar.
+
+\begin{espacosimples}
+\begin{algorithm2e}[H]
+  \caption{Algoritmo de segmentação SLIC}
+  \label{algo:slic}
+  \SetAlgoLined
+  \Entrada{Imagem colorida $I$ em formato CIELAB}
+  \Entrada{Número máximo $k$ de clusters}
+  \Entrada{Peso $m$ para a distância no domínio espacial \emph{versus} geométrico}
+  \Entrada{Número máximo $t$ de iterações}
+
+  \Saida{Imagem rotulada $R$, cada rótulo identificando uma região segmentada}
+
+  \ParaCada{centróide $C_k = (L_k, a_k, b_k, x_k, y_k)$}{
+    $C_k \gets$ uma posição $k$ de uma malha com espaçamento $S$
+  }
+  \ParaCada{pixel $p$}{
+    $\text{rótulo}(p) \gets -1$\;
+    $\text{distância}(p) \gets \infty$
+  }
+
+  \Enqto{não atingir a iteração máxima $t$}{
+    \ParaCada{centróide $C_k$}{
+      \ParaCada{para cada pixel $p$ em uma região $2S \times 2S$ em torno de
+        $C_k$}{
+        $D \gets$ distância entre $p$ e $C_k$\;
+        \Se{$D \le \text{distância}(p)$}{
+          $\text{distância}(p) \gets D$
+          $\text{rótulo}(p) \gets k$\;
+        }
+      }
+    }
+
+    \ParaCada{centróide $C_k$}{
+      $C_k \gets$ ponto médio considerando os pixels da região
+    }
+  }
+\end{algorithm2e}
+\end{espacosimples}
+
+\vspace{1.0cm}
+
+Após ter-se todas as regiões rotuladas pelo algoritmo SLIC, é necessário um
+passo de rotulação por conectividade, visto que assim como a maioria dos
+algoritmos de segmentação, não há a garantia do retorno de regiões
+conexas. Esse passo é feito então no pós-processamento.
+
+\subsection{Pós-processamento}
+\label{sec:posproc}
+
+Algoritmos como os de segmentação têm como saída principal uma versão da imagem
+original com rótulos. Esses rótulos identificam cada região segmentada, como
+ilustrado na Figura~\ref{fig:rotulacao} -- essa etapa é comumente chamada de
+\emph{rotulação}. 
+
+\begin{figure}[ht!]
+\begin{center}
+
+\begin{tikzpicture}[thick,scale=.5]
+% região 1
+\fill[green!50] (2.0, 2.0) rectangle (4.0, 4.0);
+\fill[green!50] (2.0, 4.0) rectangle (3.0, 5.0);
+\fill[green!50] (0.0, 6.0) rectangle (2.0, 8.0);
+
+% região 2
+\fill[blue!50] (5.0, 1.0) rectangle (7.0, 5.0);
+\fill[blue!50] (3.0, 6.0) rectangle (7.0, 7.0);
+
+% rótulo 0
+\foreach \x in {0.5, 1.5, ..., 7.5} {
+  \node at (\x, 0.5) {$0$};
+}
+\foreach \x in {0.5, 1.5, ..., 4.5} {
+  \node at (\x, 1.5) {$0$};
+}
+\foreach \x in {0.5, 1.5} {
+  \foreach \y in {2.5, 3.5, ..., 5.5} {
+    \node at (\x, \y) {$0$};
+  }
+}
+\foreach \x in {2.5, 3.5, ..., 7.5} {
+  \node at (\x, 7.5) {$0$};
+}
+\foreach \y in {1.5, 2.5, ..., 7.5} {
+  \node at (7.5, \y) {$0$};
+}
+\foreach \y in {2.5, 3.5, ..., 5.5} {
+  \node at (4.5, \y) {$0$};
+}
+\foreach \y in {4.5, 5.5} {
+  \node at (3.5, \y) {$0$};
+}
+\foreach \y in {5.5, 6.5} {
+  \node at (2.5, \y) {$0$};
+}
+\foreach \x in {5.5, 6.5} {
+  \node at (\x, 5.5) {$0$};
+}
+
+% rótulo 1
+\foreach \x in {2.5, 3.5} {
+  \foreach \y in {2.5, 3.5} {
+    \node at (\x, \y) {$1$};
+  }
+}
+\foreach \x in {0.5, 1.5} {
+  \foreach \y in {6.5, 7.5} {
+    \node at (\x, \y) {$1$};
+  }
+}
+\node at (2.5, 4.5) {$1$};
+
+% rótulo 2
+\foreach \x in {5.5, 6.5} {
+  \foreach \y in {1.5, 2.5, ..., 4.5} {
+    \node at (\x, \y) {$2$};
+  }
+}
+\foreach \x in {3.5, 4.5, ..., 6.5} {
+  \node at (\x, 6.5) {$2$};
+}
+
+
+% malha (para deixar visível a tabela)
+\draw[gray] (0,0) grid (8,8);
+
+% legenda
+\node at (-1.0, 8.0) {\textit{a)}};
+
+\end{tikzpicture}
+
+\hspace{2pc}
+
+\begin{tikzpicture}[thick,scale=.5]
+% região 1
+\fill[green!50] (2.0, 2.0) rectangle (4.0, 4.0);
+\fill[green!50] (2.0, 4.0) rectangle (3.0, 5.0);
+\fill[blue!50] (0.0, 6.0) rectangle (2.0, 8.0);
+
+% região 2
+\fill[red!50] (5.0, 1.0) rectangle (7.0, 5.0);
+\fill[gray!50] (3.0, 6.0) rectangle (7.0, 7.0);
+
+% rótulo 0
+\foreach \x in {0.5, 1.5, ..., 7.5} {
+  \node at (\x, 0.5) {$0$};
+}
+\foreach \x in {0.5, 1.5, ..., 4.5} {
+  \node at (\x, 1.5) {$0$};
+}
+\foreach \x in {0.5, 1.5} {
+  \foreach \y in {2.5, 3.5, ..., 5.5} {
+    \node at (\x, \y) {$0$};
+  }
+}
+\foreach \x in {2.5, 3.5, ..., 7.5} {
+  \node at (\x, 7.5) {$0$};
+}
+\foreach \y in {1.5, 2.5, ..., 7.5} {
+  \node at (7.5, \y) {$0$};
+}
+\foreach \y in {2.5, 3.5, ..., 5.5} {
+  \node at (4.5, \y) {$0$};
+}
+\foreach \y in {4.5, 5.5} {
+  \node at (3.5, \y) {$0$};
+}
+\foreach \y in {5.5, 6.5} {
+  \node at (2.5, \y) {$0$};
+}
+\foreach \x in {5.5, 6.5} {
+  \node at (\x, 5.5) {$0$};
+}
+
+% rótulo 1
+\foreach \x in {2.5, 3.5} {
+  \foreach \y in {2.5, 3.5} {
+    \node at (\x, \y) {$1$};
+  }
+}
+\node at (2.5, 4.5) {$1$};
+
+% rótulo 2
+\foreach \x in {0.5, 1.5} {
+  \foreach \y in {6.5, 7.5} {
+    \node at (\x, \y) {$2$};
+  }
+}
+
+
+% rótulo 2
+\foreach \x in {5.5, 6.5} {
+  \foreach \y in {1.5, 2.5, ..., 4.5} {
+    \node at (\x, \y) {$3$};
+  }
+}
+\foreach \x in {3.5, 4.5, ..., 6.5} {
+  \node at (\x, 6.5) {$4$};
+}
+
+
+% malha (para deixar visível a tabela)
+\draw[gray] (0,0) grid (8,8);
+
+% legenda
+\node at (-1.0, 8.0) {\textit{b)}};
+
+\end{tikzpicture}
+
+
+      \caption{\textit{a)} Rotulação das regiões após aplicação de algoritmo de
+        segmentação segundo vizinhança-4: os rótulos identificam segmentos
+        encontrados pela segmentação, porém não revelam necessariamente regiões
+        conexas; \textit{b)} Rotulação das regiões (ou componentes) conexas após
+        aplicação de algoritmo para identificação de regiões conexas: esta é a
+        rotulação desejada quando o que se pretende é identificar formas em uma
+        imagem qualquer.}
+        \label{fig:rotulacao}
+\end{center}
+\end{figure}
+
+
+Porém, esses rótulos identificam as regiões segmentadas (detalhe \textit{a} da
+Figura~\ref{fig:rotulacao}), quando o que se quer é geralmente as regiões
+conexas (detalhe \textit{b} da Figura~\ref{fig:rotulacao}). Regiões conexas são
+aquelas cujos pixels estão todos conectados entre entre si dada uma vizinhança
+de pixels qualquer --- no caso da Figura~\ref{fig:rotulacao}, detalhe
+\textit{b}, tem-se regiões conexas para vizinhança-4. Estas regiões são especialmente
+interessantes quando se quer identificar as formas da imagem original. Um
+algoritmo simples de rotulação de componentes conexos pode ser definido através
+do procedimento descrito no Algoritmo~\ref{algo:conexo}. Trata-se de um
+algoritmo que simula uma busca em largura em todos os pixels de mesmo rótulo $k$
+a partir de um pixel $I_{(i,j)}$ qualquer da imagem segmentada $R$. Faz isso com
+o auxílio de uma estrutura de dados do tipo fila FIFO (``primeiro a entrar,
+primeiro a sair'').
+
+\begin{espacosimples}
+\begin{algorithm2e}[H]
+  \caption{Algoritmo de rotulação de regiões conexas baseado em fila FIFO}
+  \label{algo:conexo}
+  \SetAlgoLined
+  \Entrada{Imagem rotulada $R$ com cada $k$ segmento identificado por rótulo $k$}
+  \Saida{Imagem rotulada $S$ com regiões conexas identificadas por rótulo $k$}
+
+  Inicializa todos os elementos em $S$ com $0$\;
+  $F \gets \text{Fila FIFO}$\;
+  $r \gets 1$\;
+
+  \ParaCada{pixel $p \in R$ e $S(p) = 0$}{
+    $p \gets r$\;
+    Insira $p$ em $F$\;
+    \Enqto{$F$ não estiver vazia}{
+      Remova $p$ de $F$\;
+      \ParaCada{$q \in \text{vizinhança}-V$ e $S(q) = 0$}{
+        $S(q) \gets r$\;
+        Insira $q$ em $F$\;
+      }
+    }
+    $r \gets r + 1$\;
+  }
+
+\end{algorithm2e}
+\end{espacosimples}
+
+\vspace{1.0cm}
+
+É comum tais imagens apresentarem deformações e ruído. Um exemplo de deformação
+é a presença de ``buracos'' ao longo de uma região segmentada. Esses espaços
+vazios provocam alterações em atributos que serão extraídos em um próximo passo,
+como a área da região. Ruídos são, por exemplo, regiões cujas áreas
+são ínfimas e em nada contribuem para um possível passo de extração de atributos,
+não sendo bons representantes das formas que compõem a imagem original. Esses
+erros devem ser eliminados e é esse o objetivo do passo de pós-processamento.
+
+Para remover ``buracos'' de uma região $R_i$ segmentada a partir de uma imagem
+original em escalas de cinza $G$ onde a matriz binária $R_i$ é construída a
+partir da segmentação de G calculada em $S_G$ por
+
+\begin{equation}
+  R_i = 
+  \begin{cases}
+    1 & \text{se $S_G(x,y) = i$} \\
+    0 & \text{caso contrário}
+  \end{cases}
+\end{equation}
+
+\noindent aplica-se uma operação morfológica binária de dilatação.
+
+%% TODO: incluir algoritmo de remoção de buracos por dilatação binária
+
+Para remover as regiões com áreas não representativas de uma região $R_i$ usa-se
+um limiar $\theta$. Assim, regiões com áreas $\leq \theta$ são preenchidas com
+$0$, eliminando-as de $S_G$. Essa operação é conhecida como filtro de área e
+pode ser definida através do Algoritmo~\ref{algo:area}.
+
+\begin{espacosimples}
+\begin{algorithm2e}[H]
+  \caption{Algoritmo de eliminação de áreas menores que um limiar $\theta$}
+  \label{algo:area}
+  \SetAlgoLined
+  \Entrada{Imagem rotulada $I$ e limiar $\theta$}
+  \Saida{Imagem rotulada $I$ com regiões com áreas $\leq \theta$ filtradas}
+
+  \ParaCada{região $R_k$ rotulada com $k$ em $I$}{
+    \Se{area($R_k$) $\leq \theta$}{
+      \ParaCada{pixel $p$ em $R_k$}{
+        $I(p) \gets 0$
+      }
+    }
+    \Senao {
+      \ParaCada{pixel $p$ em $R_k$}{
+        $I(p) \gets k$
+      }      
+    }
+  }
+\end{algorithm2e}
+\end{espacosimples}
+             
+\section{Extração de atributos}
+\label{sec:atributos}
+
+Após as etapas de preparação, segmentação e pós-processamento das imagens, estas
+estão prontas para a extração de atributos. Para caracterizar adequadamente uma
+imagem, certos aspectos devem ser considerados e são dependentes da natureza da
+imagem. No caso das pinturas, Penousal~\cite{penousal} sugere o uso de
+complexidade de imagens para estimar características estéticas. Lev
+Manovich~\cite{manovich} utiliza a análise de saturação de luz, contraste, brilho
+e demais atributos relacionados com a intensidade de cinza nas imagens.  Essas
+abordagens encontram fundamento na teoria Gestalt que enumera um conjunto de
+``regras'' de agrupamento seguidas, teoricamente, pela cognicação humana.~\cite{haralick}
+
+% \url{http://link.springer.com/content/pdf/10.1007%2F978-3-642-12242-2_32.pdf}
+
+% TODO: incluir mais referências
+
+Desta forma, um conjunto de descritores de imagens (ou atributos) é selecionado
+e aplicado experimentalmente ao conjunto de imagens já processadas. Embora os
+algoritmos de extração sejam eficientes em suas funções, não há a garantia de
+que sejam suficientes para a correta caracterização de uma imagem. Assim, o
+procedimento canônico é considerar um amplo conjunto de atributos e em seguida
+selecionar aqueles que melhor atendem os objetivos da análise
+(discutido na Seção~\ref{sec:fund:reducao}). Esse conjunto deve portanto incluir atributos que irão,
+inicialmente, descrever uma larga gama de características como complexidade,
+textura e detalhes sobre a forma dos segmentos --- e.g. área, perímetro,
+curvatura.
+
+Para este estudo foram utilizados 99 atributos, descritos nas próximas seções e
+sumarizados na Tabela~\ref{tab:atributos}.
+
+\subsection{Atributos de complexidade}
+
+Para descrever a complexidade, medidas de entropia e energia para diferentes
+combinações de elementos da imagem são consideradas. A noção de entropia é
+emprestada da teoria da informação. Nela, a premissa fundamental é que a
+geração de informação pode ser modelada como um processo probabilístico, sendo
+medido de forma que concorde com a intuição humana~\cite{gonzalez}. Desta forma,
+um evento qualquer $E$ pode ocorrer com probabilidade $P(E)$ e
+
+\begin{equation}
+  I(E) = \log\frac{1}{P(E)} = -\log P(E)
+\end{equation}
+
+\noindent sendo a \emph{unidade de informação} de $E$, denominada
+\emph{auto-informação} de $E$. Isso equivale a dizer que a quantidade de
+informação atribuída ao evento $E$ é inversamente proporcional à probabilidade
+de $E$ ocorrer. Se $P(E) = 1$, ou seja, se $E$ ocorre sempre, $I(E) = 0$ e
+nenhuma informação é a ele atribuída. Caso $E$ não ocorrer, ou $P(E) = 0$,
+tem-se $I(E) = \infty$. Quanto maior a probabilidade de $E$ ocorrer, menor
+informação estará incorporada, pois esse é um resultado que espera-se ocorrer
+com grande frequência. Por outro lado, quanto menor a probabilidade de $E$
+ocorrer, mais informação estará incorporada, pois é um resultado menos provável
+de ocorrer. Se houverem $J$ símbolos $a_j$ associados a um evento $E$, a
+probabilidade da ocorrência de $a_j$ é $P(a_j)$ e
+
+\begin{equation}
+  \sum_{j=1}^J P(a_j) = 1.
+\end{equation}
+
+\noindent A auto-informação associada à ocorrência de um único símbolo $a_j$ é
+$I(a_j) = -\log P(a_j)$. Para a ocorrência de todos os símbolos, tem-se portanto:
+
+\begin{equation}
+  -kP(a_1) \log P(a_1) -kP(a_2) \log P(a_2) -...-kP(a_J) \log P(a_J)
+\end{equation}
+
+\noindent ou ainda:
+
+\begin{equation}
+  -k \sum_{j=1}^J P(a_j) \log P(a_j).
+\end{equation}
+
+Portanto, a informação média associada à ocorrência do evento $E$ dados todos os
+$a_j$ símbolos é:
+
+\begin{equation}
+  H(E) =  -\sum_{j=1}^J P(a_j) \log P(a_j)
+  \label{eq:entropia}
+\end{equation} 
+
+\noindent onde $H(E)$ é denominada \emph{incerteza} ou \emph{entropia} de $E$.
+
+Considerando a imagem em escala de cinza $G$ onde cada pixel é representado por
+$f(i,j)$, é possível calcular sua entropia aplicando a Equação~\ref{eq:entropia}
+a $G$:
+
+\begin{eqnarray}
+  R & = & \text{hist}(G) \\
+  P & = & \left\{ p_i = \frac{R_i}{\sum_{i} R_i} \right\}\\
+  H & = & -\sum_i p_i \log p_i, \,\,\,\,\,\, p_i \neq 0 \\
+  \mathcal{A}_0 & = & H
+\end{eqnarray}
+
+\noindent sendo $hist$ o histograma dos valores dos níveis de cinza em $G$, $P$
+as probabilidades $p_i$ de cada amostra $i$ e $H$ a entropia da imagem $G$. Esse
+portanto é o primeiro atributo $\mathcal{A}_0$ do conjunto de atributos
+$\mathcal{A}_i$.
+
+A densidade espectral da imagem total, por sua vez, é dada pelo cálculo da
+transformada de Fourier. Vale aqui introduzir tal conceito para se chegar
+à definição de densidade espectral. Seja $f(x)$ uma função contínua de uma
+variável real $x$, a transformada de Fourier $\mathcal{F}\{f(x)\}$ é definida
+pela equação
+
+\begin{equation}
+  \mathcal{F}\{f(x)\} = F(u) = \int_{-\infty}^{+\infty} f(x) \exp[-2i\pi u x] dx
+\end{equation}
+
+\noindent com $i = \sqrt{-1}$. A partir de $F(u)$ pode-se obter a função
+original $f(x)$ através da \emph{transformada inversa de Fourier}:
+
+\begin{equation}
+  \mathcal{F}^{-1}\{F(u)\} = f(x) = \int_{-\infty}^{+\infty} F(u) \exp[2i\pi u x] du.
+\end{equation}
+
+A transformada de Fourier de uma função real é geralmente complexa, e pode ser
+expressa por
+
+\begin{equation}
+  F(u) = \Re(u) + \Im(u)i
+  \label{eq:fourier_complexa}
+\end{equation}
+
+\noindent onde $\Re(u)$ e $\Im(u)$ são os componentes real e imaginário de
+$F(u)$, respectivamente. É conveniente expressar a
+Equação~\ref{eq:fourier_complexa} em sua forma exponencial:
+
+\begin{equation}
+  F(u) = |F(u)|e^{\phi(u)i}
+\end{equation}
+
+\noindent onde $|F(u)| = \left[\Re^2(u) + \Im^2(u)\right]^{\frac{1}{2}}$ é o
+\emph{espectro de Fourier} e
+$\phi(u) = \tan^{-1}\left[\frac{\Im(u)}{\Re(u)}\right]$ o \emph{ângulo de
+  fase}. Tomando-se o quadrado do espectro tem-se a \emph{densidade espectral},
+também chamada de \emph{espectro de potência} de $f(x)$:
+
+\begin{equation}
+  P(u) = |F(u)|^2 = \Re^2(u) + \Im^2(u).
+  \label{eq:densidade}
+\end{equation}
+
+A densidade espectral da imagem $G$ pode ser calculada com base na Equação~\ref{eq:densidade}:
+
+\begin{eqnarray}
+  E = |\Re(X(G))|^2 + |\Im(X(G))|^2
+\end{eqnarray}
+
+\noindent onde $X$ é a transformada de Fourier de G e a soma dos quadrados dos
+módulos da parte real e imaginária de $X$ corresponde à energia espectral
+procurada. Com base nessa medida, pode-se derivar as medidas de média e desvio
+padrão das energias nas linhas, colunas, centróides e da imagem total:
+
+\begin{eqnarray}
+  \mathcal{A}_1 &=& \mu = \frac{\sum_j E_{(i,j)}}{N_j} \, \, \, \text{média das energias
+    nas linhas $i$} \\
+  \mathcal{A}_2 &=& \sigma = \sqrt{\frac{\sum_j (E_{(i,j)} - \mu)^2}{N_j}} \, \, \,
+  \text{desvio padrão das energias nas linhas $i$} \\
+  \mathcal{A}_3 &=& \mu = \frac{\sum_i E_{(i,j)}}{N_i} \, \, \, \text{média das energias
+    nas colunas $j$} \\
+  \mathcal{A}_4 &=& \sigma = \sqrt{\frac{\sum_i (E_{(i,j)} - \mu)^2}{N_i}} \, \, \,
+  \text{desvio padrão das energias nas colunas $j$} \\
+  \mathcal{A}_5 &=& \frac{\sum_j j E_{(i,j)}}{N_j} \, \, \, \text{centróide das energias
+    nas linhas $i$} \\
+  \mathcal{A}_6 &=& \frac{\sum_i i E_{(i,j)}}{N_i} \, \, \, \text{centróide das energias
+    nas colunas $j$} \\
+  \mathcal{A}_7 &=& \mu = \frac{\sum E_{(i,j)}}{N_i + N_j} \, \, \, \text{média das energias
+    nas linhas $i$ e colunas $j$} \\
+  \mathcal{A}_8 &=& \sigma = \sqrt{\frac{\sum (E_{(i,j)} - \mu)^2}{N_i + N_j}} \, \, \,
+  \text{desvio padrão das energias nas linhas $i$ e colunas $j$}
+\end{eqnarray}
+
+Essas mesmas medidas, que foram aplicadas à representação da imagem original em
+níveis de cinza ($\mathcal{A}_{1-8}$) podem ser aplicadas para cada um dos
+3 canais de cor RGB da imagem $I$, obtendo assim o conjunto
+$\mathcal{A}_{9-16}$ de atributos para o canal vermelho, conjunto de atributos
+$\mathcal{A}_{17-24}$ para canal verde e $\mathcal{A}_{25-32}$ para o canal
+azul.
+
+\subsection{Atributos de textura}
+
+Com o objetivo de analisar a textura das imagens, as 14 medidas propostas por
+Haralick~\cite{haralick} são de interesse. Elas são medidas ditas
+\emph{estatísticas de segunda ordem} pois são calculadas a partir da matriz de
+co-ocorrência de níveis de cinza de uma dada imagem $G$. Uma das vantagens dessa
+abordagem é levar em conta a posição relativa de cada pixel da imagem. Cada uma
+das 14 medidas propostas procura caracterizar um aspecto de textura como
+contraste, homogeneidade e complexidade.
+
+Dada uma imagem $G$ com $N_G$ níveis de cinza, sua matriz de co-ocorrência será
+uma matriz quadrada de dimensões $N_G \times N_G$ onde cada elemento $P_{\vec{d}}(i,j)$ representa
+a quantidade de pixels da imagem $G$ que possuem os níveis de cinza $i$ e $j$,
+separados por uma distância numa certa direção e sentido, determinado por
+$\vec{d}$. Para uma imagem, considera-se apenas o posicionamento relativo entre
+cada pixel e seus vizinhos (i.e.\ pixels adjacentes) e portanto, $\vec{d}$
+poderá assumir apenas 8 direções possíveis considerando os possíveis ângulos
+$\beta \in \{0^o, 45^o, 90^o, 135^o, 180^o, 225^o, 270^o, 315^o\}$ que tal
+vetor pode assumir dado que encontra-se ``aprisionado'' em uma malha
+(i.e.\ possui vizinhança-8). Como
+trata-se de uma matriz de co-ocorrência, esta é simétrica, e portanto esse
+conjunto de possíveis $\beta$ torna-se ainda menor. Por fim, dados os possíveis
+ângulos $\beta \in \{0^o, 45^o, 90^o, 135^o\}$ e considerando os valores $\{-1,
+0, 1\}$ como domínio das coordenadas $x,y$ de $\vec{d}$, tem-se o cálculo dos 14
+atributos de Haralick para cada uma das seguintes direções:
+
+\begin{eqnarray}
+  \beta = 0^o & \to & \vec{d} = (1, 0) \\
+  \beta = 45^o & \to & \vec{d} = (1, 1) \\
+  \beta = 90^o & \to & \vec{d} = (0, 1) \\
+  \beta = 135^o & \to & \vec{d} = (-1, 1)
+\end{eqnarray}
+
+\noindent a Tabela~\ref{tab:haralick} lista os 14 atributos de Haralick,
+lembrando que estes são calculados para cada uma das 4 direções possíveis de
+$\vec{d}$. Assim, essas medidas definem os $14 \cdot 4 = 56$ atributos seguintes
+considerados nesse estudo, o conjunto $\mathcal{A}_{33-88}$.
+
+\begin{table}
+  \begin{center}
+  \caption{\label{tab:haralick}Os 14 atributos de textura de Haralick,
+    considerando: \\ $p(i,j) = P_{\vec{d}}(i,j)$, \\ $p_x(i) = \sum_{j=1}^{N_g}
+    p(i,j)$, \\ $p_y(j) = \sum_{i=1}^{N_g} p(i,j)$, \\ $p_{x+y}(k=i+j) =
+    \sum_{i=1}^{N_g}\sum_{j=1}^{N_g} p(i,j)$,  \\ $p_{x-y}(k=|i-j|) =
+    \sum_{i=1}^{N_g}\sum_{j=1}^{N_g} p(i,j)$. \\ Ainda, $H(X)$ é a entropia de $X$
+    e $\text{autoval}_2(X)$ é o segundo maior autovalor de $X$.}
+
+  \begin{tabular}{l|l}
+    \hline
+    Uniformidade      & $f_1 = \sum_{i=1}^{N_g}\sum_{j=1}^{N_g}
+    p(i,j)^2$ \\ \\
+    Contraste         & $f_2 = \sum_{i=1}^{N_g}\sum_{j=1}^{N_g} (i-j)^2 p(i,j)$
+    \\ \\
+    Correlação        & $f_3 = \frac{\sum_{i=1}^{N_g}\sum_{j=1}^{N_g} i j p(i,j)
+      - \mu_x - \mu_y}{\sigma_x \sigma_y}$ \\ \\
+    Variância         & $f_4 = \sum_{i=1}^{N_g}\sum_{j=1}^{N_g} (i-\mu)^2 p(i,j)$
+    \\ \\
+    Momento inverso da diferença & $f_5 = \sum_{i=1}^{N_g}\sum_{j=1}^{N_g}
+    \frac{1}{1 + (i-j)^2} p(i,j)$ \\ \\
+    Média da soma     & $f_6 = \sum_{k=2}^{2 N_g} k p_{x+y}(k)$ \\ \\
+    Variância da soma     & $f_7 = \sum_{k=2}^{2 N_g} (k-f_6)^2 p_{x+y}(k)$ \\ \\
+    Entropia da soma     & $f_8 = -\sum_{k=2}^{2 N_g} p_{x+y}(k)
+    log\left(p_{x+y}(k)\right)$ \\ \\
+    Entropia             & $f_9 = -\sum_{i=1}^{N_g}\sum_{j=1}^{N_g} p(i,j)
+    log\left(p(i,j)\right)$ \\ \\
+    Variância da diferença & $f_{10} = \text{var}(p_{x-y})$ \\ \\
+    Entropia da diferença     & $f_{11} = -\sum_{k=0}^{N_g - 1} p_{x-y}(k)
+    log\left(p_{x-y}(k)\right)$ \\ \\
+    Medida de correlação (1)  & $f_{12} = \frac{f_9 +
+      \sum_{i=1}^{N_g}\sum_{j=1}^{N_g} p(i,j) log\left[p_x(i)
+        p_y(j)\right]}{max\{H(p_x(i)), H(p_y(j))\}}$ \\ \\
+    Medida de correlação (2)  & $f_{13} = \sqrt{1-exp\left[ -2
+        \left(\left(-\sum_{i=1}^{N_g}\sum_{j=1}^{N_g} p_x(i) p_y(j) log\left(p_x(i)
+            p_y(j)\right)\right) - f_9\right)\right]}$ \\ \\
+    Coeficiente de correlação máxima & $f_{14} =
+    \sqrt{\text{autoval}_2\left(-\sum_{k=1}^{N_g} \frac{p(i,k) p(j,k)}{p_x(i) p_y(j)} \right)}$
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{Atributos de contorno e forma}
+
+Após a identificação dos componentes conexos e seu pós-processamento, pode-se
+partir para a descrição da forma de tais componentes. A curvatura é um destes
+descritores. Trata-se de um atributo que mensura a mudança de direção
+``relativa'' entre dois pontos conectados. Esse descritor tem uma motivação
+biológica interessante relacionada com o sistema de visão humano --- e.g.\ o
+reconhecimento de objetos é relacionado à identificação de cantos e pontos de
+alta curvatura. Esses pontos possuem mais informação sobre a forma do objeto do
+que linhas retas ou curvas suaves. Dessa forma, a curvatura é um atributo
+interessante para uso na caracterização das pinturas consideradas nesse
+estudo. A curvatura de uma forma é calculada usando os seguintes descritores de
+Fourier e esquematizada na Figura~\ref{fig:curvatura}.~\cite{luciano} 
+
+\begin{figure}[h!]
+\begin{center}
+        \includegraphics[width=\columnwidth]{figs/curvatura}
+      \caption{\textit{a)} Imagina da pintura original. \textit{b)} Uma região
+        segmentada da pintura. \textit{c)} A curvatura extraída a partir
+        da região segmentada. \textit{d)} A curva paramétrica $k(t)$ dado um
+        limiar em particular, com os picos em destaque.}
+        \label{fig:curvatura}
+\end{center}
+\end{figure}
+
+A curvatura $k(t)$ de uma curva paramétrica $c(t) = (x(t), y(t))$ é definida como:
+
+\begin{equation}
+k(t) = \frac{\dot{x}(t)\ddot{y}(t)-\dot{y}(t)\ddot{x}(t)} {(\dot{x}(t)^2+\dot{y}(t)^2)^\frac{3}{2}}
+\end{equation}
+
+\noindent onde $\dot{x}(t)$, $\dot{y}(t)$, $\ddot{x}(t)$ e $\ddot{y}(t)$ são
+respectivamente as derivadas primeira e segunda de $x(t)$ e $y(t)$. Essas
+derivadas são obtidas através da transformada de Fourier e do teorema da
+convolução:
+
+\begin{equation}
+\dot{x} = \Im^{-1}(2\pi i \omega X(\omega))
+\end{equation}
+\begin{equation}
+\dot{y} = \Im^{-1}(2\pi i \omega Y(\omega))
+\end{equation}
+\begin{equation}
+\ddot{x} = \Im^{-1}(-(2\pi\omega)^2 X(\omega))
+\end{equation}
+\begin{equation}
+\ddot{y} = \Im^{-1}(-(2\pi\omega)^2 Y(\omega))
+\end{equation}
+
+\noindent onde $\Im^{-1}$ é a transformada inversa de Fourier, $X$ e $Y$ a
+transformada de Fourier de $x$ e $y$ respectivamente, $\omega$ é a frequência angular
+e $i$ a unidade imaginária.
+
+É importante notar que um \emph{pico} é definido como um ponto de alta
+curvatura. Um ponto $a$ é considerado um pico se sua curvatura $k(a)$ satisfazer
+os seguintes critérios:
+
+\begin{eqnarray}
+	k(a) & > & k(a-1) \\
+	k(a) & > & k(a+1) \\
+        k(a) & > & \tau
+\end{eqnarray}
+
+\noindent sendo $\tau$ um limiar definido como
+
+\begin{equation}
+	\text{mediana}\left(k\right) \cdot \gamma 
+\end{equation}
+
+\noindent onde $\gamma$ equivale a um fator obtido empiricamente com valores que
+revelam um determinado nível de detalhe de curvatura. Quanto maior o valor de
+$\gamma$, mais picos de curvatura e vice-versa.
+
+Tendo-se definido a curvatura $k(t)$ e um pico de curvatura $a$, pode-se partir
+para a definição de uma série de atributos. A média e o desvio padrão das
+distâncias geométricas entre um pico $a_{i}$ e seu próximo pico $a_{i+1}$
+compõem os atributos $\mathcal{A}_{89}$ e $\mathcal{A}_{90}$, usados neste
+estudo:
+
+\begin{eqnarray}
+  \mathcal{A}_{89} & = & \text{média}(\sqrt{(a_{i} - a_{i+1})^2}) \\
+  \mathcal{A}_{90} & = & \text{desvio padrão}(\sqrt{(a_{i} - a_{i+1})^2})
+\end{eqnarray}
+
+\noindent Também pode-se considerar tal distância dada em coordenadas do pixel
+da imagem associada ao pico $a$, o que leva aos atributos $\mathcal{A}_{91}$ e
+$\mathcal{A}_{92}$, que representam, respectivamente, a média e desvio padrão da
+distância em pixels entre um pico $a_{i}$ e seu próximo pico $a_{i+1}$.
+
+A simples quantidade de picos $a$ de uma dada curvatura $k(t)$ revela um novo
+atributo:
+
+\begin{eqnarray}
+  \mathcal{A}_{93} & = & \text{tam}(\{a_{i}, a_{i+1}, ..., a_{N}\})
+\end{eqnarray}
+
+\noindent sendo \textit{tam} o tamanho do conjunto de todos os picos $a$ de uma
+curvatura calculada. Da mesma forma, a quantidade de elementos $k(t)$ da
+curvatura permite saber o perímetro em pixels da região conexa:
+
+\begin{eqnarray}
+  \mathcal{A}_{94} & = & \text{tam}(\{k(t_{i}), k(t_{i+1}), ..., k(t_{N})\})
+\end{eqnarray}
+
+Ainda, somando-se todos os elementos da região conexa $C_i = i$, onde $i$
+representa o rótulo da região, tem-se a área desta região, em pixels, e portanto
+define-se um novo atributo $\mathcal{A}_{95}$. A razão entre o perímetro e a
+área, ambos em pixels, oferece mais um atributo:
+
+\begin{eqnarray}
+  \mathcal{A}_{96} & = & \frac{(\mathcal{A}_{94})^2}{\mathcal{A}_{95}}
+\end{eqnarray}
+
+\noindent essa razão indica quanto uma forma se aproxima de um círculo.
+
+A quantidade $C_N$ de regiões conexas $C_i$ também caracteriza um atributo de
+interesse $\mathcal{A}_{97}$. Trata-se de um atributo importante pois indica o
+quanto uma imagem é complexa em relação ao número de elementos que a compõe
+(e.g.\ as pinturas de Pollock possuem um número muito maior de componentes do
+que a maioria dos demais pintores).
+
+A área da região convexa de uma forma fornece outro atributo. É calculado
+através do algoritmo \textit{convex-hull}~\ref{luciano} e define o atributo
+$\mathcal{A}_{98}$. A razão entre a área da região convexa e da região original
+do componente ($\mathcal{A}_{95}$) indicam outra medida de circularidade, ou o
+quanto o componente possui uma forma rica em curvas acentuadas:
+
+\begin{eqnarray}
+  \mathcal{A}_{99} & = & \frac{\mathcal{A}_{98}}{\mathcal{A}_{95}}
+\end{eqnarray}
+
+O conjunto de todos os 99 atributos $\mathcal{A}_i$ discutidos estão sumarizados na
+Tabela~\ref{tab:atributos}. É importante ressaltar que cada imagem de pintura
+acaba apresentando um número arbitrário de regiões conexas após os processos de
+segmentação e pós-processamento. Desta forma, para cada pintura tem-se um ou
+mais valores para os atributos $\mathcal{A}_{89-99}$, e portanto a média destes
+valores foi tomada para representar cada um destes atributos para uma dada imagem.
+
+\begin{table}
+  \begin{center}
+  \caption{\label{tab:atributos}Sumário de todos os 99 atributos utilizados
+    neste estudo, considerando detalhes de contraste, textura (descritas pelas
+    medidas de entropias e energias, assim como as medidas de Haralick) e forma
+    (descritas pelas medidas de curvatura e medidas geométricas como perímetro,
+    área e sua razão).}
+
+  \begin{tabular}{l|l}
+    \hline
+    $\mathcal{A}_i$ & Descrição \\
+    \hline
+
+    $\mathcal{A}_1$ & 
+    Média das energias nas linhas $i$ da imagem em tons de cinza \\
+    %$\mathcal{A}_1  = \frac{\sum_j E_{(i,j)}}{N_j}$ \\
+
+    $\mathcal{A}_2$ &
+    Desvio padrão das energias nas linhas $i$ da imagem em tons de cinza \\
+    %$\mathcal{A}_2 = \sqrt{\frac{\sum_j (E_{(i,j)} - \mu)^2}{N_j}}$ \\
+
+    $\mathcal{A}_3$ &
+    Média das energias nas colunas $j$ da imagem em tons de cinza \\
+    %$\mathcal{A}_3 = \frac{\sum_i E_{(i,j)}}{N_i}$ \\
+
+    $\mathcal{A}_4$ &
+    Desvio padrão das energias nas colunas $j$ da imagem em tons de cinza \\
+    %$\mathcal{A}_4 = \sqrt{\frac{\sum_i (E_{(i,j)} - \mu)^2}{N_i}}$ \\
+
+    $\mathcal{A}_5$ &
+    Centróide das energias nas linhas $i$ da imagem em tons de cinza \\
+    %$\mathcal{A}_5 = \frac{\sum_j j E_{(i,j)}}{N_j}$ \\
+
+    $\mathcal{A}_6$ &
+    Centróide das energias nas colunas $j$ da imagem em tons de cinza \\
+    %$\mathcal{A}_6 = \frac{\sum_i i E_{(i,j)}}{N_i}$ \\
+
+    $\mathcal{A}_7$ &
+    Média das energias nas linhas $i$ e colunas $j$ da imagem em tons de cinza \\
+    %$\mathcal{A}_7 = \frac{\sum E_{(i,j)}}{N_i + N_j}$ \\
+
+    $\mathcal{A}_8$ &
+    Desvio padrão das energias nas linhas $i$ e colunas $j$ da imagem em tons de
+    cinza \\
+    %$\mathcal{A}_8 = \sqrt{\frac{\sum (E_{(i,j)} - \mu)^2}{N_i + N_j}}$ \\
+
+    $\mathcal{A}_{9-16}$ &
+    As mesmas medidas $\mathcal{A}_{1-8}$ mas aplicadas ao canal vermelho da
+    imagem \\
+
+    $\mathcal{A}_{17-24}$ &
+    As mesmas medidas $\mathcal{A}_{1-8}$ mas aplicadas ao canal verde da
+    imagem \\
+
+    $\mathcal{A}_{25-32}$ &
+    As mesmas medidas $\mathcal{A}_{1-8}$ mas aplicadas ao canal azul da
+    imagem \\
+
+    $\mathcal{A}_{33-46}$ &
+    As 14 medidas de textura de Haralick para a direção $\beta = 0^o$ ou $\vec{d} = (1, 0)$ \\
+
+$\mathcal{A}_{47-60}$ &
+    As 14 medidas de textura de Haralick para a direção $\beta = 45^o$ ou $\vec{d} = (1, 1)$ \\
+
+$\mathcal{A}_{61-74}$ &
+    As 14 medidas de textura de Haralick para a direção $\beta = 90^o$ ou $\vec{d} = (0, 1)$ \\
+
+$\mathcal{A}_{75-88}$ &
+    As 14 medidas de textura de Haralick para a direção $\beta = 135^o$ ou $\vec{d} = (-1, 1)$ \\
+
+    $\mathcal{A}_{89}$ &
+    Média das distâncias (euclidiana) entre os picos de curvatura \\
+
+    $\mathcal{A}_{90}$ &
+    Desvio padrão das distâncias (euclidiana) entre os picos de curvatura \\
+
+    $\mathcal{A}_{91}$ &
+    Média das distâncias (em pixels do contorno) entre os picos de curvatura \\
+
+    $\mathcal{A}_{92}$ &
+    Desvio padrão das distâncias (em pixels do contorno) entre os picos de
+    curvatura \\
+
+    $\mathcal{A}_{93}$ &
+    Quantidade de picos de curvatura \\
+
+    $\mathcal{A}_{94}$ &
+    Perímetro da curvatura \\
+
+    $\mathcal{A}_{95}$ &
+    Área da região conexa \\
+
+    $\mathcal{A}_{96}$ &
+    Razão entre o perímetro e a área da região \\
+
+    $\mathcal{A}_{97}$ &
+    Quantidade de segmentos de uma pintura \\
+
+    $\mathcal{A}_{98}$ &
+    Área da região convexa \\
+
+    $\mathcal{A}_{99}$ &
+    Razão entre a área da região convexa e a área da região conexa original \\
+
+    \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\section{Redução de dimensionalidade e classificação}
+\label{sec:fund:reducao}
+
+Na maioria das rotinas de análises de dados, a quantidade de atributos leva à
+necessidade de selecionar quais atributos são mais relevantes ao objetivo
+previsto (e.g.\ garantir máximo agrupamento das amostras em certas classes) e
+reduzir a dimensionalidade das amostras a um ponto que se consiga
+visualizá-las. Essas necessidades estão presentes também neste estudo e alguns
+métodos foram selecionados para suprí-las.
+
+Existe um grande número de métodos para a identificação dos melhores atributos,
+aqui dois deles são descritos: matriz de espalhamento e LDA (Linear Discriminant
+Analysis).~\cite{fisher,luciano,jain} Esse último também
+pode ser utilizado para a redução da dimensão da matriz de entrada, e é portanto
+descrito juntamente com outro método para redução de dimensionalidade, o PCA
+(Principal Components Analysis).~\cite{luciano,dunteman}
+%% Ainda, o LDA quando usado em conjunto com
+%% distribuição Gaussiana e regra de Bayes, torna-se um classificador. Detalhes
+%% sobre esse algoritmo também são apresentados.
+
+O método conhecido como matrizes de espalhamento procura encontrar a melhor
+razão de Fisher, que é um indicador quantitativo de quanto duas ou mais classes
+estão apresentando menor covariância interna (agrupamento) e maior covariância
+entre as classes (dispersão). Ou seja, busca-se a projeção que mais separa as
+classes umas das outras.~\cite{fisher,luciano}
+
+Para todas as $N$ amostras (no caso, pinturas), considerando todas as possíveis
+combinações de pares de atributos $F_{N, a}$ e $F_{N, b}$, as matrizes de
+espalhamento $S_{inter}$ e $S_{intra}$ são calculadas com $K$ classes (no caso,
+$K = 12$ para 12 pintores), uma classe $C_i$ para cada pintor:
+
+\begin{equation}
+S_{intra} = \sum_{i=1}^K S_i
+\end{equation}
+
+\begin{equation}
+S_{inter} = \sum_{i=1}^K N_i(\vec{\mu_i} - \vec{M})(\vec{\mu_i} - \vec{M})^T
+\end{equation}
+
+\noindent sendo $N_i$ o número de amostras para a classe $C_i$ e a matriz de
+espalhamento para a classe $C_i$ definida como
+
+\begin{equation}
+S_i = \sum_{i \in C_i} (\vec{f_i} - \vec{\mu_i})(\vec{f_i} - \vec{\mu_i})^T
+\end{equation}
+
+\noindent onde $\vec{f_i}$ é uma amostra da matriz de atributos $F$ cujas linhas
+e colunas correspondem às amostras e seus atributos $F = \left[ \leftarrow
+  f_i^T \rightarrow \right]$ e $\vec{\mu_i}$ e $\vec{M}$ são os vetores de média
+dos atributos para as amostras da classe $C_i$ e para todas as amostras,
+respectivamente:
+
+\begin{equation} 
+\vec{\mu_i} = \frac{1}{N_i} \sum_{i \in C_i} \vec{f_i}
+\end{equation}
+
+\begin{equation}
+\vec{M} = \frac{1}{N} \sum_{i=1}^N \vec{f_i}
+\end{equation}
+
+O traço da razão entre as matrizes intra- e inter-classe resulta na razão de
+Fisher, a constante:
+
+\begin{equation} \label{eq:alpha}
+\alpha = \mathrm{tr}(S_{inter} S_{intra}^{-1})
+\end{equation}
+
+Se ao invés de calcular o traço for calculado os autovalores e autovetores da
+razão das matrizes, tem-se a projeção que melhor separa as classes, ou seja, o LDA:
+
+\begin{equation} \label{eq:alpha}
+\text{eig}(S_{inter} S_{intra}^{-1})
+\end{equation}
+
+\noindent onde $\mathrm{eig}$ corresponde ao cálculo dos autovetores e
+autovalores do produto entre as matrizes de espalhamento. Ao tomar os
+autovetores dos maiores autovalores, em módulo, tem-se tal projeção. É por isso
+que o LDA pode ser concebido como um método de redução de dimensão, reduzindo os
+$N$ atributos a um número de atributos $r < N$ (geralmente $r \le 3$ para
+possibilitar a projeção em 2 ou 3 dimensões visíveis) que melhor separam as
+classes.
+
+Convém aqui abordar um outro método de redução de dimensionalidade, o PCA, que
+lembra o LDA. No PCA, se está interessado em calcular os autovalores e
+autovetores que mais correlacionam os dados em questão. Para isso, toma-se a
+matriz de atributos $F$ e calcula-se sua matriz de covariância, que nada mais é
+que a operação de covariância aplicada a cada dimensão $i$ de uma matriz $X$
+qualquer. Considerando os momentos estatísticos básicos, a matriz de covariância
+$C^{n \times n}(X)$ dadas $n$ dimensões de $X$ é dada por
+
+\begin{equation}
+  C^{n \times n}(X) = \left(
+    \begin{array}{cccc}
+      cov(x_1,x_1) & cov(x_1,x_2) & \dots  & cov(x_1,x_n) \\
+      cov(x_2,x_1) & cov(x_2,x_2) & \dots  & cov(x_2,x_n) \\
+      \vdots       & \vdots       & \vdots & \vdots       \\
+      cov(x_n,x_1) & cov(x_n,x_2) & \dots  & cov(x_n,x_n)
+    \end{array}
+  \right)
+\end{equation}
+
+\noindent onde $x_i$ é a $i$-ésima dimensão da matriz $X$.
+
+Novamente, calculando os autovalores (e seus respectivos autovetores) da matriz
+de covariância $C^{n \times n}(F)$ e tomando os autovetores dos maiores
+autovalores, em módulo, tem-se os \emph{componentes principais}
+
+\begin{equation}
+ V = \bigg(autovetor_0 \; autovetor_1 \; \dots \; autovetor_n \bigg)
+\end{equation}
+
+\noindent que formarão uma base para a projeção dos dados com maior correlação
+possível através da multiplicação da matriz original $F$ com os componentes
+principais $V$, ambos transpostos:
+
+\begin{equation}
+ D \; = V^T \times F^T
+\end{equation}
+
+\noindent ou seja, $D$ é a base que mais ``reúne características'' dos demais
+atributos. Tomando-se apenas estes $r < N$ atributos, tem-se portanto uma
+redução na dimensão. Os autovalores indicam o quanto cada
+atributo contribui para a correlação. Portanto, é sempre interessante verificar se
+os $r$ autovalores em módulo somam cerca de $70\%$ do total, o que indica
+serem suficientes para representar os $N$ atributos originais.~\cite{luciano}
+
+%% TODO: Como usar regra de Bayes para classificar.
+
+%% TODO: Colocar figuras??
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Desenvolvimentos e Resultados}
+\label{chap:resultados}
+
+% aqui começa o conteúdo do artigo
+
+\section{Pintores escolhidos}
+
+Para a análise foram selecionados 12 pintores de grande relevância
+histórica. Esse grupo abrange os estilos ou movimentos artísticos que vão do
+Barroco ao Moderno, onde 6 dos pintores representam um dos movimentos, enquanto
+os 6 restantes, representam o outro. O grupo é mostrado na
+Tabela~\ref{tab:painters} juntamente com seu estilo artístico mais
+representativo. É de conhecimento que pintores como Picasso
+demonstraram mais de um estilo durante a vida. Porém, para tal análise, apenas o
+estilo mais marcante (e pelo qual melhor se conhece e define o artista) foi
+escolhido. No caso de Picasso, apenas pinturas de seu período Cubista foram
+escolhidas, com o objetivo de representar tal movimento.
+
+\begin{table}
+\begin{center}
+\caption{\label{tab:painters} Pintores escolhidos para a análise, exibidos em
+  ordem cronológica, juntamente com o estilo artístico que melhor
+  representa. Divididos em dois grupos: 6 pintores barrocos e 6 pintores modernos.}
+
+\begin{tabular}{l|l}
+\hline
+
+ Artistas                      & Estilos/Movimentos mais marcantes \\ 
+ 
+ \hline
+
+ Caravaggio                    & Barroco, Renassença \\
+ Frans Hals                    & Barroco, Idade de ouro Holandesa \\
+ Nicolas Poussin               & Barroco, Classicismo \\
+ Diego Vel\'{a}zquez           & Barroco \\
+ Rembrandt                     & Barroco, Idade de ouro Holandesa, Realismo \\
+ Johannes Vermeer              & Barroco, Idade de ouro Holandesa \\
+ 
+ \hline
+ 
+ Vincent van Gogh              & Pós-Impressionismo \\
+ Wassily Kandinsky             & Expressionismo, Arte abstrata \\
+ Henri Matisse                 & Modernismo, Impressionismo \\
+ Pablo Picasso                 & Cubismo \\
+ Joan Mir\'{o}                 & Surrealismo, Dada \\
+ Jackson Pollock               & Expressionismo abstrato \\
+
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\section{Corpus de pinturas}
+
+Para cada pintor, foram consideradas 20 imagens de suas pinturas, obtidas de
+arquivos em domínio público, organizados pela Wikipedia. Uma amostra dessas
+pinturas e seu respectivo ano de criação está listada na
+Tabela~\ref{tab:paintings}. Todas as 240 pinturas são apresentadas em forma de
+galeria no Apêndice~\ref{cap:ap-galeria}. Os arquivos de imagem das pinturas
+  assim como o código-fonte que implementa esta análise encontra-se disponível
+  online em http://github.com/automata/ana-pintores e no Apêndice~\ref{cap:ap-tutorial}.
+
+\begin{table} 
+  \begin{center}
+  \caption{\label{tab:paintings} Algumas das 240 pinturas juntamente com a data
+    de sua criação.}
+
+\begin{tabular}{l|l|l}
+\hline
+
+ Pintores & Título da obra                       & Ano de criação \\ 
+ 
+ \hline
+
+ Caravaggio          & Músicos & 1595 \\
+                     & Judite decapitando Holofernes & 1598 \\
+                     & Davi com a cabeça de Golias & 1610 \\
+                      
+ Frans Hals          & Retrato de uma mulher desconhecida & 1618/20 \\
+                     & Retrato de Paulus van Beresteyn & 1620s \\
+                     & Retrato de Stephanus Geeraerdts & 1648/50 \\
+
+ Nicolas Poussin     & Vênus e Adônis & 1624 \\
+                     & Céfalo e Aurora & 1627 \\
+                     & Ácis e Galateia & 1629 \\
+ 
+ Diego Velázquez     & Três músicos & 1617/18 \\
+                     & O almoço & 1618 \\
+                     & La mulatto & 1620 \\
+ 
+ Rembrandt           & O vendedor de óculos (visão) & 1624/25 \\
+                     & Os três cantores (audição) & 1624/25 \\
+                     & Balaão e o burro & 1626 \\
+
+Johannes Vermeer    & A leiteira & 1658 \\
+                    & O astrônomo & 1668 \\
+                    & Garota com brincos de pérola & 1665 \\
+                    
+\hline                
+                    
+Vincent van Gogh    & Noite estrelada sobre o Ródano & 1888 \\
+                    & A noite estrelada & 1889 \\
+                    & Auto-retrato com chapéu de palha & 1887/88 \\
+
+Wassily Kandinsky   & Em branco II & 1923 \\
+                    & Composição X & 1939 \\
+                    & Pontos & 1920 \\
+
+Henri Matisse       & Auto-retrato em uma camiseta listrada & 1906 \\
+                    & Retrato de Madame Matisse & 1905 \\
+                    & A dança (primeira versão) & 1909 \\
+
+Pablo Picasso       & Les Demoiselles d'Avignon & 1907 \\
+                    & Guernica & 1937 \\
+                    & Dora Maar au Chat & 1941 \\
+
+Joan Mir\'{o}       & O fazendeiro & 1921/22 \\
+                    & O campo lavrado & 1923/24 \\
+                    & Bleu II & 1961 \\
+
+Jackson Pollock     & No. 5 & 1948 \\
+                    & Ritmo de outono & 1950 \\
+                    & Pólos azuis & 1952 \\
+
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\section{Análise de imagens para extração de atributos}
+
+Todas as 240 imagens foram cortadas em janelas de $800\times800$
+pixels. Esta janela quadrada foi posicionada com seu ponto superior mais à
+esquerda equivalendo ao ponto superior mais à esquerda da pintura. As imagens
+que possuiam dimensões menores que $800\times800$ foram escaladas para tal, mantendo o
+mesmo aspecto da imagem original em todas as pinturas. Em seguida, as
+imagens foram pré-processadas aplicando-se equalização por histograma e filtro
+de médias com janelamento de raio 3, ambas descritas na Subseção~\ref{sec:preproc}.
+
+Algoritmos de extração de características foram aplicados a versões coloridas,
+em escala de cinza e preto-e-branco das imagens, conforme necessário (e.g.\ para
+o algoritmo convex-hull, uma imagem binária $B$ foi utilizada, enquanto para o
+algoritmo de textura de Haralick, uma imagem em escala de cinza $G$ foi
+utilizada, já a segmentação SLIC utilizou a versão RGB, a matriz $I$, de cada
+imagem).
+
+Com o objetivo de mensurar características de regiões das pinturas, métodos de
+segmentação foram utilizados, a saber: Watershed, SLIC e Felzenswald. Após
+experimentos (Figura~\ref{fig:expsegs}), preferiu-se o método de segmentação
+SLIC (descrito na Subseção~\ref{sec:slic}), por apresentar melhor separação das
+regiões de cada pintura. O parâmetro $k$ (número de \textit{clusters}) da
+segmentação SLIC foi ajustado de forma a melhor segmentar as regiões: como é
+possível notar no detalhe \textit{e)} da Figura~\ref{fig:expsegs}: outros
+valores que os escolhidos para parametrização do método revelaram resultados que
+não contribuiriam para uma boa segmentação.
+
+\begin{figure}[ht!]
+\begin{center}
+        \includegraphics[scale=.3]{figs/expsegs}
+      \caption{Experimentos realizados para segmentação de pinturas. \textit{a)}
+        a imagem original, \textit{b)} segmentação por Watershed, \textit{c)}
+        Felzenswald, \textit{d)} SLIC com $k=10$ e \textit{e)} SLIC com
+        $k=20$. O método SLIC foi escolhido por apresentar, visualmente,
+        melhor separação dos segmentos, e os parâmetros escolhidos contribuíram
+        para a segmentação apresentada.  }
+        \label{fig:expsegs}
+\end{center}
+\end{figure}
+
+Tendo-se as regiões separadas, estas foram agrupadas em componentes conexos, ou
+seja, em regiões conectadas e independentes umas das outras
+(Subseção~\ref{sec:posproc}). Com tais regiões agrupadas, partiu-se para o
+cálculo de curvatura de cada região e demais medidas descritas na Seção~\ref{sec:atributos}.
+
+Todo o processo está representado esquematicamente na Figura~\ref{fig:dataflow}
+e abrange todos os passos, do processamento das imagens das pinturas até o
+cálculo de medidas de dialética, oposição e inovação, discutidas em detalhes nos
+próximos capítulos, e portanto, destacadas na figura.
+
+\begin{figure}[ht!]
+\begin{center}
+        \includegraphics[scale=.6]{figs/dataflow_pintores3}
+      \caption{Um sumário com todos os passos tomados, desde o processamento das
+        imagens das pinturas até a extração de características, assim como a
+        obtenção da série temporal onde foram calculadas as medidas de oposição,
+        inovação e dialética.}
+        \label{fig:dataflow}
+\end{center}
+\end{figure}
+
+%% A Tabela X lista todos os atributos discutidos aqui e usados para caracterizar
+%% cada pintura considerada.
+
+%% TODO: discutir cada atributo e sua relevância? Aqui ou na próxima sec?
+
+\section{Seleção de atributos}
+
+Para selecionar os atributos mais relevantes, neste caso, os atributos que
+separassem melhor os grupos de pinturas -- em outras palavras, que garantissem
+menor covariância interna em cada classe e maior covariância entre as classes --
+uma medida de dispersão é aplicada usando as matrizes esparsas discutidas na
+Seção~\ref{sec:fund:reducao}.
+
+Calculando $\alpha$ através da Eq.~\ref{eq:alpha} para todos os possíveis pares
+de atributos $F_{N, a}$ e $F_{N, b}$ dos $N = 99$ atributos e ordenando os
+resultados por $\alpha$, é possível selecionar todos os atributos mais
+relevantes para a classificação: pares com maiores valores de $\alpha$
+apresentam melhor dispersão inter-classe e agrupamento intra-classe do que pares
+com menores valores. Como visto na Tabela~\ref{tab:alpha} (e nas
+Figuras~\ref{fig:caso1_g1} e~\ref{fig:caso1_g2}), os atributos \emph{$\mu$ dos
+  picos de curvatura} e \emph{$\mu$ do número de segmentos} possuem maior valor
+de $\alpha$ e foram selecionados para a análise das medidas de oposição,
+inovação e dialética --- ambos atributos se mostraram predominantes mesmo na
+projeção por LDA, discutida na Seção~\ref{subsec:lda}. É interessante notar a
+natureza dos atributos selecionados: o número de segmentos em cada pintura e os
+picos de curvatura são características proeminentes para a classificação das
+pinturas, melhores até mesmo que os atributos de textura de Haralick e de
+complexidade de imagens (entropia). Outros atributos que apresentaram também
+valores altos de $\alpha$ --- como $\mu$ da área de \textit{convex-hull}, do
+perímetro dos segmentos e da área do segmento, e circularidade --- também são
+relacionadas com características de forma. Ambos atributos apresentaram
+projeções e propriedades de agrupamento similares às da
+Figura~\ref{fig:caso1_g1} como mostrado na Figura~\ref{fig:scatters}.
+%%  Dessa
+%% forma, outras combinações desses atributos podem ser usados para a análise,
+%% apresentando resultados que conservam as características observadas para as
+%% medidas de oposição, inovação e dialética.
+ 
+\begin{table}[ht] \footnotesize
+  \begin{center}
+  \caption{\label{tab:alpha} Pares de atributos $F_{N, a}$ e $F_{N, b}$
+    ordenados por
+    $\alpha$. Pares com valores maiores de $\alpha$ mostram maior dispersão
+    inter-classe enquanto menor dispersão intra-classe (maior agrupamento).
+    O melhor par de atributos: \emph{$\mu$ dos picos de curvatura} e
+    \emph{$\mu$ do número de segmentos} são selecionados para a análise e
+    cálculo das medidas.}
+\begin{tabular}{@{}llll}
+ \hline \hline
+ Par & Atributo $a$    & Atributo $b$   & $\alpha$ \\ 
+ 
+ \hline
+ 
+ 1 & $\mu$ do número de picos & $\mu$ do número de segmentos & 42.445 \\
+ 2 & $\mu$ do número de segmentos & $\mu$ da área de convex-hull & 37.406 \\
+ 3 & $\mu$ do perímetro do segmento & $\mu$ do número de segmentos & 36.703 \\
+ 4 & $\mu$ da área do segmento & $\mu$ do número de segmentos & 36.214 \\
+ 5 & $\mu$ do número de segmentos & $\mu$ área convexa / área total & 34.885 \\
+ 6 & $\mu$ de circularidade ($\mathrm{Per.}^2/\mathrm{Area}$) & $\mu$ do número
+ de segmentos & 33.540 \\
+ 7 & $\mu$ da energia das linhas (canal verde) & $\mu$ do número de segmentos & 32.954 \\
+ 8 & $\mu$ da energia das linhas e colunas (canal verde) & $\mu$ do número de segmentos & 32.954 \\
+ 9 & $\sigma$ da energia das linhas (canal verde) & $\mu$ do número de segmentos & 32.932 \\
+ 10 & $\sigma$ da energia das linhas e colunas (canal verde) & $\mu$ do número
+ de segmentos & 32.906 \\
+ 11 & $\mu$ de entropia local (janela de dimensão 5) & $\mu$ do número de segmentos & 32.898 \\
+ 12 & Entropia (Haralick adj. 4) & $\mu$ do número de segmentos & 32.898 \\
+ 13 & Entropia (Haralick adj. 3) & $\mu$ do número de segmentos & 32.883 \\
+ 14 & Entropia (Haralick adj. 1) & $\mu$ do número de segmentos & 32.874 \\
+ 15 & Entropia (Haralick adj. 2) & $\mu$ do número de segmentos & 32.869 \\
+ 16 & $\mu$ da energia das linhas (canal vermelho) & $\mu$ do número de segmentos & 32.865 \\
+\hline \hline
+ \end{tabular}
+\end{center}
+\end{table}
+
+\section{Classificação e medidas de dialética, oposição e inovação}
+\label{sec:medidas}
+
+% retirei daqui as descrições analíticas da dialética, oposição e inovação
+
+O \textit{espaço criativo} projetado considerando todas as pinturas
+``representadas'' por $\vec{p_i}$ é apresentado na Figura~\ref{fig:caso1_g1}. É
+possível notar grupos bem definidos com menor sobreposição, principalmente
+quando considerando as pinturas Modernas. A série temporal formada pelos
+protótipos $\vec{p_i}$ para cada pintor no espaço projetado é visto na
+Figura~\ref{fig:caso1_g2}, facilitando a visualização da evolução da série.
+
+% gerado com: metrics_caso1.py
+\begin{figure}[h!]
+\begin{center}
+        \includegraphics[scale=.5]{figs/caso1_g1}
+      \caption{Projeção do \textit{espaço criativo} considerando o melhor par de
+        atributos \emph{$\mu$ de picos da curvatura} e \emph{$\mu$ do número de segmentos}.}
+        \label{fig:caso1_g1}
+\end{center}
+\end{figure}
+
+% gerado com: metrics_caso1.py
+\begin{figure}[h!]
+\begin{center}
+        \includegraphics[scale=.5]{figs/caso1_g2}
+      \caption{Série temporal considerando o melhor par de
+        atributos \emph{$\mu$ de picos da curvatura} e \emph{$\mu$ do número de segmentos}.}
+        \label{fig:caso1_g2}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+{    \centering
+        \includegraphics[width=\columnwidth]{figs/sm_pintores}}
+      \caption{Matrizes esparsas para cada $i$-ézimo par de atributos listado na
+        Tabela~\ref{tab:alpha} com os maiores valores para $\alpha$. A primeira
+        projeção (par $1$) foi utilizado nesse estudo.}
+        \label{fig:scatters}
+        \end{center}
+\end{figure}
+
+
+Detalhes interessantes surgem dessa projeção. A mais impressionante é a grande
+distância entre Pollock e os demais pintores: isso se deve ao grande número de
+segmentos presentes nas pinturas de Pollock quando comparado aos demais artistas
+(o eixo-y corresponde à projeção desse atributo: $\mu$ do número de
+segmentos). De qualquer forma, ambos eixos x (número de picos da curvatura) e y
+são relevantes para separar os movimentos Barroco e Moderno. É possível notar
+uma separação entre os pintores barrocos e modernos onde as pinturas Barrocas
+mostram-se arranjadas em um grupo com grande sobreposição enquanto as amostras
+Modernas estão agrupadas e separadas uma das outras, ao mesmo tempo que cobrem
+uma região maior do \textit{espaço criativo} do que as barrocas. Esse fato é
+confirmado pela história da Arte onde os pintores modernos tentando experimentar
+novos materiais e técnicas (como revisado na Seção~\ref{sec:breve}) para representar suas
+percepções da natureza enquanto os barrocos tendem a utilizar métodos
+tradicionais de suas respectivas escolas. O mesmo fato pode ser observado quando
+se analisa a série temporal, onde a diferença entre os movimentos artísticos é
+clara: enquanto os barrocos preferem retornar uns aos outros em um padrão
+cíclico, há um deslocamento abrupto em van Gogh --- o primeiro pintor Moderno
+considerado nesse estudo --- que o separa dos primeiros pintores e ``quebra'' o
+padrão antes cíclico. Van Gogh, embora localizado próximo aos pintores barrocos
+e no extremo oposto da maioria dos pintores modernos, estabelece o período
+Moderno e depois dele os deslocamentos de um vetor a outro continuam a evoluir
+até alcançar seu ápice, em Pollock, não mostrando mais padrões cíclicos.
+
+Quando ambos grupos (Barroco e Moderno) são analisados individualmente, é
+possível notar outros detalhes de interesse. Primeiramente no Barroco, a
+trajetória desenhada de Caravaggio e Frans Hals até Poussin estabelece um
+caminho que termina com um movimento de oposição (e de retorno) de
+Vel\'{a}zquez, que retorna a Caravaggio.  Isso também é notado no movimento de
+retorno à Cavaraggio apresentado por Vermeer --- alguns críticos~\cite{lambert}
+afirmam que pintores como Vermeer nem teriam existido se não fosse a influência
+de Caravaggio: os agrupamentos de pinturas de Vermeer e Caravaggio apresentam a
+maior sobreposição dentre todos os agrupamentos presentes no \textit{espaço
+  criativo}. Isso pode ser atribuído à influência do mestre do ``chiaroscuro''
+em ambos pintores, principalmente em Vel\'{a}zquez que foi reconhecidamente um
+estudioso das pinturas de Caravaggio.~\cite{gombrich} Ambos fatos são
+confirmados pelos histogramas do nível médio de cinza das pinturas mostrado na
+Figura~\ref{fig:chiaroscuro}. Os histogramas de Velázquez e Vermeer são os que
+mais se aproximam do histograma de Caravaggio quando comparados aos outros
+pintores barrocos.
+
+\begin{figure}[h!]
+    
+\begin{center}
+{    \centering
+        \includegraphics[width=\columnwidth]{figs/chiaroscuro}}
+      \caption{Histogramas dos níveis médios de cinza para todos os pintores
+        barrocos. Vermeer e Velázquez mostram maior similaridade com Caravaggio
+        do que os outros pintores barrocos: a proximidade em contraste encontra
+        fundamento na história, tendo sido ambos pintores influenciados por
+        Caravaggio.}
+        \label{fig:chiaroscuro}
+  \end{center}
+\end{figure}
+
+Em sumário, o grupo barroco é fortemente inter-relacionado quando comparado com
+os modernos onde há ausência de sobreposições. Novamente, isso sugere uma
+distinção centrada no estilo de cada artista da era moderna enquanto os pintores
+barrocos tendem a compartilhar técnicas e características estéticas. Isso é
+também confirmado quando se comparam os histogramas dos pintores modernos na
+Figura~\ref{fig:chiaroscuro_modernos}: há baixa similaridade entre os pintores
+modernos considerados, contrastando diretamente com o que foi observado para os
+pintores barrocos na Figura~\ref{fig:chiaroscuro}.
+
+\begin{figure}[h!]
+    
+\begin{center}
+{    \centering
+        \includegraphics[width=\columnwidth]{figs/chiaroscuro_modernos}}
+      \caption{Histogramas nos níveis médios de cinza para os pintores
+        modernos. Há baixa similaridade entre os pintores modernos, diferente do
+        que ocorre para os pintores barrocos.}
+        \label{fig:chiaroscuro_modernos}
+  \end{center}
+\end{figure}
+
+Quando são consideradas as medidas de oposição e inovação, outros resultados
+interessantes apresentam-se, como mostrado na Tabela~\ref{tab:opos1} e
+Figura~\ref{fig:caso1_oposEinov}.
+
+% gerado com: metrics_caso1.py
+\begin{table}[ht]
+  \begin{center}
+  \caption{\label{tab:opos1}Índice de oposição $W_{i,j}$ e inovação $s_{i,j}$
+    para cada um dos 11 deslocamentos de um pintor a outro.}
+\begin{tabular}{@{}lll}
+    \hline \hline
+    Deslocamento & $W_{i,j}$ & $s_{i,j}$ \\
+    \hline
+    Caravaggio $\to$ Frans Hals  &   1.     &  0.     \\
+    Frans Hals $\to$ Poussin     &   0.111  &  0.425  \\
+    Poussin $\to$ Vel\'{a}zquez   &   0.621  &  0.004  \\
+    Vel\'{a}zquez $\to$ Rembrandt &   1.258  &  0.072  \\
+    Rembrandt $\to$ Vermeer      &   1.152  &  0.341  \\
+    Vermeer $\to$ Van Gogh       &   1.158  &  0.280  \\
+    Van Gogh $\to$ Kandinsky     &   0.970  &  0.452  \\
+    Kandinsky $\to$ Matisse      &   0.089  &  0.189  \\
+    Matisse $\to$ Picasso        &   0.117  &  0.509  \\
+    Picasso $\to$ Mir\'{o}       &   0.385  &  0.325  \\
+    Mir\'{o} $\to$ Pollock       &   2.376  &  3.823  \\
+    \hline \hline
+  \end{tabular}
+\end{center}
+\end{table}
+
+
+% gerado com: metrics_caso1.py
+\begin{figure}[h!]
+\begin{center}
+        \includegraphics[width=\columnwidth]{figs/caso1_oposEinov}
+      \caption{Valores de oposição $W_{i,j}$ e inovação $s_{i,j}$ considerando
+        os dois melhores atributos.}
+        \label{fig:caso1_oposEinov}
+\end{center}
+\end{figure}
+
+Claramente, o maior valor de oposição é atribuído a Rembrandt. Esse fato é
+curioso por si, considerando que o mestre holandês é reconhecido como um
+``contraponto'' ao movimento Barroco, mesmo tendo sido parte desse
+movimento.~\cite{gombrich} Vermeer também apresenta forte oposição e a natureza
+de suas pinturas (e.g.\ interiores domésticos, uso de cores claras) pode
+explicar esse fenômeno. Um padrão torna-se visível no começo de ambos movimentos
+Barroco e Moderno: decréscimo contínuo nos valores de oposição, seguido de
+acréscimo. Da mesma forma, um platô com alta oposição é observado nos pintores
+barrocos. Esse platô ocorre exatamente na transição de um movimento artístico ao
+outro, diminuindo gradualmente enquanto os artistas modernos começam a se
+estabelecer na história. Esse decréscimo dos valores de oposição refletem um
+aspecto de baixa oposição entre os primeiros artistas barrocos enquanto há o acréscimo da
+oposição presente nos deslocamentos que precedem o movimento Moderno, embora os
+valores de inovação se mantém oscilando mas aumentando durante toda a
+série temporal. Isso caracteriza novamente uma cena comum nas Artes,
+principalmente nos modernistas, onde cada um tenta definir seu próprio estilo
+enquanto a história se prepara para ingressar em um novo movimento. Em resumo,
+no que se pode falar dos índices de oposicão e inovação, o
+\textit{espaço criativo} é marcado por aumento constante de inovação, grande
+oposição em momentos específicos de sua evolução (a transição entre o Barroco e
+Moderno) e menor oposição entre artistas de um mesmo movimento, principalmente
+no Barroco.
+
+No que tange a contra-dialética, mostrada na Tabela~\ref{tab:dialetica1} e
+Figura~\ref{fig:caso1_dialetica}, há um paralelo com as curvas de
+oposição e inovação. A contra-dialética reforça fatos já observados: pintores do
+mesmo movimento mostram inicialmente um decréscimo em seus valores, seguido por
+acréscimo contínuo, refletindo a concordância de membros do mesmo movimento e a
+sua preparação nas vésperas de inaugurar um novo movimento. O pico de
+contra-dialética acontece em van Gogh e Kandinsky: de novo, exatamente o ponto
+onde o Barroco termina e o Moderno começa, considerando os pintores selecionados
+para esse estudo.
+
+% gerado com: metrics_caso1.py
+\begin{table}[ht]
+  \begin{center}
+  \caption{\label{tab:dialetica1} Índices de contra-dialética para cada um dos
+    10 deslocamentos entre tese, antítese e síntese, considerando os dois
+    melhores atributos.}
+\begin{tabular}{@{}ll}
+  
+    \hline \hline
+    Tese, antítese e síntese & $d_{i \rightarrow k}$ \\
+    \hline
+    Caravaggio $\to$ Frans Hals $\to$ Poussin   & 0.572 \\
+    Frans Hals $\to$ Poussin $\to$ Vel\'{a}zquez & 0.337 \\
+    Poussin $\to$ Vel\'{a}zquez $\to$ Rembrandt  & 0.151 \\
+    Vel\'{a}zquez $\to$ Rembrandt $\to$ Vermeer  & 0.608 \\
+    Rembrandt $\to$ Vermeer $\to$ Van Gogh      & 1.362 \\
+    Vermeer $\to$ Van Gogh $\to$ Kandinsky      & 1.502 \\
+    Van Gogh $\to$ Kandinsky $\to$ Matisse      & 1.062 \\
+    Kandinsky $\to$ Matisse $\to$ Picasso       & 0.183 \\
+    Matisse $\to$ Picasso $\to$ Mir\'{o}         & 0.447 \\
+    Picasso $\to$ Mir\'{o} $\to$ Pollock         & 2.616 \\
+    \hline \hline
+  \end{tabular}
+\end{center}
+\end{table}
+
+
+% gerado com: metrics_caso1.py
+\begin{figure}[h!]
+\begin{center}
+        \includegraphics[width=\columnwidth]{figs/caso1_dialetica}
+    \caption{Valores de contra-dialética considerando os dois melhores atributos.}
+        \label{fig:caso1_dialetica}
+\end{center}
+\end{figure}
+
+\subsection{Análise por LDA de todos os atributos}
+\label{subsec:lda}
+
+Embora os atributos $\mu$ de picos de curvatura e $\mu$
+do número de segmentos apresentaram-se como opções interessantes para a
+classificação, o método LDA foi aplicado considerando todos os $N = 99$
+atributos com o objetivo de testar a relevância dos atributos originalmente
+selecionados e a estabilidade dos resultados. O método LDA projeta os atributos
+em um espaço de $n < N$ dimensões que melhor separa as pinturas e que acaba por
+resultar em uma nova série temporal como feito para o caso dos melhores
+atributos. Nesse caso, para permitir a visualização das medidas, considerou-se a
+projeção com $n = 2$ componentes que resultou em um espaço de 2 dimensões,
+mostrado na Figura~\ref{fig:caso3_g1}. É possível notar, como esperado, uma
+similaridade com os resultados da início desta seção, onde as medidas foram
+calculadas apenas para o melhor par de atributos. Os índices de
+inovação (Figura~\ref{fig:caso3_oposEinov}) apresentam uma curva ascendente ainda mais bem definida durante toda a
+evolução da série. Os padrões notados na evolução de ambos índices de oposição e
+contra-dialética continuam visíveis nessa nova projeção por LDA, como é possível
+notar na Figuras~\ref{fig:caso3_oposEinov} e~\ref{fig:caso3_dialetica}, respectivamente.
+
+% gerado com: metrics_caso3.py
+\begin{figure}[h!]
+\begin{center}
+        \includegraphics[width=\columnwidth]{figs/caso3_g1}
+      \caption{Série temporal resultante da projeção em 2 dimensões do
+        \textit{espaço criativo} considerando os dois primeiros componentes com
+        maiores autovalores obtidos a partir da tranformação LDA na matriz de
+        $N = 99$ atributos.}
+        \label{fig:caso3_g1}
+\end{center}
+\end{figure}
+
+% gerado com: metrics_caso3.py
+\begin{table}[ht]
+  \begin{center}
+\caption{\label{tab:opos3}Índices de oposição e inovação para cada um dos 11
+  deslocamentos de um pintor ao outro.}
+\begin{tabular}{@{}lll}
+    \hline \hline
+    Deslocamento & $W_{i,j}$ & $s_{i,j}$ \\
+    \hline
+    Caravaggio $\to$ Frans Hals  &   1.     &  0.     \\
+    Frans Hals $\to$ Poussin     &  -0.101  &  0.132  \\
+    Poussin $\to$ Vel\'{a}zquez   &   0.588  &  0.037  \\
+    Vel\'{a}zquez $\to$ Rembrandt &   1.526  &  0.050  \\
+    Rembrandt $\to$ Vermeer      &   1.101  &  0.143  \\
+    Vermeer $\to$ Van Gogh       &   1.153  &  0.157  \\
+    Van Gogh $\to$ Kandinsky     &   1.279  &  0.512  \\
+    Kandinsky $\to$ Matisse      &   0.179  &  0.149  \\
+    Matisse $\to$ Picasso        &  -0.201  &  0.516  \\
+    Picasso $\to$ Mir\'{o}       &   0.432  &  0.163  \\
+    Mir\'{o} $\to$ Pollock       &   4.031  &  2.662  \\
+    \hline \hline
+  \end{tabular}
+\end{center}
+\end{table}
+
+% gerado com: metrics_caso3.py
+\begin{figure}[h!]
+\begin{center}
+        \includegraphics[width=\columnwidth]{figs/caso3_oposEinov}
+      \caption{Valores de oposição e inovação considerando a série temporal para
+        todos os $N = 99$ atributos refletidos nos dois primeiros componentes
+        obtidos pelo método LDA. Os mesmos padrões observados quando
+        considerando os dois melhores atributos ainda permanecem nessa
+        observação, como esperado.}
+        \label{fig:caso3_oposEinov}
+\end{center}
+\end{figure}
+
+% gerado com: metrics_caso1.py
+\begin{table}[ht]
+  \begin{center}
+  \caption{\label{tab:dialetica3} Índices de contra-dialética para cada um dos
+    deslocamentos para os dois melhores componentes do LDA.}
+\begin{tabular}{@{}ll}
+    \hline \hline
+    Deslocamento & Contra-dialética ($d_{i \rightarrow k}$) \\
+    \hline
+    Caravaggio $\to$ Frans Hals $\to$ Poussin   & 0.587 \\
+    Frans Hals $\to$ Poussin $\to$ Vel'{a}zquez & 0.317 \\
+    Poussin $\to$ Vel'{a}zquez $\to$ Rembrandt  & 0.268 \\
+    Vel'{a}zquez $\to$ Rembrandt $\to$ Vermeer  & 0.736 \\
+    Rembrandt $\to$ Vermeer $\to$ Van Gogh      & 1.192 \\
+    Vermeer $\to$ Van Gogh $\to$ Kandinsky      & 2.352 \\
+    Van Gogh $\to$ Kandinsky $\to$ Matisse      & 0.974 \\
+    Kandinsky $\to$ Matisse $\to$ Picasso       & 0.241 \\
+    Matisse $\to$ Picasso $\to$ Mir'{o}         & 0.704 \\
+    Picasso $\to$ Mir'{o} $\to$ Pollock         & 1.924 \\
+    \hline \hline
+  \end{tabular}
+  \end{center}
+\end{table}
+
+% gerado com: metrics_caso3.py
+\begin{figure}[h!]
+\begin{center}
+        \includegraphics[width=\columnwidth]{figs/caso3_dialetica}
+      \caption{Contra-dialética (valores altos indicam baixa
+        incidência de dialética) calculada para os componentes principais
+        obtidos por LDA. O padrão observado anteriormente para o melhor par de
+        atributos apresenta-se ainda mais visível aqui: é possível observar
+        claramente que o maior valor está no ponto de transição dos movimentos
+        artísticos (van Gogh e Kandinsky).}
+        \label{fig:caso3_dialetica}
+\end{center}
+\end{figure}
+
+Para validação do LDA o grupo de 240 pinturas foi dividido em dois: um conjunto
+de treinamento contendo 10 pinturas selecionadas aleatoriamente para cada
+artista, e um conjunto de teste contendo as 10 pinturas restantes para cada
+artista, ambos sem repetição. A matriz de confusão
+(Figura~\ref{fig:cm}) indica o quão satisfatória é a classificação. Os elementos
+da diagonal principal representam o número de amostras (pinturas) para as quais
+a classe obtida no conjunto de teste coincide com a classe esperada (obtida na
+fase de treinamento). Elementos localizados fora da diagonal principal indicam
+aqueles que não foram classificados corretamente pelo método LDA. Quanto maiores
+os valores da diagonal principal, melhor a predição de classes. Como é possível
+observar, o método LDA demonstra predição esperada para o grupo de pinturas
+considerado. As amostras com melhor classificação são as pinturas de Pollock, o
+que é esperado, pois é o pintor que mais se distancia dos outros no
+\textit{espaço criativo}. Em geral, a matriz de confusão reflete os resultados
+previamente discutidos: há similaridade entre pintores barrocos, principalmente
+Velázquez, Caravaggio e Rembrandt e é possível notar claramente a separação
+entre pintores anteriores e posteriores a van Gogh, que define a fronteira entre os
+movimentos Barroco e Moderno.
+
+%% gerado com: ga-delaunay/matriz_confusao.py
+\begin{figure}[h!]
+\begin{center}
+        \includegraphics[width=\columnwidth]{figs/matriz_confusao}
+      \caption{Matriz de confusão para o método LDA. Metade das pinturas de cada
+        artista é usado como conjunto de treino e a metade restante como
+        conjunto de teste. Os elementos da diagonal principal mostram o número
+        de amostras da classe esperada que correspondem com a classe obtida pelo
+        método. Dada a grande quantidade de valores na diagonal principal, a
+        validação sugere que o método LDA foi suficiente para a classificação
+        das pinturas. Além disso, detalhes já observados nos resultados desse
+        estudo são novamente observados na matriz: deslocamento de Van Gogh e
+        similaridade entre pintores do mesmo movimento, principalmente Barroco.}
+        \label{fig:cm}
+\end{center}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Conclusões}
+\label{chap:conclusoes}
+
+% TODO: Responder às questões levantadas na introdução.
+
+%% Apontamentos futuros: uso integrado a um algoritmo de otimização (AG) para
+%% geração de material, colaboração para uso do mesmo framework para geração de
+%% estruturas musicais e demais artefatos. Aplicação do método em mais pinturas e
+%% artistas.
+%%  Novas medidas quantitativas para conceitos humanos.
+
+Este trabalho propõe um método para o estudo da evolução de movimentos
+artísticos através da quantificação de conceitos, antes exclusivamente
+humanos. Como caso de estudo, aplica-se tal método para o entendimento dos
+movimentos Barroco e Moderno, na Pintura. Iniciando com a escolha de
+representantes de cada um destes movimentos, 12 nomes são sugeridos, 240
+pinturas destes artistas são escolhidas. Rotinas de processamento digital de
+imagens permitem a extração de características deste corpus de pinturas. São
+extraídas de cada pintura um vetor de 99 atributos que caracterizam aspectos de
+complexidade da imagem, textura, forma e contorno.  A relevância de tais
+atributos foi atestada pela análise do índice de dispersão $\alpha$ calculado
+através de matrizes de espalhamento para cada par possível de atributos. Uma
+análise baseada na medida $\alpha$ revelou que os atributos que melhor
+classificaram as pinturas foram \textit{a)} \emph{número médio de picos de
+  curvatura} e \textit{b)} \emph{número médio de segmentos por imagem}, ambos
+relacionados com a forma dos segmentos extraídos das imagens
+automaticamente. Outros atributos que apresentaram altos valores para $\alpha$
+também estavam, em geral, relacionados com a forma. Esses atributos podem ser
+usados satisfatoriamente para a classificação de pintores, apresentando
+resultados ainda melhores que descritores canônicos em processamento de imagens
+como as medidas de textura de Haralick ou medidas baseadas na complexidade de
+figuras (e.g.\ entropia). Essa seleção de atributos foi validada através da
+aplicação do método LDA, pela projeção dos componentes que mais dispersam
+os grupos de pinturas. Os resultados obtidos para essa projeção apresentaram
+grande similaridade com aqueles encontrados para os melhores pares de atributos,
+segundo os valores de $\alpha$. O método LDA, por sua vez, também teve sua validação
+efetuada através de matriz de confusão, que acabou por reforçar as observações e
+padrões obtidos para as medidas de inovação, oposição e dialética, já que além
+de revelar a classificação esperada (e.g.\ quando se observa sua diagonal
+principal, a classe esperada para determinado pintor coincide com a classe
+obtida) ainda confirmou a separação entre os grupos de pintores barrocos e
+modernos e o isolamento de Pollock do resto do grupo, apresentando-o com $100\%$
+de acerto na matriz de espalhamento.
+
+A caracterização das pinturas pelo uso destes atributos tornou possível a
+análise de medidas quantitativas (geométricas). Embora de importância central
+para o entendimento da evolução da humanidade, conceitos filosóficos como a
+dialética não são abordados comumente pelas ciências exatas. Enquanto tratadas
+como medidas geométricas, as medidas de oposição, inovação e dialética revelaram
+conceitos importantes que puderam ser comparados com resultados já obtidos para
+a Música e Filosofia~\cite{vieira}. Compositores mostram altos valores de
+dialética, o que sugere a tradição mestre-aprendiz --- reconhecida nas escolas
+musicais. Filósofos, por sua vez, mostram grandes valores de oposição, o que
+também encontra base em como a evolução da Filosofia se dá: geralmente, através
+do conflito de ideias. Pintores, como mostrado nesse estudo, exibem decréscimo nos
+valores de oposição e dialética no início de cada movimento artístico
+considerado. Esse decréscimo é seguido por um aumento constante até encontrar seu
+ápice, exatamente no momento onde há a transição de um movimento (Barroco) para
+o outro (Moderno). Ainda, diferente dos filósofos e músicos, na pintura a
+inovação apresenta valores aumentando constantemente, durante toda a série
+temporal. Isso pode refletir a influência de cada movimento artístico em seus
+representantes, juntamente com um constante desejo de inovar, presente
+principalmente nos pintores modernos. Dessa forma, fatos já fundamentados na
+história das artes são confirmados por tais medidas quantitativas. Nesse
+sentido, uma das observações mais sumárias é a sobreposição de pinturas barrocas
+enquanto nos pintores modernos isso não acontece. Pelo contrário, os grupos de
+pintores modernos apresentam pouca sobreposição e, ao mesmo tempo, cobrem uma
+região maior do espaço geométrico quando comparados aos barrocos. Essas
+observações encontram paralelo na história, com os barrocos compartilhando as
+características estéticas de suas obras uns com os outros, enquanto os modernos
+procuram definir cada um seu próprio estilo, individualmente.
+
+Embora insuficiente para esgotar todas as características encontradas em um
+artista e sua obra, esse método sugere um \textit{framework} para o estudo das
+ciências humanas através de medidas geométricas em um espaço de atributos.
+Como trabalhos futuros, o número de pintores pode ser expandido e um conjunto de
+pintores pode ser escolhido especificamente para investigar suas influências
+(e.g.\ pinturas dos filhos de Frans Hals podem ser incluídas para verificar a
+influência de seu pai e mestre, ou ainda, pinturas de Rafael, Poussin e Guido
+Reni~\cite{gombrich} ou Carracci podem ser comparadas entre si com o objetivo de
+verificar a já reconhecida similaridade entre ambos pintores, ou a influência de
+Cézanne em Matisse e Picasso, que declarou: ``meu primeiro e único mestre (...)
+Cézanne é o pai de todos nós''.~\cite{rishel} A evolução de um mesmo artista
+pode ser analisada, assim como a evolução ocorrida dentro de uma escola
+específica. Pode-se assim comparar tal análise com as evoluções obtidas para
+outras escolas e confirmar (ou não) o mesmo aspecto observado na análise deste
+estudo --- onde as medidas de dialética e oposição apresentaram picos de valores
+nos momentos de transição da escola Barroca para a Moderna. Ainda, um número maior
+de pinturas para cada artista pode ser considerado para análise. O mesmo
+\textit{framework} pode ser aplicado (como já demonstrado para a Música,
+Filosofia e Pintura) a outros campos de interesse humano como Cinema e
+Literatura. A mesma automatização aplicada aqui pode ser replicada para a
+Música (e possivelmente à Filosofia), dando continuidade ao trabalho realizado
+pelos autores~\cite{vieira}.
+
+Mais uma vez reforça-se que, ao invés de suplantar as discussões humanas, que
+tanto trazem de valor para o entendimento da sociedade, esse \textit{framework}
+pretende somar, fornecendo mais um ponto de vista.

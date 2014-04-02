@@ -1,0 +1,12 @@
+*~
+*.wav
+*.aux
+*.blg
+*.lof
+*.lot
+*.log
+*.toc
+*.dvi
+*.bbl
+python.sty
+pythonlisting.tex
