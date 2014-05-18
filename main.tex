@@ -37,17 +37,20 @@ características comuns, mas costumam ter bem definido sua data de
 criação, local e participantes, assim como um manifesto.
 
 Seja qual for a classificação tomada para a história das artes e de
-seus artistas, é possível perceber algo latente: as características de
-suas obras estão em constante transformação, definindo os diferentes
-períodos, estilos ou escolas. A história da Arte é portanto permeada
-por uma sucessão de similaridades e oposições destas características
-ou ideias. A Pintura oferece inúmeros exemplos. Brunelleschi e Alberti
-apresentaram uma técnica geométrica~\cite{andersen,kemp}, através do
-cálculo da perspectiva, para representar a profundidade visível
+seus artistas em termos de movimentos e períodos, é possível perceber
+algo latente: as características de suas obras estão em constante
+transformação, definindo os diferentes períodos ou escolas. A história
+da Arte é portanto permeada por uma sucessão de similaridades e
+oposições destas características ou ideias. A Pintura oferece inúmeros
+exemplos. Brunelleschi e Alberti inauguraram um estilo de
+pintura~\cite{andersen,kemp} onde conseguiam representar a
+profundidade visível de uma cena utilizando um método geométrico:
+linhas paralelas convergindo em um ou mais pontos no horizonte.
 (Figura~\ref{fig:perspectiva}). Até então as pinturas, afrescos,
 mozaicos e desenhos não tinham noção alguma de profundidade --- os
 elementos que compunham a pintura eram distribuídos segundo sua
-importância espiritual ou temática~\cite{edgerton}. Essa técnica
+importância espiritual ou temática~\cite{edgerton}, utilizando por
+exemplo, a simples sobreposição dos elementos na tela. Esse estilo
 acabaria por fazer parte das características da grande maioria das
 pinturas a partir do século XV~\cite{gombrich}. Porém, ela não foi
 suficiente para Cézanne nem seus contemporâneos da Arte Moderna, que
@@ -66,18 +69,19 @@ tradição iniciada por Brunelleschi e Alberti~\cite{sedlmayr}.
         pintura antecede o método de perspectiva de Brunelleschi e
         portanto é possível notar a ausência de linhas que converjam
         para um só ponto, embora haja a intenção da representação de
-        profundidade. Já a imagem inferior, um afresco de Pietro
-        Perugino (1481-1482), apresenta a técnica de perspectiva, com
-        todas as linhas convergindo para o centro da imagem, em seu
-        horizonte. As imagens ilustram como a técnica pode influenciar
-        mudanças nas características das obras ao longo da história}
+        profundidade, pela sobreposição dos elementos. Já a imagem
+        inferior, um afresco de Pietro Perugino (1481-1482), apresenta
+        o estilo de perspectiva, com todas as linhas convergindo para
+        o centro da imagem, em seu horizonte. As imagens ilustram como
+        o estilo pode influenciar mudanças nas características das
+        obras ao longo da história}
       \label{fig:perspectiva}
 \end{center}
 \end{figure}
 
-Outras técnicas como o \textit{sfumato} (onde as pinceladas que
-definem bordas e linhas são removidas com verniz de madeira, comum nas
-pinturas renascentistas, sendo a ``Monalisa'' de Leonardo da
+Outros estilos de pintura como o \textit{sfumato} (onde as pinceladas
+que definem bordas e linhas são removidas com verniz de madeira, comum
+nas pinturas renascentistas, sendo a ``Monalisa'' de Leonardo da
 Vinci~\cite{pegus, hall} seu principal exemplo), as cores da Escola de
 Viena~\cite{gardner}, o movimento e a expressão~\cite{gombrich,
   gordon}, foram criados por cada geração de artistas em uma tentativa
@@ -85,15 +89,23 @@ de expressar as características que desejavam. E a cada geração, estes
 mesmos artistas descobriram que continuavam existindo convenções que
 os obrigavam a aplicar o que haviam aprendido ao invés de pintarem o
 que realmente viam. Os ``rebeldes'' da Arte Moderna acabaram por negar
-essas convenções, criando novos meios. Os Impressionistas, por
-exemplo, tentaram apresentar um método com precisão científica para
-representar na tela o ato da visão. Não queriam mais a ``fidelidade à
-natureza'' de Caravaggio ou a ``beleza ideal'' de Poussin, buscavam
-``expressividade intensa, clareza de estrutura e uma simplicidade
-linear na técnica''~\cite{gombrich}. O século XX presencia a passagem
-de uma geração de experimentadores, inventores, que davam maior
-preferência à originalidade do que à tradição. Como bem dito
-por~\citeauthor{gombrich}: ``Qualquer afastamento da tradição que
+essas convenções, criando novos meios. Van Gogh não estava interessado
+em seguir extritamente as regras da perspectiva e profundidade, ao
+invés disso, deformava a imagem para ressaltar detalhes que lhe eram
+relevantes. Picasso não se importava que o resultado final de sua obra
+parecesse distance do modelo original, e desta forma sentia-se livre
+para retratar verdadeiras colagens das várias perspectivas possíveis
+do modelo, todas sobrepostas na mesma pintura. Miró pintava símbolos
+baseando-se em um dicionário que criara, sendo um dos primeiros a
+utilizar a pintura automática. O século XX presencia a passagem de uma
+geração de experimentadores, inventores, que davam maior preferência à
+originalidade do que à tradição. Não queriam mais a ``fidelidade'' de
+Caravaggio ou a ``beleza ideal'' de Poussin, buscavam ``expressividade
+intensa, clareza de estrutura e uma simplicidade linear na
+técnica''~\cite{gombrich}. No modernismo não existiam estilos
+predominantes --- como no caso do período Barroco --- mas existiam sim
+várias abordagens, criadas ou desenvolvidas por cada artista. Como bem
+dito por~\citeauthor{gombrich}: ``Qualquer afastamento da tradição que
 interessasse à crítica e atraísse um seguidor era saudado como um novo
 \emph{ismo} ao qual o futuro pertenceria''. Essa inquietação moderna é
 avistada nas linhas retas e arquitetura funcional das casas e prédios
@@ -126,18 +138,22 @@ espaço geométrico onde as medidas são então realizadas. Esse
 mapeamento começa com a seleção de imagens de pinturas. Um grupo de 12
 pintores é selecionado, sendo 6 pintores representantes reconhecidos
 do período Barroco e outros 6 pintores de movimentos da Arte
-Moderna. Um total de 20 pinturas de cada pintor é escolhido
-aleatoriamente, formando um conjunto de 240 pinturas a serem
-analisadas. Métodos de processamento e análise de imagens são
-aplicados para extrair atributos que caracterizam cada
-pintura. Através da análise de matriz de espalhamento e LDA (Linear
-Discriminant Analysis)~\cite{luciano,fisher}, os atributos que melhor
-classificam as pinturas em seus respectivos pintores são
-selecionados. Esses vetores de atributos, agora com dimensões
-reduzidas, formam então o espaço vetorial pretendido. Considerando
-tais vetores em ordem cronológica, tem-se uma série temporal e é nessa
-série que se dá o cálculo das medidas sugeridas para a oposição,
-inovação e dialética.
+Moderna. A escolha de grupos tão distantes cronologicamente tem seu
+motivo: a História das Artes reconhece diferenças contrastantes entre
+o período Barroco e os vários movimentos da Arte Moderna, porém tais
+afirmações são qualitativas. Neste estudo, busca-se afirmar ou refutar
+estas afirmações com base em medidas quantitativas. Um total de 20
+pinturas de cada pintor é escolhido aleatoriamente, formando um
+conjunto de 240 pinturas a serem analisadas. Métodos de processamento
+e análise de imagens são aplicados para extrair atributos que
+caracterizam cada pintura. Através da análise de matriz de
+espalhamento e LDA (Linear Discriminant
+Analysis)~\cite{luciano,fisher}, os atributos que melhor classificam
+as pinturas em seus respectivos pintores são selecionados. Esses
+vetores de atributos, agora com dimensões reduzidas, formam então o
+espaço vetorial pretendido. Considerando tais vetores em ordem
+cronológica, tem-se uma série temporal e é nessa série que se dá o
+cálculo das medidas sugeridas para a oposição, inovação e dialética.
 
 Enquanto valores numéricos, tais medidas revelam padrões que encontram
 paralelo na história da Arte. Um exemplo marcante é o contraste
@@ -606,15 +622,22 @@ arremessando suas tintas, em pé, sobre as telas.
   \label{fig:pollock:ritmo}
 \end{figure}
 
-O complexo de linhas (visto na Figura~\ref{fig:pollock:ritmo}) reflete o desejo
-de simplificação dos artistas modernos assim como sua busca por uma ``pintura
-pura''~\cite{gombrich}. Pollock trilhou essa busca através do que ficou
-conhecido como ``pintura de ação'': uma pintura não premeditada, criada por
-impulso expontâneo. Isso é afirmado pelo próprio pintor: ``Não trabalho a partir de desenhos ou esboços em cores. Minha pintura é direta. [...] O método de pintar é o resultado natural de uma necessidade. Quero expressar meus sentimentos, e não ilustrá-los. A técnica é apenas um meio de chegar a uma declaração. Quando estou pintando, tenho uma ideia geral do que estou fazendo. Posso controlar o fluxo da pintura: não há acidentes, assim como não há começo nem fim. Eu não tenho medo de fazer
-mudanças, de destruir a imagem, porquê a pintura tem vida própria. Eu
-tento deixar ela viver.''~\cite{pollock}.
+O complexo de linhas (visto na Figura~\ref{fig:pollock:ritmo}) reflete
+o desejo de simplificação dos artistas modernos assim como sua busca
+por uma ``pintura pura''~\cite{gombrich}. Pollock trilhou essa busca
+através do que ficou conhecido como ``pintura de ação'': uma pintura
+não premeditada, criada por impulso expontâneo. Isso é afirmado pelo
+próprio pintor: ``Não trabalho a partir de desenhos ou esboços em
+cores. Minha pintura é direta. [...] O método de pintar é o resultado
+natural de uma necessidade. Quero expressar meus sentimentos, e não
+ilustrá-los. A técnica é apenas um meio de chegar a uma
+declaração. Quando estou pintando, tenho uma ideia geral do que estou
+fazendo. Posso controlar o fluxo da pintura: não há acidentes, assim
+como não há começo nem fim. Eu não tenho medo de fazer mudanças, de
+destruir a imagem, porquê a pintura tem vida própria. Eu tento deixar
+ela viver.''~\cite{pollock}.
 
-\subsection{Sumário de características}
+\subsection{Sumário de características do período Barroco e de movimentos da Arte Moderna}
 \label{subsec:sumario}
 
 Dadas as características presentes nas obras dos pintores escolhidos,
@@ -622,17 +645,35 @@ pode-se sumarizar um conjunto de características que serão
 confrontadas no Capítulo~\ref{chap:resultados} de resultados:
 
 \begin{itemize}
-\item Caravaggio é o principal expoente no uso da técnica do \textit{chiaroscuro}, apresentando pinturas com predominância de cores escuras. Portanto há grande diferença de contraste entre suas pinturas e àquelas mais modernas, sendo estas mais claras;
+\item Caravaggio é o principal expoente no uso da técnica do
+  \textit{chiaroscuro}, apresentando pinturas com predominância de
+  cores escuras. Portanto há grande diferença de contraste entre suas
+  pinturas e àquelas mais modernas, sendo estas mais claras;
 
-\item Velázquez e Vermeer se assemelham com Caravaggio pois ambos utilizavam \textit{chiaroscuro}. Velázquez chegou a estudar as pinturas de Caravaggio e a semelhança de suas obras é notável;
+\item Velázquez e Vermeer se assemelham com Caravaggio pois ambos
+  utilizavam \textit{chiaroscuro}. Velázquez chegou a estudar as
+  pinturas de Caravaggio e a semelhança de suas obras é notável;
 
-\item Pollock apresenta pinturas que diferem de todos os outros pintores escolhidos;
+\item Pollock apresenta pinturas que diferem de todos os outros
+  pintores escolhidos. Suas pinturas chegam a sugerir aleatoriedade,
+  contrastando até mesmo com pintores também surrealistas como Miró e
+  afastando-se por completo dos artistas barrocos;
 
-\item Há uma diferença considerável de tempo decorrido desde o Barroco até os movimentos da Arte Moderna, assim como diferenças estéticas marcantes entre estes dois períodos;
+\item Há uma diferença considerável de tempo decorrido desde o Barroco
+  até os movimentos da Arte Moderna, assim como diferenças estéticas
+  marcantes entre estes dois períodos;
 
-\item Os pintores da Arte Moderna são caracterizados por sua independência em estilo: há pouca similaridade entre suas obras e de suas obras com àquelas do período Barroco;
+\item Os pintores da Arte Moderna são caracterizados por sua
+  independência em estilo: há pouca similaridade entre suas obras e de
+  suas obras com àquelas do período Barroco;
 
-\item Já os pintores do período Barroco apresentam semelhanças, por compartilharem técnicas tradicionais.
+\item Já os pintores do período Barroco apresentam semelhanças, por
+  compartilharem estilos tradicionais.
+
+\item O Barroco tem como objetivo principal retratar emoções,
+  movimento. É possível perceber que pinturas como as de Caravaggio
+  tinham o intuito de chocar, principalmente por se tratarem de
+  retratações bíblicas.
 \end{itemize}
 
 \section{Conceitos básicos em Filosofia}
@@ -643,9 +684,9 @@ filosóficas. A dialética é vista como método filosófico para
 argumentação, central na Filosofia ocidental e
 oriental~\cite{deleuze,pinto,van}. Para Platão, o método dialético era
 o próprio método científico, onde se investiga racionalmente um
-determinado conceito. Cada conceito deve ser confrontado com outras
+determinado conceito˜\cite{pinto}. Cada conceito deve ser confrontado com outras
 teorias e situações para se chegar a uma nova teoria. Hegel sumariza o
-método dialético em três momentos bem definidos: a tese, um argumento
+método dialético˜\cite{van} em três momentos bem definidos: a tese, um argumento
 ou ideia tomado como verdadeiro; a antítese, a contradição ou negação
 da tese; e a síntese, o resultado do confronto da tese com a
 antítese. A solução dialética, a síntese, é uma nova ideia que busca
@@ -670,7 +711,7 @@ dialética como um método propriamente científico, aplicado diretamente
   \draw node[vertex] (Juncao) at (1,0) {};
   
   \draw[-,draw=blue] (Tese) to (Juncao);
-  \draw[-,draw=blue] (Antitese) to (Juncao);
+  \draw[->,draw=blue] (Juncao) to (Antitese);
   \draw[->,draw=blue] (Juncao) to (Sintese);
   \draw[->,draw=blue] (Sintese) to[in=180,out=180] (Tese);
   
@@ -692,7 +733,7 @@ dialética como um método propriamente científico, aplicado diretamente
   \draw node[vertex] (Juncao) at (11.5,0) {};
   
   \draw[-] (ArgumentoA) to (Juncao);
-  \draw[-] (ArgumentoB) to (Juncao);
+  \draw[->] (Juncao) to (ArgumentoB);
   \draw[->,draw=blue] (Juncao) to (ArgumentoC);
   
   \node at (11.5, -1.0) {\textit{c) Inovação}};
@@ -704,14 +745,15 @@ dialética como um método propriamente científico, aplicado diretamente
 \end{center}
 \end{figure}
 
-A oposição de ideias está intimamente relacionada à dialética. Há
-grande oposição entre a tese e a antítese (Figura~\ref{fig:conceitos},
-detalhe \textit{b}), sendo ideias essencialmente contraditórias. A
-inovação, por sua vez, relaciona-se com a oposição: uma ideia não
-necessariamente estará destinada a opor uma outra ideia, não participa
-apenas de um ``jogo de oposição'' pois pode também buscar um movimento
-novo, alternativo. Desta forma, está inovando
-(Figura~\ref{fig:conceitos}, detalhe \textit{c}).
+A oposição de ideias está intimamente relacionada à
+dialética. Frequentemente, há grande oposição entre a tese e a
+antítese (Figura~\ref{fig:conceitos}, detalhe \textit{b}), sendo
+ideias essencialmente contraditórias. A inovação, por sua vez,
+relaciona-se com a oposição: uma ideia não necessariamente estará
+destinada a opor uma outra ideia, não participa apenas de um ``jogo de
+oposição'' pois pode também buscar um movimento novo,
+alternativo. Desta forma, está inovando (Figura~\ref{fig:conceitos},
+detalhe \textit{c}).
 
 Uma proposta de quantificar conceitos básicos de dialética, oposição e
 inovação foi iniciado em um estudo aplicado à Filosofia e
@@ -728,18 +770,14 @@ Seções~\ref{sec:fund:imagens} e~\ref{sec:medidas}).
 \section{Processamento e análise de imagens}
 \label{sec:fund:imagens}
 
-Antes de analisar qualquer medida proveniente de atributos de
-artefatos do mundo físico, é preciso representá-los através de um
-modelo computacional. Como o domínio desse estudo é o das Artes
-Plásticas, mais precisamente, a Pintura, é necessário adquirir e
-processar imagens de obras de artistas.
-
 O processamento e análise de imagens envolve operações para adquirir,
 manipular e representar imagens digitalmente em um sistema
 computacional~\cite{gonzalez}. Envolve uma série de etapas canônicas,
-sumarizadas na Figura~\ref{fig:etapas-pdi}~\cite{luciano}. Na presente
-seção são discutidos cada uma dessas etapas que tornaram possível a
-realização desse estudo.
+sumarizadas na Figura~\ref{fig:etapas-pdi}~\cite{luciano}. Estas
+operações são necessárias para traduzir o conjunto escolhido de 240
+imagens de pinturas em termos de vetores de características. Na
+presente seção são discutidos cada uma dessas etapas que tornaram
+possível a realização desse estudo.
 
 \begin{figure}[ht!]
 \begin{center}
@@ -880,6 +918,7 @@ da imagem como
 
 \begin{equation}
   g(x,y) = T[f(x,y)]
+  \label{eq:fproc}
 \end{equation}
 
 \noindent sendo $f(x,y)$ a imagem de entrada, $g(x,y)$ a imagem
@@ -979,7 +1018,7 @@ cinza $R_k$ na imagem. O gráfico de $p(R_k)$ é denominado
 \emph{histograma}. Essa informação é interessante quando se deseja
 realçar o contraste da imagem, visto que pode-se mensurar a quantidade
 de pixels em regiões mais claras, mais escuras e com níveis de cinza
-medianos. Assim, pode-se definir uma operação $T$ que equalize os
+medianos. Assim, pode-se definir uma operação $T$ (Eq.~\ref{eq:fproc}) que equalize os
 níveis de cinza $R_k$ de $f$, gerando uma imagem equalizada $g$:
 
 \begin{equation}
@@ -1006,7 +1045,8 @@ borrar detalhes de borda.
 
 Para implementar o filtro por mediana, troca-se o valor do nível de
 cinza $R_k$ em $f$ pela mediana dos níveis de cinza da
-vizinhança-$N_V$ desse pixel. Essa operação pode ser definida como
+vizinhança-$N_V$ desse pixel. Essa operação (Eq.~\ref{eq:fproc}) pode
+ser definida como
 
 \begin{equation}
   T[f(x,y)] = \text{mediana}(V_N(f(x,y)))
@@ -1472,10 +1512,7 @@ pinturas,~\citeauthor{penousal} sugere o uso de complexidade de
 imagens para estimar características
 estéticas.~\citeauthor{manovich,manovich2,manovich3} utiliza a análise
 de saturação de luz, contraste, brilho e demais atributos relacionados
-com a intensidade de cinza nas imagens.  Essas abordagens encontram
-fundamento na teoria Gestalt que enumera um conjunto de ``regras'' de
-agrupamento seguidas, teoricamente, pela cognicação
-humana~\cite{haralick}.
+com a intensidade de cinza nas imagens.
 
 % \url{http://link.springer.com/content/pdf/10.1007%2F978-3-642-12242-2_32.pdf}
 
