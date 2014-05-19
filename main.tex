@@ -1831,8 +1831,8 @@ transformada de Fourier de $x$ e $y$ respectivamente, $\omega$ é a frequência 
 e $i$ a unidade imaginária.
 
 O cálculo das derivadas $(\dot{x}(t), \dot{y}(t))$ e $(\ddot{x}(t),
-\ddot{y}(t)$ do sinal $t$ através do cálculo da transformada de
-Fourier --- e.g.\ por um método numérico de diferenciação --- acaba
+\ddot{y}(t))$ do sinal $t$ através do cálculo da transformada de
+Fourier --- i.e.\ por um método numérico de diferenciação --- acaba
 por realçar ruídos de alta frequência. Pode-se compensar este efeito
 através de uma filtragem~\cite{luciano,luciano2010}, onde as funções
 diferenciadas durante o processo são suavizadas a partir da convolução
@@ -2229,12 +2229,12 @@ método LDA aplicado.
 Uma forma interessante de visualizar a validação cruzada é através da
 \emph{matriz de confusão}, representada na
 Figura~\ref{fig:confusa}. Cada linha da matriz de confusão representa
-uma classe do grupo de treinamento (e.g.\ no caso deste estudo, as
+uma classe do grupo de treinamento (no caso deste estudo, as
 classes correspondem a cada um dos pintores analisados) e cada coluna
 representa uma classe do grupo de teste. Cada elemento da matriz
 representa a contagem de amostras pertencentes a uma determinada
 classe. Desta forma, espera-se que a diagonal principal desta matriz
-esteja o mais próximo possível do número máximio de elementos para
+esteja o mais próximo possível do número máximo de elementos para
 cada classe. Ou seja, elementos de uma classe $C_1$ devem ser
 classificados como pertencentes a esta classe, e não a qualquer outra
 classe. Um exemplo de matriz de confusão para o método LDA pode ser
