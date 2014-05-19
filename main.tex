@@ -684,9 +684,9 @@ filosóficas. A dialética é vista como método filosófico para
 argumentação, central na Filosofia ocidental e
 oriental~\cite{deleuze,pinto,van}. Para Platão, o método dialético era
 o próprio método científico, onde se investiga racionalmente um
-determinado conceito˜\cite{pinto}. Cada conceito deve ser confrontado com outras
+determinado conceito~\cite{pinto}. Cada conceito deve ser confrontado com outras
 teorias e situações para se chegar a uma nova teoria. Hegel sumariza o
-método dialético˜\cite{van} em três momentos bem definidos: a tese, um argumento
+método dialético~\cite{van} em três momentos bem definidos: a tese, um argumento
 ou ideia tomado como verdadeiro; a antítese, a contradição ou negação
 da tese; e a síntese, o resultado do confronto da tese com a
 antítese. A solução dialética, a síntese, é uma nova ideia que busca
@@ -740,7 +740,14 @@ dialética como um método propriamente científico, aplicado diretamente
 
 \end{tikzpicture}
 
-\caption{\textit{a)} Dialética: um argumento chamado tese, até então tomado como verdade, é confrontado por um argumento oposto, chamado antítese. O resultado do confronto destas duas ideias é a síntese que irá gerar uma nova ideia ou argumento; \textit{b)} Oposição: é um argumento que se opõe a um argumento original; \textit{c)} Inovação: tendo-se um movimento de oposição entre dois argumentos originais, um movimento de inovação é aquele que se afasta desta oposição, inovando.}
+\caption{\textit{a)} Dialética: um argumento chamado tese, até então
+  tomado como verdade, é confrontado por um argumento oposto, chamado
+  antítese. O resultado do confronto destas duas ideias é a síntese
+  que irá gerar uma nova ideia ou argumento; \textit{b)} Oposição: é
+  um argumento que se opõe a um argumento original; \textit{c)}
+  Inovação: tendo-se um movimento de oposição entre dois argumentos
+  originais, um movimento de inovação é aquele que se afasta desta
+  oposição, inovando.}
 \label{fig:conceitos}
 \end{center}
 \end{figure}
@@ -781,7 +788,7 @@ possível a realização desse estudo.
 
 \begin{figure}[ht!]
 \begin{center}
-        \includegraphics[scale=.6]{figs/etapas_pdi}
+        \includegraphics[scale=1.]{figs/etapas_pdi}
       \caption{Etapas canônicas para processamento e análise de imagens.}
         \label{fig:etapas-pdi}
 \end{center}
@@ -1766,17 +1773,21 @@ considerados nesse estudo, o conjunto $\mathcal{A}_{33-88}$.
 
 \subsection{Atributos de contorno e forma}
 
-Após a identificação dos componentes conexos e seu pós-processamento, pode-se
-partir para a descrição da forma de tais componentes. A curvatura é um destes
-descritores. Trata-se de um atributo que mensura a mudança de direção
-``relativa'' entre dois pontos conectados. Esse descritor tem uma motivação
-biológica interessante relacionada com o sistema de visão humano --- e.g.\ o
-reconhecimento de objetos é relacionado à identificação de cantos e pontos de
-alta curvatura. Esses pontos possuem mais informação sobre a forma do objeto do
-que linhas retas ou curvas suaves. Dessa forma, a curvatura é um atributo
-interessante para uso na caracterização das pinturas consideradas nesse
-estudo. A curvatura de uma forma é calculada usando os seguintes descritores de
-Fourier e esquematizada na Figura~\ref{fig:curvatura}.~\cite{luciano} 
+Após a identificação dos componentes conexos e seu pós-processamento,
+pode-se partir para a descrição da forma de tais componentes. A
+curvatura é um destes descritores. Trata-se de um atributo que mensura
+a mudança de direção ``relativa'' entre dois pontos
+conectados~\cite{luciano}. Esse descritor tem uma motivação biológica
+interessante relacionada com o sistema de visão humano --- e.g.\ o
+reconhecimento de objetos é relacionado à identificação de cantos e
+pontos de alta curvatura. Esses pontos possuem mais informação sobre a
+forma do objeto do que linhas retas ou curvas suaves. Dessa forma, a
+curvatura é um atributo interessante para uso na caracterização das
+pinturas consideradas nesse estudo, pois pinturas como as de Miró
+parecem possuir maior quantidade de linhas retas, com poucas curvas,
+do que as pinturas barrocas, por exemplo. A curvatura de uma forma é
+calculada usando os seguintes descritores de Fourier e esquematizada
+na Figura~\ref{fig:curvatura}.
 
 \begin{figure}[h!]
 \begin{center}
@@ -1793,12 +1804,14 @@ A curvatura $k(t)$ de uma curva paramétrica $c(t) = (x(t), y(t))$ é definida c
 
 \begin{equation}
 k(t) = \frac{\dot{x}(t)\ddot{y}(t)-\dot{y}(t)\ddot{x}(t)} {(\dot{x}(t)^2+\dot{y}(t)^2)^\frac{3}{2}}
+\label{eq:curvatura}
 \end{equation}
 
-\noindent onde $\dot{x}(t)$, $\dot{y}(t)$, $\ddot{x}(t)$ e $\ddot{y}(t)$ são
-respectivamente as derivadas primeira e segunda de $x(t)$ e $y(t)$. Essas
-derivadas são obtidas através da transformada de Fourier e do teorema da
-convolução:
+\noindent onde $\dot{x}(t)$, $\dot{y}(t)$, $\ddot{x}(t)$ e
+$\ddot{y}(t)$ são respectivamente as derivadas de primeira e segunda
+ordem dos parâmetros $x(t)$ e $y(t)$ da curva $k(t)$. Essas derivadas
+podem ter seus valores estimados através da transformada de Fourier e
+do teorema da convolução~\cite{papoulis}:
 
 \begin{equation}
 \dot{x} = \Im^{-1}(2\pi i \omega X(\omega))
@@ -1817,17 +1830,75 @@ convolução:
 transformada de Fourier de $x$ e $y$ respectivamente, $\omega$ é a frequência angular
 e $i$ a unidade imaginária.
 
+O cálculo das derivadas $(\dot{x}(t), \dot{y}(t))$ e $(\ddot{x}(t),
+\ddot{y}(t)$ do sinal $t$ através do cálculo da transformada de
+Fourier --- e.g.\ por um método numérico de diferenciação --- acaba
+por realçar ruídos de alta frequência. Pode-se compensar este efeito
+através de uma filtragem~\cite{luciano,luciano2010}, onde as funções
+diferenciadas durante o processo são suavizadas a partir da convolução
+de um filtro gaussiano aplicado ao sinal à ser diferenciado. Ou seja,
+a diferenciação por Fourier acaba por criar um filtro passa-altas,
+necessitando de um filtro passa-baixas para amenizar o ruído. Tal
+filtro gaussiano é definido por
+
+\begin{equation}
+g(t) = \frac{1}{2\pi\sigma^2} exp \left( -\frac{t^2}{2\sigma^2}\right)
+\end{equation}
+
+\noindent e sua transformada de Fourier é dada por
+
+\begin{equation}
+G(\omega) = exp \left( \frac{-(2\pi)^2\omega^2}{(2/\sigma)^2} \right)
+\end{equation}
+
+Utilizando-se o teorema da convolução é possível aplicar o filtro
+gaussiano $g(t)$ ao sinal a ser diferenciado:
+
+\begin{equation}
+\hat{\dot{x}}(t) = \dot{x} \ast g(t) = \Im^{-1}\left( \dot{X}(\omega) G(\omega) \right)
+\end{equation}
+
+\begin{equation}
+\hat{\dot{y}}(t) = \dot{y} \ast g(t) = \Im^{-1}\left( \dot{Y}(\omega) G(\omega) \right)
+\end{equation}
+
+\begin{equation}
+\hat{\ddot{x}}(t) = \ddot{x} \ast g(t) = \Im^{-1}\left( \ddot{X}(\omega) G(\omega) \right)
+\end{equation}
+
+\begin{equation}
+\hat{\ddot{y}}(t) = \ddot{y} \ast g(t) = \Im^{-1}\left( \ddot{Y}(\omega) G(\omega) \right)
+\end{equation}
+
+\noindent obtendo assim a diferenciação multi-escala de primeira e
+segunda ordem $(\hat{\dot{x}}(t),\hat{\dot{y}}(t))$ e
+$(\hat{\ddot{x}}(t),\hat{\ddot{y}}(t))$ para $x(t)$ e $y(t)$, agora
+sim usadas para o cálculo de $k(t)$ (Eq.~\ref{eq:curvatura}) sem a
+presença de possíveis ruídos de alta-frequência.
+
 É importante notar que um \emph{pico} é definido como um ponto de alta
-curvatura. Um ponto $a$ é considerado um pico se sua curvatura $k(a)$ satisfazer
-os seguintes critérios:
+curvatura. Um ponto $a$ é considerado um pico se sua curvatura $k(a)$
+satisfazer os seguintes critérios:
 
 \begin{eqnarray}
 	k(a) & > & k(a-1) \\
-	k(a) & > & k(a+1) \\
-        k(a) & > & \tau
+	k(a) & > & k(a+1)
 \end{eqnarray}
 
-\noindent sendo $\tau$ um limiar definido como
+Ou seja, um ponto $a$ é dito pico se sua curvatura $k(a)$ for maior
+que seus vizinhos anteriores e posteriores. Isto é suficiente para
+determinar todos os picos contidos no contorno de uma forma
+qualquer. Porém, é preciso controlar quais picos são interessantes e
+quais devem ser descartados. Desta forma, deve-se incluir um novo
+critério:
+
+\begin{eqnarray}
+  k(a) & > & \tau
+\end{eqnarray}
+
+\noindent ou seja, apenas pontos com curvaturas maiores que o limiar
+$\tau$ serão consideradas. Este limiar, por sua vez, pode ser definido
+como
 
 \begin{equation}
 	\text{mediana}\left(k\right) \cdot \gamma 
@@ -1886,7 +1957,7 @@ quanto uma imagem é complexa em relação ao número de elementos que a compõe
 que a maioria dos demais pintores).
 
 A área da região convexa de uma forma fornece outro atributo. É calculado
-através do algoritmo \textit{convex-hull}~\ref{luciano} e define o atributo
+através do algoritmo \textit{convex-hull}~\cite{luciano} e define o atributo
 $\mathcal{A}_{98}$. A razão entre a área da região convexa e da região original
 do componente ($\mathcal{A}_{95}$) indicam outra medida de circularidade, ou o
 quanto o componente possui uma forma rica em curvas acentuadas:
@@ -2027,9 +2098,6 @@ Analysis).~\cite{fisher,luciano,jain} Esse último também
 pode ser utilizado para a redução da dimensão da matriz de entrada, e é portanto
 descrito juntamente com outro método para redução de dimensionalidade, o PCA
 (Principal Components Analysis).~\cite{luciano,dunteman}
-%% Ainda, o LDA quando usado em conjunto com
-%% distribuição Gaussiana e regra de Bayes, torna-se um classificador. Detalhes
-%% sobre esse algoritmo também são apresentados.
 
 O método conhecido como matrizes de espalhamento procura encontrar a melhor
 razão de Fisher, que é um indicador quantitativo de quanto duas ou mais classes
@@ -2081,7 +2149,7 @@ Fisher, a constante:
 Se ao invés de calcular o traço for calculado os autovalores e autovetores da
 razão das matrizes, tem-se a projeção que melhor separa as classes, ou seja, o LDA:
 
-\begin{equation} \label{eq:alpha}
+\begin{equation} \label{eq:lda}
 \text{eig}(S_{inter} S_{intra}^{-1})
 \end{equation}
 
@@ -2135,11 +2203,78 @@ atributos. Tomando-se apenas estes $r < N$ atributos, tem-se portanto uma
 redução na dimensão. Os autovalores indicam o quanto cada
 atributo contribui para a correlação. Portanto, é sempre interessante verificar se
 os $r$ autovalores em módulo somam cerca de $70\%$ do total, o que indica
-serem suficientes para representar os $N$ atributos originais.~\cite{luciano}
+serem suficientes para representar os $N$ atributos originais~\cite{luciano}.
 
-%% TODO: Como usar regra de Bayes para classificar.
+\subsection{Cross validation}
 
-%% TODO: Colocar figuras??
+A projeção obtida pelo método LDA através da Equação~\ref{eq:lda} não
+garante a classificação dos dados, visto que as classes são conhecidas
+previamente (fazendo com que o método LDA seja utilizado como parte de
+um método supervisionado de classificação). Assim, é preciso validar
+tal projeção obtida.
+
+Um procedimento comum neste caso é a validação cruzada ou
+\textit{cross validation}. Trata-se de um método bastante simples,
+onde os dados de amostra são divididos em dois grupos: um
+\emph{conjunto de treinamento} e um \emph{conjunto de teste}. O método
+LDA é então aplicado ao conjunto de treinamento, obtendo-se a projeção
+(Eq.~\ref{eq:lda}). O LDA é aplicado em seguida ao conjunto de teste,
+mas utilizando a projeção obtida para o conjunto de treinamento
+(i.e.\ os mesmos autovetores). Conta-se agora quais amostras do
+conjunto de teste foram projetadas próximas ao conjunto de
+treinamento, e quais estão distantes. Essa contagem revela se o
+conjunto de treinamento condiz com o esperado e desta forma, valida o
+método LDA aplicado.
+
+Uma forma interessante de visualizar a validação cruzada é através da
+\emph{matriz de confusão}, representada na
+Figura~\ref{fig:confusa}. Cada linha da matriz de confusão representa
+uma classe do grupo de treinamento (e.g.\ no caso deste estudo, as
+classes correspondem a cada um dos pintores analisados) e cada coluna
+representa uma classe do grupo de teste. Cada elemento da matriz
+representa a contagem de amostras pertencentes a uma determinada
+classe. Desta forma, espera-se que a diagonal principal desta matriz
+esteja o mais próximo possível do número máximio de elementos para
+cada classe. Ou seja, elementos de uma classe $C_1$ devem ser
+classificados como pertencentes a esta classe, e não a qualquer outra
+classe. Um exemplo de matriz de confusão para o método LDA pode ser
+vista na Figura~\ref{fig:cm} da Seção~\ref{subsec:lda} de resultados deste
+estudo.
+
+\begin{figure}[ht!]
+\begin{center}
+
+\begin{tikzpicture}[thick]
+\draw [fill=red,opacity=0.3] (0,0) grid (4,4) rectangle (0,0);
+% classes
+\node at (-0.5,3.5) {$C_1$};
+\node at (-0.5,2.5) {$C_2$};
+\node[rotate=90] at (-0.5,1.5) {...};
+\node at (-0.5,0.5) {$C_K$};
+
+\node at (0.5,4.5) {$C_1$};
+\node at (1.5,4.5) {$C_2$};
+\node at (2.5,4.5) {...};
+\node at (3.5,4.5) {$C_K$};
+
+% diagonal principal
+\node [fill=green, minimum size=1.0cm] at (0.5,3.5) {};
+\node [fill=green, minimum size=1.0cm] at (1.5,2.5) {};
+\node [fill=green, minimum size=1.0cm] at (2.5,1.5) {};
+\node [fill=green, minimum size=1.0cm] at (3.5,0.5) {};
+
+% labels
+\node at (2,5.5) {Conjunto de teste};
+\node [rotate=90] at (-1.5,2) {Conjunto de treinamento};
+
+\end{tikzpicture}
+\caption{\label{fig:confusa} Esquema representando uma matriz de
+  confusão. Deseja-se que a diagonal principal possua valores próximos
+  ao número máximo de elementos em cada classe $C_i$, caracterizando
+  assim uma boa classificação.}
+\end{center}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2152,16 +2287,24 @@ serem suficientes para representar os $N$ atributos originais.~\cite{luciano}
 \section{Pintores escolhidos}
 
 Para a análise foram selecionados 12 pintores de grande relevância
-histórica. Esse grupo abrange os estilos ou movimentos artísticos que
-vão do período Barroco à Arte Moderna. Seis dos pintores representam o
-período Barroco enquanto os 6 restantes representam movimentos da Arte
-Moderna. O grupo é mostrado na Tabela~\ref{tab:painters} juntamente
-com seu estilo artístico, período ou movimento mais representativo. É
-de conhecimento que pintores como Picasso demonstraram mais de um
-estilo durante a vida. Porém, para tal análise, apenas o estilo mais
-marcante (e pelo qual melhor se conhece e define o artista) foi
-escolhido. No caso de Picasso, apenas pinturas de sua fase Cubista
-foram escolhidas, com o objetivo de representar tal movimento.
+histórica. Esse grupo abrange os estilos artísticos que vão do período
+Barroco aos movimentos da Arte Moderna. Seis dos pintores representam
+o período Barroco enquanto os 6 restantes representam movimentos da
+Arte Moderna. O grupo é mostrado na Tabela~\ref{tab:painters}
+juntamente com seu estilo, período ou movimento artístico mais
+representativo. É de conhecimento que pintores como Picasso
+demonstraram mais de um estilo durante a vida. Porém, para tal
+análise, apenas o estilo mais marcante (e pelo qual melhor se conhece
+e define o artista) foi escolhido. No caso de Picasso, apenas pinturas
+de sua fase Cubista foram escolhidas, com o objetivo de representar
+tal movimento. É importante destacar que a escolha de dois períodos
+distantes (cerca de 150 anos separam o período Barroco dos movimentos
+da Arte Moderna, escolhidos para este estudo) é proposital. A história
+da Arte assim como a análise estética das pinturas de ambos períodos
+revela características contrastantes, porém tais afirmações são
+qualitativas. Neste estudo, fez-se tal escolha justamente com o
+objetivo de refutar ou afirmar estas afirmações, mas agora com base em
+medidas quantitativas.
 
 \begin{table}
 \begin{center}
@@ -2281,15 +2424,17 @@ Jackson Pollock     & No. 5 & 1948 \\
 \section{Análise de imagens para extração de atributos}
 
 Todas as 240 imagens foram cortadas em janelas de $800\times800$
-pixels. Esta janela quadrada foi posicionada com seu ponto superior mais à
-esquerda equivalendo ao ponto superior mais à esquerda da pintura. As imagens
-que possuiam dimensões menores que $800\times800$ foram escaladas para tal, mantendo o
-mesmo aspecto da imagem original em todas as pinturas. Em seguida, as
-imagens foram pré-processadas aplicando-se equalização por histograma e filtro
-de médias com janelamento de raio 3, ambas descritas na Subseção~\ref{sec:preproc}.
+pixels. Esta janela quadrada foi posicionada com seu ponto superior
+mais à esquerda equivalendo ao ponto superior mais à esquerda da
+pintura. As imagens que possuiam dimensões menores que $800\times800$
+foram escaladas para tal dimensão, mantendo o mesmo aspecto da imagem
+original em todas as pinturas. Em seguida, as imagens foram
+pré-processadas aplicando-se equalização por histograma e filtro de
+médias com janelamento de raio 3, ambas descritas na
+Subseção~\ref{sec:preproc}.
 
 Algoritmos de extração de características foram aplicados a versões coloridas,
-em escala de cinza e preto-e-branco das imagens, conforme necessário (e.g.\ para
+em escala de cinza e preto-e-branco das imagens, conforme necessário (i.e.\ para
 o algoritmo convex-hull, uma imagem binária $B$ foi utilizada, enquanto para o
 algoritmo de textura de Haralick, uma imagem em escala de cinza $G$ foi
 utilizada, já a segmentação SLIC utilizou a versão RGB, a matriz $I$, de cada
@@ -2606,19 +2751,20 @@ arranjadas em um grupo com grande sobreposição enquanto as amostras
 modernas estão agrupadas e separadas uma das outras, ao mesmo tempo
 que cobrem uma região maior do \textit{espaço criativo} do que as
 barrocas. Esse fato é confirmado pela história da Arte onde os
-pintores modernos tentam experimentar novos materiais e técnicas (como
-revisado na Seção~\ref{sec:breve}) para representar suas percepções da
-natureza enquanto os barrocos tendem a utilizar métodos tradicionais
-de suas respectivas escolas. O mesmo fato pode ser observado quando se
-analisa a série temporal, onde a diferença entre os períodos é clara:
-enquanto os barrocos preferem retornar uns aos outros em um padrão
-cíclico, há um deslocamento abrupto em van Gogh --- o primeiro pintor
-moderno considerado nesse estudo --- que o separa dos primeiros
-pintores e ``quebra'' o padrão antes cíclico. Van Gogh, embora
-localizado próximo aos pintores barrocos e no extremo oposto da
-maioria dos pintores modernos, estabelece o período Moderno e depois
-dele os deslocamentos de um vetor a outro continuam a evoluir até
-alcançar seu ápice, em Pollock, não mostrando mais padrões cíclicos.
+pintores modernos experimentam novos materiais e desenvolvem estilos
+próprios (como revisado na Seção~\ref{sec:breve}) para representar o
+que desejam, enquanto os barrocos tendem a utilizar estilos
+tradicionais, como o \textit{chiaroscuro} de Caravaggio. O mesmo fato
+pode ser observado quando se analisa a série temporal, onde a
+diferença entre os períodos é clara: enquanto os barrocos preferem
+retornar uns aos outros em um padrão cíclico, há um deslocamento
+abrupto em van Gogh --- o primeiro pintor moderno considerado nesse
+estudo --- que o separa dos primeiros pintores e ``quebra'' o padrão
+antes cíclico. Van Gogh, embora localizado próximo aos pintores
+barrocos e no extremo oposto da maioria dos pintores modernos,
+estabelece o início do período Moderno e depois dele os deslocamentos
+de um vetor a outro continuam a evoluir até alcançar seu ápice, em
+Pollock, não mostrando mais padrões cíclicos.
 
 Quando ambos grupos (Barroco e Moderno) são analisados
 individualmente, é possível notar outros detalhes de
@@ -2635,7 +2781,7 @@ atribuído à influência do mestre do ``chiaroscuro'' em ambos pintores,
 principalmente em Vel\'{a}zquez que foi reconhecidamente um estudioso
 das pinturas de Caravaggio~\cite{gombrich}. Ambos fatos são
 confirmados pelos histogramas do nível médio de cinza das pinturas
-mostrado na Figura~\ref{fig:chiaroscuro}. Os histogramas de Velázquez
+mostrados na Figura~\ref{fig:chiaroscuro}. Os histogramas de Velázquez
 e Vermeer são os que mais se aproximam do histograma de Caravaggio
 quando comparados aos outros pintores barrocos.
 
@@ -2654,14 +2800,15 @@ quando comparados aos outros pintores barrocos.
   \end{center}
 \end{figure}
 
-Em sumário, o grupo barroco é fortemente inter-relacionado quando comparado com
-os modernos onde há ausência de sobreposições. Novamente, isso sugere uma
-distinção centrada no estilo de cada artista da era moderna enquanto os pintores
-barrocos tendem a compartilhar técnicas e características estéticas. Isso é
-também confirmado quando se comparam os histogramas dos pintores modernos na
-Figura~\ref{fig:chiaroscuro_modernos}: há baixa similaridade entre os pintores
-modernos considerados, contrastando diretamente com o que foi observado para os
-pintores barrocos na Figura~\ref{fig:chiaroscuro}.
+De maneira sumária, o grupo barroco é fortemente inter-relacionado
+quando comparado com os modernos, onde há ausência de
+sobreposições. Novamente, isso sugere uma distinção centrada no estilo
+de cada artista da era moderna enquanto os pintores barrocos tendem a
+compartilhar estilos. Isso é também confirmado quando se comparam os
+histogramas dos pintores modernos na
+Figura~\ref{fig:chiaroscuro_modernos}: há baixa similaridade entre os
+pintores modernos considerados, contrastando diretamente com o que foi
+observado para os pintores barrocos na Figura~\ref{fig:chiaroscuro}.
 
 \begin{figure}[h!]
     
@@ -2731,10 +2878,12 @@ valores de oposição refletem um aspecto de baixa oposição entre os
 primeiros artistas barrocos enquanto há o acréscimo da oposição
 presente nos deslocamentos que precedem o período Moderno, embora os
 valores de inovação se mantém oscilando mas aumentando durante toda a
-série temporal. Isso caracteriza novamente uma cena comum nas Artes,
-principalmente nos modernistas, onde cada um tenta definir seu próprio
-estilo enquanto a história se prepara para ingressar em um novo
-movimento. Em resumo, no que se pode falar dos índices de oposicão e
+série temporal. 
+%Isso caracteriza novamente uma cena comum nas Artes,
+%principalmente nos modernistas, onde cada um tenta definir seu próprio
+%estilo enquanto a história se prepara para ingressar em um novo
+%movimento. 
+Em resumo, no que se pode falar dos índices de oposicão e
 inovação, o \textit{espaço criativo} é marcado por aumento constante
 de inovação, grande oposição em momentos específicos de sua evolução
 (a transição entre o Barroco e a Arte Moderna) e menor oposição entre
@@ -2745,11 +2894,9 @@ Tabela~\ref{tab:dialetica1} e Figura~\ref{fig:caso1_dialetica}, há um
 paralelo com as curvas de oposição e inovação. A contra-dialética
 reforça fatos já observados: pintores do mesmo período mostram
 inicialmente um decréscimo em seus valores, seguido por acréscimo
-contínuo, refletindo a concordância de pintores do mesmo período e a
-sua preparação nas vésperas de inaugurar um novo período. O pico de
-contra-dialética acontece em van Gogh e Kandinsky: de novo, exatamente
-o ponto onde o Barroco termina e a Arte Moderna começa, considerando
-os pintores selecionados para esse estudo.
+contínuo. O pico de contra-dialética acontece em van Gogh e Kandinsky:
+de novo, exatamente o ponto onde o Barroco termina e a Arte Moderna
+começa, considerando os pintores selecionados para esse estudo.
 
 % gerado com: metrics_caso1.py
 \begin{table}[ht]
@@ -2801,7 +2948,7 @@ como feito para o caso dos melhores atributos. Nesse caso, para
 permitir a visualização das medidas, considerou-se a projeção com $n =
 2$ componentes que resultou em um espaço de 2 dimensões, mostrado na
 Figura~\ref{fig:caso3_g1}. É possível notar, como esperado, uma
-similaridade com os resultados da início desta seção, onde as medidas
+similaridade com os resultados do início desta seção, onde as medidas
 foram calculadas apenas para o melhor par de atributos. Os índices de
 inovação (Figura~\ref{fig:caso3_oposEinov}) apresentam uma curva
 ascendente ainda mais bem definida durante toda a evolução da
@@ -2898,26 +3045,27 @@ e~\ref{fig:caso3_dialetica}, respectivamente.
 \end{center}
 \end{figure}
 
-Para validação do LDA o grupo de 240 pinturas foi dividido em dois: um
-conjunto de treinamento contendo 10 pinturas selecionadas
-aleatoriamente para cada artista, e um conjunto de teste contendo as
-10 pinturas restantes para cada artista, ambos sem repetição. A matriz
-de confusão (Figura~\ref{fig:cm}) indica o quão satisfatória é a
-classificação. Os elementos da diagonal principal representam o número
-de amostras (pinturas) para as quais a classe obtida no conjunto de
-teste coincide com a classe esperada (obtida na fase de
-treinamento). Elementos localizados fora da diagonal principal indicam
-aqueles que não foram classificados corretamente pelo método
-LDA. Quanto maiores os valores da diagonal principal, melhor a
-predição de classes. Como é possível observar, o método LDA demonstra
-predição esperada para o grupo de pinturas considerado. As amostras
-com melhor classificação são as pinturas de Pollock, o que é esperado,
-pois é o pintor que mais se distancia dos outros no \textit{espaço
-  criativo}. Em geral, a matriz de confusão reflete os resultados
-previamente discutidos: há similaridade entre pintores barrocos,
-principalmente Velázquez, Caravaggio e Rembrandt e é possível notar
-claramente a separação entre pintores anteriores e posteriores a van
-Gogh, que define a fronteira entre os períodos Barroco e Moderno.
+Para validação do LDA aplicou-se \textit{cross validation}. O grupo de
+240 pinturas foi dividido em dois: um conjunto de treinamento contendo
+10 pinturas selecionadas aleatoriamente para cada artista, e um
+conjunto de teste contendo as 10 pinturas restantes para cada artista,
+ambos sem repetição. A matriz de confusão (Figura~\ref{fig:cm}) indica
+o quão satisfatória é a classificação. Os elementos da diagonal
+principal representam o número de amostras (pinturas) para as quais a
+classe obtida no conjunto de teste coincide com a classe esperada
+(obtida na fase de treinamento). Elementos localizados fora da
+diagonal principal indicam aquelas amostras que não foram
+classificados corretamente pelo método LDA. Quanto maiores os valores
+da diagonal principal, melhor a predição de classes. Como é possível
+observar, o método LDA demonstra predição esperada para o grupo de
+pinturas considerado. As amostras com melhor classificação são as
+pinturas de Pollock, o que é esperado, pois é o pintor que mais se
+distancia dos outros no \textit{espaço criativo}. Em geral, a matriz
+de confusão reflete os resultados previamente discutidos: há
+similaridade entre pintores barrocos, principalmente Velázquez,
+Caravaggio e Rembrandt e é possível notar claramente a separação entre
+pintores anteriores e posteriores a van Gogh, que define a fronteira
+entre os períodos Barroco e Moderno.
 
 %% gerado com: ga-delaunay/matriz_confusao.py
 \begin{figure}[h!]
@@ -2953,44 +3101,45 @@ Gogh, que define a fronteira entre os períodos Barroco e Moderno.
 %% artistas.
 %%  Novas medidas quantitativas para conceitos humanos.
 
-Este trabalho propõe um método para o estudo da evolução de movimentos
+Este trabalho propõe um método para o estudo da evolução de estilos
 artísticos através da quantificação de conceitos, antes exclusivamente
 humanos. Como caso de estudo, aplica-se tal método para o entendimento
-dos períodos Barroco e Moderno, na Pintura. Iniciando com a escolha de
-representantes de cada um destes movimentos, 12 nomes são sugeridos,
-240 pinturas destes artistas são escolhidas. Rotinas de processamento
-digital de imagens permitem a extração de características deste corpus
-de pinturas. São extraídas de cada pintura um vetor de 99 atributos
-que caracterizam aspectos de complexidade da imagem, textura, forma e
-contorno.  A relevância de tais atributos foi atestada pela análise do
-índice de dispersão $\alpha$ calculado através de matrizes de
-espalhamento para cada par possível de atributos. Uma análise baseada
-na medida $\alpha$ revelou que os atributos que melhor classificaram
-as pinturas foram \textit{a)} \emph{número médio de picos de
-  curvatura} e \textit{b)} \emph{número médio de segmentos por
-  imagem}, ambos relacionados com a forma dos segmentos extraídos das
-imagens automaticamente. Outros atributos que apresentaram altos
-valores para $\alpha$ também estavam, em geral, relacionados com a
-forma. Esses atributos podem ser usados satisfatoriamente para a
-classificação de pintores, apresentando resultados ainda melhores que
-descritores canônicos em processamento de imagens como as medidas de
-textura de Haralick ou medidas baseadas na complexidade de figuras
-(e.g.\ entropia). Essa seleção de atributos foi validada através da
-aplicação do método LDA, pela projeção dos componentes que mais
-dispersam os grupos de pinturas. Os resultados obtidos para essa
-projeção apresentaram grande similaridade com aqueles encontrados para
-os melhores pares de atributos, segundo os valores de $\alpha$. O
-método LDA, por sua vez, também teve sua validação efetuada através de
-matriz de confusão, que acabou por reforçar as observações e padrões
-obtidos para as medidas de inovação, oposição e dialética, já que além
-de revelar a classificação esperada (e.g.\ quando se observa sua
-diagonal principal, a classe esperada para determinado pintor coincide
-com a classe obtida) ainda confirmou a separação entre os grupos de
-pintores barrocos e modernos e o isolamento de Pollock do resto do
-grupo, apresentando-o com $100\%$ de acerto na matriz de espalhamento.
+dos períodos Barroco e movimentos da Arte Moderna, na
+Pintura. Iniciando com a escolha de representantes de cada um destes
+movimentos, 12 nomes são sugeridos e 240 pinturas destes artistas são
+escolhidas. Rotinas de processamento digital de imagens permitem a
+extração de características deste corpus de pinturas. São extraídas de
+cada pintura um vetor de 99 atributos que caracterizam aspectos de
+complexidade da imagem, textura, forma e contorno.  A relevância de
+tais atributos foi atestada pela análise do índice de dispersão
+$\alpha$ calculado através de matrizes de espalhamento para cada par
+possível de atributos. Uma análise baseada na medida $\alpha$ revelou
+que os atributos que melhor classificaram as pinturas foram
+\textit{a)} \emph{número médio de picos de curvatura} e \textit{b)}
+\emph{número médio de segmentos por imagem}, ambos relacionados com a
+forma dos segmentos extraídos das imagens automaticamente. Outros
+atributos que apresentaram altos valores para $\alpha$ também estavam,
+em geral, relacionados com a forma. Esses atributos podem ser usados
+satisfatoriamente para a classificação de pintores, apresentando
+resultados ainda melhores que descritores canônicos em processamento
+de imagens como as medidas de textura de Haralick ou medidas baseadas
+na complexidade de figuras (i.e.\ entropia). Essa seleção de atributos
+foi validada através da aplicação do método LDA, pela projeção dos
+componentes que mais dispersam os grupos de pinturas. Os resultados
+obtidos para essa projeção apresentaram grande similaridade com
+aqueles encontrados para os melhores pares de atributos, segundo os
+valores de $\alpha$. O método LDA, por sua vez, também teve sua
+validação efetuada através de validação cruzada, que acabou por
+reforçar as observações e padrões obtidos para as medidas de inovação,
+oposição e dialética. A matriz de confusão resultante, além de revelar
+a classificação esperada (e.g.\ quando se observa sua diagonal
+principal, a classe esperada para determinado pintor coincide com a
+classe obtida) ainda confirmou a separação entre os grupos de pintores
+barrocos e modernos e o isolamento de Pollock do resto do grupo,
+apresentando-o com $100\%$ de acerto na matriz de confusão.
 
 A caracterização das pinturas pelo uso destes atributos tornou
-possível a análise de medidas quantitativas (geométricas). Embora de
+possível a análise de medidas quantitativas (i.e.\ geométricas). Embora de
 importância central para o entendimento da evolução da humanidade,
 conceitos filosóficos como a dialética não são abordados comumente
 pelas Ciências Exatas. Enquanto tratadas como medidas geométricas, as
@@ -3006,7 +3155,7 @@ e dialética no início de cada período artístico considerado. Esse
 decréscimo é seguido por um aumento constante até encontrar seu ápice,
 exatamente no momento onde há a mudança de um período (Barroco) para o
 outro (Moderno). Ainda, diferente dos filósofos e músicos, na Pintura
-a inovação apresenta valores aumentando constantemente, durante toda a
+a inovação apresenta valores com acréscimo constante, durante toda a
 série temporal. Isso pode refletir a influência de cada movimento ou
 período artístico em seus representantes, juntamente com um constante
 desejo de inovar, presente principalmente nos pintores modernos. Dessa
@@ -3033,7 +3182,7 @@ Reni~\cite{gombrich} ou Carracci podem ser comparadas entre si com o
 objetivo de verificar a já reconhecida similaridade entre ambos
 pintores, ou a influência de Cézanne em Matisse e Picasso, que
 declarou: ``meu primeiro e único mestre, (...)  Cézanne é o pai de
-todos nós''.~\cite{rishel} A evolução de um mesmo artista pode ser
+todos nós''~\cite{rishel}). A evolução de um mesmo artista pode ser
 analisada, assim como a evolução ocorrida dentro de uma escola
 específica. Pode-se assim comparar tal análise com as evoluções
 obtidas para outras escolas e confirmar (ou não) o mesmo aspecto
@@ -3047,6 +3196,7 @@ Cinema e Literatura. A mesma automatização aplicada aqui pode ser
 replicada para a Música (e possivelmente à Filosofia), dando
 continuidade ao trabalho realizado pelos autores~\cite{vieira}.
 
-Mais uma vez reforça-se que, ao invés de suplantar as discussões humanas, que
-tanto trazem de valor para o entendimento da sociedade, esse \textit{framework}
-pretende somar, fornecendo mais um ponto de vista.
+Mais uma vez reforça-se que, ao invés de suplantar as discussões
+humanas, que tanto trazem de valor para o entendimento da sociedade,
+esse \textit{framework} pretende somar, fornecendo mais um ponto de
+vista.
