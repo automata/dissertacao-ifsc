@@ -2,9 +2,11 @@
 
 %% [ ] tabela comparativa: barroco, movimento moderno (cada artista)
 %% [ ] melhorar validação cruzada, incluindo explicação sobre % http://www.inf.ufrgs.br/~alvares/CMP259DCBD/avaliacao.pdf
-%% [ ] figuras ilustrando o processo todo na secao pertinente
-%% [ ] períodos na tabela de pintores
-%% [ ] traduzir todas as figuras e melhorá-las
+%% [x] figuras ilustrando o processo todo na secao pertinente
+%% [x] períodos na tabela de pintores
+%% [ ] rever texto ressaltando pontos fortes, principalmente resultados e conclusão
+%% [ ] correções para biblioteca
+%% [x] traduzir todas as figuras e melhorá-las
 %% [x] shots da app web no apendice
 %% [x] shots da revista quiosque no apendice
 
@@ -1593,7 +1595,18 @@ a Equação~\ref{eq:entropia} a $G$:
 \noindent sendo $hist$ o histograma dos valores dos níveis de cinza em
 $G$, $P$ as probabilidades $p_i$ de cada amostra $i$ e $H$ a entropia
 da imagem $G$. Esse portanto é o primeiro atributo $\mathcal{A}_0$ do
-conjunto de atributos $\mathcal{A}_i$.
+conjunto de atributos $\mathcal{A}_i$. O valor de entropia da imagem também pode ser visualizado através de um escala de cores que corresponde aos valores de $H$ como visto na Figura~\ref{fig:entrop}.
+
+\begin{figure}[h!]
+\begin{center}
+        \includegraphics[scale=1]{figs/entrop}
+      \caption{\textit{a)} Imagina da pintura original. \textit{b)}
+        Imagem em escala de cinza $G$. \textit{c)} A entropia $H$ da
+        imagem $G$ mapeada em uma escala de cores. É interessante
+        notar como regiões de borda possuem entropia maior.}
+        \label{fig:entrop}
+\end{center}
+\end{figure}
 
 A densidade espectral da imagem total, por sua vez, é dada pelo
 cálculo da transformada de Fourier. Vale aqui introduzir tal conceito
@@ -2282,15 +2295,15 @@ representativo. É de conhecimento que pintores como Picasso
 demonstraram mais de um estilo durante a vida. Porém, para tal
 análise, apenas o estilo mais marcante (e pelo qual melhor se conhece
 e define o artista) foi escolhido. No caso de Picasso, apenas pinturas
-de sua fase Cubista foram escolhidas, com o objetivo de representar
-tal movimento. É importante destacar que a escolha de dois períodos
-distantes (cerca de 150 anos separam o período Barroco dos movimentos
-da Arte Moderna, escolhidos para este estudo) é proposital. A história
-da Arte assim como a análise estética das pinturas de ambos períodos
-revela características contrastantes, porém tais afirmações são
-qualitativas. Neste estudo, fez-se tal escolha justamente com o
-objetivo de refutar ou afirmar estas afirmações, mas agora com base em
-medidas quantitativas.
+de sua fase Cubista (de 1909 a 1912) foram escolhidas, com o objetivo
+de representar tal movimento. É importante destacar que a escolha de
+dois períodos distantes (cerca de 150 anos separam o período Barroco
+dos movimentos da Arte Moderna, escolhidos para este estudo) é
+proposital. A história da Arte assim como a análise estética das
+pinturas de ambos períodos revela características contrastantes, porém
+tais afirmações são qualitativas. Neste estudo, fez-se tal escolha
+justamente com o objetivo de refutar ou afirmar estas afirmações, mas
+agora com base em medidas quantitativas.
 
 \begin{table}
 \begin{center}
@@ -2305,21 +2318,21 @@ medidas quantitativas.
  
  \hline
 
- Caravaggio                    & Barroco, Renassença & \\
- Frans Hals                    & Barroco, Idade de ouro Holandesa & \\
- Nicolas Poussin               & Barroco, Classicismo & \\
- Diego Vel\'{a}zquez           & Barroco & \\
- Rembrandt                     & Barroco, Idade de ouro Holandesa, Realismo & \\
- Johannes Vermeer              & Barroco, Idade de ouro Holandesa & \\
+ Caravaggio                    & Barroco & 1593 - 1610 \\
+ Frans Hals                    & Barroco, Idade de ouro Holandesa & 1620 - 1660\\
+ Nicolas Poussin               & Barroco, Classicismo & 1620 - 1660\\
+ Diego Vel\'{a}zquez           & Barroco & 1618 - 1660\\
+ Rembrandt                     & Barroco, Idade de ouro Holandesa, Realismo & 1632 - 1650\\
+ Johannes Vermeer              & Barroco, Idade de ouro Holandesa & 1632 - 1670\\
  
  \hline
  
- Vincent van Gogh              & Pós-Impressionismo & \\
- Wassily Kandinsky             & Expressionismo, Arte abstrata & \\
- Henri Matisse                 & Modernismo, Impressionismo & \\
- Pablo Picasso                 & Cubismo & \\
- Joan Mir\'{o}                 & Surrealismo, Dada & \\
- Jackson Pollock               & Expressionismo abstrato & \\
+ Vincent van Gogh              & Pós-Impressionismo & 1888 - 1890\\
+ Wassily Kandinsky             & Expressionismo, Arte abstrata & 1922 - 1944\\
+ Henri Matisse                 & Modernismo, Fauvismo & 1904 - 1910\\
+ Pablo Picasso                 & Cubismo & 1909 - 1912\\
+ Joan Mir\'{o}                 & Surrealismo, Dada & 1922 - 1958\\
+ Jackson Pollock               & Expressionismo abstrato & 1947 - 1950\\
 
 \hline
 \end{tabular}
@@ -2414,19 +2427,59 @@ Jackson Pollock     & No. 5 & 1948 \\
 Todas as 240 imagens foram cortadas em janelas de $800\times800$
 pixels. Esta janela quadrada foi posicionada com seu ponto superior
 mais à esquerda equivalendo ao ponto superior mais à esquerda da
-pintura. As imagens que possuiam dimensões menores que $800\times800$
-foram escaladas para tal dimensão, mantendo o mesmo aspecto da imagem
-original em todas as pinturas. Em seguida, as imagens foram
-pré-processadas aplicando-se equalização por histograma e filtro de
-médias com janelamento de raio 3, ambas descritas na
-Subseção~\ref{sec:preproc}.
+pintura (Figura~\ref{fig:janelamento}). As imagens que possuiam
+dimensões menores que $800\times800$ foram escaladas para tal
+dimensão, mantendo o mesmo aspecto da imagem original em todas as
+pinturas.
 
-Algoritmos de extração de características foram aplicados a versões coloridas,
-em escala de cinza e preto-e-branco das imagens, conforme necessário (i.e.\ para
-o algoritmo convex-hull, uma imagem binária $B$ foi utilizada, enquanto para o
-algoritmo de textura de Haralick, uma imagem em escala de cinza $G$ foi
-utilizada, já a segmentação SLIC utilizou a versão RGB, a matriz $I$, de cada
-imagem).
+\begin{figure}[ht!]
+\begin{center}
+        \includegraphics{figs/passos_janelamento}
+      \caption{Pré-processamento para recorte das imagens originais em
+        janelas de dimensão $800\times800$. \textit{a)} a imagem
+        original, \textit{b)} a janela em destaque, \textit{c)} a
+        imagem de dimensões $800\times800$ utilizada neste
+        estudo. Embora se percam detalhes da imagem original, o
+        janelamento é necessário para facilitar o processamento ao se
+        utilizar uma dimensão única para as imagens.}
+        \label{fig:janelamento}
+\end{center}
+\end{figure}
+
+Em seguida, as imagens foram pré-processadas aplicando-se equalização
+por histograma e filtro de médias com janelamento de raio 3
+(Figura~\ref{fig:eq}), ambas descritas na Subseção~\ref{sec:preproc}.
+
+\begin{figure}[ht!]
+\begin{center}
+        \includegraphics[scale=1.2]{figs/passos_eq}
+      \caption{Pré-processamento utilizando equalização por histograma
+        e filtro de médias com janelamento de raio 3. \textit{a)} a
+        imagem original em escala de cinza, \textit{b)} a imagem
+        equalizada, \textit{c)} a imagem filtrada através do filtro de
+        médias. Pode-se perceber que a luminosidade da imagem está
+        homogênea e seus detalhes de borda foram suavizados.}
+        \label{fig:eq}
+\end{center}
+\end{figure}
+
+Algoritmos de extração de características foram aplicados a versões
+coloridas, em escala de cinza e preto-e-branco das imagens
+(Figura~\ref{fig:tipos}), conforme necessário (i.e.\ para o algoritmo
+convex-hull, uma imagem binária $B$ foi utilizada, enquanto para o
+algoritmo de textura de Haralick, uma imagem em escala de cinza $G$
+foi utilizada, já a segmentação SLIC utilizou a versão RGB, a matriz
+$I$, de cada imagem).
+
+\begin{figure}[ht!]
+\begin{center}
+        \includegraphics[scale=1.2]{figs/passos_tipos}
+      \caption{Tipos de imagens utilizadas no estudo. \textit{a)}
+        imagem colorida $I$ em formato RGB, \textit{b)} imagem em
+        escala de cinza $G$, e \textit{c)} imagem binária $B$.}
+        \label{fig:tipos}
+\end{center}
+\end{figure}
 
 Com o objetivo de mensurar características de regiões das pinturas, métodos de
 segmentação foram utilizados, a saber: Watershed, SLIC e Felzenswald. Após
@@ -2446,15 +2499,41 @@ não contribuiriam para uma boa segmentação.
         Felzenswald, \textit{d)} SLIC com $k=10$ e \textit{e)} SLIC com
         $k=20$. O método SLIC foi escolhido por apresentar, visualmente,
         melhor separação dos segmentos, e os parâmetros escolhidos contribuíram
-        para a segmentação apresentada.  }
+        para a segmentação apresentada.}
         \label{fig:expsegs}
 \end{center}
 \end{figure}
 
-Tendo-se as regiões separadas, estas foram agrupadas em componentes conexos, ou
-seja, em regiões conectadas e independentes umas das outras
-(Subseção~\ref{sec:posproc}). Com tais regiões agrupadas, partiu-se para o
-cálculo de curvatura de cada região e demais medidas descritas na Seção~\ref{sec:atributos}.
+Tendo-se as regiões separadas, estas foram agrupadas em componentes
+conexos, ou seja, em regiões conectadas e independentes umas das
+outras (detalhes na Figura~\ref{fig:rotulacao} e
+Subseção~\ref{sec:posproc}). Com tais regiões agrupadas, partiu-se
+para o cálculo de curvatura de cada região e demais medidas descritas
+na Seção~\ref{sec:atributos}. A Figura~\ref{fig:passos_curvatura} mostra algumas das regiões segmentadas e suas respectivas curvaturas.
+
+\begin{figure}[ht!]
+\begin{center}
+        \includegraphics[scale=1.2]{figs/passos_rotulacao}
+      \caption{Pós-processamento através da rotulação dos componentes
+        conexos e sua filtragem, removendo as regiões com áreas
+        menores que um dado limiar. \textit{a)} Detalhe de regiões
+        segmentadas através do algoritmo SLIC, \textit{b)} objetos
+        rotulados, \textit{c)} objetos com área menor que limiar
+        removidos. É a partir desta última imagem que se realizou a
+        extração de características.}
+        \label{fig:rotulacao}
+\end{center}
+\end{figure}
+
+\begin{figure}[ht!]
+\begin{center}
+        \includegraphics[scale=1]{figs/passos_curvatura}
+      \caption{Regiões segmentadas e suas respectivas curvaturas. Os
+        marcadores em vermelho identificam os picos de curvatura no
+        perfil e sua localização na região segmentada.}
+        \label{fig:passos_curvatura}
+\end{center}
+\end{figure}
 
 Todo o processo está representado esquematicamente na Figura~\ref{fig:dataflow}
 e abrange todos os passos, do processamento das imagens das pinturas até o
@@ -2463,7 +2542,7 @@ próximos capítulos, e portanto, destacadas na figura.
 
 \begin{figure}[ht!]
 \begin{center}
-        \includegraphics[scale=.6]{figs/dataflow_pintores3}
+        \includegraphics[scale=.8]{figs/dataflow_pintores3}
       \caption{Diagrama com todos os passos tomados, desde o processamento das
         imagens das pinturas até a extração de características, assim como a
         obtenção da série temporal onde foram calculadas as medidas de oposição,
@@ -2500,10 +2579,6 @@ perímetro dos segmentos e da área do segmento, e circularidade --- também sã
 relacionadas com características de forma. Ambos atributos apresentaram
 projeções e propriedades de agrupamento similares às da
 Figura~\ref{fig:caso1_g1} como mostrado na Figura~\ref{fig:scatters}.
-%%  Dessa
-%% forma, outras combinações desses atributos podem ser usados para a análise,
-%% apresentando resultados que conservam as características observadas para as
-%% medidas de oposição, inovação e dialética.
  
 \begin{table}[ht] \footnotesize
   \begin{center}
@@ -2529,14 +2604,14 @@ Figura~\ref{fig:caso1_g1} como mostrado na Figura~\ref{fig:scatters}.
  de segmentos & 33.540 \\
  7 & média da energia das linhas (canal verde) & média do número de segmentos & 32.954 \\
  8 & média da energia das linhas e colunas (canal verde) & média do número de segmentos & 32.954 \\
- 9 & D.p. da energia das linhas (canal verde) & média do número de segmentos & 32.932 \\
- 10 & D.p. da energia das linhas e colunas (canal verde) & média do número
+ 9 & d.p. da energia das linhas (canal verde) & média do número de segmentos & 32.932 \\
+ 10 & d.p. da energia das linhas e colunas (canal verde) & média do número
  de segmentos & 32.906 \\
  11 & média de entropia local (janela de dimensão 5) & média do número de segmentos & 32.898 \\
- 12 & Entropia (Haralick adj. 4) & média do número de segmentos & 32.898 \\
- 13 & Entropia (Haralick adj. 3) & média do número de segmentos & 32.883 \\
- 14 & Entropia (Haralick adj. 1) & média do número de segmentos & 32.874 \\
- 15 & Entropia (Haralick adj. 2) & média do número de segmentos & 32.869 \\
+ 12 & entropia (Haralick adj. 4) & média do número de segmentos & 32.898 \\
+ 13 & entropia (Haralick adj. 3) & média do número de segmentos & 32.883 \\
+ 14 & entropia (Haralick adj. 1) & média do número de segmentos & 32.874 \\
+ 15 & entropia (Haralick adj. 2) & média do número de segmentos & 32.869 \\
  16 & média da energia das linhas (canal vermelho) & média do número de segmentos & 32.865 \\
 \hline \hline
  \end{tabular}
@@ -2545,8 +2620,6 @@ Figura~\ref{fig:caso1_g1} como mostrado na Figura~\ref{fig:scatters}.
 
 \section{Medidas de dialética, oposição e inovação}
 \label{sec:medidas}
-
-%% ??? manter o ``espaço criativo'' de Deleuze???
 
 Havendo $N_f$ atributos $\vec{f_i}$, define-se um espaço
 $N_f$-dimensional chamado de \textit{espaço criativo}, pois a exemplo
@@ -2734,8 +2807,9 @@ a explorar regiões de extremos opostos como no caso de Pollock.
 \begin{figure}[h!]
 \begin{center}
         \includegraphics[scale=.5]{figs/caso1_g1}
-      \caption{Projeção do \textit{espaço criativo} considerando o melhor par de
-        atributos \emph{média de picos da curvatura} e \emph{média do número de segmentos}.}
+      \caption{Projeção do \textit{espaço criativo} considerando o
+        melhor par de atributos \emph{média de picos da curvatura} e
+        \emph{média do número de segmentos}.}
         \label{fig:caso1_g1}
 \end{center}
 \end{figure}
@@ -2744,8 +2818,9 @@ a explorar regiões de extremos opostos como no caso de Pollock.
 \begin{figure}[h!]
 \begin{center}
         \includegraphics[scale=.5]{figs/caso1_g2}
-      \caption{Série temporal considerando o melhor par de
-        atributos \emph{média de picos da curvatura} e \emph{média do número de segmentos}.}
+      \caption{Série temporal considerando o melhor par de atributos
+        \emph{média de picos da curvatura} e \emph{média do número de
+          segmentos}.}
         \label{fig:caso1_g2}
 \end{center}
 \end{figure}
