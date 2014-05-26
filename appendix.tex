@@ -1,6 +1,38 @@
 \chapter{Tutorial para execução dos \textit{scripts Python} desenvolvidos para análise}
 \label{cap:ap-tutorial}
 
+Toda a análise realizada neste estudo foi implementada em linguagem
+\textit{Python}, em sistema \textit{GNU/Linux Ubuntu}, utilizando
+ferramentas de \textit{software livre}. O código-fonte, assim como
+todo o conteúdo usado e gerado, encontra-se distribuído nos seguintes
+repositórios abertos:
+
+\begin{itemize}
+  \item{\url{http://github.com/automata/dissertacao-ifsc}: contém o
+    código-fonte \LaTeX  desta dissertação e pode ser compilado através
+    do comando \textit{make}, gerando um arquivo
+    \textit{dissertacao.pdf} como saída.}
+  \item{\url{http://github.com/automata/viz-paintings}: aplicativo Web
+    desenvolvido em \textit{JavaScript} para visualização interativa
+    da Figura~\ref{fig:caso1_g1}, onde o espaço de atributos pode ser
+    ``navegado'' com \textit{panning} e \textit{zoom}, facilitando a
+    identificação de cada pintura analisada e seu respectivo
+    \textit{cluster}. Essa mesma aplicação pode ser acessada
+    \textit{on-line} através do endereço
+    \url{http://automata.github.io/viz-paintings}. Mais detalhes e
+    capturas de tela do aplicativo no Apêndice~\ref{ap:alternativa}.}
+  \item{\url{http://github.com/automata/tri-delaunay}: código-fonte em
+    \textit{Python} para geração de pinturas generativas baseadas em
+    figuras usadas neste estudo e triangulação de Delaunay. Estas
+    pinturas foram exibidas em uma exposição em 2013
+    (Apêndice~\ref{ap:sifisc}).}
+  \item{\url{http://github.com/automata/ana-pintores}: \textit{scripts
+      Python} usados para obter os resultados discutidos nesse estudo,
+    assim como a base de figuras das 240 pinturas utilizadas. A
+    seguir, instruções para instalação e uso de tais
+    \textit{scripts}.}
+\end{itemize}
+
 \begin{enumerate}
   \item Certifique-se de ter instalado as dependências:
 \begin{verbatim}
@@ -653,9 +685,7 @@ geradas.
 
 
 \chapter{Visualizações complementares}
-
-%% TODO: incluir a projeção usando as pinturas como marcadores
-%% http://wiki.nosdigitais.teia.org.br/Nhanha (primeiras 2 imagens)
+\label{ap:alternativa}
 
 Ao se representar as projeções das Figuras~\ref{fig:caso1_g1}
 e~\ref{fig:caso1_g2} usando miniaturas das pinturas ao invés de simples
@@ -707,6 +737,7 @@ aplicativo.
 
 
 \chapter{Pinturas generativas por tesselação de Delaunay. Estudo 4}
+\label{ap:sifisc}
 
 Tendo como base o processamento de imagens (pré-processamento e segmentação)
 realizado para as 240 pinturas usadas nesse estudo, foram geradas 240 novas
@@ -773,4 +804,21 @@ próprios autores deste estudo~\footnote{Em
   \caption{Fotos da exposição realizada no SIFISC 2013 com imagens geradas por
     algoritmo desenvolvido em paralelo a este estudo.}
   \label{fig:expo}
+\end{figure}
+
+Há ainda uma proposta de publicação impressa destas imagens pela
+editora independente Quiosque, com editoração de Geraldo Magela de
+Castro Rocha Junior, curadoria de Leticia Palaria e texto de
+integrantes do LabMacambira.sf.net. Uma prévia do conteúdo a ser
+publicado pode ser visto na Figura~\ref{fig:quiosque}.
+
+\begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=\textwidth]{figs/quiosque1}
+    \includegraphics[width=\textwidth]{figs/quiosque2}
+    \caption{Prévia do conteúdo de publicação impressa prevista para
+      2014 das pinturas generativas pela editora independente
+      Quiosque.}
+  \label{fig:quiosque}
+  \end{center}
 \end{figure}

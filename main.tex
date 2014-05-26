@@ -1,24 +1,12 @@
 %% todo:
 
-%% - escrever melhor 2.3.1 e dar exemplos do gonzalez talvez
-%% - rever :
-
-%% x incluir tabela de atributos A_i
-%% x referenciar todo o texto, parte de fundamentos principalmente
-%% x revisar a notação (ver os livros costa e gonzales, se esta correto)
-%% x melhorar a conclusão
-
-%% x refazer figura 2.13 e 2.14, trocando v_i v_j v_k por p_...
-%% ? revisar e traduzir todas as imagens
-%% x terminar 2.4.3 Atributos de contorno e forma, ver o codigo fonte
-%% x rever na ref a tabela 2.17 (atributos de haralick) e arrumar log e outros
-%% termos
-%% x atualizar a descrição da curvatura
-%% x colocar medidas de media, ... jah no inicio (nocoes)
-%% x rever nos scripts como posicionei a janela/escala das imagens capitulo 3
-%% x figura 3.3, ver os parametros exatos de slic
-%% x incluir detalhes para imagem no apêndice
-%% x colocar os passos da geracao de pinturas e um ou dois exemplos no apendice
+%% [ ] tabela comparativa: barroco, movimento moderno (cada artista)
+%% [ ] melhorar validação cruzada, incluindo explicação sobre % http://www.inf.ufrgs.br/~alvares/CMP259DCBD/avaliacao.pdf
+%% [ ] figuras ilustrando o processo todo na secao pertinente
+%% [ ] períodos na tabela de pintores
+%% [ ] traduzir todas as figuras e melhorá-las
+%% [x] shots da app web no apendice
+%% [x] shots da revista quiosque no apendice
 
 \chapter{Introdução}
 \label{cap:intro} 
@@ -1036,8 +1024,6 @@ s = T(R_k) = \sum_{j=0}^k \frac{N_j}{N_G} = \sum_{j=0}^k p(R_j)
   histograma} ou \emph{linearização de histograma}. Ao se mapear os
 níveis de cinza $R_k$ de $f$ nos níveis $s$ de $g$, tem-se a imagem
 equalizada em contraste.
-
-%% TODO: talvez acrescentar uma figura exemplificando a equalização por histograma?
 
 Após equalizar os níveis de contraste da imagem, é comum suavisá-la e
 remover ruído através de filtros, como por exemplo, o de mediana. Esse
@@ -2205,7 +2191,7 @@ atributo contribui para a correlação. Portanto, é sempre interessante verific
 os $r$ autovalores em módulo somam cerca de $70\%$ do total, o que indica
 serem suficientes para representar os $N$ atributos originais~\cite{luciano}.
 
-\subsection{Cross validation}
+\subsection{Validação Cruzada}
 
 A projeção obtida pelo método LDA através da Equação~\ref{eq:lda} não
 garante a classificação dos dados, visto que as classes são conhecidas
@@ -2312,28 +2298,28 @@ medidas quantitativas.
   ordem cronológica, juntamente com o estilo artístico que melhor
   representa. Divididos em dois grupos: 6 pintores barrocos e 6 pintores modernos.}
 
-\begin{tabular}{l|l}
+\begin{tabular}{l|l|l}
 \hline
 
- Artistas                      & Estilos/Movimentos/Períodos mais marcantes \\ 
+ Artistas                      & Estilos/Movimentos/Períodos mais marcantes & Período crono. \\ 
  
  \hline
 
- Caravaggio                    & Barroco, Renassença \\
- Frans Hals                    & Barroco, Idade de ouro Holandesa \\
- Nicolas Poussin               & Barroco, Classicismo \\
- Diego Vel\'{a}zquez           & Barroco \\
- Rembrandt                     & Barroco, Idade de ouro Holandesa, Realismo \\
- Johannes Vermeer              & Barroco, Idade de ouro Holandesa \\
+ Caravaggio                    & Barroco, Renassença & \\
+ Frans Hals                    & Barroco, Idade de ouro Holandesa & \\
+ Nicolas Poussin               & Barroco, Classicismo & \\
+ Diego Vel\'{a}zquez           & Barroco & \\
+ Rembrandt                     & Barroco, Idade de ouro Holandesa, Realismo & \\
+ Johannes Vermeer              & Barroco, Idade de ouro Holandesa & \\
  
  \hline
  
- Vincent van Gogh              & Pós-Impressionismo \\
- Wassily Kandinsky             & Expressionismo, Arte abstrata \\
- Henri Matisse                 & Modernismo, Impressionismo \\
- Pablo Picasso                 & Cubismo \\
- Joan Mir\'{o}                 & Surrealismo, Dada \\
- Jackson Pollock               & Expressionismo abstrato \\
+ Vincent van Gogh              & Pós-Impressionismo & \\
+ Wassily Kandinsky             & Expressionismo, Arte abstrata & \\
+ Henri Matisse                 & Modernismo, Impressionismo & \\
+ Pablo Picasso                 & Cubismo & \\
+ Joan Mir\'{o}                 & Surrealismo, Dada & \\
+ Jackson Pollock               & Expressionismo abstrato & \\
 
 \hline
 \end{tabular}
@@ -2351,12 +2337,14 @@ apresentadas em forma de galeria no Apêndice~\ref{cap:ap-galeria}. Os
 arquivos de imagem das pinturas assim como o código-fonte que
 implementa esta análise encontra-se disponível online em
 \url{http://github.com/automata/ana-pintores} e no
-Apêndice~\ref{cap:ap-tutorial}.
+Apêndice~\ref{cap:ap-tutorial} há instruções de sua instalação e uso.
 
 \begin{table} 
   \begin{center}
-  \caption{\label{tab:paintings} Algumas das 240 pinturas juntamente com a data
-    de sua criação.}
+  \caption{\label{tab:paintings} Algumas das 240 pinturas juntamente
+    com a data de sua criação. Todas as pinturas usadas no estudo
+    estão apresentadas em forma de galeria no
+    Apêndice~\ref{cap:ap-galeria}.}
 
 \begin{tabular}{l|l|l}
 \hline
@@ -2476,18 +2464,13 @@ próximos capítulos, e portanto, destacadas na figura.
 \begin{figure}[ht!]
 \begin{center}
         \includegraphics[scale=.6]{figs/dataflow_pintores3}
-      \caption{Um sumário com todos os passos tomados, desde o processamento das
+      \caption{Diagrama com todos os passos tomados, desde o processamento das
         imagens das pinturas até a extração de características, assim como a
         obtenção da série temporal onde foram calculadas as medidas de oposição,
         inovação e dialética.}
         \label{fig:dataflow}
 \end{center}
 \end{figure}
-
-%% A Tabela X lista todos os atributos discutidos aqui e usados para caracterizar
-%% cada pintura considerada.
-
-%% TODO: discutir cada atributo e sua relevância? Aqui ou na próxima sec?
 
 \section{Seleção de atributos}
 
@@ -2503,8 +2486,8 @@ resultados por $\alpha$, é possível selecionar todos os atributos mais
 relevantes para a classificação: pares com maiores valores de $\alpha$
 apresentam melhor dispersão inter-classe e agrupamento intra-classe do que pares
 com menores valores. Como visto na Tabela~\ref{tab:alpha} (e nas
-Figuras~\ref{fig:caso1_g1} e~\ref{fig:caso1_g2}), os atributos \emph{$\mu$ dos
-  picos de curvatura} e \emph{$\mu$ do número de segmentos} possuem maior valor
+Figuras~\ref{fig:caso1_g1} e~\ref{fig:caso1_g2}), os atributos \emph{média dos
+  picos de curvatura} e \emph{média do número de segmentos} possuem maior valor
 de $\alpha$ e foram selecionados para a análise das medidas de oposição,
 inovação e dialética --- ambos atributos se mostraram predominantes mesmo na
 projeção por LDA, discutida na Seção~\ref{subsec:lda}. É interessante notar a
@@ -2528,8 +2511,8 @@ Figura~\ref{fig:caso1_g1} como mostrado na Figura~\ref{fig:scatters}.
     ordenados por
     $\alpha$. Pares com valores maiores de $\alpha$ mostram maior dispersão
     inter-classe enquanto menor dispersão intra-classe (maior agrupamento).
-    O melhor par de atributos: \emph{$\mu$ dos picos de curvatura} e
-    \emph{$\mu$ do número de segmentos} são selecionados para a análise e
+    O melhor par de atributos: \emph{média dos picos de curvatura} e
+    \emph{média do número de segmentos} são selecionados para a análise e
     cálculo das medidas.}
 \begin{tabular}{@{}llll}
  \hline \hline
@@ -2537,30 +2520,30 @@ Figura~\ref{fig:caso1_g1} como mostrado na Figura~\ref{fig:scatters}.
  
  \hline
  
- 1 & $\mu$ do número de picos & $\mu$ do número de segmentos & 42.445 \\
- 2 & $\mu$ do número de segmentos & $\mu$ da área de convex-hull & 37.406 \\
- 3 & $\mu$ do perímetro do segmento & $\mu$ do número de segmentos & 36.703 \\
- 4 & $\mu$ da área do segmento & $\mu$ do número de segmentos & 36.214 \\
- 5 & $\mu$ do número de segmentos & $\mu$ área convexa / área total & 34.885 \\
- 6 & $\mu$ de circularidade ($\mathrm{Per.}^2/\mathrm{Area}$) & $\mu$ do número
+ 1 & média do número de picos & média do número de segmentos & 42.445 \\
+ 2 & média do número de segmentos & média da área de convex-hull & 37.406 \\
+ 3 & média do perímetro do segmento & média do número de segmentos & 36.703 \\
+ 4 & média da área do segmento & média do número de segmentos & 36.214 \\
+ 5 & média do número de segmentos & média área convexa / área total & 34.885 \\
+ 6 & média de circularidade ($\mathrm{Per.}^2/\mathrm{Area}$) & média do número
  de segmentos & 33.540 \\
- 7 & $\mu$ da energia das linhas (canal verde) & $\mu$ do número de segmentos & 32.954 \\
- 8 & $\mu$ da energia das linhas e colunas (canal verde) & $\mu$ do número de segmentos & 32.954 \\
- 9 & $\sigma$ da energia das linhas (canal verde) & $\mu$ do número de segmentos & 32.932 \\
- 10 & $\sigma$ da energia das linhas e colunas (canal verde) & $\mu$ do número
+ 7 & média da energia das linhas (canal verde) & média do número de segmentos & 32.954 \\
+ 8 & média da energia das linhas e colunas (canal verde) & média do número de segmentos & 32.954 \\
+ 9 & D.p. da energia das linhas (canal verde) & média do número de segmentos & 32.932 \\
+ 10 & D.p. da energia das linhas e colunas (canal verde) & média do número
  de segmentos & 32.906 \\
- 11 & $\mu$ de entropia local (janela de dimensão 5) & $\mu$ do número de segmentos & 32.898 \\
- 12 & Entropia (Haralick adj. 4) & $\mu$ do número de segmentos & 32.898 \\
- 13 & Entropia (Haralick adj. 3) & $\mu$ do número de segmentos & 32.883 \\
- 14 & Entropia (Haralick adj. 1) & $\mu$ do número de segmentos & 32.874 \\
- 15 & Entropia (Haralick adj. 2) & $\mu$ do número de segmentos & 32.869 \\
- 16 & $\mu$ da energia das linhas (canal vermelho) & $\mu$ do número de segmentos & 32.865 \\
+ 11 & média de entropia local (janela de dimensão 5) & média do número de segmentos & 32.898 \\
+ 12 & Entropia (Haralick adj. 4) & média do número de segmentos & 32.898 \\
+ 13 & Entropia (Haralick adj. 3) & média do número de segmentos & 32.883 \\
+ 14 & Entropia (Haralick adj. 1) & média do número de segmentos & 32.874 \\
+ 15 & Entropia (Haralick adj. 2) & média do número de segmentos & 32.869 \\
+ 16 & média da energia das linhas (canal vermelho) & média do número de segmentos & 32.865 \\
 \hline \hline
  \end{tabular}
 \end{center}
 \end{table}
 
-\section{Classificação e medidas de dialética, oposição e inovação}
+\section{Medidas de dialética, oposição e inovação}
 \label{sec:medidas}
 
 %% ??? manter o ``espaço criativo'' de Deleuze???
@@ -2572,7 +2555,7 @@ objetivo a representação de uma superfície onde artefatos
 (e.g.\ pinturas, peças musicais, poemas) criados por agentes
 (e.g.\ pintores, compositores, escritores) caracterizam uma região que
 foi explorada criativamente. É neste espaço criativo que as medidas de
-dialética, oposição e inovação são calculadas.
+dialética, oposição e inovação são calculadas~\cite{vieira}.
 
 Para simplificar o cálculo, um protótipo $\vec{p_i}$ é definido para cada classe
 $C_p$. Cada protótipo sumariza uma classe de pinturas (ou um pintor),
@@ -2699,19 +2682,60 @@ série.
 
 %%%%%
 
+\section{Análise das pinturas para atributos com maior dispersão}
+\label{sec:pares}
+
 O \textit{espaço criativo} projetado considerando todas as pinturas
-``representadas'' por $\vec{p_i}$ é apresentado na Figura~\ref{fig:caso1_g1}. É
-possível notar grupos bem definidos com menor sobreposição, principalmente
-quando considerando as pinturas Modernas. A série temporal formada pelos
-protótipos $\vec{p_i}$ para cada pintor no espaço projetado é visto na
-Figura~\ref{fig:caso1_g2}, facilitando a visualização da evolução da série.
+``representadas'' por $\vec{p_i}$ é apresentado na
+Figura~\ref{fig:caso1_g1}. É possível notar grupos bem definidos com
+menor sobreposição, principalmente quando considerando as pinturas
+Modernas. A série temporal formada pelos protótipos $\vec{p_i}$ para
+cada pintor no espaço projetado é visto na Figura~\ref{fig:caso1_g2},
+facilitando a visualização da evolução da série. Detalhes
+interessantes surgem dessa projeção e confirmam as hipóteses
+levantadas na Seção~\ref{subsec:sumario}. A mais impressionante é a
+grande distância entre Pollock e os demais pintores: isso se deve ao
+grande número de segmentos presentes nas pinturas de Pollock quando
+comparado aos demais artistas (o eixo-y corresponde à projeção desse
+atributo: \emph{média do número de segmentos}). De qualquer forma,
+ambos eixos x (\emph{média do número de picos da curvatura}) e y são
+relevantes para separar os períodos Barroco e Moderno. É possível
+notar uma separação entre os pintores barrocos e modernos onde as
+pinturas barrocas mostram-se arranjadas em um grupo com grande
+sobreposição enquanto as amostras modernas estão separadas uma das
+outras, ao mesmo tempo que cobrem uma região maior do \textit{espaço
+  criativo} do que as barrocas. Esse fato é confirmado pela história
+da Arte onde os pintores modernos experimentam novos materiais e
+desenvolvem estilos próprios (como revisado na Seção~\ref{sec:breve})
+para representar o que desejam, enquanto os barrocos tendem a utilizar
+estilos tradicionais, como o \textit{chiaroscuro} de Caravaggio. O
+mesmo fato pode ser observado quando se analisa a série temporal
+(Figura~\ref{fig:caso1_g2}), onde a diferença entre os períodos é
+clara: enquanto os barrocos retornam uns aos outros, há um
+deslocamento abrupto em van Gogh --- o primeiro pintor moderno
+considerado nesse estudo --- que o separa dos primeiros pintores. Van
+Gogh, embora localizado próximo aos pintores barrocos e no extremo
+oposto da maioria dos pintores modernos, estabelece o início do
+período Moderno e depois dele os deslocamentos de um vetor a outro
+continuam a evoluir até alcançar seu ápice, em Pollock. Os
+deslocamentos de um artista ao outro também são claramente
+contrastantes: o módulo dos vetores de deslocamento $\vec{M}_{i,j}$
+para os pintores modernos é, em média, maior que os deslocamentos para
+os pintores barrocos. Este é mais um indicador de que os artistas
+barrocos compartilhavam semelhanças em estilo, enquanto que os
+modernos distanciavam-se claramente uns dos outros. Ao contemplar a
+Figura~\ref{fig:caso1_g2} percebe-se que há uma certa exploração do
+que seria o \textit{espaço criativo} por parte dos artistas barrocos,
+mas a largura dessa exploração não se compara à realizada pelos
+pintores modernos que percorrem uma região muito mais ampla, chegando
+a explorar regiões de extremos opostos como no caso de Pollock.
 
 % gerado com: metrics_caso1.py
 \begin{figure}[h!]
 \begin{center}
         \includegraphics[scale=.5]{figs/caso1_g1}
       \caption{Projeção do \textit{espaço criativo} considerando o melhor par de
-        atributos \emph{$\mu$ de picos da curvatura} e \emph{$\mu$ do número de segmentos}.}
+        atributos \emph{média de picos da curvatura} e \emph{média do número de segmentos}.}
         \label{fig:caso1_g1}
 \end{center}
 \end{figure}
@@ -2721,7 +2745,7 @@ Figura~\ref{fig:caso1_g2}, facilitando a visualização da evolução da série.
 \begin{center}
         \includegraphics[scale=.5]{figs/caso1_g2}
       \caption{Série temporal considerando o melhor par de
-        atributos \emph{$\mu$ de picos da curvatura} e \emph{$\mu$ do número de segmentos}.}
+        atributos \emph{média de picos da curvatura} e \emph{média do número de segmentos}.}
         \label{fig:caso1_g2}
 \end{center}
 \end{figure}
@@ -2736,35 +2760,6 @@ Figura~\ref{fig:caso1_g2}, facilitando a visualização da evolução da série.
         \label{fig:scatters}
         \end{center}
 \end{figure}
-
-
-Detalhes interessantes surgem dessa projeção e confirmam as hipóteses
-levantadas na Seção~\ref{subsec:sumario}. A mais impressionante é a
-grande distância entre Pollock e os demais pintores: isso se deve ao
-grande número de segmentos presentes nas pinturas de Pollock quando
-comparado aos demais artistas (o eixo-y corresponde à projeção desse
-atributo: $\mu$ do número de segmentos). De qualquer forma, ambos
-eixos x (número de picos da curvatura) e y são relevantes para separar
-os períodos Barroco e Moderno. É possível notar uma separação entre os
-pintores barrocos e modernos onde as pinturas barrocas mostram-se
-arranjadas em um grupo com grande sobreposição enquanto as amostras
-modernas estão agrupadas e separadas uma das outras, ao mesmo tempo
-que cobrem uma região maior do \textit{espaço criativo} do que as
-barrocas. Esse fato é confirmado pela história da Arte onde os
-pintores modernos experimentam novos materiais e desenvolvem estilos
-próprios (como revisado na Seção~\ref{sec:breve}) para representar o
-que desejam, enquanto os barrocos tendem a utilizar estilos
-tradicionais, como o \textit{chiaroscuro} de Caravaggio. O mesmo fato
-pode ser observado quando se analisa a série temporal, onde a
-diferença entre os períodos é clara: enquanto os barrocos preferem
-retornar uns aos outros em um padrão cíclico, há um deslocamento
-abrupto em van Gogh --- o primeiro pintor moderno considerado nesse
-estudo --- que o separa dos primeiros pintores e ``quebra'' o padrão
-antes cíclico. Van Gogh, embora localizado próximo aos pintores
-barrocos e no extremo oposto da maioria dos pintores modernos,
-estabelece o início do período Moderno e depois dele os deslocamentos
-de um vetor a outro continuam a evoluir até alcançar seu ápice, em
-Pollock, não mostrando mais padrões cíclicos.
 
 Quando ambos grupos (Barroco e Moderno) são analisados
 individualmente, é possível notar outros detalhes de
@@ -2822,9 +2817,25 @@ observado para os pintores barrocos na Figura~\ref{fig:chiaroscuro}.
   \end{center}
 \end{figure}
 
-Quando são consideradas as medidas de oposição e inovação, outros resultados
-interessantes apresentam-se, como mostrado na Tabela~\ref{tab:opos1} e
-Figura~\ref{fig:caso1_oposEinov}.
+Quando são consideradas as medidas de oposição e inovação, outros
+resultados interessantes apresentam-se, como mostrado na
+Tabela~\ref{tab:opos1} e Figura~\ref{fig:caso1_oposEinov}. Claramente,
+o maior valor de oposição é atribuído a Rembrandt. Esse fato é curioso
+por si, considerando que o mestre holandês é reconhecido como um
+``contraponto'' ao movimento Barroco, mesmo tendo sido parte desse
+movimento.~\cite{gombrich} Vermeer também apresenta forte oposição e a
+natureza de suas pinturas (e.g.\ interiores domésticos, uso de cores
+claras) pode explicar esse fenômeno. Um padrão torna-se visível no
+começo de ambos períodos Barroco e Moderno: decréscimo contínuo nos
+valores de oposição, seguido de acréscimo. Da mesma forma, um platô
+com alta oposição é observado nos pintores barrocos. Esse platô ocorre
+exatamente na transição de um período artístico ao outro, diminuindo
+gradualmente enquanto os artistas modernos começam a se estabelecer na
+história. Esse decréscimo dos valores de oposição refletem um aspecto
+de baixa oposição entre os primeiros artistas barrocos enquanto há o
+acréscimo da oposição presente nos deslocamentos que precedem o
+período Moderno, embora os valores de inovação se mantém oscilando mas
+aumentando durante toda a série temporal.
 
 % gerado com: metrics_caso1.py
 \begin{table}[ht]
@@ -2862,27 +2873,6 @@ Figura~\ref{fig:caso1_oposEinov}.
 \end{center}
 \end{figure}
 
-Claramente, o maior valor de oposição é atribuído a Rembrandt. Esse
-fato é curioso por si, considerando que o mestre holandês é
-reconhecido como um ``contraponto'' ao movimento Barroco, mesmo tendo
-sido parte desse movimento.~\cite{gombrich} Vermeer também apresenta
-forte oposição e a natureza de suas pinturas (e.g.\ interiores
-domésticos, uso de cores claras) pode explicar esse fenômeno. Um
-padrão torna-se visível no começo de ambos períodos Barroco e Moderno:
-decréscimo contínuo nos valores de oposição, seguido de acréscimo. Da
-mesma forma, um platô com alta oposição é observado nos pintores
-barrocos. Esse platô ocorre exatamente na transição de um período
-artístico ao outro, diminuindo gradualmente enquanto os artistas
-modernos começam a se estabelecer na história. Esse decréscimo dos
-valores de oposição refletem um aspecto de baixa oposição entre os
-primeiros artistas barrocos enquanto há o acréscimo da oposição
-presente nos deslocamentos que precedem o período Moderno, embora os
-valores de inovação se mantém oscilando mas aumentando durante toda a
-série temporal. 
-%Isso caracteriza novamente uma cena comum nas Artes,
-%principalmente nos modernistas, onde cada um tenta definir seu próprio
-%estilo enquanto a história se prepara para ingressar em um novo
-%movimento. 
 Em resumo, no que se pode falar dos índices de oposicão e
 inovação, o \textit{espaço criativo} é marcado por aumento constante
 de inovação, grande oposição em momentos específicos de sua evolução
@@ -2934,28 +2924,28 @@ começa, considerando os pintores selecionados para esse estudo.
 \end{center}
 \end{figure}
 
-\subsection{Análise por LDA de todos os atributos}
+\section{Análise por LDA de todos os atributos}
 \label{subsec:lda}
 
-Embora os atributos $\mu$ de picos de curvatura e $\mu$ do número de
-segmentos apresentaram-se como opções interessantes para a
-classificação, o método LDA foi aplicado considerando todos os $N =
-99$ atributos com o objetivo de testar a relevância dos atributos
+Embora os atributos \emph{média de picos de curvatura} e \emph{média
+  do número de segmentos} apresentaram-se como opções interessantes
+para a classificação, o método LDA foi aplicado considerando todos os
+$N = 99$ atributos com o objetivo de testar a relevância dos atributos
 originalmente selecionados e a estabilidade dos resultados. O método
 LDA projeta os atributos em um espaço de $n < N$ dimensões que melhor
 separa as pinturas e que acaba por resultar em uma nova série temporal
 como feito para o caso dos melhores atributos. Nesse caso, para
 permitir a visualização das medidas, considerou-se a projeção com $n =
 2$ componentes que resultou em um espaço de 2 dimensões, mostrado na
-Figura~\ref{fig:caso3_g1}. É possível notar, como esperado, uma
-similaridade com os resultados do início desta seção, onde as medidas
-foram calculadas apenas para o melhor par de atributos. Os índices de
-inovação (Figura~\ref{fig:caso3_oposEinov}) apresentam uma curva
-ascendente ainda mais bem definida durante toda a evolução da
-série. Os padrões notados na evolução de ambos índices de oposição e
-contra-dialética continuam visíveis nessa nova projeção por LDA, como
-é possível notar na Figuras~\ref{fig:caso3_oposEinov}
-e~\ref{fig:caso3_dialetica}, respectivamente.
+Figura~\ref{fig:caso3_g1}. É possível notar que os resultados para a
+análise por LDA são ainda mais aparentes do que aqueles obtidos na
+Seção~\ref{sec:pares}: os índices de inovação
+(Figura~\ref{fig:caso3_oposEinov}) apresentam uma curva ascendente
+ainda mais bem definida durante toda a evolução da série. Os padrões
+notados na evolução de ambos índices de oposição e contra-dialética
+continuam visíveis nessa nova projeção por LDA, como é possível notar
+na Figuras~\ref{fig:caso3_oposEinov} e~\ref{fig:caso3_dialetica},
+respectivamente.
 
 % gerado com: metrics_caso3.py
 \begin{figure}[h!]
@@ -3093,14 +3083,6 @@ entre os períodos Barroco e Moderno.
 \chapter{Conclusões}
 \label{chap:conclusoes}
 
-% TODO: Responder às questões levantadas na introdução.
-
-%% Apontamentos futuros: uso integrado a um algoritmo de otimização (AG) para
-%% geração de material, colaboração para uso do mesmo framework para geração de
-%% estruturas musicais e demais artefatos. Aplicação do método em mais pinturas e
-%% artistas.
-%%  Novas medidas quantitativas para conceitos humanos.
-
 Este trabalho propõe um método para o estudo da evolução de estilos
 artísticos através da quantificação de conceitos, antes exclusivamente
 humanos. Como caso de estudo, aplica-se tal método para o entendimento
@@ -3117,26 +3099,36 @@ possível de atributos. Uma análise baseada na medida $\alpha$ revelou
 que os atributos que melhor classificaram as pinturas foram
 \textit{a)} \emph{número médio de picos de curvatura} e \textit{b)}
 \emph{número médio de segmentos por imagem}, ambos relacionados com a
-forma dos segmentos extraídos das imagens automaticamente. Outros
-atributos que apresentaram altos valores para $\alpha$ também estavam,
-em geral, relacionados com a forma. Esses atributos podem ser usados
-satisfatoriamente para a classificação de pintores, apresentando
-resultados ainda melhores que descritores canônicos em processamento
-de imagens como as medidas de textura de Haralick ou medidas baseadas
-na complexidade de figuras (i.e.\ entropia). Essa seleção de atributos
-foi validada através da aplicação do método LDA, pela projeção dos
-componentes que mais dispersam os grupos de pinturas. Os resultados
-obtidos para essa projeção apresentaram grande similaridade com
-aqueles encontrados para os melhores pares de atributos, segundo os
-valores de $\alpha$. O método LDA, por sua vez, também teve sua
-validação efetuada através de validação cruzada, que acabou por
-reforçar as observações e padrões obtidos para as medidas de inovação,
-oposição e dialética. A matriz de confusão resultante, além de revelar
-a classificação esperada (e.g.\ quando se observa sua diagonal
-principal, a classe esperada para determinado pintor coincide com a
-classe obtida) ainda confirmou a separação entre os grupos de pintores
-barrocos e modernos e o isolamento de Pollock do resto do grupo,
-apresentando-o com $100\%$ de acerto na matriz de confusão.
+forma dos segmentos extraídos das imagens automaticamente. Uma
+interpretação possível para este resultado é que as pinturas barrocas
+apresentam formas maiores (e.g.\ paisagens da natureza e formas
+humanas) com poucos detalhes de curvatura. Já as pinturas modernas
+apresentam formas menores e em maior número (e.g.\ os quadros de
+Kandinsky e Miró são repletos de pequenas formas, assim como as
+pinturas abstratas de Pollock). As formas encontradas na pinturas
+modernas também são diferentes das do barroco: apresentam maior
+detalhe de curvatura devido ao uso de retas e cantos agudos, como é
+possível perceber no Cubismo e no uso de formas geométricas por
+Kandinsky ou Miró. Outros atributos que apresentaram altos valores para
+$\alpha$ também estavam, em geral, relacionados com a forma. Esses
+atributos podem ser usados satisfatoriamente para a classificação de
+pintores, apresentando resultados ainda melhores que descritores
+canônicos em processamento de imagens como as medidas de textura de
+Haralick ou medidas baseadas na complexidade de figuras
+(i.e.\ entropia). Essa seleção de atributos foi reforçada através da
+aplicação do método LDA, pela projeção dos componentes que mais
+dispersam os grupos de pinturas. Os resultados obtidos para essa
+projeção apresentaram grande similaridade com aqueles encontrados para
+os melhores pares de atributos, segundo os valores de $\alpha$. O
+método LDA, por sua vez, foi validado através de validação cruzada,
+que acabou por reforçar as observações e padrões obtidos para as
+medidas de inovação, oposição e dialética. A matriz de confusão
+resultante, além de revelar a classificação esperada (e.g.\ quando se
+observa sua diagonal principal, a classe esperada para determinado
+pintor coincide com a classe obtida) ainda confirmou a separação entre
+os grupos de pintores barrocos e modernos e o isolamento de Pollock do
+resto do grupo, apresentando-o com $100\%$ de acerto na matriz de
+confusão.
 
 A caracterização das pinturas pelo uso destes atributos tornou
 possível a análise de medidas quantitativas (i.e.\ geométricas). Embora de
@@ -3173,30 +3165,37 @@ próprio estilo.
 Embora insuficiente para esgotar todas as características encontradas
 em um artista e sua obra, esse método sugere um \textit{framework}
 para o estudo das Ciências Humanas através de medidas geométricas em
-um espaço de atributos.  Como trabalhos futuros, o número de pintores
-pode ser expandido e um conjunto de pintores pode ser escolhido
-especificamente para investigar suas influências (e.g.\ pinturas dos
-filhos de Frans Hals podem ser incluídas para verificar a influência
-de seu pai e mestre, ou ainda, pinturas de Rafael, Poussin e Guido
-Reni~\cite{gombrich} ou Carracci podem ser comparadas entre si com o
-objetivo de verificar a já reconhecida similaridade entre ambos
-pintores, ou a influência de Cézanne em Matisse e Picasso, que
-declarou: ``meu primeiro e único mestre, (...)  Cézanne é o pai de
-todos nós''~\cite{rishel}). A evolução de um mesmo artista pode ser
-analisada, assim como a evolução ocorrida dentro de uma escola
-específica. Pode-se assim comparar tal análise com as evoluções
-obtidas para outras escolas e confirmar (ou não) o mesmo aspecto
-observado na análise deste estudo --- onde as medidas de dialética e
-oposição apresentaram picos de valores nos momentos de transição do
-período Barroco para a Arte Moderna. Ainda, um número maior de
-pinturas para cada artista pode ser considerado para análise. O mesmo
-\textit{framework} pode ser aplicado (como já demonstrado para a
-Música, Filosofia e Pintura) a outros campos de interesse humano como
-Cinema e Literatura. A mesma automatização aplicada aqui pode ser
-replicada para a Música (e possivelmente à Filosofia), dando
-continuidade ao trabalho realizado pelos autores~\cite{vieira}.
+um espaço de atributos. Mais uma vez reforça-se que, ao invés de
+suplantar as discussões humanas, que tanto trazem de valor para o
+entendimento da sociedade, esse \textit{framework} pretende somar,
+fornecendo mais um ponto de vista.
 
-Mais uma vez reforça-se que, ao invés de suplantar as discussões
-humanas, que tanto trazem de valor para o entendimento da sociedade,
-esse \textit{framework} pretende somar, fornecendo mais um ponto de
-vista.
+Como trabalhos futuros, o número de pintores pode ser expandido e um
+conjunto de pintores pode ser escolhido especificamente para
+investigar suas influências (e.g.\ pinturas dos filhos de Frans Hals
+podem ser incluídas para verificar a influência de seu pai e mestre,
+ou ainda, pinturas de Rafael, Poussin e Guido Reni~\cite{gombrich} ou
+Carracci podem ser comparadas entre si com o objetivo de verificar a
+já reconhecida similaridade entre ambos pintores, ou a influência de
+Cézanne em Matisse e Picasso, que declarou: ``meu primeiro e único
+mestre, (...)  Cézanne é o pai de todos nós''~\cite{rishel}). A
+evolução de um mesmo artista pode ser analisada, assim como a evolução
+ocorrida dentro de uma escola específica. Pode-se assim comparar tal
+análise com as evoluções obtidas para outras escolas e confirmar (ou
+não) o mesmo aspecto observado na análise deste estudo --- onde as
+medidas de dialética e oposição apresentaram picos de valores nos
+momentos de transição do período Barroco para a Arte Moderna. Ainda,
+um número maior de pinturas para cada artista pode ser considerado
+para análise. O mesmo \textit{framework} pode ser aplicado (como já
+demonstrado para a Música, Filosofia e Pintura) a outros campos de
+interesse humano como Cinema e Literatura. A mesma automatização
+aplicada aqui pode ser replicada para a Música (e possivelmente à
+Filosofia), dando continuidade ao trabalho realizado pelos
+autores~\cite{vieira}.
+
+%% Apontamentos futuros: uso integrado a um algoritmo de otimização (AG) para
+%% geração de material, colaboração para uso do mesmo framework para geração de
+%% estruturas musicais e demais artefatos. Aplicação do método em mais pinturas e
+%% artistas.
+%%  Novas medidas quantitativas para conceitos humanos.
+
