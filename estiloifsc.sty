@@ -26,20 +26,20 @@
 \usepackage[bottom,marginal,flushmargin,stable,multiple]{footmisc} % FORMATA AS NOTAS DE RODAPÉ
 \usepackage[utf8x]{inputenc} % SE VOCÊ EXPERIMENTAR DIFICULDADES COM CODIFICAÇÕES (ALGUNS SÍMBOLOS ESTRANHOS APARECENDO) TENTE SUBSTITUIR UTF8 POR LATIN1. VAI DEPENDER DO EDITOR DE TEXTO QUE VOCÊ USA E DA CODIFICAÇÃO ASSINALADA.
 \usepackage[num,recuo=0.5cm,abnt-etal-list=3]{abntcite} % AQUI CARREGAMOS O PACOTE ABNTCITE ONDE EM [NUM] FICA DECLARADO QUE O ESTILO DE CITAÇÃO SERÁ O NUMÉRICO. SE FOR DE SUA PREFERÊNCIA USAR O ESTILO AUTOR-DATA, USE [ALF] NO LUGAR DE [NUM]
-%\usepackage{titlesec}
-%\titleformat{\chapter}[display]
-%{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
-%\titleformat{\section}
-%{\normalfont\Large\bfseries}{\thesection}{1em}{}
-%\titleformat{\subsection}
-%{\normalfont\large\bfseries}{\thesubsection}{1em}{}
-%
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
 %\titleformat{\code}
 %{\normalfont\large\bfseries}{\thesubsection}{1em}{}
-%
+
 %\titlespacing{\chapter}{0cm}{3cm}{3cm}
 %\titlespacing{\section}{0cm}{3cm}{3cm}
-%\titlespacing{\subsection}{0cm}{3cm}{3cm}
+\titlespacing{\subsection}{0cm}{3cm}{3cm}
 %\titlespacing{\code}{0cm}{3cm}{3cm}
 
 
@@ -121,7 +121,7 @@
 }
 
 \newcommand{\epigrafebot}[2]{
-	\vspace{8cm}
+	\vspace{5cm}
 	\thispagestyle{empty}
 	\begin{flushright}
 	\begin{spacing}{1}
