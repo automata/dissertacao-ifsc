@@ -14,7 +14,7 @@ ENTRY
   { address author booktitle booksubtitle chapter edition editor editortype
     dimensions furtherresp
     howpublished institution illustrated
-    isbn issn journal key month note marginnote number organization
+    isbn issn journal journal-sub key month note marginnote number organization
     org-short pages pagename
     publisher school
     series subtitle section title type url urlaccessdate
@@ -640,6 +640,13 @@ FUNCTION {format.journal.pages}
   if$
 }
 
+% ENTRADAS: journal,journal-sub
+FUNCTION {format.journal}
+{
+  journal emphasize duplicate$ "" = journal-sub empty$ or 'skip$ {": " * journal-sub *} if$
+}
+
+
 FUNCTION {format.url}
 { url empty$ 'skip$
     {bbl.url.begin url * bbl.url.end * output new.sentence }
@@ -1053,7 +1060,8 @@ FUNCTION {article}
 { output.bibitem
   format.author.or.organization  new.sentence
   format.title "title" output.check new.block
-  journal "journal" bibinfo.check emphasize "journal" output.check
+  %journal "journal" bibinfo.check emphasize "journal" output.check
+  format.journal output
   section "section" bibinfo.check output.dash
   publisher "publisher" bibinfo.check output
   address "address" bibinfo.check output

@@ -15,6 +15,11 @@
 \usepackage{wrapfig}
 \usepackage{tikz}
 
+% *** Para as fontes de imagens e tabelas ***
+\usepackage{caption}
+\newcommand{\fonte}[1]{\caption*{Fonte: \citeauthor{#1}}}
+\newcommand{\fonteminha}{\caption*{Fonte: Elaborado pelo autor.}}
+
 \renewcommand\bibname{Referências}
 \providecommand{\ABNTbibliographyname}{Refer\^{e}ncias}
 \renewcommand{\ABNTbibliographyname}{REFERÊNCIAS}
@@ -54,7 +59,7 @@
   \renewcommand\cftfigpresnum{Figura }
   \renewcommand\cfttabpresnum{Tabela }
   
-  \renewcommand\listfigurename{List of Figures and Tables}
+  %\renewcommand\listfigurename{List of Figures and Tables}
 \usepackage{afterpage}
 
 \newcommand\blankpage{%
@@ -276,6 +281,7 @@
 %-----------------PARTE PÓS-TEXTUAL------------------
 %	Comando para incluir o banco de dados de bibliografia. O arquivo é o bibdatabase.bib e deve estar no mesmo diretório deste arquivo (tese.tex).
 \bibliographystyle{abnt-num}
+%\bibliographystyle{usp}
 \bibliography{ana-pintores}
 
 \afterpage{\blankpage}
