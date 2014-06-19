@@ -22,7 +22,7 @@
 
 \renewcommand\bibname{Referências}
 \providecommand{\ABNTbibliographyname}{Refer\^{e}ncias}
-\renewcommand{\ABNTbibliographyname}{REFERÊNCIAS}
+\renewcommand{\ABNTbibliographyname}{\hspace*{\fill}REFERÊNCIAS\hspace*{\fill}}
 \makeatletter
 \newcommand*{\flipmargins}{%
     \clearpage
@@ -48,7 +48,7 @@
 
 \usepackage{tocloft}
 \makeatletter
-  \renewcommand\ext@table{lof}
+  %\renewcommand\ext@table{lof}
   \makeatother
   
   \newlength\mylen
@@ -83,16 +83,6 @@
 }
 
 
-%-----------------PARA CODIGO PYTHON------------------------
-% http://stackoverflow.com/questions/741985/latex-source-code-listing-like-in-professional-books
-% http://pedrokroger.com/2011/04/printing-python-code-with-latex/
-% http://tex.stackexchange.com/questions/38046/how-to-typeset-with-lstlisting-package
-
-% \documentclass[10pt]{article}
-\usepackage[T1]{fontenc}
-\usepackage[scaled]{beramono}
-% \renewcommand*\familydefault{\ttdefault}
-\usepackage{listings}
 \usepackage{url}
 
 \usepackage[linesnumbered,ruled,vlined,algo2e, portuguese]{algorithm2e}
@@ -114,47 +104,7 @@
 
 
 
-\lstset{
-  extendedchars=\true,
-  inputencoding=utf8x,
-  language=Python,
-  %showstringspaces=false,
-  formfeed=\newpage,
-  tabsize=4,
-  %commentstyle=\itshape,
-  basicstyle=\ttfamily,
-  basicstyle={\small\fontfamily{fvm}\fontseries{m}\selectfont},
-  lineskip={-1.5pt},
-  belowskip=0pt,
-  aboveskip=0pt,
-  commentstyle=\color{Apricot}\bfseries,
-  %commentstyle=\color{red}\itshape,
-  stringstyle=\color{red},
-  identifierstyle=\color{PineGreen},
-  showstringspaces=false,
-  keywordstyle=\color{blue}\bfseries,
-  moredelim=[il][\large\textbf]{\#\# },
-  morekeywords={models,range},
-  numbers=left,
-  numberstyle=\tiny,%\color{blue}\bfseries,
-  literate=%
-  {ã}{{\~a}}1
-  {â}{{\^a}}1
-  {õ}{{\~o}}1
-  {á}{{\'a}}1
-  {ú}{{\'u}}1
-  {í}{{\'i}}1
-  {é}{{\'e}}1
-  {Ç}{{\c{C}}}1
-  {Õ}{{\~O}}1
-  {Ê}{{\^E}}1
-  {ó}{{\'o}}1
-  {à}{{\`a}}1
-  {Â}{{\^A}}1
-  {ô}{{\^o}}1
-  {ê}{{\^e}}1
-  {ç}{{\c{c}}}1
-}
+
  
 
 %% 1
@@ -197,7 +147,7 @@
 
 
 
-\providecommand{\resumonameb}{RESUMO}
+\providecommand{\resumonameb}{\hspace*{\fill}RESUMO\hspace*{\fill}}
 
 %
 \newenvironment{resumo2}%
@@ -209,10 +159,10 @@
   }%
   {\end{espacosimples}\newpage}%abstract
 
-\providecommand{\resumonameb}{RESUMO}
+\providecommand{\resumonameb}{\hspace*{\fill}RESUMO\hspace*{\fill}}
 
 
-\providecommand{\abstractnameb}{ABSTRACT}
+\providecommand{\abstractnameb}{\hspace*{\fill}ABSTRACT\hspace*{\fill}}
 %
 \newenvironment{abstract2}%
   {%
@@ -233,7 +183,7 @@
 %	Preencha os campos abaixo para fornecer as informações necessárias para confecção da capa e folha de rosto
 \autor{VILSON VIEIRA}
 
-\titulo{Um Estudo Quantitativo sobre a Evolução de Movimentos Artísticos}
+\titulo{Um estudo quantitativo sobre a evolução de movimentos artísticos}
 
 \instituicao{Universidade de São Paulo \hspace{10cm} Instituto de Física de São
   Carlos \hspace{10cm}  Departamento de Física e Ciências dos
@@ -241,8 +191,8 @@
 % OU GRUPO DE Conputação Mutidisciplinar, veja em: http://cyvision.ifsc.usp.br/~luciano/
 
 %	Alunos da Física deixem as três linhas abaixo não comentadas
-\comentario{Dissertação apresentada ao Programa de Pós-graduação em Física do Instituto de Física de São Carlos da Universidade de São Paulo, para a obtenção do título de Mestre em Ciências.}
-\area{Física Aplicada} %Física Aplicada ou Básica
+\comentario{Dissertação apresentada ao Programa de Pós-Graduação em Física do Instituto de Física de São Carlos da Universidade de São Paulo, para a obtenção do título de Mestre em Ciências.}
+\area{Física Computacional} %Física Aplicada ou Básica
 \opcao{Física Computacional} %Usado para quem faz parte da Física Computacional ou Biomolecular
 %	Alunos da Interunidades deixem as duas linhas abaixo descomentadas
 % \comentario{Tese apresentada ao Programa de Pós-graduação Interunidades em Ciência e Engenharia de Materiais da Universidade de São Paulo, para a obtenção do título de Doutor em Ciência e Engenharia de Materiais.}
@@ -267,8 +217,9 @@
 %	* Lista de abreviaturas (manual)
 %	* Lista de símbolos (manual)
 %	* Sumário (automatizado)
-    \renewcommand*\listfigurename{LISTA DE FIGURAS E TABELAS}
-    \renewcommand*\listfigurename{LISTA DE FIGURAS E TABELAS}
+    \renewcommand*\listfigurename{\hspace*{\fill}LISTA DE FIGURAS\hspace*{\fill}}
+    \renewcommand*\listtablename{\hspace*{\fill}LISTA DE TABELAS\hspace*{\fill}}
+    %\renewcommand*\{\centerline{LISTA DE TABELAS}}
 \input{pretextual}
 %-----------------PARTE TEXTUAL----------------------
 %	Comandos que incluem os elementos textuais. A variável cap[j] é referente ao arquivo cap[j].tex. Pode ser qualquer nome, desde que exista no mesmo diretorio do tese.tex um capítulo referente.
@@ -289,21 +240,6 @@
 \afterpage{\blankpage}
 \apendice
 \input{appendix}
-%\input{tutoriais}
-%\input{pichacaoDigital}
-%\input{reconhecimentoDeEmocoes}
-%\input{redesComplexasSom}
-%% \input{codigoProcedimentos}
-%% \afterpage{\blankpage}
-%% \input{codigoPecas}
-%% \afterpage{\blankpage}
-%% \input{FIGGUScode}
-%% \afterpage{\blankpage}
-%% \input{fmam}
-%% \input{analiseMusical}
-%% \input{musicaExtra}
-%% \afterpage{\blankpage}
-%% \input{trabalhosRelacionados}
 
 %-----------------FIM DO DOCUMENTO-------------------
 % \enddocument
