@@ -257,13 +257,13 @@ Os momentos estatísticos básicos, usados ao longo de todo o estudo,
 são revisados na seção~\ref{sec:momentos}. A
 seção~\ref{sec:fund:imagens} apresenta os métodos de processamento de
 imagens usados neste estudo para extrair vetores de características
-das pinturas. A seção~\ref{sec:fund:reducao} encerra este capítulo com
-a discussão do método de espalhamento de matrizes, usado para
-identificar quais vetores de atributos mais contribuíram para
-a \textit{clusterização} das pinturas, assim como o método LDA, que
-foi aplicado para a redução das dimensões da matriz de atributos. O
-método LDA confirmou os resultados obtidos para o melhor par de
-atributos.
+das pinturas, definidos na seção~\ref{sec:atributos}. A
+seção~\ref{sec:fund:reducao} encerra este capítulo com a discussão do
+método de espalhamento de matrizes, usado para identificar quais
+vetores de atributos mais contribuíram para a \textit{clusterização}
+das pinturas, assim como o método LDA, que foi aplicado para a redução
+das dimensões da matriz de atributos. O método LDA confirmou os
+resultados obtidos para o melhor par de atributos.
 
 \section{Uma breve exploração sobre o Barroco e Arte Moderna}
 \label{sec:breve}
@@ -2196,6 +2196,7 @@ $\mathcal{A}_{75-88}$ &
   \end{center}
 \end{table}
 
+\clearpage
 \section{Análise de atributos e redução de dimensionalidade}
 \label{sec:fund:reducao}
 
@@ -2425,6 +2426,7 @@ e teste.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\afterpage{\blankpage}
 \chapter{Desenvolvimentos e resultados}
 \label{chap:resultados}
 
@@ -3216,12 +3218,11 @@ permitir a visualização das medidas, considerou-se a projeção com $r =
 figura~\ref{fig:caso3_g1}. É possível notar que os resultados para a
 análise por LDA são ainda mais aparentes do que aqueles obtidos na
 seção~\ref{sec:pares}: os índices de inovação
-(figura~\ref{fig:caso3_oposEinov}) apresentam uma curva ascendente
+(tabela~\ref{tab:opos3} e figura~\ref{fig:caso3_oposEinov}) apresentam uma curva ascendente
 ainda mais bem definida durante toda a evolução da série. Os padrões
 notados na evolução de ambos índices de oposição e contra-dialética
 continuam visíveis nessa nova projeção por LDA, como é possível notar
-nas figuras~\ref{fig:caso3_oposEinov} e~\ref{fig:caso3_dialetica},
-respectivamente.
+na figura~\ref{fig:caso3_oposEinov}, tabela~\ref{tab:dialetica3} e figura~\ref{fig:caso3_dialetica}.
 
 % gerado com: metrics_caso3.py
 \begin{figure}[h!]
