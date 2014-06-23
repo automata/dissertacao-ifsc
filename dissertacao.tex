@@ -22,7 +22,7 @@
 
 \renewcommand\bibname{Referências}
 \providecommand{\ABNTbibliographyname}{Refer\^{e}ncias}
-\renewcommand{\ABNTbibliographyname}{\hspace*{\fill}REFERÊNCIAS\hspace*{\fill}}
+\renewcommand{\ABNTbibliographyname}{REFERÊNCIAS}
 \makeatletter
 \newcommand*{\flipmargins}{%
     \clearpage
@@ -64,7 +64,7 @@
 
 \newcommand\blankpage{%
     \null
-    %\thispagestyle{empty}%
+    \thispagestyle{empty}%
     %\addtocounter{page}{-1}%
     \newpage}
 
@@ -175,11 +175,9 @@
   {\end{espacosimples}\newpage}%abstract
 
 
-
-
-
 %-----------------INICIO DO DOCUMENTO----------------
 \begin{document}
+%\setcounter{page}{1}
 %-----------------PARTE PRE-TEXTUAL------------------
 %	Preencha os campos abaixo para fornecer as informações necessárias para confecção da capa e folha de rosto
 \autor{VILSON VIEIRA}
@@ -193,7 +191,7 @@
 
 %	Alunos da Física deixem as três linhas abaixo não comentadas
 \comentario{Dissertação apresentada ao Programa de Pós-Graduação em Física do Instituto de Física de São Carlos da Universidade de São Paulo, para a obtenção do título de Mestre em Ciências.}
-\area{Física Computacional} %Física Aplicada ou Básica
+\area{Física Aplicada} %Física Aplicada ou Básica
 \opcao{Física Computacional} %Usado para quem faz parte da Física Computacional ou Biomolecular
 %	Alunos da Interunidades deixem as duas linhas abaixo descomentadas
 % \comentario{Tese apresentada ao Programa de Pós-graduação Interunidades em Ciência e Engenharia de Materiais da Universidade de São Paulo, para a obtenção do título de Doutor em Ciência e Engenharia de Materiais.}
@@ -203,6 +201,7 @@
 \coorientador{Prof. Dr. Luciano da Fontoura Costa}
 \local{São Carlos}
 \data{2014}
+%\setcounter{page}{-1}
 \clearpage
 
 \afterpage{\blankpage}
@@ -237,11 +236,11 @@
 \bibliography{ana-pintores}
 
 \afterpage{\blankpage}
-\afterpage{\blankpage}
-\afterpage{\blankpage}
+%\afterpage{\blankpage}
+%\afterpage{\blankpage}
 \apendice
 \input{appendix}
-
+\afterpage{\blankpage}
 %-----------------FIM DO DOCUMENTO-------------------
 % \enddocument
 \end{document}

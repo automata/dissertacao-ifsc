@@ -1,16 +1,19 @@
 % todo:
 
+% revisar abstract
+% confirmar método de validação cruzada (cálculo de autovetores?) para LDA
+% ver o livro de deleuze sobre ``espaço criativo''
 % seção sobre morfologia matemática
 % melhorar algoritmo de rotulação de componentes conexos
 % melhorar algoritmo de preenchimento de buracos
 % melhorar algoritmo de área
-% confirmar método de validação cruzada (cálculo de autovetores?) para LDA
-% ver o livro de deleuze sobre ``espaço criativo''
 % melhorar app web e gravar vídeo mostrando
+
+\afterpage{\blankpage}
 
 \chapter{Introdução}
 \label{cap:intro} 
-
+\setcounter{page}{29}
 A História da Arte costuma ser dividida em períodos, tendências,
 escolas, estilos e mais recentemente, em movimentos
 artísticos.~\cite{dempsey} Um período compreende o limite de tempo
@@ -471,7 +474,7 @@ deseja. É interessante também perceber a diferença de sua pintura
 comparada a dos outros pintores aqui discutidos: todas são feitas
 praticamente no mesmo local --- sempre um cômodo doméstico --- e com
 um número limitado de modelos, geralmente com a luz vindo de uma
-janela.~\cite{wadum1998}  Em suas pinturas há, a exemplo de Velázquez,
+janela.~\cite{wadum}  Em suas pinturas há, a exemplo de Velázquez,
 uso extensivo do \textit{chiaroscuro} de Caravaggio, como na \textit{A
 Garota com Brinco de Pérola}
 (figura~\ref{fig:vermeer:perola}). Vermeer desconhecia a perspectiva
@@ -1343,7 +1346,7 @@ de \emph{rotulação}.
 \begin{figure}[ht!]
 \begin{center}
       \caption{\textit{a)} Rotulação das regiões após aplicação de algoritmo de
-        segmentação segundo vizinhança-4: os rótulos identificam segmentos
+        seg\-men\-ta\-ção segundo vizinhança-4: os rótulos identificam segmentos
         encontrados pela segmentação, porém não revelam necessariamente regiões
         conexas; \textit{b)} Rotulação das regiões (ou componentes) conexas após
         aplicação de algoritmo para identificação de regiões conexas: esta é a
@@ -2457,7 +2460,7 @@ em medidas quantitativas.
 \begin{table}[h!]
 \begin{center}
 \caption{\label{tab:painters} Pintores escolhidos para a análise, exibidos em
-  ordem cronológica, juntamente com o estilo artístico que melhor
+  ordem cro\-no\-ló\-gi\-ca, juntamente com o estilo artístico que melhor
   representa. Divididos em dois grupos: 6 pintores barrocos e 6 pintores modernos.}
 
 \begin{tabular}{l|l|l}
@@ -2629,7 +2632,7 @@ imagem.
 \begin{center}
          \caption{Tipos de imagens utilizadas no estudo. \textit{a)}
         imagem colorida em formato RGB, \textit{b)} imagem em
-        escala de cinza, e \textit{c)} imagem binária.}
+        escala de cinza, e \textit{c)} imagem bi\-ná\-ria.}
         \label{fig:tipos}
         \includegraphics[scale=1.2]{figs/passos_tipos}
        \fonteminha
@@ -2655,7 +2658,7 @@ contribuiriam para a segmentação desejada.
         Felzenswald, \textit{d)} SLIC com $k=10$ e \textit{e)} SLIC com
         $k=20$. O método SLIC foi escolhido por apresentar, visualmente,
         melhor separação dos segmentos, e os parâmetros escolhidos contribuíram
-        para a segmentação apresentada.}
+        para a seg\-men\-ta\-ção apresentada.}
         \label{fig:expsegs}
         \includegraphics[scale=.3]{figs/expsegs}
         \fonteminha
@@ -3307,7 +3310,7 @@ na figura~\ref{fig:caso3_oposEinov}, tabela~\ref{tab:dialetica3} e figura~\ref{f
 \begin{figure}[h!]
 \begin{center}
       \caption{Contra-dialética (valores altos indicam baixa
-        incidência de dialética) calculada para os componentes principais
+        incidência de dia\-lé\-ti\-ca) calculada para os componentes principais
         obtidos por LDA. O padrão observado anteriormente para o melhor par de
         atributos apresenta-se ainda mais visível aqui: é possível observar
         claramente que o maior valor está no ponto de transição dos movimentos
