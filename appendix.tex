@@ -68,7 +68,7 @@ repositórios abertos:
   python metrics_caso3b.py
   python metrics_caso1_alternativo.py
 \end{verbatim}
-  \item Para validar os resultads através do LDA:
+  \item Para validar os resultados através do LDA:
 \begin{verbatim}
   python valida3_r.py
 \end{verbatim}
@@ -422,7 +422,7 @@ geradas.
   \subfloat{%
     \includegraphics[width=.24\textwidth]{figs/thumbs/gogh/11}}\\
   \subfloat{%
-    \includegraphics[width=.24\textwidth]{figs/thumbs/gogh/12}}\hfill
+    \includegraphics[width=.24\textwidth]{figs/thumbs/gogh/12b}}\hfill
   \subfloat{%
     \includegraphics[width=.24\textwidth]{figs/thumbs/gogh/13}}\hfill
   \subfloat{%
@@ -702,8 +702,8 @@ projeção encontrada para as pinturas.  O aplicativo está disponível em
 navegadores que suportem \textit{WebGL}~\footnote{Os navegadores
   Firefox 28.0 e Chrome 35, com suporte para WebGL devidamente
   configurado e habilitado, suportam tal aplicação}. Há ainda um vídeo
-disponível em \url{...} que apresenta a gravação comentada do uso do
-aplicativo.
+disponível em \url{http://automata.cc/master-thesis} que apresenta a
+gravação comentada do uso do aplicativo.
 
 \begin{figure}[h!]
   \begin{center}
@@ -731,7 +731,7 @@ aplicativo.
 \begin{figure}[h!]
   \begin{center}
   \caption{Detalhe da figura ~\ref{fig:alternativa} do grupo de pinturas
-    pertencentes exclusivamente à Jack Pollock. Por este pintor ter
+    pertencentes exclusivamente à Jackson Pollock. Por este pintor ter
     características que foge aos demais artistas, suas pinturas apresentam-se
     distribuídas afastadas consideravelmente dos outros pintores.}
   \label{fig:alternativa2}
@@ -740,17 +740,23 @@ aplicativo.
   \end{center}
 \end{figure}
 
-\chapter{Pinturas generativas por tesselação de Delaunay. Estudo 4}
+%\chapter{Pinturas generativas por tesselação de Delaunay. Estudo 4}
+\chapter{Contribuições artísticas}
 \label{ap:sifisc}
 
-Tendo como base o processamento de imagens (pré-processamento e segmentação)
-realizado para as 240 pinturas usadas nesse estudo, foram geradas 240 novas
-``pinturas''. Todas as 240 pinturas generativas estão disponíveis em
-\url{http://www.flickr.com/photos/auto_mata/sets/72157634660390040/}.
-
-Nos dias 30 de Setembro à 4 de Outubro de 2013, um conjunto de quadros foi
-aceito e exposto no espaço ``Obra Artística'' da $3^a$ Semana Integrada do
-Instituto de Física de São Carlos (SIFISC 3). Seguem os detalhes da obra:
+Além da análise de pinturas e sua interpretação, este estudo pôde
+contribuir de maneira artística em algumas oportunidades aqui
+apresentadas. Tendo como base o processamento de imagens
+(principalmente as etapas de pré-processamento e segmentação)
+realizado para as 240 pinturas usadas nesse estudo, foram geradas 240
+novas \textit{pinturas}. Todas as 240 \textit{pinturas generativas}
+estão disponíveis em
+\url{http://www.flickr.com/photos/auto_mata/sets/72157634660390040/}. Nos
+dias 30 de Setembro à 4 de Outubro de 2013, um conjunto destas
+\textit{pinturas} foi aceito para exposição no espaço ``Obra
+Artística'' da $3^a$ Semana Integrada do Instituto de Física de São
+Carlos (SIFISC 3). Seguem os detalhes da obra, que também descreve o
+algoritmo implementado para a geração das pinturas:
 
 \begin{description}
   \item[Título] Pinturas generativas por tesselação de Delaunay. Estudo 4
@@ -766,25 +772,25 @@ Instituto de Física de São Carlos (SIFISC 3). Seguem os detalhes da obra:
     pintura original.
 \end{description}
 
-Todo o código-fonte assim como as ``pinturas'' geradas, e suas versões para
+Todo o código-fonte assim como as \textit{pinturas} geradas, e suas versões para
 impressão, encontram-se em \url{http://github.com/automata/tri-delaunay}. A
 figura~\ref{fig:expo} mostra fotos da exposição. O objetivo foi desmistificar o
 processo de geração das imagens, mostrando junto com a imagem final, cada passo
 do algoritmo, ilustrado com imagens explicativas --- como visto nas
 figuras~\ref{fig:posterA} e~\ref{fig:posterB}. Ainda, as instruções para o
-visitante acessar e executar o código-fonte para gerar suas próximas versões
-``remixadas'' com bases em novas imagens acompanhavam cada ``pintura''. As
-pinturas expostas foram escolhidas através da consulta à preferência de pessoas
-em um \textit{thread} da lista de emails do
+visitante acessar e executar o código-fonte, para gerar suas próximas versões
+\textit{remixadas} com base em novas imagens, acompanhavam cada \textit{pintura}. As
+\textit{pinturas} expostas foram escolhidas através da consulta à preferência de pessoas
+em uma \textit{thread} da lista de emails do
 \emph{labMacambira.sf.net}~\footnote{\url{http://labmacambira.sf.net}} e dos
 próprios autores deste estudo~\footnote{Em
   \url{https://etherpad.mozilla.org/genpaintings} encontra-se o \textit{pad} com
   as sugestões levantadas, assim como um esboço de uma matéria sobre as pinturas
-  que pretende-se publicar na revista aberta e independente \textit{Quiosque}.}
+  que pretende-se publicar na revista aberta e independente \textit{Quiosque}, em 2014.}
 
 \begin{figure}[htb]
   \begin{center}
-    \caption{``Pintura'' generativa.}
+    \caption{Pintura generativa, criada a partir de tesselação de Delaunay da obra original de Frans Hals.}
   \label{fig:posterA}
     \includegraphics[width=\textwidth]{figs/posterA}
     \fonteminha
@@ -793,7 +799,7 @@ próprios autores deste estudo~\footnote{Em
 
 \begin{figure}[htb]
   \begin{center}
-    \caption{``Pintura'' generativa.}
+    \caption{Pintura generativa, criada a partir de tesselação de Delaunay da obra original de Picasso.}
   \label{fig:posterB}
     \includegraphics[width=\textwidth]{figs/posterB}
 \fonteminha
@@ -803,8 +809,9 @@ próprios autores deste estudo~\footnote{Em
 
 \begin{figure}[htb]
 \centering 
-  \caption{Fotos da exposição realizada no SIFISC 2013 com imagens geradas por
-    algoritmo desenvolvido em paralelo a este estudo.}
+  \caption{Fotos da exposição realizada no SIFISC 2013, no espaço
+    ``Obra Artística'' com imagens geradas por algoritmo desenvolvido
+    em paralelo a este estudo.}
   \label{fig:expo}
 \subfloat{%
   \includegraphics[width=.5\textwidth]{figs/expo0}}\hfill \subfloat{%
@@ -816,15 +823,15 @@ próprios autores deste estudo~\footnote{Em
 
 Há ainda uma proposta de publicação impressa destas imagens pela
 editora independente Quiosque, com editoração de Geraldo Magela de
-Castro Rocha Junior, curadoria de Leticia Palaria e texto de
+Castro Rocha Junior, curadoria de Leticia Palaria e texto de Renato Fabbri e
 integrantes do LabMacambira.sf.net. Uma prévia do conteúdo a ser
 publicado pode ser visto na figura~\ref{fig:quiosque}.
 
 \begin{figure}[htb]
   \begin{center}
-    \caption{Prévia do conteúdo de publicação impressa prevista para
-      2014 das pinturas generativas pela editora independente
-      Quiosque.}
+    \caption{Prévia do conteúdo da publicação impressa intitulada
+      ``Pinturas generativas \& Freakcoding'' prevista para 2014,
+      através da Editora independente Quiosque.}
   \label{fig:quiosque}
     \includegraphics[width=\textwidth]{figs/quiosque1}
     \includegraphics[width=\textwidth]{figs/quiosque2}
