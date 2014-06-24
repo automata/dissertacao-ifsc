@@ -1,19 +1,30 @@
 % todo:
 
 % revisar abstract
-% confirmar método de validação cruzada (cálculo de autovetores?) para LDA
+% x confirmar método de validação cruzada (cálculo de autovetores?) para LDA
 % ver o livro de deleuze sobre ``espaço criativo''
+% x rever resultados
+% ler toda a dissertação
 % seção sobre morfologia matemática
 % melhorar algoritmo de rotulação de componentes conexos
 % melhorar algoritmo de preenchimento de buracos
 % melhorar algoritmo de área
 % melhorar app web e gravar vídeo mostrando
 
+% x atributos de complexidade
+% x atributos espectrais
+% figuras sem legendas
+% x discutir que oposição e inovação
+% x efeitos de borda e primeiras na oposição e inovação
+% glossário
+% x figura de dialética, opos e inov
+
 \afterpage{\blankpage}
 
 \chapter{Introdução}
 \label{cap:intro} 
 \setcounter{page}{29}
+
 A História da Arte costuma ser dividida em períodos, tendências,
 escolas, estilos e mais recentemente, em movimentos
 artísticos.~\cite{dempsey} Um período compreende o limite de tempo
@@ -494,7 +505,7 @@ reconhecido detalhismo deste pintor e outros holandeses.
   levarão à criação de formas semelhantes às formas gregas. A obra assim
   produzida será sem alma para sempre.}{Wassily Kandinsky~\cite{kandinsky}}
 
-De Vermeer à van Gogh, passam-se por volta de 150 anos: o Rococó, o
+De Vermeer à Van Gogh, passam-se por volta de 150 anos: o Rococó, o
 Neoclassicismo, o Realismo, chegando aos movimentos da Arte
 Moderna. Ao contrário do Barroco, a Arte Moderna parece não
 compartilhar estéticas ou técnicas.~\cite{dempsey} Cada pintor aplica
@@ -527,8 +538,8 @@ Expressionista, Cubista, Surrealista, Dada e Abstrato:
 \end{wrapfigure}
 
 \textbf{\emph{Vincent van Gogh}}, Holanda, 1853-1890. Junto com
-Cezánne e Gaugin, van Gogh antecede o que veio a ser conhecido como
-``Arte Moderna.''~\cite{gombrich} Cada pincelada de van Gogh revela
+Cezánne e Gaugin, Van Gogh antecede o que veio a ser conhecido como
+``Arte Moderna.''~\cite{gombrich} Cada pincelada de Van Gogh revela
 sua sensação ao estar pintando, sua emoção; e garantem movimento à
 composição. Não estava interessado em respeitar regras de perspectiva,
 de composição, ou sombra.~\cite{hulsker} É possível perceber essa
@@ -539,7 +550,7 @@ pintura. Propunha usar as cores de maneira franca, sem se render às
 técnicas de sombreado. As pinceladas são todas aparentes, formam a
 própria textura. Nada têm de parecido com as obras barrocas, ou mesmo
 às impressionistas. Usava a distorção dos objetos para expressar o que
-sentia. Vale complementar tal figura com as palavras do próprio van
+sentia. Vale complementar tal figura com as palavras do próprio Van
 Gogh em uma de suas inúmeras cartas: ``Lamentavelmente, meu caríssimo
 amigo, o público apenas verá nesse exagero uma caricatura --- mas o
 que nos importa isso?''.~\cite{van1958} Mesmo sem perceber, acabara
@@ -569,7 +580,7 @@ composição.~\cite{gombrich} Kandinsky estava interessado no efeito perceptivo 
 interpretação psicológica das cores.~\cite{ione} Assim, formas que
 lembrassem objetos da natureza não eram necessárias, como visível na
 figura~\ref{fig:kandinsky:white}. Esse uso das cores de maneira direta
-e franca já tinha sido anunciado por van Gogh, que negava o uso de
+e franca já tinha sido anunciado por Van Gogh, que negava o uso de
 sombras para tornar as cores ainda mais aparentes e expressivas, algo
 visto também em Kandinsky e Matisse.
 
@@ -742,14 +753,14 @@ pintor moderno:
  \resizebox{\textwidth}{!}{%
 
 \begin{tabular}{|l|ll|}
-\hline
-Barroco                                                                                                                   & \multicolumn{2}{l|}{Arte Moderna}                                                                                                                               \\ \hline
+\hline \hline
+\textbf{Barroco}                                                                                                                   & \multicolumn{2}{l|}{\textbf{Arte Moderna}}                                                                                                                               \\ \hline
 \multirow{6}{*}{\begin{tabular}[c]{@{}l@{}}Contraste (e.g. claro-escuro); \\ emoção ao invés da razão; movimento; \\ dramaticidade; sensualidade; \\ beleza; fantasia; \\ a verdade; o sagrado\end{tabular}} & Van Gogh  & \begin{tabular}[c]{@{}l@{}}Sensação; movimento; textura; cores; \\ uso da perspectiva e profundidade de uma \\ nova maneira; distorção\end{tabular} \\ \cline{2-3} 
                                                                                                                           & Kandinsky & \begin{tabular}[c]{@{}l@{}}Abstrato; cromatismo; \\ interpretação psicológica; \\ formas geométricas, puras\end{tabular}                            \\ \cline{2-3} 
                                                                                                                           & Matisse   & \begin{tabular}[c]{@{}l@{}}Cores ``violentas''; desprezo às formas \\ naturais; decoração; simplicidade\end{tabular}                                \\ \cline{2-3} 
                                                                                                                           & Picasso   & \begin{tabular}[c]{@{}l@{}}Solidez; simplicidade; formas geométricas; \\ colagem de várias perspectivas\end{tabular}                                \\ \cline{2-3} 
                                                                                                                           & Miró      & \begin{tabular}[c]{@{}l@{}}Surreal; automatismo; símbolos e seus \\ significados; negação das técnicas de \\ pintura existentes\end{tabular}        \\ \cline{2-3} 
-                                                                                                                          & Pollock   & Abstrato; pintura de ação, pura, espontânea                                                                                                         \\ \hline
+                                                                                                                          & Pollock   & Abstrato; pintura de ação, pura, espontânea                                                                                                         \\ \hline \hline
 \end{tabular}
 }
 \fonteminha
@@ -787,11 +798,10 @@ realidade.~\cite{dialectics}
 \caption{\textit{a)} \textit{Dialética}: um argumento chamado \textit{tese}, até então
   tomado como verdade, é confrontado por um argumento oposto,
   chamado \textit{antítese}. O resultado do confronto destas duas
-  ideias é a \textit{síntese} que irá gerar uma nova ideia ou
+  ideias é a \textit{síntese} que poderá gerar uma nova ideia ou
   argumento; \textit{b)} \textit{Oposição}: é um argumento que se opõe
-  a um argumento original; \textit{c)} \textit{Inovação}: tendo-se um
-  movimento de oposição entre dois argumentos originais, um movimento
-  de inovação é aquele que se afasta desta oposição, inovando.}
+  a um argumento original; \textit{c)} \textit{Inovação}: um movimento
+  de inovação é aquele que se afasta do argumento original, inovando.}
 \label{fig:conceitos}
 
 \vspace{30pt}
@@ -807,7 +817,7 @@ realidade.~\cite{dialectics}
   \draw[-,draw=blue] (Tese) to (Juncao);
   \draw[->,draw=blue] (Juncao) to (Antitese);
   \draw[->,draw=blue] (Juncao) to (Sintese);
-  \draw[->,draw=blue] (Sintese) to[in=180,out=180] (Tese);
+  %\draw[->,draw=blue] (Sintese) to[in=180,out=180] (Tese);
   
   \node at (1.0, -1.0) {\textit{a) Dialética}};
   
@@ -821,14 +831,14 @@ realidade.~\cite{dialectics}
   
   % Inovação
   \node[draw] (ArgumentoA) at (10.1,0) {Argumento};
-  \node[draw,fill=black,text=white] (ArgumentoB) at (12.8,0) {Oposição};
+  %\node[draw,fill=black,text=white] (ArgumentoB) at (12.8,0) {Oposição};
   \node[draw,fill=yellow] (ArgumentoC) at (12,2) {Inovação};
   
-  \draw node[vertex] (Juncao) at (11.5,0) {};
+  %\draw node[vertex] (Juncao) at (11.5,0) {};
   
-  \draw[-] (ArgumentoA) to (Juncao);
-  \draw[->] (Juncao) to (ArgumentoB);
-  \draw[->,draw=blue] (Juncao) to (ArgumentoC);
+  %\draw[-] (ArgumentoA) to (Juncao);
+  %\draw[->] (Juncao) to (ArgumentoB);
+  \draw[->,draw=blue] (ArgumentoA) to (ArgumentoC);
   
   \node at (11.5, -1.0) {\textit{c) Inovação}};
 
@@ -1637,15 +1647,14 @@ Para este estudo foram utilizados 99 atributos, descritos a seguir. Ao
 final desta seção, todos os atributos encontram-se sumarizados na
 tabela~\ref{tab:atributos}.
 
-\subsection{Atributos de complexidade}
+\subsection{Atributo de complexidade}
 
-Para descrever a complexidade, medidas de entropia e energia para
-diferentes combinações de elementos da imagem foram consideradas. A
-noção de entropia é emprestada da teoria da informação. Nela, a
-premissa fundamental é que a geração de informação pode ser modelada
-como um processo probabilístico, sendo medido de forma que concorde
-com a intuição humana.~\cite{gonzalez} Desta forma, um evento qualquer
-$E$ pode ocorrer com probabilidade $P(E)$ e
+Para descrever a complexidade, a medida de entropia da imagem foi
+considerada. A noção de entropia é emprestada da Teoria da
+Informação. Nela, a premissa fundamental é que a geração de informação
+pode ser modelada como um processo probabilístico, sendo medido de
+forma que concorde com a intuição humana.~\cite{gonzalez} Desta forma,
+um evento qualquer $E$ pode ocorrer com probabilidade $P(E)$ e
 
 \begin{equation}
   I(E) = \log\frac{1}{P(E)} = -\log P(E)
@@ -1723,10 +1732,14 @@ $\mathcal{A}$.
 \end{center}
 \end{figure}
 
-A densidade espectral da imagem total, por sua vez, é dada pelo
-cálculo da transformada de Fourier. Vale aqui introduzir tal conceito
-para se chegar à definição de densidade espectral. Seja $f(x)$ uma
-função contínua de uma variável real $x$, a transformada de Fourier
+\subsection{Atributos espectrais}
+
+Atributos espectrais envolvem o cálculo da densidade espectral para a
+imagem total e para certos elementos da imagem, como colunas, linhas e
+centroides. A densidade espectral da imagem total é dada pelo cálculo
+da transformada de Fourier. Vale aqui introduzir tal conceito para se
+chegar à definição de densidade espectral. Seja $f(x)$ uma função
+contínua de uma variável real $x$, a transformada de Fourier
 $\mathcal{F}\{f(x)\}$ é definida pela equação
 
 \begin{equation}
@@ -1798,8 +1811,8 @@ padrão das energias nas linhas, colunas, centroides e da imagem total:
 \end{eqnarray}
 
 Essas mesmas medidas, que foram aplicadas à representação da imagem
-original em níveis de cinza ($\mathcal{A}_{1-8}$) podem ser aplicadas
-para cada uma das 3 imagens monocromáticas correspondentes a cada
+original em níveis de cinza ($\mathcal{A}_{1-8}$), podem ser aplicadas
+para cada uma das três imagens monocromáticas correspondentes a cada
 canal RGB da imagem $I$, obtendo assim o conjunto $\mathcal{A}_{9-16}$
 de atributos para o canal vermelho, conjunto de atributos
 $\mathcal{A}_{17-24}$ para canal verde e $\mathcal{A}_{25-32}$ para o
@@ -1816,21 +1829,24 @@ posição relativa de cada \textit{pixel} da imagem. Cada uma das 14 medidas
 propostas procura caracterizar um aspecto de textura como contraste,
 homogeneidade e complexidade.
 
-Dada uma imagem $I$ com $N_G$ níveis de cinza, sua matriz de coocorrência será
-uma matriz quadrada de dimensões $N_G \times N_G$ onde cada elemento $P_{\vec{d}}(i,j)$ representa
-a quantidade de \textit{pixels} da imagem $I$ que possuem os níveis de cinza $i$ e $j$,
-separados por uma distância numa certa direção e sentido, determinado por
-$\vec{d}$. Para uma imagem, considera-se apenas o posicionamento relativo entre
-cada \textit{pixel} e seus vizinhos (i.e.\ \textit{pixels} adjacentes) e portanto, $\vec{d}$
-poderá assumir apenas 8 direções possíveis considerando os possíveis ângulos
-$\beta \in \{0^o, 45^o, 90^o, 135^o, 180^o, 225^o, 270^o, 315^o\}$ que tal
-vetor pode assumir dado que encontra-se ``aprisionado'' em uma malha
-(i.e.\ possui vizinhança-8). Como
-trata-se de uma matriz de coocorrência, esta é simétrica, e portanto o
-conjunto de possíveis $\beta$ torna-se ainda menor. Por fim, dados os possíveis
-ângulos $\beta \in \{0^o, 45^o, 90^o, 135^o\}$ e considerando os valores $\{-1,
-0, 1\}$ como domínio das coordenadas $x,y$ de $\vec{d}$, tem-se o cálculo dos 14
-atributos de Haralick para cada uma das seguintes direções:
+Dada uma imagem $I$ com $N_G$ níveis de cinza, sua matriz de
+coocorrência será uma matriz quadrada de dimensões $N_G \times N_G$
+onde cada elemento $P_{\vec{d}}(i,j)$ representa a quantidade
+de \textit{pixels} da imagem $I$ que possuem os níveis de cinza $i$ e
+$j$, separados por uma distância numa certa direção e sentido,
+determinado por $\vec{d}$. Para uma imagem, considera-se apenas o
+posicionamento relativo entre cada \textit{pixel} e seus vizinhos
+(i.e.\ \textit{pixels} adjacentes) e portanto, $\vec{d}$ poderá
+assumir apenas 8 direções possíveis considerando os possíveis ângulos
+$\beta \in \{0^o, 45^o, 90^o, 135^o, 180^o, 225^o, 270^o, 315^o\}$ que
+tal vetor pode assumir dado que encontra-se ``aprisionado'' em uma
+malha (i.e.\ possui vizinhança-8). Como trata-se de uma matriz de
+coocorrência, esta é simétrica, e portanto o conjunto de possíveis
+$\beta$ torna-se ainda menor. Por fim, dados os possíveis ângulos
+$\beta \in \{0^o, 45^o, 90^o, 135^o\}$ e considerando os valores
+$\{-1, 0, 1\}$ como domínio das coordenadas $x,y$ de $\vec{d}$, tem-se
+o cálculo dos 14 atributos de Haralick para cada uma das seguintes
+direções:
 
 \begin{eqnarray}
   \beta = 0^o & \to & \vec{d} = (1, 0) \\
@@ -1854,7 +1870,7 @@ considerados nesse estudo, o conjunto $\mathcal{A}_{33-88}$.
     e $\text{autoval}_2(X)$ é o segundo maior autovalor de $X$.}
 
   \begin{tabular}{l|l}
-    \hline
+    \hline \hline
     Uniformidade      & $f_1 = \sum_{i=1}^{N_g}\sum_{j=1}^{N_g}
     p(i,j)^2$ \\ \\
     Contraste         & $f_2 = \sum_{i=1}^{N_g}\sum_{j=1}^{N_g} (i-j)^2 p(i,j)$
@@ -1881,7 +1897,7 @@ considerados nesse estudo, o conjunto $\mathcal{A}_{33-88}$.
         \left(\left(-\sum_{i=1}^{N_g}\sum_{j=1}^{N_g} p_x(i) p_y(j) log\left(p_x(i)
             p_y(j)\right)\right) - f_9\right)\right]}$ \\ \\
     Coeficiente de correlação máxima & $f_{14} =
-    \sqrt{\text{autoval}_2\left(-\sum_{k=1}^{N_g} \frac{p(i,k) p(j,k)}{p_x(i) p_y(j)} \right)}$
+    \sqrt{\text{autoval}_2\left(-\sum_{k=1}^{N_g} \frac{p(i,k) p(j,k)}{p_x(i) p_y(j)} \right)}$ \\ \hline \hline
 \end{tabular}
 \fonteminha
 \end{center}
@@ -2098,8 +2114,8 @@ valores foi tomada para representar cada um destes atributos para uma dada image
     área e sua razão).}
 
   \begin{tabular}{l|l}
-    \hline
-    $\mathcal{A}_i$ & Descrição \\
+    \hline \hline
+    \textbf{$\mathcal{A}_i$} & \textbf{Descrição} \\
     \hline
 
     $\mathcal{A}_1$ & 
@@ -2193,7 +2209,7 @@ $\mathcal{A}_{75-88}$ &
     $\mathcal{A}_{99}$ &
     Razão entre a área da região convexa e a área da região conexa original \\
 
-    \hline
+    \hline \hline
     \end{tabular}
     \fonteminha
   \end{center}
@@ -2440,8 +2456,7 @@ e teste.
 Para a análise foram selecionados 12 pintores de relevância
 histórica. Esse grupo abrange os estilos artísticos que vão do período
 Barroco aos movimentos da Arte Moderna. Seis dos pintores representam
-o período Barroco enquanto os 6 restantes representam movimentos da
-Arte Moderna. O grupo é apresentado na tabela~\ref{tab:painters}
+o período Barroco enquanto os 6 restantes representam movimentos modernos. O grupo é apresentado na tabela~\ref{tab:painters}
 juntamente com seu estilo e período ou movimento artístico mais
 representativo. É de conhecimento que pintores como Picasso
 demonstraram mais de um estilo durante a vida. Porém, para tal
@@ -2464,16 +2479,16 @@ em medidas quantitativas.
   representa. Divididos em dois grupos: 6 pintores barrocos e 6 pintores modernos.}
 
 \begin{tabular}{l|l|l}
-\hline
+\hline \hline
 
- Artistas                      & Estilos/Movimentos/Períodos mais marcantes & Período crono. \\ 
+ \textbf{Artistas}                      & \textbf{Estilos/movimentos/períodos mais marcantes} & \textbf{Período cronológico} \\ 
  
  \hline
 
  Caravaggio                    & Barroco & 1593 - 1610 \\
  Frans Hals                    & Barroco, Idade de ouro Holandesa & 1620 - 1660\\
  Nicolas Poussin               & Barroco, Classicismo & 1620 - 1660\\
- Diego Vel\'{a}zquez           & Barroco & 1618 - 1660\\
+ Diego Velázquez           & Barroco & 1618 - 1660\\
  Rembrandt                     & Barroco, Idade de ouro Holandesa, Realismo & 1632 - 1650\\
  Johannes Vermeer              & Barroco, Idade de ouro Holandesa & 1632 - 1670\\
  
@@ -2483,10 +2498,10 @@ em medidas quantitativas.
  Wassily Kandinsky             & Expressionismo, Arte abstrata & 1922 - 1944\\
  Henri Matisse                 & Modernismo, Fauvismo & 1904 - 1910\\
  Pablo Picasso                 & Cubismo & 1909 - 1912\\
- Joan Mir\'{o}                 & Surrealismo, Dada & 1922 - 1958\\
+ Joan Miró                 & Surrealismo, Dada & 1922 - 1958\\
  Jackson Pollock               & Expressionismo abstrato & 1947 - 1950\\
 
-\hline
+\hline \hline
 \end{tabular}
 \fonteminha
 \end{center}
@@ -2513,9 +2528,9 @@ apêndice~\ref{cap:ap-tutorial} há instruções de sua instalação e uso.
     apêndice~\ref{cap:ap-galeria}.}
 
 \begin{tabular}{l|l|l}
-\hline
+\hline \hline
 
- Pintores & Título da obra                       & Ano de criação \\ 
+ \textbf{Pintores} & \textbf{Título da obra}                       & \textbf{Ano de criação} \\ 
  
  \hline
 
@@ -2561,7 +2576,7 @@ Pablo Picasso       & Les Demoiselles d'Avignon & 1907 \\
                     & Guernica & 1937 \\
                     & Dora Maar au Chat & 1941 \\
 
-Joan Mir\'{o}       & O fazendeiro & 1921/22 \\
+Joan Miró       & O fazendeiro & 1921/22 \\
                     & O campo lavrado & 1923/24 \\
                     & Bleu II & 1961 \\
 
@@ -2569,7 +2584,7 @@ Jackson Pollock     & No. 5 & 1948 \\
                     & Ritmo de outono & 1950 \\
                     & Pólos azuis & 1952 \\
 
-\hline
+\hline \hline
 \end{tabular}
 \fonteminha
 \end{center}
@@ -2603,17 +2618,17 @@ pinturas.
 \end{figure}
 
 Em seguida, as imagens foram pré-processadas aplicando-se equalização
-por histograma e filtro de médias com janelamento de raio 3
+de histograma e filtro por mediana com janela de vizinhança-8
 (figura~\ref{fig:eq}), ambas descritas na subseção~\ref{sec:preproc}.
 
 \begin{figure}[ht!]
 \begin{center}
-         \caption{Pré-processamento utilizando equalização por histograma
-        e filtro de médias com janelamento de raio 3. \textit{a)} a
+         \caption{Pré-processamento utilizando equalização de histograma
+        e filtro por mediana com janela de vizinhança-8. \textit{a)} a
         imagem original em escala de cinza, \textit{b)} a imagem
         equalizada, \textit{c)} a imagem filtrada através do filtro de
-        médias. Pode-se perceber que a luminosidade da imagem está
-        homogênea e seus detalhes de borda foram suavizados.}
+        mediana. Pode-se perceber que a luminosidade da imagem está
+        homogênea. Seus detalhes de borda foram suavizados, porém ainda estão presentes, dada a natureza do filtro por mediana.}
         \label{fig:eq}
         \includegraphics[scale=1.2]{figs/passos_eq}
      \fonteminha
@@ -2647,30 +2662,29 @@ Felzenswald.~\cite{gonzalez,luciano} Após experimentos
 das regiões de cada pintura. O parâmetro $k$ (número
 de \textit{clusters}) da segmentação SLIC foi ajustado de forma a
 melhor segmentar as regiões. Como é possível notar no
-detalhe \textit{e)} da figura~\ref{fig:expsegs}, outros valores que os
-escolhidos para parametrização do método revelaram resultados que não
-contribuiriam para a segmentação desejada.
+detalhe \textit{e)} da figura~\ref{fig:expsegs}, valores de $k>10$
+revelaram resultados que não contribuiriam para a segmentação
+desejada.
 
 \begin{figure}[h!]
 \begin{center}
-         \caption{Experimentos realizados para segmentação de pinturas. \textit{a)}
-        a imagem original, \textit{b)} segmentação por Watershed, \textit{c)}
-        Felzenswald, \textit{d)} SLIC com $k=10$ e \textit{e)} SLIC com
-        $k=20$. O método SLIC foi escolhido por apresentar, visualmente,
-        melhor separação dos segmentos, e os parâmetros escolhidos contribuíram
-        para a seg\-men\-ta\-ção apresentada.}
-        \label{fig:expsegs}
-        \includegraphics[scale=.3]{figs/expsegs}
-        \fonteminha
+         \caption{Experimentos realizados para segmentação de
+        pinturas, considerando ambas pinturas barrocas e
+        modernas. \textit{a)} a imagem original, \textit{b)}
+        segmentação por Watershed, \textit{c)}
+        Felzenswald, \textit{d)} SLIC com $k=10$ e \textit{e)} SLIC
+        com $k=20$. O método SLIC com $k=10$ foi escolhido por apresentar,
+        visualmente, melhor separação dos segmentos, e os parâmetros
+        escolhidos contribuíram para a seg\-men\-ta\-ção
+        apresentada.}  \label{fig:expsegs} \includegraphics[scale=.3]{figs/expsegs} \fonteminha
 \end{center}
 \end{figure}
 
-Tendo-se as regiões separadas, estas foram agrupadas em componentes
+Tendo-se as regiões segmentadas, estas foram rotuladas em objetos
 conexos, ou seja, em regiões conectadas e independentes umas das
-outras (detalhes na figura~\ref{fig:rotulacao} e
-subseção~\ref{sec:posproc}). Com tais regiões agrupadas, partiu-se
-para o cálculo de curvatura de cada região e demais medidas descritas
-na seção~\ref{sec:atributos}. A figura~\ref{fig:passos_curvatura} mostra algumas das regiões segmentadas e suas respectivas curvaturas.
+outras. Os objetos conexos com área menor que um dado limiar (definido experimentalmente) foram removidos da imagem, como mostra a figura~\ref{fig:rotulacao}. Após esta etapa de pós-processamento, partiu-se
+para o cálculo de curvatura de cada região e demais atributos descritos
+na seção~\ref{sec:atributos}. A figura~\ref{fig:passos_curvatura} mostra algumas das regiões segmentadas e suas respectivas curvaturas. É possível notar que o cálculo da curvatura consegue identificar os picos de curvatura (marcados em vermelho) da maneira esperada.
 
 \begin{figure}[h!]
 \begin{center}
@@ -2689,19 +2703,19 @@ na seção~\ref{sec:atributos}. A figura~\ref{fig:passos_curvatura} mostra algum
 
 \begin{figure}[h!]
 \begin{center}
-            \caption{Regiões segmentadas e suas respectivas curvaturas. Os
-        marcadores em vermelho identificam os picos de curvatura no
-        perfil e sua localização na região segmentada.}
-        \label{fig:passos_curvatura}
-        \includegraphics[scale=1]{figs/passos_curvatura}
-        \fonteminha
+            \caption{Regiões segmentadas e suas respectivas
+        curvaturas. Os marcadores em vermelho identificam os picos de
+        curvatura no perfil e sua localização na região segmentada. O
+        cálculo de curvatura demonstra desempenho esperado na
+        identificação dos picos de
+        curvatura.}  \label{fig:passos_curvatura} \includegraphics[scale=1]{figs/passos_curvatura} \fonteminha
 \end{center}
 \end{figure}
 
 Todo o processo está representado esquematicamente na figura~\ref{fig:dataflow}
-e abrange todos os passos, do processamento das imagens das pinturas até o
-cálculo de medidas de dialética, oposição e inovação, discutidas em detalhes nos
-próximos capítulos, e portanto, destacadas na figura.
+e abrange todos os passos, do processamento das pinturas até o
+cálculo das medidas de dialética, oposição e inovação, discutidas em detalhes nas
+próximos seções, e portanto, destacadas na figura.
 
 \begin{figure}[h!]
 \begin{center} 
@@ -2721,7 +2735,7 @@ Para selecionar os atributos mais relevantes, neste caso, os atributos
 que separassem melhor os grupos de pinturas --- em outras palavras,
 que garantissem menor covariância interna em cada classe e maior
 covariância entre as classes --- uma medida de dispersão foi aplicada
-usando as matrizes esparsas discutidas na
+usando as matrizes de espalhamento discutidas na
 seção~\ref{sec:fund:reducao}.
 
 Calculando $\alpha$ através da eq.~\ref{eq:alpha} para todos os
@@ -2743,7 +2757,7 @@ classificação das pinturas, melhores até mesmo que os atributos de
 textura de Haralick e de complexidade de imagens (i.e.\
 entropia). Outros atributos que apresentaram valores altos de $\alpha$
 são também relacionados com características de forma, como:
-\textit{média da área de convex-hull}, \textit{média do perímetro dos segmentos}, \textit{média da área dos segmentos}, e \textit{circularidade}. Ambos atributos apresentaram projeções e
+\textit{média da área de convex-hull}, \textit{média do perímetro dos segmentos}, \textit{média da área dos segmentos}, e \textit{circularidade}. Estes atributos apresentaram projeções e
 propriedades de agrupamento similares às da figura~\ref{fig:caso1_g1}
 como mostrado na figura~\ref{fig:scatters}.
  
@@ -2758,7 +2772,7 @@ como mostrado na figura~\ref{fig:scatters}.
     cálculo das medidas de oposição, inovação e dialética.}
 \begin{tabular}{@{}llll}
  \hline \hline
- Par & Atributo $a$    & Atributo $b$   & $\alpha$ \\ 
+ \textbf{Par} & \textbf{Atributo $a$}    & \textbf{Atributo $b$}   & \textbf{$\alpha$} \\ 
  
  \hline
  
@@ -2788,8 +2802,8 @@ como mostrado na figura~\ref{fig:scatters}.
 
 \begin{figure}[h!]
 \begin{center}
-      \caption{Matrizes esparsas para cada $i$-ézimo par de atributos listado na
-        tabela~\ref{tab:alpha} com os maiores valores para $\alpha$. A primeira
+      \caption{Matrizes de espalhamento para cada $i$-ézimo par de atributos, listadas na
+        tabela~\ref{tab:alpha} em ordem decrescente de $\alpha$. A primeira
         projeção (par $1$) foi utilizada nesse estudo.}
         \label{fig:scatters}
         \end{center}
@@ -2797,6 +2811,7 @@ como mostrado na figura~\ref{fig:scatters}.
         \includegraphics[width=\columnwidth]{figs/sm_pintores}}
         \fonteminha
 \end{figure}
+
 \clearpage
 \section{Medidas de dialética, oposição e inovação}
 \label{sec:medidas}
@@ -3008,7 +3023,7 @@ quantitativos obtidos na projeção:
   Barroco e os movimentos da Arte Moderna}. Quando se observa a
   série temporal da figura~\ref{fig:caso1_g2}, a diferença entre os
   períodos fica evidente: enquanto os barrocos retornam uns aos
-  outros, há um deslocamento abrupto em van Gogh --- o primeiro pintor
+  outros, há um deslocamento abrupto em Van Gogh --- o primeiro pintor
   moderno considerado nesse estudo --- que o separa dos primeiros
   pintores. Van Gogh, embora localizado próximo aos pintores barrocos
   e no extremo oposto da maioria dos pintores modernos, estabelece o
@@ -3031,20 +3046,25 @@ quantitativos obtidos na projeção:
   \item \textit{Velázquez e Vermeer se assemelham com Caravaggio pois
     ambos utilizavam \textit{chiaroscuro}}. A trajetória desenhada (na
     figura~\ref{fig:caso1_g2}) de Caravaggio e Frans Hals até Poussin
-    estabelece um caminho que termina com um movimento de oposição
-    de Vel\'{a}zquez, que retorna a Caravaggio. Esse retorno a Caravaggio é também notado em Vermeer. Alguns críticos~\cite{lambert} sugerem que
-    pintores como Vermeer nem teriam existido se não fosse a
+    estabelece um caminho que termina com um movimento de oposição de
+    Velázquez, que retorna a Caravaggio. Esse retorno a Caravaggio
+    é também notado em Vermeer. Alguns críticos~\cite{lambert} sugerem
+    que pintores como Vermeer nem teriam existido se não fosse a
     influência de Caravaggio: os agrupamentos de pinturas de Vermeer e
     Caravaggio apresentam a maior sobreposição dentre todos os
     agrupamentos presentes no \textit{espaço criativo}. Isso pode ser
     atribuído à influência do mestre do \textit{chiaroscuro} em ambos
-    pintores, principalmente em Vel\'{a}zquez que foi reconhecidamente
+    pintores, principalmente em Velázquez que foi reconhecidamente
     um estudioso das pinturas de Caravaggio.~\cite{gombrich} Ambos
     fatos são confirmados pelos histogramas do nível médio de cinza
-    das pinturas mostrados na figura~\ref{fig:chiaroscuro}. Os
+    das pinturas, mostrados na figura~\ref{fig:chiaroscuro}. Os
     histogramas de Velázquez e Vermeer são os que mais se aproximam do
     histograma de Caravaggio quando comparados aos outros pintores
-    barrocos.
+    barrocos. Nota-se que os histogramas de Rembrandt e Frans Hals
+    também assemelham-se ao de Caravaggio, e estes pintores também
+    utilizavam o \textit{chiaroscuro}. O histograma de Poussin é mais
+    bem distribuído, refletindo suas pinturas mais claras, opondo-se à
+    Caravaggio.
 
     \item \textit{Caravaggio é expoente no uso da técnica
       do \textit{chiaroscuro}.} Além da influência de Caravaggio em
@@ -3095,9 +3115,9 @@ figura~\ref{fig:caso1_g2}.
 
 Quando são consideradas as medidas de oposição e inovação, outros
 resultados interessantes apresentam-se, como mostrado na
-tabela~\ref{tab:opos1} e figura~\ref{fig:caso1_oposEinov}. Claramente,
-o maior valor de oposição é atribuído a Rembrandt. Esse fato é curioso
-por si, considerando que o mestre holandês é reconhecido como um
+tabela~\ref{tab:opos1} e figura~\ref{fig:caso1_oposEinov}. O maior
+valor de oposição é atribuído a Rembrandt. Esse fato é curioso por si,
+considerando que este pintor holandês é reconhecido como um
 ``contraponto'' ao movimento Barroco, mesmo tendo sido parte desse
 movimento.~\cite{gombrich} Vermeer também apresenta forte oposição e a
 natureza de suas pinturas (e.g.\ interiores domésticos, uso de cores
@@ -3107,11 +3127,16 @@ valores de oposição, seguido de acréscimo. Da mesma forma, um platô
 com alta oposição é observado nos pintores barrocos. Esse platô ocorre
 exatamente na transição de um período artístico ao outro, diminuindo
 gradualmente enquanto os artistas modernos começam a se estabelecer na
-história. Esse decréscimo dos valores de oposição refletem um aspecto
+história. Esse decréscimo dos valores de oposição reflete um aspecto
 de baixa oposição entre os primeiros artistas barrocos enquanto há o
 acréscimo da oposição presente nos deslocamentos que precedem o
 período Moderno, embora os valores de inovação se mantém oscilando mas
-aumentando durante toda a série temporal.
+aumentando durante toda a série temporal. Em resumo, no que se pode
+falar dos índices de oposição e inovação, de maneira geral,
+a série temporal é marcada por aumento constante de
+inovação, grande oposição em momentos específicos de sua evolução (a
+transição entre o Barroco e a Arte Moderna) e menor oposição entre
+artistas de um mesmo movimento, principalmente no Barroco.
 
 % gerado com: metrics_caso1.py
 \begin{table}[ht]
@@ -3120,25 +3145,24 @@ aumentando durante toda a série temporal.
     para cada um dos 11 deslocamentos de um pintor a outro.}
 \begin{tabular}{@{}lll}
     \hline \hline
-    Deslocamento & $W_{i,j}$ & $s_{i,j}$ \\
+    \textbf{Deslocamento} & \textbf{$W_{i,j}$} & \textbf{$s_{i,j}$} \\
     \hline
     Caravaggio $\to$ Frans Hals  &   1.     &  0.     \\
     Frans Hals $\to$ Poussin     &   0.111  &  0.425  \\
-    Poussin $\to$ Vel\'{a}zquez   &   0.621  &  0.004  \\
-    Vel\'{a}zquez $\to$ Rembrandt &   1.258  &  0.072  \\
+    Poussin $\to$ Velázquez   &   0.621  &  0.004  \\
+    Velázquez $\to$ Rembrandt &   1.258  &  0.072  \\
     Rembrandt $\to$ Vermeer      &   1.152  &  0.341  \\
     Vermeer $\to$ Van Gogh       &   1.158  &  0.280  \\
     Van Gogh $\to$ Kandinsky     &   0.970  &  0.452  \\
     Kandinsky $\to$ Matisse      &   0.089  &  0.189  \\
     Matisse $\to$ Picasso        &   0.117  &  0.509  \\
-    Picasso $\to$ Mir\'{o}       &   0.385  &  0.325  \\
-    Mir\'{o} $\to$ Pollock       &   2.376  &  3.823  \\
+    Picasso $\to$ Miró       &   0.385  &  0.325  \\
+    Miró $\to$ Pollock       &   2.376  &  3.823  \\
     \hline \hline
   \end{tabular}
   \fonteminha
 \end{center}
 \end{table}
-
 
 % gerado com: metrics_caso1.py
 \begin{figure}[h!]
@@ -3151,20 +3175,56 @@ aumentando durante toda a série temporal.
 \end{center}
 \end{figure}
 
-Em resumo, no que se pode falar dos índices de oposição e
-inovação, o \textit{espaço criativo} é marcado por aumento constante
-de inovação, grande oposição em momentos específicos de sua evolução
-(a transição entre o Barroco e a Arte Moderna) e menor oposição entre
-artistas de um mesmo movimento, principalmente no Barroco.
+\clearpage
+
+Além destas observações gerais sobre as medidas de oposição e
+inovação, pode-se interpretar tais medidas para cada par de pintores
+consecutivos. Estas observações estão apresentadas na
+tabela~\ref{tab:interpretacaoOpos}.
+
+\begin{longtable}{lllp{7cm}}
+\caption{\label{tab:interpretacaoOpos} Possível interpretação, com base na história da Arte e características estéticas, para cada valor de oposição e inovação calculado.}\\
+
+\hline \hline
+\textbf{Deslocamento}       & \textbf{$W_{i,j}$} & \textbf{$s_{i,j}$} & \textbf{Possível interpretação} \\ \hline
+
+Caravaggio $\to$ Frans Hals & 1.  & 0.  & Não é possível considerar,
+pois para $i=0,j=1$ os valores de oposição e inovação serão sempre
+$W_{i,j}=1$ e $s_{i,j}=0$. \\ \hline
+
+Frans Hals $\to$ Poussin    & 0.111              & 0.425              & É a menor oposição do período Barroco e não encontra paralelo com a história, visto que Frans Hals, por ter sido influenciado por Caravaggio, deveria opor-se a Poussin. Porém, a  inovação é satisfatória, pois Poussin retrata paisagens ao invés de retratos, comuns em Hals, para citar um exemplo. \\ \hline
+
+Poussin $\to$ Velázquez     & 0.621              & 0.004              & A oposição é esperada, pois Poussin se opõe a Velázquez, que é influenciado por Caravaggio. A baixa inovação, por outro lado, não revela o esperado. \\ \hline
+
+Velázquez $\to$ Rembrandt   & 1.258              & 0.072              & É o valor mais alto de oposição e encontra paralelo com a história: as pinturas de Rembrandt nada têm de parecido com as de Velázquez, embora se esperasse um valor maior para a inovação, dada a inventividade de Rembrandt. \\ \hline
+
+Rembrandt $\to$ Vermeer     & 1.152              & 0.341              & Ambos valores de oposição e inovação refletem a história. Vermeer volta-se ao estilo de Caravaggio, que não possui tanta influência em Rembrandt. A inovação é a mais alta do período Barroco, e corresponde ao estilo alternativo de Vermeer para a época, mesmo quando comparado a outro contraponto ao Barroco como Rembrandt. \\ \hline
+
+Vermeer $\to$ Van Gogh      & 1.158              & 0.280              & Por se tratar de pintores de épocas muito diferentes, esperam-se valores altos para ambas oposição e inovação, talvez ainda maiores do que o apresentado. \\ \hline
+
+Van Gogh $\to$ Kandinsky    & 0.970              & 0.452              & Espera-se alto valor de oposição dados os estilos contrastantes de ambos pintores. A inovação é alta e justifica-se, pois Kandinsky inova ao utilizar formas abstratas, não presentes nas pinturas de Van Gogh. \\ \hline
+
+Kandinsky $\to$ Matisse     & 0.089              & 0.189              & Correspondem aos valores mais baixos de oposição e inovação do período Moderno. Embora tenham características próximas em forma, esperava-se maior oposição, dada a natureza mais abstrata de Kandinsky quando comparado a Matisse. \\ \hline
+
+Matisse $\to$ Picasso       & 0.117              & 0.509              & A baixa oposição é esperada pois Matisse costuma retratar formas humanas assim como Picasso, com certa preferência para linhas retas ao desenhá-las. A inovação também encontra paralelo com a história, já que Picasso inaugura o Cubismo. É a maior inovação do período Moderno. \\ \hline
+
+Picasso $\to$ Miró          & 0.385              & 0.325              & Miró se opõe e inova à Picasso com mesma intensidade. Há também fundamento na história, pois Miró é mais abstrato que Picasso, e inova no uso de pintura automática e simbólica, quase não havendo formas da realidade em suas pinturas. \\ \hline
+
+Miró $\to$ Pollock          & 2.376              & 3.823              & Esse alto contraste é esperado. Pollock é o pintor que mais se diferencia de todos os demais pintores, inclusive Miró. \\ \hline \hline
+
+\fonteminha
+\end{longtable}
 
 No que tange a contra-dialética, mostrada na
 tabela~\ref{tab:dialetica1} e figura~\ref{fig:caso1_dialetica}, há um
-paralelo com as curvas de oposição e inovação. A contra-dialética
-reforça fatos já observados: pintores do mesmo período mostram
-inicialmente um decréscimo em seus valores, seguido por acréscimo
-contínuo. O pico de contra-dialética acontece em van Gogh e Kandinsky:
-exatamente o ponto onde o Barroco termina e a Arte Moderna
-começa, considerando os pintores selecionados para esse estudo.
+paralelo com a curva de oposição. A contra-dialética reforça fatos já
+observados: pintores do mesmo período apresentam inicialmente
+decréscimo em seus valores, seguido por acréscimo contínuo. O pico de
+contra-dialética acontece em Van Gogh e Kandinsky: exatamente o ponto
+onde o Barroco termina e a Arte Moderna começa. A
+tabela~\ref{tab:interpretacaoDia} oferece uma possível interpretação
+para cada valor de dialética calculado, ao compará-los com a história
+da Arte.
 
 % gerado com: metrics_caso1.py
 \begin{table}[ht]
@@ -3175,18 +3235,18 @@ começa, considerando os pintores selecionados para esse estudo.
 \begin{tabular}{@{}ll}
   
     \hline \hline
-    Tese, antítese e síntese & $d_{i \rightarrow k}$ \\
+    \textbf{Tese, antítese e síntese} & \textbf{$d_{i \rightarrow k}$} \\
     \hline
     Caravaggio $\to$ Frans Hals $\to$ Poussin   & 0.572 \\
-    Frans Hals $\to$ Poussin $\to$ Vel\'{a}zquez & 0.337 \\
-    Poussin $\to$ Vel\'{a}zquez $\to$ Rembrandt  & 0.151 \\
-    Vel\'{a}zquez $\to$ Rembrandt $\to$ Vermeer  & 0.608 \\
+    Frans Hals $\to$ Poussin $\to$ Velázquez & 0.337 \\
+    Poussin $\to$ Velázquez $\to$ Rembrandt  & 0.151 \\
+    Velázquez $\to$ Rembrandt $\to$ Vermeer  & 0.608 \\
     Rembrandt $\to$ Vermeer $\to$ Van Gogh      & 1.362 \\
     Vermeer $\to$ Van Gogh $\to$ Kandinsky      & 1.502 \\
     Van Gogh $\to$ Kandinsky $\to$ Matisse      & 1.062 \\
     Kandinsky $\to$ Matisse $\to$ Picasso       & 0.183 \\
-    Matisse $\to$ Picasso $\to$ Mir\'{o}         & 0.447 \\
-    Picasso $\to$ Mir\'{o} $\to$ Pollock         & 2.616 \\
+    Matisse $\to$ Picasso $\to$ Miró         & 0.447 \\
+    Picasso $\to$ Miró $\to$ Pollock         & 2.616 \\
     \hline \hline
   \end{tabular}
   \fonteminha
@@ -3203,6 +3263,64 @@ começa, considerando os pintores selecionados para esse estudo.
         \fonteminha
 \end{center}
 \end{figure}
+
+
+
+
+\begin{longtable}{llp{8cm}}
+\caption{\label{tab:interpretacaoDia} Possível interpretação, com base na história da Arte e características estéticas, para cada valor de contra-dialética calculado.}\\
+
+\hline \hline
+\textbf{Tese, antítese e síntese}       & \textbf{$d_{i \rightarrow k}$} & \textbf{Possível interpretação} \\ \hline
+
+Caravaggio $\to$ Frans Hals $\to$ Poussin   & 0.572 &
+Poussin, segundo a história da Arte, não representa a síntese entre
+Caravaggio e Frans Hals. Pelo contrário, Poussin distancia-se de ambos pintores.
+Portanto, o valor de contra-dialética corresponde ao esperado. \\ \hline
+
+Frans Hals $\to$ Poussin $\to$ Velázquez & 0.337 &
+Espera-se também que Velázquez afaste-se da síntese entre Frans Hals e Poussin,
+já que Velázquez assemelha-se mais a Frans Hals. \\ \hline
+
+Poussin $\to$ Velázquez $\to$ Rembrandt  & 0.151 &
+É a maior dialética de toda a série, e encontra fundamento na história. Rembrandt,
+dada sua inventividade, parece ter explorado tanto paisagens (como Poussin) quanto
+retratos utilizando \textit{chiaroscuro} (como Velázquez). \\ \hline
+
+Velázquez $\to$ Rembrandt $\to$ Vermeer  & 0.608 &
+Vermeer realmente difere de ambos Velázquez e Rembrandt, pintando em um estilo
+alternativo para a época, portanto o valor alto de contra-dialética é
+justificado. \\ \hline
+
+Rembrandt $\to$ Vermeer $\to$ Van Gogh      & 1.362 &
+Sendo um pintor moderno, Van Gogh se opõe aos pintores Barrocos e este aumento abrupto
+de contra-dialética é esperado, pois é neste instante que se dá a transição de
+um período para o outro. \\ \hline
+
+Vermeer $\to$ Van Gogh $\to$ Kandinsky      & 1.502 &
+Kandinsky, um pintor abstrato, apresenta a maior contra-dialética da série
+(desconsiderando-se Pollock). Realmente não possui semelhanças com ambos Vermeer e Van Gogh. \\ \hline
+
+Van Gogh $\to$ Kandinsky $\to$ Matisse      & 1.062 &
+Matisse distancia-se da síntese entre Van Gogh e Kandinsky. Embora suas pinturas
+tenham formas humanas e com variações de cores, como as de Van Gogh, não são abstratas como as de Kandinsky. \\ \hline
+
+Kandinsky $\to$ Matisse $\to$ Picasso       & 0.183 &
+Picasso realmente parece combinar elementos abstratos (e.g. figuras geométricas presentes em Kandinsky) com formas encontradas na natureza e figuras humanas, pintadas também por Matisse. Espera-se portanto alta dialética. \\ \hline
+
+Matisse $\to$ Picasso $\to$ Miró         & 0.447 &
+Por ser um pintor abstrato, espera-se que Miró se distancie da síntese entre Matisse e Picasso, principalmente por Matisse não empregar formas abstratas. Porém, isto não é
+revelado pelo valor de contra-dialética. \\ \hline
+
+Picasso $\to$ Miró $\to$ Pollock         & 2.616 &
+Assim como para as medidas de oposição e inovação, Pollock apresenta o maior valor de
+contra-dialética da série, dada a natureza de suas obras, que diferem de todos os
+demais pintores considerados.
+\\ \hline \hline
+
+\fonteminha
+\end{longtable}
+
 
 \clearpage
 \section{Análise por LDA de todos os atributos}
@@ -3247,19 +3365,19 @@ na figura~\ref{fig:caso3_oposEinov}, tabela~\ref{tab:dialetica3} e figura~\ref{f
   deslocamentos de um pintor ao outro.}
 \begin{tabular}{@{}lll}
     \hline \hline
-    Deslocamento & $W_{i,j}$ & $s_{i,j}$ \\
+    \textbf{Deslocamento} & \textbf{$W_{i,j}$} & \textbf{$s_{i,j}$} \\
     \hline
     Caravaggio $\to$ Frans Hals  &   1.     &  0.     \\
     Frans Hals $\to$ Poussin     &  -0.101  &  0.132  \\
-    Poussin $\to$ Vel\'{a}zquez   &   0.588  &  0.037  \\
-    Vel\'{a}zquez $\to$ Rembrandt &   1.526  &  0.050  \\
+    Poussin $\to$ Velázquez   &   0.588  &  0.037  \\
+    Velázquez $\to$ Rembrandt &   1.526  &  0.050  \\
     Rembrandt $\to$ Vermeer      &   1.101  &  0.143  \\
     Vermeer $\to$ Van Gogh       &   1.153  &  0.157  \\
     Van Gogh $\to$ Kandinsky     &   1.279  &  0.512  \\
     Kandinsky $\to$ Matisse      &   0.179  &  0.149  \\
     Matisse $\to$ Picasso        &  -0.201  &  0.516  \\
-    Picasso $\to$ Mir\'{o}       &   0.432  &  0.163  \\
-    Mir\'{o} $\to$ Pollock       &   4.031  &  2.662  \\
+    Picasso $\to$ Miró       &   0.432  &  0.163  \\
+    Miró $\to$ Pollock       &   4.031  &  2.662  \\
     \hline \hline
   \end{tabular}
   \fonteminha
@@ -3287,18 +3405,18 @@ na figura~\ref{fig:caso3_oposEinov}, tabela~\ref{tab:dialetica3} e figura~\ref{f
     deslocamentos para os dois melhores componentes do LDA.}
 \begin{tabular}{@{}ll}
     \hline \hline
-    Deslocamento & Contra-dialética ($d_{i \rightarrow k}$) \\
+    \textbf{Deslocamento} & \textbf{Contra-dialética ($d_{i \rightarrow k}$)} \\
     \hline
     Caravaggio $\to$ Frans Hals $\to$ Poussin   & 0.587 \\
-    Frans Hals $\to$ Poussin $\to$ Vel'{a}zquez & 0.317 \\
-    Poussin $\to$ Vel'{a}zquez $\to$ Rembrandt  & 0.268 \\
-    Vel'{a}zquez $\to$ Rembrandt $\to$ Vermeer  & 0.736 \\
+    Frans Hals $\to$ Poussin $\to$ Velázquez & 0.317 \\
+    Poussin $\to$ Velázquez $\to$ Rembrandt  & 0.268 \\
+    Velázquez $\to$ Rembrandt $\to$ Vermeer  & 0.736 \\
     Rembrandt $\to$ Vermeer $\to$ Van Gogh      & 1.192 \\
     Vermeer $\to$ Van Gogh $\to$ Kandinsky      & 2.352 \\
     Van Gogh $\to$ Kandinsky $\to$ Matisse      & 0.974 \\
     Kandinsky $\to$ Matisse $\to$ Picasso       & 0.241 \\
-    Matisse $\to$ Picasso $\to$ Mir'{o}         & 0.704 \\
-    Picasso $\to$ Mir'{o} $\to$ Pollock         & 1.924 \\
+    Matisse $\to$ Picasso $\to$ Miró         & 0.704 \\
+    Picasso $\to$ Miró $\to$ Pollock         & 1.924 \\
     \hline \hline
   \end{tabular}
   \fonteminha
@@ -3314,7 +3432,7 @@ na figura~\ref{fig:caso3_oposEinov}, tabela~\ref{tab:dialetica3} e figura~\ref{f
         obtidos por LDA. O padrão observado anteriormente para o melhor par de
         atributos apresenta-se ainda mais visível aqui: é possível observar
         claramente que o maior valor está no ponto de transição dos movimentos
-        artísticos (van Gogh e Kandinsky).}
+        artísticos (Van Gogh e Kandinsky).}
         \label{fig:caso3_dialetica}
         \includegraphics[width=\columnwidth]{figs/caso3_dialetica}
         \fonteminha
@@ -3344,7 +3462,7 @@ distancia dos outros no \textit{espaço criativo}. Em geral, a matriz
 de confusão reflete os resultados previamente discutidos: há
 similaridade entre pintores barrocos, principalmente Velázquez,
 Caravaggio e Rembrandt e é possível notar claramente a separação entre
-pintores anteriores e posteriores a van Gogh, que define a fronteira
+pintores anteriores e posteriores a Van Gogh, que define a fronteira
 entre os períodos Barroco e Moderno.
 
 %% gerado com: ga-delaunay/matriz_confusao.py
@@ -3375,7 +3493,6 @@ entre os períodos Barroco e Moderno.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\afterpage{\blankpage}
 \chapter{Conclusões}
 \label{chap:conclusoes}
 
