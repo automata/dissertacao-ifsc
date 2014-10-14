@@ -24,7 +24,7 @@ py.plot(xs, [f(x, a, mr) for x in xs], 'k:')
 
 # plotamos o ponto medio a_i
 py.plot((p_i[0]+r_i[0])/2, (p_i[1]+r_i[1])/2, 'ok')
-py.text((p_i[0]+r_i[0])/2, (p_i[1]+r_i[1])/2-.5, r'$\vec{a_i}$', fontsize=18)
+py.text((p_i[0]+r_i[0])/2, (p_i[1]+r_i[1])/2-.5, r'$\vec{a_j}$', fontsize=18)
 
 # agora a distância de p_j à reta que passa entre p_i e r_i, perpendicular
 ms = -1./mr
@@ -51,7 +51,7 @@ py.text(r_i[0], r_i[1]-.5, r'$\vec{r_i}$', fontsize=18)
 
 py.text(5.5, 4., r'$L_i$', fontsize=18)
 py.text((intersec_x+p_j[0])/2, (intersec_y+p_j[1])/2+.1, r'$s_{i,j}$', fontsize=18)
-py.text(3., 3.2, r'$\vec{D_i}$', fontsize=18)
+py.text(3., 3.2, r'$\vec{D_j}$', fontsize=18)
 
 
 # e as flechas que simbolizam os vetores
@@ -61,4 +61,6 @@ py.arrow(p_i[0], p_i[1]+.25, r_i[0]-p_i[0], r_i[1]-p_i[1], head_width=0.15, head
 
 py.xlim((0,6.))
 py.ylim((0,5.))
+py.xlabel('x')
+py.ylabel('y')
 py.show()

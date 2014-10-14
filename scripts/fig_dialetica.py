@@ -66,4 +66,6 @@ py.arrow(p_j[0], p_j[1], p_k[0]-p_j[0], p_k[1]-p_j[1], head_width=0.15, head_len
 
 py.xlim((0,6.))
 py.ylim((0,5.))
+py.xlabel('x')
+py.ylabel('y')
 py.show()

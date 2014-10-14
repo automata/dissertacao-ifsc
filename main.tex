@@ -1,24 +1,3 @@
-% todo:
-
-% revisar abstract
-% x confirmar método de validação cruzada (cálculo de autovetores?) para LDA
-% ver o livro de deleuze sobre ``espaço criativo''
-% x rever resultados
-% ler toda a dissertação
-% seção sobre morfologia matemática
-% melhorar algoritmo de rotulação de componentes conexos
-% melhorar algoritmo de preenchimento de buracos
-% melhorar algoritmo de área
-% melhorar app web e gravar vídeo mostrando
-
-% x atributos de complexidade
-% x atributos espectrais
-% figuras sem legendas
-% x discutir que oposição e inovação
-% x efeitos de borda e primeiras na oposição e inovação
-% glossário
-% x figura de dialética, opos e inov
-
 \afterpage{\blankpage}
 
 \chapter{Introdução}
@@ -231,23 +210,23 @@ calculados como medidas quantitativas.
 No capítulo~\ref{cap:fundamentos} são descritos os fundamentos,
 algoritmos, métodos canônicos e detalhes históricos sobre os quais se
 construiu este estudo, assim como trabalhos relacionados e de
-interessante leitura. O capítulo~\ref{chap:resultados} apresenta os
+interessante leitura. No capítulo~\ref{chap:resultados} são apresentados os
 desenvolvimentos realizados nesse estudo: o processamento de imagens
 para obtenção das características, a representação da evolução
 artística em um espaço vetorial e a interpretação das medidas de
 dialética, oposição e inovação. Os resultados são confirmados pelo
 cálculo dos componentes que mais separam os grupos de pintores,
 através do método LDA. Este, por sua vez, é validado por uma matriz de
-confusão. Por fim, o capítulo~\ref{chap:conclusoes} faz uma revisão do
-que foi discutido e aponta as principais contribuições e conclusões
+confusão. Por fim, no capítulo~\ref{chap:conclusoes} há uma revisão do
+que foi discutido e são apontadas as principais contribuições e conclusões
 desse estudo, além de refletir sobre desenvolvimentos futuros e que já
-estão em andamento. O apêndice~\ref{cap:ap-tutorial} apresentam um tutorial
+estão em andamento. No apêndice~\ref{cap:ap-tutorial} é apresentado um tutorial
 para \textit{download} e execução dos \textit{scripts} em linguagem de
 programação \textit{Python} que implementam os algoritmos
 desenvolvidos para essa análise. No apêndice~\ref{cap:ap-galeria} há uma galeria com as
-240 imagens das pinturas usadas no estudo. O apêndice~\ref{ap:alternativa} contempla
+240 imagens das pinturas usadas no estudo. No apêndice~\ref{ap:alternativa} é apresentada
 uma visualização alternativa da série temporal resultante, que também
-pode ser explorada através de um aplicativo Web interativo. O apêndice~\ref{ap:sifisc} descreve contribuições artísticas deste estudo: uma exposição
+pode ser explorada através de um aplicativo Web interativo. No apêndice~\ref{ap:sifisc} são descritas as contribuições artísticas deste estudo: uma exposição
 realizada em 2013 no IFSC/USP com imagens geradas a partir de um
 algoritmo desenvolvido para pintura generativa.
 
@@ -279,7 +258,7 @@ das pinturas, assim como o método LDA, que foi aplicado para a redução
 das dimensões da matriz de atributos. O método LDA confirmou os
 resultados obtidos para o melhor par de atributos.
 
-\section{Uma breve exploração sobre o Barroco e Arte Moderna}
+\section{Uma breve introdução ao Barroco e Arte Moderna}
 \label{sec:breve}
 
 É interessante levantar aqui algumas características sobre a história
@@ -348,7 +327,7 @@ corpo do leito e tirou o mosquiteiro das colunas. Depois saiu,
 entregou a cabeça de Holoferne para a serva, que a colocou na sacola
 de alimentos.'' (Judite 13, 6)
 
-\textbf{\emph{Frans Hals}}, Holanda, 1580?-1666. Ao mesmo tempo que o
+\textbf{\emph{Frans Hals}}, Holanda, 1580(?)-1666. Ao mesmo tempo que o
 Barroco era iniciado na Itália, que compreendia a metade católica da
 Europa, em regiões protestantes como a Holanda, não havia espaço para
 pintar o sagrado.~\cite{gombrich} Sobravam os retratos como fonte de
@@ -486,7 +465,7 @@ comparada a dos outros pintores aqui discutidos: todas são feitas
 praticamente no mesmo local --- sempre um cômodo doméstico --- e com
 um número limitado de modelos, geralmente com a luz vindo de uma
 janela.~\cite{wadum}  Em suas pinturas há, a exemplo de Velázquez,
-uso extensivo do \textit{chiaroscuro} de Caravaggio, como na \textit{A
+uso extensivo do \textit{chiaroscuro} de Caravaggio, como em \textit{A
 Garota com Brinco de Pérola}
 (figura~\ref{fig:vermeer:perola}). Vermeer desconhecia a perspectiva
 geométrica: a profundidade em seus quadros era obtida através do
@@ -545,7 +524,7 @@ composição. Não estava interessado em respeitar regras de perspectiva,
 de composição, ou sombra.~\cite{hulsker} É possível perceber essa
 oposição ao clássico em sua obra \textit{Quarto em Arles}
 (figura~\ref{fig:vangogh:quarto}). Os móveis não apresentam
-perspectiva, muito menos dimensões corretas. Não há sombra na
+a perspectiva esperada, muito menos dimensões corretas. Não há sombra na
 pintura. Propunha usar as cores de maneira franca, sem se render às
 técnicas de sombreado. As pinceladas são todas aparentes, formam a
 própria textura. Nada têm de parecido com as obras barrocas, ou mesmo
@@ -634,7 +613,7 @@ retratado. Cria assim o movimento cubista.~\cite{barr,golding} Essa
 colagem geométrica é vista em \emph{Violino}
 (figura~\ref{fig:picasso:violino}). De certa forma, relembra os
 desenhos ``primitivos'' que retratam o objeto a partir do ponto de
-vista que mais lhe representa. Os formas do violino repetem-se por
+vista que mais lhe representa. As formas do violino repetem-se por
 toda a pintura: como as curvas da \textit{voluta}, dos \textit{efes} e
 do \textit{corpo}. O mesmo grupo de 4 cordas aparece diversas vezes,
 como que querendo representá-las de vários pontos de
@@ -784,7 +763,9 @@ a \textit{antítese}, a contradição ou negação da tese; e
 a \textit{síntese}, o resultado do confronto da tese com a antítese. A
 solução dialética --- a síntese --- é uma nova ideia que busca pelo
 equilíbrio entre tese e antítese, ilustrado na
-figura~\ref{fig:conceitos}. Como a tradução literal sugere, ``o
+figura~\ref{fig:conceitos}. 
+
+Como a tradução literal sugere, ``o
 caminho entre as ideias'' é o diálogo entre ideias que leva a outras
 ideias, ou teorias. Zenão de Eleia, Aristóteles, Platão e Sócrates
 foram pioneiros em seu uso. A dialética também está presente
@@ -798,41 +779,43 @@ realidade.~\cite{dialectics}
 \caption{\textit{a)} \textit{Dialética}: um argumento chamado \textit{tese}, até então
   tomado como verdade, é confrontado por um argumento oposto,
   chamado \textit{antítese}. O resultado do confronto destas duas
-  ideias é a \textit{síntese} que poderá gerar uma nova ideia ou
-  argumento; \textit{b)} \textit{Oposição}: é um argumento que se opõe
-  a um argumento original; \textit{c)} \textit{Inovação}: um movimento
-  de inovação é aquele que se afasta do argumento original, inovando.}
+  ideias é a \textit{síntese}, que poderá gerar uma nova ideia ou
+  argumento. A linha pontilhada simboliza a \textit{síntese ótima} entre tese e antítese. Portanto, um argumento que se aproxime dessa linha terá alta dialética; \textit{b)} \textit{Oposição}: é um argumento que se opõe
+  a um argumento original, afasta-se da linha pontilhada de referência; \textit{c)} \textit{Inovação}: um movimento
+  de inovação é aquele que se afasta do argumento original, inovando: toma uma nova direção quando comparada à linha pontilhada de referência. Nota-se também que há uma ordem temporal dos argumentos, representada pelos números. Para a dialética: primeiro há a tese, em seguida a antítese e, por fim, a síntese. Para a oposição, há o argumento original seguido do argumento de oposição. Para a inovação, há o argumento original seguido do argumento de inovação.}
 \label{fig:conceitos}
 
 \vspace{30pt}
 
 \begin{tikzpicture}[scale=1.]
   % Dialética
-  \node[draw] (Tese) at (0,0) {Tese};
-  \node[draw,fill=black,text=white] (Antitese) at (2.3,0) {Antítese};
-  \node[draw,fill=gray,text=white] (Sintese) at (1,2) {Síntese};
+  \node[draw] (Tese) at (0,0) {1: Tese};
+  \node[draw,fill=black,text=white] (Antitese) at (2.3,0) {2: Antítese};
+  \node[draw,fill=gray,text=white] (Sintese) at (2.1,2) {3: Síntese};
   
-  \draw node[vertex] (Juncao) at (1,0) {};
-  
-  \draw[-,draw=blue] (Tese) to (Juncao);
-  \draw[->,draw=blue] (Juncao) to (Antitese);
-  \draw[->,draw=blue] (Juncao) to (Sintese);
+  \draw[dotted,draw=black] (1,-3) to (1,3);
+  \draw[->,draw=blue] (Tese) to (Antitese);
+  \draw[->,draw=blue] (Antitese) to (Sintese);
   %\draw[->,draw=blue] (Sintese) to[in=180,out=180] (Tese);
   
-  \node at (1.0, -1.0) {\textit{a) Dialética}};
+  \node at (1.0, -5.0) {\textit{a) Dialética}};
   
-  % Oposição
-  \node[draw] (ArgumentoA) at (5,0) {Argumento};
-  \node[draw,fill=black,text=white] (ArgumentoB) at (7.5,0) {Oposição};
+  % Oposição  
+  \node[draw] (ArgumentoA) at (5,-1.5) {1: Argumento};
+  \node[draw,fill=black,text=white] (ArgumentoB) at (8.0,-1.5) {2: Oposição};
   
+  \draw[dotted,draw=black] (6.6,-4.5) to (6.6,1.5);
   \draw[->,draw=blue] (ArgumentoA) to (ArgumentoB);
   
-  \node at (6., -1.0) {\textit{b) Oposição}};
+  \node at (6., -5.0) {\textit{b) Oposição}};
   
   % Inovação
-  \node[draw] (ArgumentoA) at (10.1,0) {Argumento};
+  \draw[dotted,draw=black] (9,0) to (14,0);
+  %\node at (6., -1.0) {\textit{b) Oposição}};
+
+  \node[draw] (ArgumentoA) at (11,0) {1: Argumento};
   %\node[draw,fill=black,text=white] (ArgumentoB) at (12.8,0) {Oposição};
-  \node[draw,fill=yellow] (ArgumentoC) at (12,2) {Inovação};
+  \node[draw,fill=yellow] (ArgumentoC) at (12,2) {2: Inovação};
   
   %\draw node[vertex] (Juncao) at (11.5,0) {};
   
@@ -840,7 +823,7 @@ realidade.~\cite{dialectics}
   %\draw[->] (Juncao) to (ArgumentoB);
   \draw[->,draw=blue] (ArgumentoA) to (ArgumentoC);
   
-  \node at (11.5, -1.0) {\textit{c) Inovação}};
+  \node at (11.5, -5.0) {\textit{c) Inovação}};
 
 \end{tikzpicture}
 \vspace{30pt}
@@ -856,8 +839,8 @@ ideias essencialmente contraditórias. A \textit{inovação}, por sua
 vez, relaciona-se com a oposição: uma ideia não necessariamente estará
 destinada a opor uma outra ideia, pois não participa apenas de um
 ``jogo de oposição''. Uma ideia pode também ``buscar'' um movimento
-novo, alternativo. Desta forma, estará inovando
-(figura~\ref{fig:conceitos}, detalhe \textit{c}).
+novo, alternativo. Desta forma, estará inovando, contrastando com a oposição, indo em uma nova direção
+(figura~\ref{fig:conceitos}, detalhe \textit{c}). É importante notar que há uma ordem temporal nos argumentos, simbolizados na figura por números. No caso da dialética, há primeiramente a tese, seguida da antítese e, por fim, a síntese. Portanto, compreende três estados temporais. O mesmo ocorre para a oposição e inovação, porém compreendendo apenas dois estados no tempo.
 
 Uma proposta de quantificar os conceitos básicos de dialética,
 oposição e inovação foi iniciado em um estudo aplicado à Filosofia e
@@ -895,8 +878,8 @@ sua \textit{média} é definida como~\cite{recipes}
                                \end{cases} \,\,\,\,\, (\text{estando $X$ ordenado}).
 \end{equation}
 
-Após ter-se definido o valor central, pode-se estimar a
-``largura'' ou quanto os valores variam em torno do valor
+Após ter-se definido o valor central, pode-se estimar o
+espalhamento ou quanto os valores variam em torno do valor
 central. A \textit{variância} é geralmente utilizada para este fim:
 
 \begin{equation}
@@ -920,10 +903,10 @@ entre as duas variáveis aleatórias:
 É interessante notar que variáveis independentes terão covariância
 igual a zero.
 
-\section{Processamento e análise de imagens}
+\section{Processamento e análise de imagens digitais}
 \label{sec:fund:imagens}
 
-O processamento e análise de imagens compreende operações para
+O processamento e análise de imagens digitais compreende operações para
 adquirir, manipular e representar imagens digitais em um sistema
 computacional.~\cite{gonzalez} Este processamento envolve uma série de
 etapas canônicas~\cite{luciano} e a figura~\ref{fig:etapas-pdi}
@@ -961,7 +944,7 @@ resulta na cor do \textit{pixel}.
 
 As imagens também podem ser representadas em escala de cinza (ou
 monocromática), por uma matriz $I$ com dimensão $N_x \times N_y \times
-N_z = 1$, onde cada \textit{pixel} $I_{(x,y)}$ é descrito por um único valor de
+N_z$, com $N_z = 1$, onde cada \textit{pixel} $I_{(x,y)}$ é descrito por um único valor de
 intensidade. Nota-se que cada banda de cor de uma imagem RGB
 corresponde a uma imagem monocromática.
 
@@ -1134,10 +1117,10 @@ cinza $R_k$ na imagem. O gráfico de $p(R_k)$ é denominado
 realçar o contraste da imagem, visto que pode-se mensurar a quantidade
 de \textit{pixels} em regiões mais claras, mais escuras e com níveis de cinza
 medianos. Assim, pode-se definir uma operação $T$ (eq.~\ref{eq:fproc}) que equalize os
-níveis de cinza $R_k$ de $f$, gerando uma imagem equalizada $g$:
+níveis de cinza $R_k$ de $f$, gerando uma imagem equalizada $g$ de $N_g$ \textit{pixels}:
 
 \begin{equation}
-s = T(R_k) = \sum_{j=0}^k \frac{N_j}{N_G} = \sum_{j=0}^k p(R_j)
+s = T(R_k) = \sum_{j=0}^k \frac{N_j}{N_g} = \sum_{j=0}^k p(R_j)
 \end{equation}
 
 \noindent à essa operação $T$ se dá o nome de \emph{equalização de
@@ -1643,7 +1626,7 @@ deve portanto incluir atributos que irão, inicialmente, descrever uma
 larga gama de características como complexidade, textura e detalhes
 sobre a forma dos segmentos --- e.g. área, perímetro, curvatura.
 
-Para este estudo foram utilizados 99 atributos, descritos a seguir. Ao
+Para este estudo foram utilizados 100 atributos, descritos a seguir. Ao
 final desta seção, todos os atributos encontram-se sumarizados na
 tabela~\ref{tab:atributos}.
 
@@ -1792,21 +1775,21 @@ procurada. Com base nessa medida, pode-se derivar as medidas de média e desvio
 padrão das energias nas linhas, colunas, centroides e da imagem total:
 
 \begin{eqnarray}
-  \mathcal{A}_1 &=& \mu = \frac{\sum_j E_{(x,y)}}{N_y} \, \, \, \text{média das energias
+  \mathcal{A}_1 &=& \frac{\sum_j E_{(x,y)}}{N_y} \, \, \, \text{média das energias
     nas linhas $x$} \\
-  \mathcal{A}_2 &=& \sigma = \sqrt{\frac{\sum_y (E_{(x,y)} - \mu)^2}{N_y}} \, \, \,
+  \mathcal{A}_2 &=& \sqrt{\frac{\sum_y (E_{(x,y)} - \mu)^2}{N_y}} \, \, \,
   \text{desvio padrão das energias nas linhas $x$} \\
-  \mathcal{A}_3 &=& \mu = \frac{\sum_x E_{(x,y)}}{N_x} \, \, \, \text{média das energias
+  \mathcal{A}_3 &=& \frac{\sum_x E_{(x,y)}}{N_x} \, \, \, \text{média das energias
     nas colunas $y$} \\
-  \mathcal{A}_4 &=& \sigma = \sqrt{\frac{\sum_x (E_{(x,y)} - \mu)^2}{N_x}} \, \, \,
+  \mathcal{A}_4 &=& \sqrt{\frac{\sum_x (E_{(x,y)} - \mu)^2}{N_x}} \, \, \,
   \text{desvio padrão das energias nas colunas $y$} \\
   \mathcal{A}_5 &=& \frac{\sum_y y E_{(x,y)}}{N_y} \, \, \, \text{centroide das energias
     nas linhas $x$} \\
   \mathcal{A}_6 &=& \frac{\sum_x i E_{(x,y)}}{N_x} \, \, \, \text{centroide das energias
     nas colunas $y$} \\
-  \mathcal{A}_7 &=& \mu = \frac{\sum E_{(x,y)}}{N_x + N_y} \, \, \, \text{média das energias
+  \mathcal{A}_7 &=& \frac{\sum E_{(x,y)}}{N_x + N_y} \, \, \, \text{média das energias
     nas linhas $x$ e colunas $y$} \\
-  \mathcal{A}_8 &=& \sigma = \sqrt{\frac{\sum (E_{(x,y)} - \mu)^2}{N_x + N_y}} \, \, \,
+  \mathcal{A}_8 &=& \sqrt{\frac{\sum (E_{(x,y)} - \mu)^2}{N_x + N_y}} \, \, \,
   \text{desvio padrão das energias nas linhas $x$ e colunas $y$}
 \end{eqnarray}
 
@@ -2098,7 +2081,7 @@ quanto o componente possui uma forma rica em curvas acentuadas:
   \mathcal{A}_{99} & = & \frac{\mathcal{A}_{98}}{\mathcal{A}_{95}}
 \end{eqnarray}
 
-O conjunto de todos os 99 atributos $\mathcal{A}_i$ discutidos estão sumarizados na
+O conjunto de todos os 100 atributos $\mathcal{A}_i$ discutidos estão sumarizados na
 tabela~\ref{tab:atributos}. É importante ressaltar que cada imagem de pintura
 acaba apresentando um número arbitrário de regiões conexas após os processos de
 segmentação e pós-processamento. Desta forma, para cada pintura tem-se um ou
@@ -2107,7 +2090,7 @@ valores foi tomada para representar cada um destes atributos para uma dada image
 
 \begin{table}
   \begin{center}
-  \caption{\label{tab:atributos}Sumário de todos os 99 atributos utilizados
+  \caption{\label{tab:atributos}Sumário de todos os 100 atributos utilizados
     neste estudo, considerando detalhes de contraste, textura (descritas pelas
     medidas de entropias e energias, assim como as medidas de Haralick) e forma
     (descritas pelas medidas de curvatura e medidas geométricas como perímetro,
@@ -2118,6 +2101,9 @@ valores foi tomada para representar cada um destes atributos para uma dada image
     \textbf{$\mathcal{A}_i$} & \textbf{Descrição} \\
     \hline
 
+    $\mathcal{A}_0$ & 
+    Entropia da imagem em tons de cinza \\
+    
     $\mathcal{A}_1$ & 
     Média das energias nas linhas $x$ da imagem em tons de cinza \\
     %$\mathcal{A}_1  = \frac{\sum_j E_{(i,j)}}{N_j}$ \\
@@ -2336,9 +2322,7 @@ principais $V$, ambos transpostos:
 \noindent ou seja, $D$ é a base que mais ``reúne características'' dos demais
 atributos. Tomando-se apenas estes $r < N$ atributos, tem-se portanto uma
 redução na dimensão. Os autovalores indicam o quanto cada
-atributo contribui para a correlação. Portanto, é sempre interessante verificar se
-os $r$ autovalores em módulo somam cerca de $70\%$ do total, o que indica
-serem suficientes para representar os $N$ atributos originais.~\cite{luciano}
+atributo contribui para a correlação.~\cite{luciano}
 
 \subsection{Validação cruzada}
 
@@ -2374,7 +2358,7 @@ principal desta matriz esteja o mais próximo possível do número máximo
 de elementos para cada classe. Ou seja, elementos de uma classe $C_1$
 devem ser classificados como pertencentes a esta classe, e não a
 qualquer outra classe. Um exemplo de matriz de confusão para o método
-LDA pode ser vista na figura~\ref{fig:cm} da seção~\ref{subsec:lda} de
+LDA pode ser visto na figura~\ref{fig:cm} da seção~\ref{subsec:lda} de
 resultados deste estudo.
 
 \begin{figure}[ht!]
@@ -2464,7 +2448,7 @@ análise, foi escolhido apenas o estilo pelo qual melhor se conhece e
 define o artista. No caso de Picasso, apenas pinturas de sua fase
 Cubista (de 1909 a 1912) foram escolhidas, com o objetivo de
 representar este movimento. Destaca-se que a escolha de dois períodos
-distantes --- cerca de 150 anos separam o período Barroco dos
+distantes --- cerca de 218 anos separam o período Barroco dos
 movimentos da Arte Moderna --- é proposital. A história da Arte assim
 como a análise estética das pinturas de ambos períodos revela
 características contrastantes, porém tais afirmações são
@@ -2516,7 +2500,7 @@ obtidas de arquivos em domínio público, organizados pela
 está listada na tabela~\ref{tab:paintings}. Todas as 240 pinturas são
 apresentadas em forma de galeria no apêndice~\ref{cap:ap-galeria}. Os
 arquivos de imagem das pinturas assim como o código-fonte que
-implementa esta análise encontra-se disponível online em
+implementa esta análise encontram-se disponíveis online em
 \url{http://github.com/automata/ana-pintores} e no
 apêndice~\ref{cap:ap-tutorial} há instruções de sua instalação e uso.
 
@@ -2739,7 +2723,7 @@ usando as matrizes de espalhamento discutidas na
 seção~\ref{sec:fund:reducao}.
 
 Calculando $\alpha$ através da eq.~\ref{eq:alpha} para todos os
-possíveis pares de atributos $F_{N, a}$ e $F_{N, b}$ dos $N = 99$
+possíveis pares de atributos $F_{N, a}$ e $F_{N, b}$ dos $N = 100$
 atributos e ordenando os resultados por $\alpha$, é possível
 selecionar os atributos mais relevantes para a classificação.
 Pares com maiores valores de $\alpha$ apresentam melhor dispersão
@@ -2871,7 +2855,7 @@ um deslocamento na direção de $\vec{r_i}$) ou concorda com outro protótipo $p
 (um deslocamento na direção de $-\vec{r_i}$):
 
 \begin{equation}
-W_{i,j} = \frac{\left< \vec{M}_{i,j}, \vec{D}_i\right>}{||\vec{D}_i||^2}
+W_{i,j} = \frac{\left< \vec{M}_{i,j}, \vec{D}_j\right>}{||\vec{D}_j||^2}
 \end{equation}
 
 \noindent sendo portanto a projeção de $\vec{M}_{i,j}$ em $\vec{D}_i$, ou seja,
@@ -2906,10 +2890,10 @@ $\vec{p_j}$ da série temporal e uma linha $L_i$.
 \begin{figure}[ht!]
 \begin{center}
               \caption{Cálculo dos índices de oposição $W_{i,j}$ --- com base
-        no deslocamento $\vec{D_i}$ e inovação $s_{i,j}$ dados dois
+        no deslocamento $\vec{D_j}$ e inovação $s_{i,j}$ dados dois
         estados consecutivos $\vec{p_i}$ e $\vec{p_j}$.}
         \label{fig:desc_opos_inov}
-        \includegraphics[scale=.6]{figs/desc_opos.pdf}
+        \includegraphics[scale=.6]{figs/desc_opos2.pdf}
         \fonteminha
 \end{center}
 \end{figure}
@@ -2947,7 +2931,7 @@ série.
         $\vec{p_k}$ à síntese ideal formada pela mediatriz $B_{i,j}$ entre
         $\vec{p_i}$ e $\vec{p_j}$, menor a dialética.  }
         \label{fig:desc_dialetica}
-        \includegraphics[scale=.6]{figs/desc_dialetica.pdf}
+        \includegraphics[scale=.6]{figs/desc_dialetica2.pdf}
       \fonteminha
 \end{center}
 \end{figure}
@@ -3134,7 +3118,7 @@ período Moderno, embora os valores de inovação se mantém oscilando mas
 aumentando durante toda a série temporal. Em resumo, no que se pode
 falar dos índices de oposição e inovação, de maneira geral,
 a série temporal é marcada por aumento constante de
-inovação, grande oposição em momentos específicos de sua evolução (a
+inovação --- desconsiderando pequenas oscilações --- grande oposição em momentos específicos de sua evolução (a
 transição entre o Barroco e a Arte Moderna) e menor oposição entre
 artistas de um mesmo movimento, principalmente no Barroco.
 
@@ -3183,7 +3167,7 @@ consecutivos. Estas observações estão apresentadas na
 tabela~\ref{tab:interpretacaoOpos}.
 
 \begin{longtable}{lllp{7cm}}
-\caption{\label{tab:interpretacaoOpos} Possível interpretação, com base na história da Arte e características estéticas, para cada valor de oposição e inovação calculado.}\\
+\caption{\label{tab:interpretacaoOpos} Possível interpretação, com base na história da Arte e características estéticas, para cada valor de oposição e inovação calculado. Consideram-se os dois melhores atributos: média do número de segmentos e média da quantidade de picos de curvatura.}\\
 
 \hline \hline
 \textbf{Deslocamento}       & \textbf{$W_{i,j}$} & \textbf{$s_{i,j}$} & \textbf{Possível interpretação} \\ \hline
@@ -3192,7 +3176,7 @@ Caravaggio $\to$ Frans Hals & 1.  & 0.  & Não é possível considerar,
 pois para $i=0,j=1$ os valores de oposição e inovação serão sempre
 $W_{i,j}=1$ e $s_{i,j}=0$. \\ \hline
 
-Frans Hals $\to$ Poussin    & 0.111              & 0.425              & É a menor oposição do período Barroco e não encontra paralelo com a história, visto que Frans Hals, por ter sido influenciado por Caravaggio, deveria opor-se a Poussin. Porém, a  inovação é satisfatória, pois Poussin retrata paisagens ao invés de retratos, comuns em Hals, para citar um exemplo. \\ \hline
+Frans Hals $\to$ Poussin    & 0.111              & 0.425              & É a menor oposição do período Barroco e não encontra paralelo com a história, visto que Frans Hals, por ter sido influenciado por Caravaggio, deveria opor-se a Poussin. Porém, a  inovação é satisfatória, pois Poussin enfatiza a pintura de paisagens ao invés de retratos, comuns em Hals, para citar um exemplo. \\ \hline
 
 Poussin $\to$ Velázquez     & 0.621              & 0.004              & A oposição é esperada, pois Poussin se opõe a Velázquez, que é influenciado por Caravaggio. A baixa inovação, por outro lado, não revela o esperado. \\ \hline
 
@@ -3231,7 +3215,7 @@ da Arte.
   \begin{center}
   \caption{\label{tab:dialetica1} Índices de contra-dialética para cada um dos
     10 deslocamentos entre tese, antítese e síntese, considerando os dois
-    melhores atributos.}
+    melhores atributos: média do número de segmentos e média da quantidade de picos de curvatura.}
 \begin{tabular}{@{}ll}
   
     \hline \hline
@@ -3329,7 +3313,7 @@ demais pintores considerados.
 Embora os atributos \emph{média de picos de curvatura} e \emph{média
   do número de segmentos} apresentaram-se como opções interessantes
 para a classificação, o método LDA foi aplicado considerando todos os
-$N = 99$ atributos com o objetivo de testar a relevância dos atributos
+$N = 100$ atributos com o objetivo de testar a relevância dos atributos
 originalmente selecionados e a estabilidade dos resultados. O método
 LDA projeta os atributos em um espaço de $r < N$ dimensões que melhor
 separa as pinturas e que acaba por resultar em uma nova série temporal
@@ -3351,7 +3335,7 @@ na figura~\ref{fig:caso3_oposEinov}, tabela~\ref{tab:dialetica3} e figura~\ref{f
         \caption{Série temporal resultante da projeção em 2 dimensões do
         \textit{espaço criativo} considerando os dois primeiros componentes com
         maiores autovalores obtidos a partir da transformação LDA na matriz de
-        $N = 99$ atributos.}
+        $N = 100$ atributos.}
         \label{fig:caso3_g1}
         \includegraphics[width=\columnwidth]{figs/caso3_g1}
         \fonteminha
@@ -3388,7 +3372,7 @@ na figura~\ref{fig:caso3_oposEinov}, tabela~\ref{tab:dialetica3} e figura~\ref{f
 \begin{figure}[h!]
 \begin{center}
       \caption{Valores de oposição e inovação considerando a série temporal para
-        todos os $N = 99$ atributos refletidos nos dois primeiros componentes
+        todos os $N = 100$ atributos refletidos nos dois primeiros componentes
         obtidos pelo método LDA. Os mesmos padrões observados quando
         considerando os dois melhores atributos ainda permanecem nessa
         observação, como esperado.}
@@ -3463,7 +3447,8 @@ de confusão reflete os resultados previamente discutidos: há
 similaridade entre pintores barrocos, principalmente Velázquez,
 Caravaggio e Rembrandt e é possível notar claramente a separação entre
 pintores anteriores e posteriores a Van Gogh, que define a fronteira
-entre os períodos Barroco e Moderno.
+entre os períodos Barroco e Moderno. Porém, o desempenho do método LDA para Miró e Rembrandt não corresponde ao esperado, sendo estes
+os piores resultados da matriz de confusão.
 
 %% gerado com: ga-delaunay/matriz_confusao.py
 \begin{figure}[h!]
@@ -3501,10 +3486,10 @@ artísticos através da quantificação de conceitos, antes exclusivamente
 humanos. Como caso de estudo, aplicou-se tal método para o entendimento
 dos períodos Barroco e movimentos da Arte Moderna, na
 Pintura. Iniciando com a escolha de representantes de cada um destes
-movimentos, 12 nomes foram sugeridos e 240 pinturas destes artistas foram
+movimentos, 12 nomes foram selecionados e 240 pinturas destes artistas foram
 escolhidas. Rotinas de processamento de imagens permitiram a
 extração de características deste corpus de pinturas. Foi extraído, de
-cada pintura, um vetor de 99 atributos que caracterizam aspectos de
+cada pintura, um vetor de 100 atributos que caracterizam aspectos de
 complexidade da imagem, textura, forma e contorno.  
 
 A relevância de tais atributos foi atestada pela análise do índice de
@@ -3586,7 +3571,10 @@ suplantar as discussões humanas, que tanto trazem de valor para o
 entendimento da sociedade, esse \textit{framework} pretende somar,
 fornecendo mais um ponto de vista.
 
-Como trabalhos futuros, o número de pintores pode ser expandido e um
+Como trabalhos futuros, os métodos de processamento de imagens digitais podem
+ser espandidos, como através do uso do algoritmo de segmentação SLIC com $k$ variante ao invés da
+versão estática utilizada. Novos descritores de imagens também podem ser explorados (e.g.\ descritores invariantes como SIFT, SURF ou ORB),
+assim como a análise dos atributos obtidos por estes descritores. Por exemplo, os atributos podem ser agrupados dada sua natureza (e.g.\ forma, complexidade, textura) ou valor de espalhamento (e.g.\ os melhores 20 atributos), e um método de redução de dimensionalidade como PCA poderia ser aplicado a esses grupos, refinando-os para um subsequente cálculo das medidas propostas neste trabalho. No que diz respeito a área de aplicação, o número de pintores pode ser expandido e um
 conjunto de pintores pode ser escolhido especificamente para
 investigar suas influências. Por exemplo, pinturas dos filhos de Frans
 Hals podem ser incluídas para verificar a influência de seu pai e

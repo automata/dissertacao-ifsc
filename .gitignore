@@ -1,12 +1,8 @@
-*~
-*.wav
+.DS_Store
 *.aux
+*.bbl
 *.blg
 *.lof
-*.lot
 *.log
+*.lot
 *.toc
-*.dvi
-*.bbl
-python.sty
-pythonlisting.tex
